@@ -1,0 +1,90 @@
+---
+title: "\0"
+format: 
+  revealjs:
+    preview-links: auto
+editor: visual
+title-slide-attributes:
+    data-background-image: "/Slide Templates/Slide1.png"
+    data-background-size: contain
+    data-background-opacity: "1"
+---
+
+##  {background-image="/Slide Templates/Slide2.png" background-size="contain"}
+
+## Overall Goals {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+-   Understand terms
+-   Keyword searches in Excel
+-   Getting started with R
+-   Text mining in R
+
+# Excel {background-image="/Slide Templates/Slide3.png" background-size="contain"}
+
+## Excel Agenda {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+-   Formulas
+-   Using ChatGPT to help with formulas
+-   Keyword Search
+-   Word Count
+
+# R {background-image="/Slide Templates/Slide3.png" background-size="contain"}
+
+## Getting Started {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+1.  What is R?
+2.  Why R vs. Python?
+
+::: {.notes}
+R is a programming language.
+:::
+
+## Getting Started {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+::: {.callout-tip}
+Everything in this workshop can be done through the virtual project. Scan the QR code to get started.
+:::
+
+![](Images/qr_code.png){fig-align="center"}
+
+## RStudio IDE/Posit Cloud {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+-   What are we looking at?
+-   Navigating around
+-   Understanding packages
+
+## The `tidyverse` {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+![](Images/tidyverse-logo.png){fig-align="center"}
+
+-   [What is it?](https://www.tidyverse.org)
+-   How does it work?
+-   How do I write code?
+-   Understanding `dplyr` and `ggplot2`
+
+## Data Preparation & Wrangling {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+- Load the data
+- Examine the data
+- Perform data wrangling
+- Load the [`tidytext`](https://juliasilge.github.io/tidytext/index.html) package
+
+![](Images/tidytext-logo.png){fig-align="center"}
+
+## First Steps {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+- Creating tokens
+- Word frequencies
+- Stop words
+
+## Next Steps {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+- N-grams
+- Word and document frequencies
+- Sentiment analysis
+- Topic modeling
+
+# Learning More  {background-image="/Slide Templates/Slide4.png" background-size="contain"}
+
+- [R for Data Science](https://r4ds.had.co.nz)
+- [Text Mining with R](https://www.tidytextmining.com/index.html)
