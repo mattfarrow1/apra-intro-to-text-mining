@@ -18,6 +18,13 @@ title-slide-attributes:
 -   Keyword searches in Excel
 -   Getting started with R
 -   Text mining in R
+-   Text mining in Python
+
+## Poll {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+
+1. What do you think of when I say text mining?
+2. How much experience do you have with coding languages like R or Python?
+3. What types of things are you most interested in? (keywords, sentiment, ngrams, word clouds...)
 
 # Excel {background-image="/Slide Templates/Slide3.png" background-size="contain"}
 
