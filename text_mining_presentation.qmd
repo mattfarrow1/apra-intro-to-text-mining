@@ -2,7 +2,10 @@
 title: "\0"
 format: 
   revealjs:
+    css: style.css
     preview-links: auto
+    filters: 
+      - filter.lua
 editor: visual
 title-slide-attributes:
     data-background-image: "/Slide Templates/Slide1.png"
@@ -10,88 +13,590 @@ title-slide-attributes:
     data-background-opacity: "1"
 ---
 
-##  {background-image="/Slide Templates/Slide2.png" background-size="contain"}
+# Overall Goals
 
-## Overall Goals {background-image="/Slide Templates/Slide7.png" background-size="contain"}
-
--   Understand terms
+-   Into to Text Mining
 -   Keyword searches in Excel
 -   Getting started with R
 -   Text mining in R
 -   Text mining in Python
 
-## Poll {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+```{r}
+library(tidyverse)
+library(tidytext)
+library(wordcloud)
+```
 
-1. What do you think of when I say text mining?
-2. How much experience do you have with coding languages like R or Python?
-3. What types of things are you most interested in? (keywords, sentiment, ngrams, word clouds...)
+
+## Poll
+
+1.  What do you think of when I say text mining?
+2.  How much experience do you have with coding languages like R or Python?
+3.  What types of things are you most interested in? (keywords, sentiment, ngrams, word clouds...)
+
+# Intro to Text Mining {background-image="/Slide Templates/Slide3.png" background-size="contain"}
+
+## What is text mining?
+
+Text mining is the process of extracting information and insights from unstructured text.
+
+## Terms to Know
+
+- **Natural Language**: A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (_Examples include English or Italian._)
+- **Natural Language Processing (NLP)**: refers to the creation and use of computational power in order to process content in natural language.
+
+## Terms to Know
+
+- **Segmentation/Tokenization**: the process of splitting apart pieces of language. *Sentence segmentation* is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization. *Word tokenization* involves breaking out the individual words of a sentence.
+
+## Terms to Know
+
+- **Text Normalization**: involves standardizing text prior to analysis. Examples include the expansion of contractions (don't -> do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)
+
+## Terms to Know
+
+- **Term Frequency**: measures how often a term appears in a document.
+- **Document Frequency**: measures how often a term appears in a corpus of documents.
+
+## Terms to Know
+
+- **Inverse Document Frequency**: a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.
+- **TF-IDF**: "Term Frequency-Inverse Document Frequency". Higher term frequency and a lower document frequency leads to a higher TF-IDF.
+
+## Levels of Analysis
+
+- **Lexical Analysis**: The most basic form of NLP, lexical analysis is focused on analyzing individual words. 
+- **Syntactic Analysis**: concerned with processing the grammar of written words. 
+- **Semantic Analysis**: builds on lexical and syntactic analyses in order to understand the meanings of words. 
+- **Discourse Analysis**: Understanding inferences in language is the domain of discourse analysis. 
+
+## Choosing a Tool
+
+- **Experience**: what do you know best?
+- **Availability**: what do you have access to?
+- **Support**: where can you turn when you have problems?
+- **Longevity**: if you win the lottery tomorrow can someone take over?
 
 # Excel {background-image="/Slide Templates/Slide3.png" background-size="contain"}
 
-## Excel Agenda {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+## Excel Agenda
 
+-   Pros and Cons
 -   Formulas
 -   Using ChatGPT to help with formulas
 -   Keyword Search
 -   Word Count
 
-# R {background-image="/Slide Templates/Slide3.png" background-size="contain"}
+## Pros and Cons
 
-## Getting Started {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+:::: {.columns}
 
-1.  What is R?
-2.  Why R vs. Python?
+::: 
 
-::: {.notes}
-R is a programming language.
+**Pros**
+- Universally available
+- Not going anywhere
+- Low barrier to entry
+- Scales in complexity
+
 :::
 
-## Getting Started {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+::: 
 
-::: {.callout-tip}
+**Cons**
+- Can be difficult to reproduce
+- Potentially destructive
+- Doesn't scale well
+- Limited options for text mining
+
+:::
+
+::::
+
+## Formula: vlookup
+
+=**VLOOKUP**(<font color="red">Value to look up</font>, <font color="blue">Range to look for value</font>, <font color="orange">Column for the return value</font>, <font color="green">Type of match</font>)\
+=VLOOKUP(<font color="red">A1</font>, <font color="blue">Lookup!A1:B7</font>, <font color="orange">2</font>, <font color="green">TRUE</font>)
+
+## Formula: absolute/relative references
+
+Relative references **can** move.
+
+A1
+
+Absolute references **can't** move.
+
+\$A\$1
+
+## Formula: absolute/relative references
+
+```{r}
+tbl <- tibble::tribble(
+~`$A$2`, ~`The column and the row do not change when copied.`,
+"A$2","The row does not change when copied.",
+"$A2","The column does not change when copied."
+)
+
+kableExtra::kable_styling(knitr::kable(tbl), font_size = 24)
+```
+
+## Formula: countif
+
+=**COUNTIF**(<font color="red">Where are we looking?</font>, <font color="blue">What are we looking for?</font>)
+
+=COUNTIF(<font color="red">A:A</font>, <font color="blue">"Washington"</font>)
+
+## ChatGPT for Formula Help
+
+::: callout-warning
+Assume that everything you put into ChatGPT (or other LLMs) is public. Do not enter confidential or proprietary information into it.
+:::
+
+Tell ChatGPT what is is you need assistance with:
+
+![](Images/chatgpt-excel-1.png){fig-align="center"}
+
+## ChatGPT for Formula Help
+
+![](Images/chatgpt-excel-2.png){fig-align="center"}
+
+## Formula: keyword search
+
+Source: ChatGPT
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))>0, "Found", "Not Found")
+
+## Formula: keyword search
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(<font color="red">Keywords_Range</font>, Cell)))>0, "Found", "Not Found")
+
+1. Replace `Keywords_Range` with the actual range of keywords you want to search for. For example, if your keywords are in cells A1 to A10, the range would be `A1:A10`.
+
+## Formula: keyword search
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, <font color="red">Cell</font>)))>0, "Found", "Not Found")
+
+2. Replace `Cell` with the cell reference of the cell in the column you want to search. This is the cell where you want to check if any of the keywords are present. For example, if you want to search in column B, and the first cell is B2, you would use `B2` as the cell reference.
+
+## Formula: keyword search
+
+Source: ChatGPT
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))>0, "Found", "Not Found")
+
+3. Enter the formula in the cell where you want the search result to appear.
+
+The formula will return "Found" if any of the keywords in the range are found in the specified cell, and "Not Found" if none of the keywords are found.
+
+Note: This formula is case-insensitive, so it will match keywords regardless of their case. If you want case-sensitive matching, you can use the `FIND` function instead of `SEARCH` in the formula.
+
+# R {background-image="/Slide Templates/Slide3.png" background-size="contain"}
+
+## Getting Started
+
+1.  What is R?
+2.  R vs. Python?
+
+::: notes
+R is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990's and open sourced in 1995.
+
+For the purposes of this workshop, there are no significant differences in R vs. Python other than the language and packages/libraries used. I chose to start with R because that's where I'm most comfortable, it's the language that I see Apra promoting, and the community is incredibly welcoming and diverse.
+:::
+
+## Getting Started
+
+::: callout-tip
 Everything in this workshop can be done through the virtual project. Scan the QR code to get started.
 :::
 
-![](Images/qr_code.png){fig-align="center"}
+![](Images/qr_code.png){height="250" fig-align="center"}
 
-## RStudio IDE/Posit Cloud {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+::: notes
+Discuss the layout of RStudio and what people are looking at.
+:::
 
--   What are we looking at?
--   Navigating around
--   Understanding packages
+## RStudio IDE/Posit Cloud
 
-## The `tidyverse` {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+![](Images/rstudio-1.png){fig-align="center" height="500"}
 
-![](Images/tidyverse-logo.png){fig-align="center"}
+## RStudio IDE/Posit Cloud
+
+![](Images/rstudio-2.png){fig-align="center" height="500"}
+
+## Packages
+
+-   Libraries of code
+-   Expand the "base R" code
+
+## The `tidyverse`
+
+![](Images/tidyverse-logo.png){fig-align="center" height="200"}
 
 -   [What is it?](https://www.tidyverse.org)
 -   How does it work?
--   How do I write code?
--   Understanding `dplyr` and `ggplot2`
 
-## Data Preparation & Wrangling {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+## The `tidyverse` vs 'Base R'
 
-- Load the data
-- Examine the data
-- Perform data wrangling
-- Load the [`tidytext`](https://juliasilge.github.io/tidytext/index.html) package
+![](Images/dplyr-vs-base-r.png){fig-align="center" height="350"}
 
-![](Images/tidytext-logo.png){fig-align="center"}
+Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 
-## First Steps {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+## `tidytext`
 
-- Creating tokens
-- Word frequencies
-- Stop words
+![](Images/tidytext-logo.png){fig-align="center" height="200"}
 
-## Next Steps {background-image="/Slide Templates/Slide7.png" background-size="contain"}
+-   What is it?
+-   How does it work?
 
-- N-grams
-- Word and document frequencies
-- Sentiment analysis
-- Topic modeling
+# The Data
 
-# Learning More  {background-image="/Slide Templates/Slide4.png" background-size="contain"}
+42,656 reviews from Disney California, Hong Kong, and Paris
 
-- [R for Data Science](https://r4ds.had.co.nz)
-- [Text Mining with R](https://www.tidytextmining.com/index.html)
+![](Images/disney-logo.png){fig-align="center" height="200"}
+
+Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews)
+
+## Getting Started
+
+```{r}
+#| echo: true
+#| #| output-location: column
+
+# Install libraries
+# install.packages("tidyverse")
+# install.packages("tidytext")
+
+# Load libraries
+library(tidyverse)
+library(tidytext)
+
+# Read in the data
+df <- read_csv("DisneylandReviews.csv")
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| #| output-location: slide
+
+# head(df)
+# str(df)
+glimpse(df)
+```
+
+## Look at the Parks
+
+```{r}
+#| echo: true
+#| #| output-location: column
+
+unique(df$Branch)
+```
+
+## Clean up Park Names
+
+```{r}
+#| echo: true
+#| #| output-location: slide
+
+df <- df %>% 
+  rename(Park = Branch) %>% 
+  mutate(Park = recode(Park,
+                       "Disneyland_California" = "California",
+                       "Disneyland_HongKong" = "Hong Kong",
+                       "Disneyland_Paris" = "Paris"
+  ))
+
+unique(df$Park)
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+df %>% 
+  ggplot(aes(Rating)) +
+  geom_bar(fill = "steelblue", color = "black") +
+  labs(title = "Distribution of Ratings",
+       x = "Rating",
+       y = "Count") +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal()
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+df %>% 
+  ggplot(aes(Rating, fill = Park)) +
+  geom_bar(color = "black") +
+  labs(title = "Distribution of Ratings by Park",
+       x = "Rating",
+       y = "Count",
+       fill = "Park") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_fill_discrete() +
+  theme_minimal()
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+
+df %>% 
+  ggplot(aes(Park, Rating, color = Park)) +
+  geom_boxplot(color = "black") +
+  geom_jitter(alpha = 0.3) +
+  labs(title = "Distribution of Ratings by Park",
+       x = "Rating",
+       y = "Count") +
+  theme_minimal()
+```
+
+# Sample Data
+
+## Sample Review {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+df$Review_Text[15]
+```
+
+## Sample Review {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Convert it to a tibble
+sample <- tibble(line = 1, text = df$Review_Text[15])
+sample
+```
+
+## Sample Review: Unnest Tokens {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Unnest tokens
+tidy_sample <- sample %>% 
+  unnest_tokens(word, text)
+tidy_sample
+```
+
+## Sample Review: Word Count {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Word count
+tidy_sample %>% 
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+## Sample Review: Word Count w/o Stop Words {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Word count without stop words
+tidy_sample %>% 
+  filter(!word %in% stop_words$word) %>% 
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+# Processing the Data
+
+## Number Each Review {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Number each review for each park
+reviews <- df %>%
+  group_by(Park) %>%
+  mutate(linenumber = row_number()) %>% 
+  ungroup() %>% 
+  select(Park, linenumber, text = Review_Text) %>% 
+  arrange(Park, linenumber)
+
+head(reviews)
+```
+
+## Unnest Tokens & Remove Stop Words {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Unnest tokens and remove stop words
+tidy_reviews <- reviews %>% 
+  unnest_tokens(word, text) %>% 
+  anti_join(stop_words)
+
+head(tidy_reviews)
+```
+
+## Word Counts {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Perform word count
+tidy_reviews %>% 
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+## Word Clouds
+
+```{r}
+tidy_reviews %>%
+  anti_join(stop_words) %>%
+  count(word) %>%
+  with(wordcloud(word, n, max.words = 100))
+```
+
+
+## N-Grams
+
+- A continuous sequence of `n` words
+- Can be used 'as is', or run through a stemmer to get morphemes
+- Offers greater context than single words
+
+## Bigrams (prep)
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Unnest into bigrams
+tidy_bigrams <- reviews %>% 
+  unnest_tokens(bigram, text, token = "ngrams", n = 2) %>% 
+  filter(!is.na(bigram))
+
+# Separate words
+tidy_bigrams <- tidy_bigrams %>%
+  separate(bigram, c("word1", "word2"), sep = " ")
+
+# Remove stop words
+tidy_bigrams <- tidy_bigrams %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word)
+
+# Reunite terms
+tidy_bigrams <- tidy_bigrams %>%
+  unite(bigram, word1, word2, sep = " ")
+```
+
+## Bigrams
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+tidy_bigrams %>% 
+  group_by(Park) %>% 
+  count(bigram) %>% 
+  arrange(desc(n)) %>% 
+  head()
+```
+
+## Word & Document Frequencies
+
+## Sentiment Analysis {.smaller}
+
+An introduction using the 'joy' sentiment.
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Get 'joy' sentiment
+nrc_joy <- tidytext::get_sentiments("nrc")
+nrc_joy <- nrc_joy %>% 
+  filter(sentiment == "joy")
+
+head(nrc_joy)
+```
+
+## Sentiment Analysis {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Most common 'joy' words in the reviews
+tidy_reviews %>%
+  inner_join(nrc_joy) %>%
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+## Sentiment Analysis {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+tidy_reviews_sentiment <- tidy_reviews %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(Park, index = linenumber %/% 80, sentiment) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
+  mutate(sentiment = positive - negative)
+
+head(tidy_reviews_sentiment)
+```
+
+## Sentiment Analysis {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ Park, ncol = 1, scales = "free_x") +
+  labs(title = "Sentiment Analysis by Park") +
+  theme_minimal()
+```
+
+## Topic Modeling
+
+# Python
+
+## Python Libraries
+
+## Recreating R Work
+
+# Learning More
+
+Related to this Workshop
+
+-   [R for Data Science](https://r4ds.had.co.nz)
+-   [Text Mining with R](https://www.tidytextmining.com/index.html)
+
+Other R Links
+
+-   [Big Book of R](https://www.bigbookofr.com)
+
+# Get in Touch
+
+matt.farrow\@childrens.com
+
+#  {background-image="/Slide Templates/Slide8.png" background-size="contain"}

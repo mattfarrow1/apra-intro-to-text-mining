@@ -2,12 +2,12 @@
 # Setup -------------------------------------------------------------------
 
 # Required packages
+# install.packages("tidyverse")
+# install.packages("tidytext")
 library(tidyverse)
 library(tidytext)
 
 # Optional packages
-library(hrbrthemes)
-library(janitor)
 library(scales)
 library(gt)
 
@@ -15,8 +15,11 @@ library(gt)
 # https://www.kaggle.com/datasets/arushchillar/disneyland-reviews?resource=download
 df <- read_csv("DisneylandReviews.csv")
 
-# Clean up column names
-df <- janitor::clean_names(df)
+# Take a look at the data
+head(df)
+
+# Look more closely at branch
+head(df$Branch)
 
 # Examine the data
 str(df)
@@ -25,30 +28,36 @@ glimpse(df)
 # Random sample reviews
 df <- sample_n(df, 1000)
 
-# Rename banches
+# Which parks do these reviews come from?
+unique(df$Branch)
+
+# Rename branches
 df <- df %>% 
-  rename(park = branch) %>% 
-  mutate(park = recode(park,
+  rename(Park = Branch) %>% 
+  mutate(Park = recode(Park,
                        "Disneyland_California" = "California",
                        "Disneyland_HongKong" = "Hong Kong",
                        "Disneyland_Paris" = "Paris"
   ))
 
+# Now which parks do these reviews come from?
+unique(df$Park)
+
 # ggplot2 Intro via Exploratory Data Analysis -----------------------------
 
 # Distribution of ratings
 df %>% 
-  ggplot(aes(rating)) +
+  ggplot(aes(Rating)) +
   geom_bar(fill = "steelblue", color = "black") +
   labs(title = "Distribution of Ratings",
        x = "Rating",
        y = "Count") +
   scale_y_continuous(labels = comma) +
-  theme_ipsum()
+  theme_minimal()
 
 # Distribution of ratings by park
 df %>% 
-  ggplot(aes(rating, fill = park)) +
+  ggplot(aes(Rating, fill = Park)) +
   geom_bar(color = "black") +
   labs(title = "Distribution of Ratings by Park",
        x = "Rating",
@@ -56,15 +65,35 @@ df %>%
        fill = "Park") +
   scale_y_continuous(labels = comma) +
   scale_fill_discrete() +
-  theme_ipsum()
+  theme_minimal()
+
+# Distribution of ratings by park
+df %>% 
+  ggplot(aes(Rating)) +
+  geom_bar() +
+  labs(title = "Distribution of Ratings by Park",
+       x = "Rating",
+       y = "Count") +
+  scale_y_continuous(labels = comma) +
+  facet_wrap(~Park, ncol = 1, scales = "free_y") +
+  theme_minimal()
+
+df %>% 
+  ggplot(aes(Park, Rating, color = Park)) +
+  geom_boxplot(color = "black") +
+  geom_jitter(alpha = 0.3) +
+  labs(title = "Distribution of Ratings by Park",
+       x = "Rating",
+       y = "Count") +
+  theme_minimal()
 
 # Examine Park Reviews ----------------------------------------------------
 
-# Look at an example
-df$review_text[15]
+# Look at an example of a review
+df$Review_Text[15]
 
 # Convert it to a tibble
-sample <- tibble(line = 1, text = df$review_text[15])
+sample <- tibble(line = 1, text = df$Review_Text[15])
 sample
 
 # Unnest tokens
@@ -74,16 +103,26 @@ tidy_sample
 
 # Word count
 tidy_sample %>% 
-  count(word, sort = TRUE)
+  count(word, sort = TRUE) %>% 
+  head() %>% 
+  gt()
+
+# Word count without stop words
+tidy_sample %>% 
+  filter(!word %in% stop_words$word) %>% 
+  count(word, sort = TRUE) %>% 
+  head() %>% 
+  gt()
 
 # Process all Reviews -----------------------------------------------------
 
+# Number each review for each park
 reviews <- df %>%
-  group_by(park) %>%
+  group_by(Park) %>%
   mutate(linenumber = row_number()) %>% 
   ungroup() %>% 
-  select(park, linenumber, text = review_text) %>% 
-  arrange(park, linenumber)
+  select(Park, linenumber, text = Review_Text) %>% 
+  arrange(Park, linenumber)
 
 # Unnest tokens and remove stop words
 tidy_reviews <- reviews %>% 
@@ -92,7 +131,9 @@ tidy_reviews <- reviews %>%
 
 # Perform word count
 tidy_reviews %>% 
-  count(word, sort = TRUE)
+  count(word, sort = TRUE) %>% 
+  gt() %>% 
+  tab_stubhead(label = "Park")
 
 # Intro to Sentiment Analysis ---------------------------------------------
 
@@ -109,15 +150,15 @@ tidy_reviews %>%
 
 tidy_reviews_sentiment <- tidy_reviews %>%
   inner_join(get_sentiments("bing")) %>%
-  count(park, index = linenumber %/% 80, sentiment) %>%
+  count(Park, index = linenumber %/% 80, sentiment) %>%
   pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
   mutate(sentiment = positive - negative)
 
-ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = park)) +
+ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +
   geom_col(show.legend = FALSE) +
-  facet_wrap(~park, ncol = 1, scales = "free_x") +
+  facet_wrap(~ Park, ncol = 1, scales = "free_x") +
   labs(title = "Sentiment Analysis by Park") +
-  theme_ipsum()
+  theme_minimal()
 
 # Bigrams -----------------------------------------------------------------
 
@@ -142,6 +183,12 @@ tidy_bigrams %>%
 # Reunite terms
 tidy_bigrams <- tidy_bigrams %>%
   unite(bigram, word1, word2, sep = " ")
+
+tidy_bigrams %>% 
+  group_by(Park) %>% 
+  count(bigram) %>% 
+  arrange(desc(n)) %>% 
+  gt()
 
 # Term Frequency ----------------------------------------------------------
 
