@@ -11,6 +11,8 @@ title-slide-attributes:
     data-background-image: "/Slide Templates/Slide1.png"
     data-background-size: contain
     data-background-opacity: "1"
+execute:
+  freeze: auto
 ---
 
 # Overall Goals
@@ -27,7 +29,6 @@ library(tidytext)
 library(wordcloud)
 ```
 
-
 ## Poll
 
 1.  What do you think of when I say text mining?
@@ -42,40 +43,40 @@ Text mining is the process of extracting information and insights from unstructu
 
 ## Terms to Know
 
-- **Natural Language**: A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (_Examples include English or Italian._)
-- **Natural Language Processing (NLP)**: refers to the creation and use of computational power in order to process content in natural language.
+-   **Natural Language**: A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (*Examples include English or Italian.*)
+-   **Natural Language Processing (NLP)**: refers to the creation and use of computational power in order to process content in natural language.
 
 ## Terms to Know
 
-- **Segmentation/Tokenization**: the process of splitting apart pieces of language. *Sentence segmentation* is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization. *Word tokenization* involves breaking out the individual words of a sentence.
+-   **Segmentation/Tokenization**: the process of splitting apart pieces of language. *Sentence segmentation* is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization. *Word tokenization* involves breaking out the individual words of a sentence.
 
 ## Terms to Know
 
-- **Text Normalization**: involves standardizing text prior to analysis. Examples include the expansion of contractions (don't -> do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)
+-   **Text Normalization**: involves standardizing text prior to analysis. Examples include the expansion of contractions (don't -\> do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)
 
 ## Terms to Know
 
-- **Term Frequency**: measures how often a term appears in a document.
-- **Document Frequency**: measures how often a term appears in a corpus of documents.
+-   **Term Frequency**: measures how often a term appears in a document.
+-   **Document Frequency**: measures how often a term appears in a corpus of documents.
 
 ## Terms to Know
 
-- **Inverse Document Frequency**: a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.
-- **TF-IDF**: "Term Frequency-Inverse Document Frequency". Higher term frequency and a lower document frequency leads to a higher TF-IDF.
+-   **Inverse Document Frequency**: a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.
+-   **TF-IDF**: "Term Frequency-Inverse Document Frequency". Higher term frequency and a lower document frequency leads to a higher TF-IDF.
 
 ## Levels of Analysis
 
-- **Lexical Analysis**: The most basic form of NLP, lexical analysis is focused on analyzing individual words. 
-- **Syntactic Analysis**: concerned with processing the grammar of written words. 
-- **Semantic Analysis**: builds on lexical and syntactic analyses in order to understand the meanings of words. 
-- **Discourse Analysis**: Understanding inferences in language is the domain of discourse analysis. 
+-   **Lexical Analysis**: The most basic form of NLP, lexical analysis is focused on analyzing individual words.
+-   **Syntactic Analysis**: concerned with processing the grammar of written words.
+-   **Semantic Analysis**: builds on lexical and syntactic analyses in order to understand the meanings of words.
+-   **Discourse Analysis**: Understanding inferences in language is the domain of discourse analysis.
 
 ## Choosing a Tool
 
-- **Experience**: what do you know best?
-- **Availability**: what do you have access to?
-- **Support**: where can you turn when you have problems?
-- **Longevity**: if you win the lottery tomorrow can someone take over?
+-   **Experience**: what do you know best?
+-   **Availability**: what do you have access to?
+-   **Support**: where can you turn when you have problems?
+-   **Longevity**: if you win the lottery tomorrow can someone take over?
 
 # Excel {background-image="/Slide Templates/Slide3.png" background-size="contain"}
 
@@ -89,25 +90,16 @@ Text mining is the process of extracting information and insights from unstructu
 
 ## Pros and Cons
 
-:::: {.columns}
+::: columns
+:::
 
-::: 
-
-**Pros**
-- Universally available
-- Not going anywhere
-- Low barrier to entry
-- Scales in complexity
+**Pros** - Universally available - Not going anywhere - Low barrier to entry - Scales in complexity
 
 :::
 
-::: 
+:::
 
-**Cons**
-- Can be difficult to reproduce
-- Potentially destructive
-- Doesn't scale well
-- Limited options for text mining
+**Cons** - Can be difficult to reproduce - Potentially destructive - Doesn't scale well - Limited options for text mining
 
 :::
 
@@ -164,27 +156,27 @@ Tell ChatGPT what is is you need assistance with:
 
 Source: ChatGPT
 
-=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))>0, "Found", "Not Found")
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))\>0, "Found", "Not Found")
 
 ## Formula: keyword search
 
-=IF(SUMPRODUCT(--ISNUMBER(SEARCH(<font color="red">Keywords_Range</font>, Cell)))>0, "Found", "Not Found")
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(<font color="red">Keywords_Range</font>, Cell)))\>0, "Found", "Not Found")
 
-1. Replace `Keywords_Range` with the actual range of keywords you want to search for. For example, if your keywords are in cells A1 to A10, the range would be `A1:A10`.
+1.  Replace `Keywords_Range` with the actual range of keywords you want to search for. For example, if your keywords are in cells A1 to A10, the range would be `A1:A10`.
 
 ## Formula: keyword search
 
-=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, <font color="red">Cell</font>)))>0, "Found", "Not Found")
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, <font color="red">Cell</font>)))\>0, "Found", "Not Found")
 
-2. Replace `Cell` with the cell reference of the cell in the column you want to search. This is the cell where you want to check if any of the keywords are present. For example, if you want to search in column B, and the first cell is B2, you would use `B2` as the cell reference.
+2.  Replace `Cell` with the cell reference of the cell in the column you want to search. This is the cell where you want to check if any of the keywords are present. For example, if you want to search in column B, and the first cell is B2, you would use `B2` as the cell reference.
 
 ## Formula: keyword search
 
 Source: ChatGPT
 
-=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))>0, "Found", "Not Found")
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))\>0, "Found", "Not Found")
 
-3. Enter the formula in the cell where you want the search result to appear.
+3.  Enter the formula in the cell where you want the search result to appear.
 
 The formula will return "Found" if any of the keywords in the range are found in the specified cell, and "Not Found" if none of the keywords are found.
 
@@ -472,12 +464,11 @@ tidy_reviews %>%
   with(wordcloud(word, n, max.words = 100))
 ```
 
-
 ## N-Grams
 
-- A continuous sequence of `n` words
-- Can be used 'as is', or run through a stemmer to get morphemes
-- Offers greater context than single words
+-   A continuous sequence of `n` words
+-   Can be used 'as is', or run through a stemmer to get morphemes
+-   Offers greater context than single words
 
 ## Bigrams (prep)
 
