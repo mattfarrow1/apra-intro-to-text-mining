@@ -1,0 +1,73 @@
+---
+title: "\0"
+format: 
+  revealjs:
+    css: style.css
+    preview-links: auto
+    filters: 
+      - filter.lua
+editor: visual
+footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
+title-slide-attributes:
+    data-background-image: "/materials/slide templates/Slide1.png"
+    data-background-size: contain
+    data-background-opacity: "1"
+execute:
+  freeze: auto
+---
+
+# Overall Goals
+
+-   Into to Text Mining
+-   Keyword searches in Excel
+-   Getting started with R
+-   Text mining in R
+-   Text mining in Python
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(wordcloud)
+```
+
+## Poll
+
+1.  What do you think of when I say text mining?
+2.  How much experience do you have with coding languages like R or Python?
+3.  What types of things are you most interested in? (keywords, sentiment, ngrams, word clouds...)
+
+# Intro to Text Mining {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+
+## What is text mining?
+
+Text mining is the process of extracting information and insights from unstructured text.
+
+## Terms to Know
+
+-   **Natural Language**: A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (*Examples include English or Italian.*)
+-   **Natural Language Processing (NLP)**: refers to the creation and use of computational power in order to process content in natural language.
+
+## Terms to Know
+
+-   **Segmentation/Tokenization**: the process of splitting apart pieces of language. *Sentence segmentation* is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization. *Word tokenization* involves breaking out the individual words of a sentence.
+
+## Terms to Know
+
+-   **Text Normalization**: involves standardizing text prior to analysis. Examples include the expansion of contractions (don't -\> do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)
+
+## Terms to Know
+
+-   **Term Frequency**: measures how often a term appears in a document.
+-   **Document Frequency**: measures how often a term appears in a corpus of documents.
+
+## Terms to Know
+
+-   **Inverse Document Frequency**: a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.
+-   **TF-IDF**: "Term Frequency-Inverse Document Frequency". Higher term frequency and a lower document frequency leads to a higher TF-IDF.
+
+## Levels of Analysis
+
+-   **Lexical Analysis**: The most basic form of NLP, lexical analysis is focused on analyzing individual words.
+-   **Syntactic Analysis**: concerned with processing the grammar of written words.
+-   **Semantic Analysis**: builds on lexical and syntactic analyses in order to understand the meanings of words.
+-   **Discourse Analysis**: Understanding inferences in language is the domain of discourse analysis.

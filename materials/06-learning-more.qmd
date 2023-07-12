@@ -1,0 +1,34 @@
+---
+title: "\0"
+format: 
+  revealjs:
+    css: style.css
+    preview-links: auto
+    filters: 
+      - filter.lua
+editor: visual
+footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
+title-slide-attributes:
+    data-background-image: "/materials/slide templates/Slide1.png"
+    data-background-size: contain
+    data-background-opacity: "1"
+execute:
+  freeze: auto
+---
+
+# Learning More
+
+Related to this Workshop
+
+-   [R for Data Science](https://r4ds.had.co.nz)
+-   [Text Mining with R](https://www.tidytextmining.com/index.html)
+
+Other R Links
+
+-   [Big Book of R](https://www.bigbookofr.com)
+
+# Get in Touch
+
+matt.farrow\@childrens.com
+
+#  {background-image="/materials/slide templates/Slide8.png" background-size="contain"}

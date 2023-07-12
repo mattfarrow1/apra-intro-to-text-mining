@@ -1,0 +1,121 @@
+---
+title: "\0"
+format: 
+  revealjs:
+    css: style.css
+    preview-links: auto
+    filters: 
+      - filter.lua
+editor: visual
+footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
+title-slide-attributes:
+    data-background-image: "/materials/slide templates/Slide1.png"
+    data-background-size: contain
+    data-background-opacity: "1"
+execute:
+  freeze: auto
+---
+
+# Excel {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+
+## Excel Agenda
+
+-   Pros and Cons
+-   Formulas
+-   Using ChatGPT to help with formulas
+-   Keyword Search
+-   Word Count
+
+## Pros and Cons
+
+::: columns
+:::
+
+**Pros** - Universally available - Not going anywhere - Low barrier to entry - Scales in complexity
+
+:::
+
+:::
+
+**Cons** - Can be difficult to reproduce - Potentially destructive - Doesn't scale well - Limited options for text mining
+
+:::
+
+::::
+
+## Formula: vlookup
+
+=**VLOOKUP**(<font color="red">Value to look up</font>, <font color="blue">Range to look for value</font>, <font color="orange">Column for the return value</font>, <font color="green">Type of match</font>)\
+=VLOOKUP(<font color="red">A1</font>, <font color="blue">Lookup!A1:B7</font>, <font color="orange">2</font>, <font color="green">TRUE</font>)
+
+## Formula: absolute/relative references
+
+Relative references **can** move.
+
+A1
+
+Absolute references **can't** move.
+
+\$A\$1
+
+## Formula: absolute/relative references
+
+```{r}
+tbl <- tibble::tribble(
+~`$A$2`, ~`The column and the row do not change when copied.`,
+"A$2","The row does not change when copied.",
+"$A2","The column does not change when copied."
+)
+
+kableExtra::kable_styling(knitr::kable(tbl), font_size = 24)
+```
+
+## Formula: countif
+
+=**COUNTIF**(<font color="red">Where are we looking?</font>, <font color="blue">What are we looking for?</font>)
+
+=COUNTIF(<font color="red">A:A</font>, <font color="blue">"Washington"</font>)
+
+## ChatGPT for Formula Help
+
+::: callout-warning
+Assume that everything you put into ChatGPT (or other LLMs) is public. Do not enter confidential or proprietary information into it.
+:::
+
+Tell ChatGPT what is is you need assistance with:
+
+![](images/chatgpt-excel-1.png){fig-align="center"}
+
+## ChatGPT for Formula Help
+
+![](images/chatgpt-excel-2.png){fig-align="center"}
+
+## Formula: keyword search
+
+Source: ChatGPT
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))\>0, "Found", "Not Found")
+
+## Formula: keyword search
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(<font color="red">Keywords_Range</font>, Cell)))\>0, "Found", "Not Found")
+
+1.  Replace `Keywords_Range` with the actual range of keywords you want to search for. For example, if your keywords are in cells A1 to A10, the range would be `A1:A10`.
+
+## Formula: keyword search
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, <font color="red">Cell</font>)))\>0, "Found", "Not Found")
+
+2.  Replace `Cell` with the cell reference of the cell in the column you want to search. This is the cell where you want to check if any of the keywords are present. For example, if you want to search in column B, and the first cell is B2, you would use `B2` as the cell reference.
+
+## Formula: keyword search
+
+Source: ChatGPT
+
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Keywords_Range, Cell)))\>0, "Found", "Not Found")
+
+3.  Enter the formula in the cell where you want the search result to appear.
+
+The formula will return "Found" if any of the keywords in the range are found in the specified cell, and "Not Found" if none of the keywords are found.
+
+Note: This formula is case-insensitive, so it will match keywords regardless of their case. If you want case-sensitive matching, you can use the `FIND` function instead of `SEARCH` in the formula.

@@ -1,0 +1,97 @@
+---
+title: "Apra PD 2023 Workshop"
+format: html
+---
+
+## An Introduction to Text Mining
+
+by Matt Farrow
+
+------------------------------------------------------------------------
+
+🗓️August 28, 2023\
+⏰ 13:00 - 16:00\
+🏨 JW Marriott Indianapolis: Room TBD\
+
+------------------------------------------------------------------------
+
+# Pre-Work
+
+## Using Posit Cloud
+
+The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. If you plan to go this route, then there is nothing else you need to do in preparation.
+
+## Using a Local Installation
+
+If you are a workshop attendee and have any trouble with installation locally, please reach out to me directly!
+
+-   Install latest version of RStudio, [`2023.06.0+421)` or later](https://posit.co/products/open-source/rstudio/)
+-   Ideally upgrade/use to R 4.3.1 (I'm showing base R pipe as `|>`)
+-   Install these R packages:
+
+```{r pkg-list}
+#| eval: false
+pkg_list <- c(
+  "tidyverse", "tidytext", "wordcloud"
+  )
+install.packages(pkg_list)
+```
+
+::: callout-tip
+If you are a workshop attendee who would like to use their own RStudio installation, please clone <https://github.com/mattfarrow1/text-mining-workshop.git> via RStudio on Monday morning (August 28).
+:::
+
+::: {.callout-caution collapse="true"}
+## How to clone a Github repo
+
+1.  Navigate to <https://github.com/jthomasmock/quarto-workshop>
+
+2.  Click on the green "Code" button and copy the url under the HTTPS tab <https://github.com/jthomasmock/quarto-workshop.git>
+
+3.  In RStudio, use File \> New Project \> Version Control \> From Git \> and then paste the URL into the source repo box and then click enter!
+
+![](materials/images/clone-repo.gif)
+:::
+
+::: {.callout-caution collapse="true"}
+
+## (Optional!) Pre-Work for Python
+
+This will be a R/RStudio centric course based on the attendees, but we will briefly cover other editors and Python. You are not required to install Jupyter/Python/VScode, but if you'd like to test them out:
+
+-   Install Python, following instructions at [Minimum Viable Python](https://solutions.rstudio.com/python/minimum-viable-python/installing-python/)
+-   Install [Jupyter](https://quarto.org/docs/computations/python.html#installation)
+-   Install VSCode, [Quarto VSCode extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), [Python VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), [Jupyter VSCode extension](https://open-vsx.org/extension/ms-toolsai/jupyter)
+:::
+
+# Overview
+
+Free text, or unstructured data, is found throughout our CRMs in places like contact reports, notes, research profiles, emails, and more. In this workshop, we'll look at ways to get started with text mining in order to begin answering questions, surfacing insights, understanding sentiment, and bringing more value to your work. The workshop will be split into sections on Excel, R, and Python and will allow attendees the opportunity to work through examples and takeaway ideas for implementing these concepts at their own organizations.
+
+## Learning objectives
+
+-   Understand the difference between `knitr`, R Markdown, and Quarto
+-   Utilize RStudio, `knitr`, and Quarto to generate static documents, websites/blogs, and presentations
+-   Expand learner's toolkit regarding markdown, CSS, and Quarto-native layout options
+
+> These materials are developed for a trainer-led workshop at Apra PD 2023, but should be useful for self-guided learning as well.
+
+## Is this workshop for me?
+
+This workshop is primarily intended as a broad overview of potential solutions for analyzing free text fields. You should take this workshop if you have experience programming in R and want to learn how to take advantage of Quarto for literate data science programming in academia, science, and industry.
+
+This workshop will be appropriate for attendees who answer yes to these questions:
+
+-   Have you programmed in R and want to better encapsulate your code, documentation, and outputs in a cohesive "data product"?
+
+-   Do you want to learn about the next generation of RMarkdown for data science?
+
+-   Do you want to have a better interactive experience when writing technical or scientific documents with literate programming?
+
+## Instructor
+
+Matt Farrow is the Director of Prospect Development and Strategy at Children's Health. He previously worked as the Assistant Director of Prospect Management at Southern Methodist University, where he earned an M.S. degree in Data Science. Matt is passionate about helping people extract insights and wisdom from their data. He may also have a small problem with his love of LEGO.
+
+------------------------------------------------------------------------
+
+![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
