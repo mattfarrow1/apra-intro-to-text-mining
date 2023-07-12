@@ -1,0 +1,347 @@
+---
+title: "\0"
+format: 
+  revealjs:
+    css: style.css
+    preview-links: auto
+    filters: 
+      - filter.lua
+editor: visual
+footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
+title-slide-attributes:
+    data-background-image: "/materials/slide templates/Slide1.png"
+    data-background-size: contain
+    data-background-opacity: "1"
+execute:
+  freeze: auto
+---
+
+# The Data
+
+42,656 reviews from Disney California, Hong Kong, and Paris
+
+![](images/disney-logo.png){fig-align="center" height="200"}
+
+Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews)
+
+## Getting Started
+
+```{r}
+#| echo: true
+#| #| output-location: column
+
+# Install libraries
+# install.packages("tidyverse")
+# install.packages("tidytext")
+
+# Load libraries
+library(tidyverse)
+library(tidytext)
+library(wordcloud)
+
+# Read in the data
+df <- read_csv("DisneylandReviews.csv")
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| #| output-location: slide
+
+# head(df)
+# str(df)
+glimpse(df)
+```
+
+## Look at the Parks
+
+```{r}
+#| echo: true
+#| #| output-location: column
+
+unique(df$Branch)
+```
+
+## Clean up Park Names
+
+```{r}
+#| echo: true
+#| #| output-location: slide
+
+df <- df %>% 
+  rename(Park = Branch) %>% 
+  mutate(Park = recode(Park,
+                       "Disneyland_California" = "California",
+                       "Disneyland_HongKong" = "Hong Kong",
+                       "Disneyland_Paris" = "Paris"
+  ))
+
+unique(df$Park)
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+df %>% 
+  ggplot(aes(Rating)) +
+  geom_bar(fill = "steelblue", color = "black") +
+  labs(title = "Distribution of Ratings",
+       x = "Rating",
+       y = "Count") +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal()
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+df %>% 
+  ggplot(aes(Rating, fill = Park)) +
+  geom_bar(color = "black") +
+  labs(title = "Distribution of Ratings by Park",
+       x = "Rating",
+       y = "Count",
+       fill = "Park") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_fill_discrete() +
+  theme_minimal()
+```
+
+## Examine the Data {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+
+df %>% 
+  ggplot(aes(Park, Rating, color = Park)) +
+  geom_boxplot(color = "black") +
+  geom_jitter(alpha = 0.3) +
+  labs(title = "Distribution of Ratings by Park",
+       x = "Rating",
+       y = "Count") +
+  theme_minimal()
+```
+
+# Sample Data
+
+## Sample Review {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+df$Review_Text[15]
+```
+
+## Sample Review {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Convert it to a tibble
+sample <- tibble(line = 1, text = df$Review_Text[15])
+sample
+```
+
+## Sample Review: Unnest Tokens {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Unnest tokens
+tidy_sample <- sample %>% 
+  unnest_tokens(word, text)
+tidy_sample
+```
+
+## Sample Review: Word Count {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Word count
+tidy_sample %>% 
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+## Sample Review: Word Count w/o Stop Words {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Word count without stop words
+tidy_sample %>% 
+  filter(!word %in% stop_words$word) %>% 
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+# Processing the Data
+
+## Number Each Review {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Number each review for each park
+reviews <- df %>%
+  group_by(Park) %>%
+  mutate(linenumber = row_number()) %>% 
+  ungroup() %>% 
+  select(Park, linenumber, text = Review_Text) %>% 
+  arrange(Park, linenumber)
+
+head(reviews)
+```
+
+## Unnest Tokens & Remove Stop Words {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Unnest tokens and remove stop words
+tidy_reviews <- reviews %>% 
+  unnest_tokens(word, text) %>% 
+  anti_join(stop_words)
+
+head(tidy_reviews)
+```
+
+## Word Counts {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Perform word count
+tidy_reviews %>% 
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+## Word Clouds
+
+```{r}
+tidy_reviews %>%
+  anti_join(stop_words) %>%
+  count(word) %>%
+  with(wordcloud(word, n, max.words = 100))
+```
+
+## N-Grams
+
+-   A continuous sequence of `n` words
+-   Can be used 'as is', or run through a stemmer to get morphemes
+-   Offers greater context than single words
+
+## Bigrams (prep)
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Unnest into bigrams
+tidy_bigrams <- reviews %>% 
+  unnest_tokens(bigram, text, token = "ngrams", n = 2) %>% 
+  filter(!is.na(bigram))
+
+# Separate words
+tidy_bigrams <- tidy_bigrams %>%
+  separate(bigram, c("word1", "word2"), sep = " ")
+
+# Remove stop words
+tidy_bigrams <- tidy_bigrams %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word)
+
+# Reunite terms
+tidy_bigrams <- tidy_bigrams %>%
+  unite(bigram, word1, word2, sep = " ")
+```
+
+## Bigrams
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+tidy_bigrams %>% 
+  group_by(Park) %>% 
+  count(bigram) %>% 
+  arrange(desc(n)) %>% 
+  head()
+```
+
+## Word & Document Frequencies
+
+## Sentiment Analysis {.smaller}
+
+An introduction using the 'joy' sentiment.
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Get 'joy' sentiment
+nrc_joy <- tidytext::get_sentiments("nrc")
+nrc_joy <- nrc_joy %>% 
+  filter(sentiment == "joy")
+
+head(nrc_joy)
+```
+
+## Sentiment Analysis {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Most common 'joy' words in the reviews
+tidy_reviews %>%
+  inner_join(nrc_joy) %>%
+  count(word, sort = TRUE) %>% 
+  head()
+```
+
+## Sentiment Analysis {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+tidy_reviews_sentiment <- tidy_reviews %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(Park, index = linenumber %/% 80, sentiment) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
+  mutate(sentiment = positive - negative)
+
+head(tidy_reviews_sentiment)
+```
+
+## Sentiment Analysis {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ Park, ncol = 1, scales = "free_x") +
+  labs(title = "Sentiment Analysis by Park") +
+  theme_minimal()
+```
+
+## Topic Modeling

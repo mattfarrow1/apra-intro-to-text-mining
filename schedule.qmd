@@ -1,0 +1,17 @@
+---
+title: "Schedule"
+---
+
+::: callout-note
+This schedule is provided as a guide and is subject to change due to conversations and questions.
+:::
+
+| Time        | Activity                  |
+|-------------|---------------------------|
+| 1:00 - 1:30 | Introduction and Excel    |
+| 1:30 - 2:15 | Introduction to R         |
+| 2:15 - 2:30 | *Break / Discussion*      |
+| 2:30 - 3:30 | Text Mining in R          |
+| 3:30 - 4:00 | Text Mining in Python[^1] |
+
+[^1]: Subject to available time. Workshop participants will have access to the Python code and its associated documentation regardless.

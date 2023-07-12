@@ -1,0 +1,63 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!materials/workshop/"
+
+website:
+  title: "Extracting Value from Free Text"
+  twitter-card:
+    card-style: summary_large_image
+    description: "Apra PD 2023 workshop on text mining"
+    image: "materials/slide templates/Slide1.png"
+  page-footer:
+    left: "This page was built with ❤️ and [Quarto](https://quarto.org/) by [Matt Farrow](https://impactsignals.com)."
+  navbar:
+    background: "#447099"
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Topics
+        menu: 
+          - href: materials/01-introduction.qmd
+            text: "Introduction"
+          - href: materials/02-excel.qmd
+            text: "Excel"
+          - href: materials/03-intro-to-r.qmd
+            text: "Introduction to R"
+          - href: materials/04-r-text-mining.qmd
+            text: "R Text Mining"
+          - href: materials/05-python-text-mining.qmd
+            text: "Python Text Mining"
+          - href: materials/06-learning-more.qmd
+            text: "Learning More"
+      - href: schedule.qmd
+        text: "Schedule"
+      - href: workshop-materials.qmd
+        text: Workshop
+    right: 
+      - href: "https://www.tidytextmining.com"
+        text: "Tidy Text Mining"
+      - icon: github
+        href: https://github.com/mattfarrow1/apra-intro-to-text-mining
+  sidebar: 
+    style: docked
+    contents: 
+      - href: materials/01-introduction.qmd
+        text: "Introduction"
+      - href: materials/02-excel.qmd
+        text: "Excel"
+      - href: materials/03-intro-to-r.qmd
+        text: "Introduction to R"
+      - href: materials/04-r-text-mining.qmd
+        text: "R Text Mining"
+      - href: materials/05-python-text-mining.qmd
+        text: "Python Text Mining"
+      - href: materials/06-learning-more.qmd
+        text: "Learning More"
+
+format:
+  html:
+    theme: litera
+    toc: true

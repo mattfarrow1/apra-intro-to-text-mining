@@ -1,0 +1,23 @@
+---
+title: "\0"
+format: 
+  revealjs:
+    css: style.css
+    preview-links: auto
+    filters: 
+      - filter.lua
+editor: visual
+footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
+title-slide-attributes:
+    data-background-image: "/materials/slide templates/Slide1.png"
+    data-background-size: contain
+    data-background-opacity: "1"
+execute:
+  freeze: auto
+---
+
+# Python
+
+## Python Libraries
+
+## Recreating R Work
