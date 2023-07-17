@@ -593,5 +593,26 @@
     "title": "",
     "section": "ChatGPT for Formula Help",
     "text": "ChatGPT for Formula Help"
+  },
+  {
+    "objectID": "workshop-materials.html",
+    "href": "workshop-materials.html",
+    "title": "Workshop Materials",
+    "section": "",
+    "text": "To get access to the workshop materials, please clone the repo:\nhttps://github.com/mattfarrow1/text-mining-workshop.git"
+  },
+  {
+    "objectID": "workshop-materials.html#intro-to-r",
+    "href": "workshop-materials.html#intro-to-r",
+    "title": "Workshop Materials",
+    "section": "03-intro-to-r",
+    "text": "03-intro-to-r\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\nmaterials/workshop/03-intro-to-r\n01-examine.R\n\n\nmaterials/workshop/03-intro-to-r\n02-dplyr.R\n\n\nmaterials/workshop/03-intro-to-r\n03-ggplot2.R"
+  },
+  {
+    "objectID": "workshop-materials.html#r-text-mining",
+    "href": "workshop-materials.html#r-text-mining",
+    "title": "Workshop Materials",
+    "section": "04-r-text-mining",
+    "text": "04-r-text-mining\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\nmaterials/workshop/04-r-text-mining\n01-unnest-tokens.R\n\n\nmaterials/workshop/04-r-text-mining\n02-bigrams.R\n\n\nmaterials/workshop/04-r-text-mining\n03-sentiment-analysis.R\n\n\nmaterials/workshop/04-r-text-mining\n04-term-frequency.R"
   }
 ]

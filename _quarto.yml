@@ -34,6 +34,8 @@ website:
             text: "Learning More"
       - href: schedule.qmd
         text: "Schedule"
+      - href: workshop-materials.qmd
+        text: "Workshop"
     right: 
       - href: "https://www.tidytextmining.com"
         text: "Tidy Text Mining"
