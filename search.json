@@ -1,0 +1,569 @@
+[
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Note\n\n\n\nThis schedule is provided as a guide and is subject to change due to conversations and questions."
+  },
+  {
+    "objectID": "schedule.html#footnotes",
+    "href": "schedule.html#footnotes",
+    "title": "Schedule",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSubject to available time. Workshop participants will have access to the Python code and its associated documentation regardless.↩︎"
+  },
+  {
+    "objectID": "materials/static/toc-1.html",
+    "href": "materials/static/toc-1.html",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\n\n\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+  },
+  {
+    "objectID": "materials/static/toc-1.html#major-section",
+    "href": "materials/static/toc-1.html#major-section",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\n\n\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+  },
+  {
+    "objectID": "materials/static/footnote.html",
+    "href": "materials/static/footnote.html",
+    "title": " ",
+    "section": "",
+    "text": "For example, did you know that Howard is a dog1?"
+  },
+  {
+    "objectID": "materials/static/footnote.html#footnotes",
+    "href": "materials/static/footnote.html#footnotes",
+    "title": " ",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSpecifically he is a Boston Terrier, although sometimes he acts like a cat↩︎"
+  },
+  {
+    "objectID": "materials/static/fancy-footnotes.html",
+    "href": "materials/static/fancy-footnotes.html",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "Pandoc supports numbering and formatting footnotes using the following syntax:"
+  },
+  {
+    "objectID": "materials/static/fancy-footnotes.html#output",
+    "href": "materials/static/fancy-footnotes.html#output",
+    "title": "Extracting Value from Free Text",
+    "section": "Output",
+    "text": "Output\nHere is a footnote reference,1 and another.2\nThis paragraph won’t be part of the note, because it isn’t indented."
+  },
+  {
+    "objectID": "materials/static/fancy-footnotes.html#footnotes",
+    "href": "materials/static/fancy-footnotes.html#footnotes",
+    "title": "Extracting Value from Free Text",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHere is the footnote.↩︎\nHere’s one with multiple blocks.\nSubsequent paragraphs are indented to show that they belong to the previous footnote.\n{ some.code }\nThe whole paragraph can be indented, or just the first line. In this way, multi-paragraph footnotes work like multi-paragraph list items.↩︎"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#getting-started",
+    "href": "materials/04-r-text-mining.html#getting-started",
+    "title": "",
+    "section": "Getting Started",
+    "text": "Getting Started\n\n# Install libraries\n# install.packages(\"tidyverse\")\n# install.packages(\"tidytext\")\n\n# Load libraries\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(tidytext)\nlibrary(wordcloud)\n\nLoading required package: RColorBrewer\n\n# Read in the data\ndf &lt;- read_csv(\"DisneylandReviews.csv\")\n\nRows: 42656 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Year_Month, Reviewer_Location, Review_Text, Branch\ndbl (2): Review_ID, Rating\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#examine-the-data",
+    "href": "materials/04-r-text-mining.html#examine-the-data",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n# head(df)\n# str(df)\nglimpse(df)\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#look-at-the-parks",
+    "href": "materials/04-r-text-mining.html#look-at-the-parks",
+    "title": "",
+    "section": "Look at the Parks",
+    "text": "Look at the Parks\n\nunique(df$Branch)\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#clean-up-park-names",
+    "href": "materials/04-r-text-mining.html#clean-up-park-names",
+    "title": "",
+    "section": "Clean up Park Names",
+    "text": "Clean up Park Names\n\ndf &lt;- df %&gt;% \n  rename(Park = Branch) %&gt;% \n  mutate(Park = recode(Park,\n                       \"Disneyland_California\" = \"California\",\n                       \"Disneyland_HongKong\" = \"Hong Kong\",\n                       \"Disneyland_Paris\" = \"Paris\"\n  ))\n\nunique(df$Park)\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#examine-the-data-1",
+    "href": "materials/04-r-text-mining.html#examine-the-data-1",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\ndf %&gt;% \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#examine-the-data-2",
+    "href": "materials/04-r-text-mining.html#examine-the-data-2",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\ndf %&gt;% \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  scale_fill_discrete() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#examine-the-data-3",
+    "href": "materials/04-r-text-mining.html#examine-the-data-3",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\ndf %&gt;% \n  ggplot(aes(Park, Rating, color = Park)) +\n  geom_boxplot(color = \"black\") +\n  geom_jitter(alpha = 0.3) +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sample-review",
+    "href": "materials/04-r-text-mining.html#sample-review",
+    "title": "",
+    "section": "Sample Review",
+    "text": "Sample Review\n\ndf$Review_Text[15]\n\n\n\n[1] \"This place is HUGE! Definately need more than one day. We had 3 children aged 11, 9 & 6 and they loved it. A great variety of rides and attractions for all ages. Food options were fantastic with 3D models of what you were ordering. Staff were fantastic, very helpful. An awesome family experience.\""
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sample-review-1",
+    "href": "materials/04-r-text-mining.html#sample-review-1",
+    "title": "",
+    "section": "Sample Review",
+    "text": "Sample Review\n\n# Convert it to a tibble\nsample &lt;- tibble(line = 1, text = df$Review_Text[15])\nsample\n\n\n\n# A tibble: 1 × 2\n   line text                                                                    \n  &lt;dbl&gt; &lt;chr&gt;                                                                   \n1     1 This place is HUGE! Definately need more than one day. We had 3 childre…"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sample-review-unnest-tokens",
+    "href": "materials/04-r-text-mining.html#sample-review-unnest-tokens",
+    "title": "",
+    "section": "Sample Review: Unnest Tokens",
+    "text": "Sample Review: Unnest Tokens\n\n# Unnest tokens\ntidy_sample &lt;- sample %&gt;% \n  unnest_tokens(word, text)\ntidy_sample\n\n\n\n# A tibble: 53 × 2\n    line word      \n   &lt;dbl&gt; &lt;chr&gt;     \n 1     1 this      \n 2     1 place     \n 3     1 is        \n 4     1 huge      \n 5     1 definately\n 6     1 need      \n 7     1 more      \n 8     1 than      \n 9     1 one       \n10     1 day       \n# ℹ 43 more rows"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sample-review-word-count",
+    "href": "materials/04-r-text-mining.html#sample-review-word-count",
+    "title": "",
+    "section": "Sample Review: Word Count",
+    "text": "Sample Review: Word Count\n\n# Word count\ntidy_sample %&gt;% \n  count(word, sort = TRUE) %&gt;% \n  head()\n\n\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 were          3\n2 and           2\n3 fantastic     2\n4 of            2\n5 11            1\n6 3             1"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sample-review-word-count-wo-stop-words",
+    "href": "materials/04-r-text-mining.html#sample-review-word-count-wo-stop-words",
+    "title": "",
+    "section": "Sample Review: Word Count w/o Stop Words",
+    "text": "Sample Review: Word Count w/o Stop Words\n\n# Word count without stop words\ntidy_sample %&gt;% \n  filter(!word %in% stop_words$word) %&gt;% \n  count(word, sort = TRUE) %&gt;% \n  head()\n\n\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 fantastic     2\n2 11            1\n3 3             1\n4 3d            1\n5 6             1\n6 9             1"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#number-each-review",
+    "href": "materials/04-r-text-mining.html#number-each-review",
+    "title": "",
+    "section": "Number Each Review",
+    "text": "Number Each Review\n\n# Number each review for each park\nreviews &lt;- df %&gt;%\n  group_by(Park) %&gt;%\n  mutate(linenumber = row_number()) %&gt;% \n  ungroup() %&gt;% \n  select(Park, linenumber, text = Review_Text) %&gt;% \n  arrange(Park, linenumber)\n\nhead(reviews)\n\n\n\n# A tibble: 6 × 3\n  Park       linenumber text                                                    \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                                                   \n1 California          1 This place has always been and forever will be special.…\n2 California          2 A great day of simple fun and thrills. Bring cash, noth…\n3 California          3 All and all a great day was had. The crowds are huge an…\n4 California          4 Having been to the Florida location numerous times over…\n5 California          5 Had the 4 day pass, spent 3 at DL and one at CA. Great …\n6 California          6 Oh my god you can really forget your self and enjoy eve…"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#unnest-tokens-remove-stop-words",
+    "href": "materials/04-r-text-mining.html#unnest-tokens-remove-stop-words",
+    "title": "",
+    "section": "Unnest Tokens & Remove Stop Words",
+    "text": "Unnest Tokens & Remove Stop Words\n\n# Unnest tokens and remove stop words\ntidy_reviews &lt;- reviews %&gt;% \n  unnest_tokens(word, text) %&gt;% \n  anti_join(stop_words)\n\n\n\nJoining with `by = join_by(word)`\n\nhead(tidy_reviews)\n\n# A tibble: 6 × 3\n  Park       linenumber word      \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;     \n1 California          1 forever   \n2 California          1 special   \n3 California          1 feeling   \n4 California          1 entering  \n5 California          1 park      \n6 California          1 characters"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#word-counts",
+    "href": "materials/04-r-text-mining.html#word-counts",
+    "title": "",
+    "section": "Word Counts",
+    "text": "Word Counts\n\n# Perform word count\ntidy_reviews %&gt;% \n  count(word, sort = TRUE) %&gt;% \n  head()\n\n\n\n# A tibble: 6 × 2\n  word           n\n  &lt;chr&gt;      &lt;int&gt;\n1 park       44557\n2 disney     36187\n3 rides      34508\n4 disneyland 32935\n5 time       29432\n6 day        28332"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#word-clouds",
+    "href": "materials/04-r-text-mining.html#word-clouds",
+    "title": "",
+    "section": "Word Clouds",
+    "text": "Word Clouds\n\ntidy_reviews %&gt;%\n  anti_join(stop_words) %&gt;%\n  count(word) %&gt;%\n  with(wordcloud(word, n, max.words = 100))\n\nJoining with `by = join_by(word)`"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#n-grams",
+    "href": "materials/04-r-text-mining.html#n-grams",
+    "title": "",
+    "section": "N-Grams",
+    "text": "N-Grams\n\nA continuous sequence of n words\nCan be used ‘as is’, or run through a stemmer to get morphemes\nOffers greater context than single words"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#bigrams-prep",
+    "href": "materials/04-r-text-mining.html#bigrams-prep",
+    "title": "",
+    "section": "Bigrams (prep)",
+    "text": "Bigrams (prep)\n\n# Unnest into bigrams\ntidy_bigrams &lt;- reviews %&gt;% \n  unnest_tokens(bigram, text, token = \"ngrams\", n = 2) %&gt;% \n  filter(!is.na(bigram))\n\n# Separate words\ntidy_bigrams &lt;- tidy_bigrams %&gt;%\n  separate(bigram, c(\"word1\", \"word2\"), sep = \" \")\n\n# Remove stop words\ntidy_bigrams &lt;- tidy_bigrams %&gt;%\n  filter(!word1 %in% stop_words$word) %&gt;%\n  filter(!word2 %in% stop_words$word)\n\n# Reunite terms\ntidy_bigrams &lt;- tidy_bigrams %&gt;%\n  unite(bigram, word1, word2, sep = \" \")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#bigrams",
+    "href": "materials/04-r-text-mining.html#bigrams",
+    "title": "",
+    "section": "Bigrams",
+    "text": "Bigrams\n\ntidy_bigrams %&gt;% \n  group_by(Park) %&gt;% \n  count(bigram) %&gt;% \n  arrange(desc(n)) %&gt;% \n  head()\n\n\n\n# A tibble: 6 × 3\n# Groups:   Park [3]\n  Park       bigram                   n\n  &lt;chr&gt;      &lt;chr&gt;                &lt;int&gt;\n1 California fast pass             3123\n2 Hong Kong  hong kong             3025\n3 Paris      disneyland paris      2932\n4 California california adventure  2293\n5 Paris      fast pass             1940\n6 California disney world          1926"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#word-document-frequencies",
+    "href": "materials/04-r-text-mining.html#word-document-frequencies",
+    "title": "",
+    "section": "Word & Document Frequencies",
+    "text": "Word & Document Frequencies"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sentiment-analysis",
+    "href": "materials/04-r-text-mining.html#sentiment-analysis",
+    "title": "",
+    "section": "Sentiment Analysis",
+    "text": "Sentiment Analysis\nAn introduction using the ‘joy’ sentiment.\n\n# Get 'joy' sentiment\nnrc_joy &lt;- tidytext::get_sentiments(\"nrc\")\nnrc_joy &lt;- nrc_joy %&gt;% \n  filter(sentiment == \"joy\")\n\nhead(nrc_joy)\n\n\n\n# A tibble: 6 × 2\n  word          sentiment\n  &lt;chr&gt;         &lt;chr&gt;    \n1 absolution    joy      \n2 abundance     joy      \n3 abundant      joy      \n4 accolade      joy      \n5 accompaniment joy      \n6 accomplish    joy"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sentiment-analysis-1",
+    "href": "materials/04-r-text-mining.html#sentiment-analysis-1",
+    "title": "",
+    "section": "Sentiment Analysis",
+    "text": "Sentiment Analysis\n\n# Most common 'joy' words in the reviews\ntidy_reviews %&gt;%\n  inner_join(nrc_joy) %&gt;%\n  count(word, sort = TRUE) %&gt;% \n  head()\n\n\n\nJoining with `by = join_by(word)`\n\n\n# A tibble: 6 × 2\n  word        n\n  &lt;chr&gt;   &lt;int&gt;\n1 food    14322\n2 fun      9952\n3 parade   8468\n4 love     5967\n5 magical  5190\n6 enjoy    4807"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sentiment-analysis-2",
+    "href": "materials/04-r-text-mining.html#sentiment-analysis-2",
+    "title": "",
+    "section": "Sentiment Analysis",
+    "text": "Sentiment Analysis\n\ntidy_reviews_sentiment &lt;- tidy_reviews %&gt;%\n  inner_join(get_sentiments(\"bing\")) %&gt;%\n  count(Park, index = linenumber %/% 80, sentiment) %&gt;%\n  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %&gt;%\n  mutate(sentiment = positive - negative)\n\n\n\nJoining with `by = join_by(word)`\n\n\nWarning in inner_join(., get_sentiments(\"bing\")): Detected an unexpected many-to-many relationship between `x` and `y`.\nℹ Row 846927 of `x` matches multiple rows in `y`.\nℹ Row 2579 of `y` matches multiple rows in `x`.\nℹ If a many-to-many relationship is expected, set `relationship =\n  \"many-to-many\"` to silence this warning.\n\nhead(tidy_reviews_sentiment)\n\n# A tibble: 6 × 5\n  Park       index negative positive sentiment\n  &lt;chr&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;     &lt;int&gt;\n1 California     0      144      313       169\n2 California     1      174      310       136\n3 California     2      149      340       191\n4 California     3      143      283       140\n5 California     4      170      399       229\n6 California     5      123      266       143"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sentiment-analysis-3",
+    "href": "materials/04-r-text-mining.html#sentiment-analysis-3",
+    "title": "",
+    "section": "Sentiment Analysis",
+    "text": "Sentiment Analysis\n\nggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +\n  geom_col(show.legend = FALSE) +\n  facet_wrap(~ Park, ncol = 1, scales = \"free_x\") +\n  labs(title = \"Sentiment Analysis by Park\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#topic-modeling",
+    "href": "materials/04-r-text-mining.html#topic-modeling",
+    "title": "",
+    "section": "Topic Modeling",
+    "text": "Topic Modeling\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "materials/02-excel.html#excel-agenda",
+    "href": "materials/02-excel.html#excel-agenda",
+    "title": "",
+    "section": "Excel Agenda",
+    "text": "Excel Agenda\n\nPros and Cons\nFormulas\nUsing ChatGPT to help with formulas\nKeyword Search\nWord Count"
+  },
+  {
+    "objectID": "materials/02-excel.html#pros-and-cons",
+    "href": "materials/02-excel.html#pros-and-cons",
+    "title": "",
+    "section": "Pros and Cons",
+    "text": "Pros and Cons\n\n\n\nPros - Universally available - Not going anywhere - Low barrier to entry - Scales in complexity\n:::\n:::\nCons - Can be difficult to reproduce - Potentially destructive - Doesn’t scale well - Limited options for text mining\n:::\n::::"
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-vlookup",
+    "href": "materials/02-excel.html#formula-vlookup",
+    "title": "",
+    "section": "Formula: vlookup",
+    "text": "Formula: vlookup\n=VLOOKUP(Value to look up, Range to look for value, Column for the return value, Type of match)\n=VLOOKUP(A1, Lookup!A1:B7, 2, TRUE)"
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-absoluterelative-references",
+    "href": "materials/02-excel.html#formula-absoluterelative-references",
+    "title": "",
+    "section": "Formula: absolute/relative references",
+    "text": "Formula: absolute/relative references\nRelative references can move.\nA1\nAbsolute references can’t move.\n$A$1"
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-absoluterelative-references-1",
+    "href": "materials/02-excel.html#formula-absoluterelative-references-1",
+    "title": "",
+    "section": "Formula: absolute/relative references",
+    "text": "Formula: absolute/relative references\n\ntbl &lt;- tibble::tribble(\n~`$A$2`, ~`The column and the row do not change when copied.`,\n\"A$2\",\"The row does not change when copied.\",\n\"$A2\",\"The column does not change when copied.\"\n)\n\nkableExtra::kable_styling(knitr::kable(tbl), font_size = 24)\n\n\n\n\n$A$2\nThe column and the row do not change when copied.\n\n\n\n\nA$2\nThe row does not change when copied.\n\n\n$A2\nThe column does not change when copied."
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-countif",
+    "href": "materials/02-excel.html#formula-countif",
+    "title": "",
+    "section": "Formula: countif",
+    "text": "Formula: countif\n=COUNTIF(Where are we looking?, What are we looking for?)\n=COUNTIF(A:A, “Washington”)"
+  },
+  {
+    "objectID": "materials/02-excel.html#chatgpt-for-formula-help",
+    "href": "materials/02-excel.html#chatgpt-for-formula-help",
+    "title": "",
+    "section": "ChatGPT for Formula Help",
+    "text": "ChatGPT for Formula Help\n\n\n\n\n\n\nWarning\n\n\nAssume that everything you put into ChatGPT (or other LLMs) is public. Do not enter confidential or proprietary information into it.\n\n\n\nTell ChatGPT what is is you need assistance with:"
+  },
+  {
+    "objectID": "materials/02-excel.html#chatgpt-for-formula-help-1",
+    "href": "materials/02-excel.html#chatgpt-for-formula-help-1",
+    "title": "",
+    "section": "ChatGPT for Formula Help",
+    "text": "ChatGPT for Formula Help"
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-keyword-search",
+    "href": "materials/02-excel.html#formula-keyword-search",
+    "title": "",
+    "section": "Formula: keyword search",
+    "text": "Formula: keyword search\nSource: ChatGPT\n=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)"
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-keyword-search-1",
+    "href": "materials/02-excel.html#formula-keyword-search-1",
+    "title": "",
+    "section": "Formula: keyword search",
+    "text": "Formula: keyword search\n=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)\n\nReplace Keywords_Range with the actual range of keywords you want to search for. For example, if your keywords are in cells A1 to A10, the range would be A1:A10."
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-keyword-search-2",
+    "href": "materials/02-excel.html#formula-keyword-search-2",
+    "title": "",
+    "section": "Formula: keyword search",
+    "text": "Formula: keyword search\n=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)\n\nReplace Cell with the cell reference of the cell in the column you want to search. This is the cell where you want to check if any of the keywords are present. For example, if you want to search in column B, and the first cell is B2, you would use B2 as the cell reference."
+  },
+  {
+    "objectID": "materials/02-excel.html#formula-keyword-search-3",
+    "href": "materials/02-excel.html#formula-keyword-search-3",
+    "title": "",
+    "section": "Formula: keyword search",
+    "text": "Formula: keyword search\nSource: ChatGPT\n=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)\n\nEnter the formula in the cell where you want the search result to appear.\n\nThe formula will return “Found” if any of the keywords in the range are found in the specified cell, and “Not Found” if none of the keywords are found.\nNote: This formula is case-insensitive, so it will match keywords regardless of their case. If you want case-sensitive matching, you can use the FIND function instead of SEARCH in the formula.\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Apra PD 2023 Workshop",
+    "section": "",
+    "text": "by Matt Farrow\n\n🗓️August 28, 2023\n⏰ 13:00 - 16:00\n🏨 JW Marriott Indianapolis: White River AB"
+  },
+  {
+    "objectID": "index.html#an-introduction-to-text-mining",
+    "href": "index.html#an-introduction-to-text-mining",
+    "title": "Apra PD 2023 Workshop",
+    "section": "",
+    "text": "by Matt Farrow\n\n🗓️August 28, 2023\n⏰ 13:00 - 16:00\n🏨 JW Marriott Indianapolis: White River AB"
+  },
+  {
+    "objectID": "index.html#using-posit-cloud",
+    "href": "index.html#using-posit-cloud",
+    "title": "Apra PD 2023 Workshop",
+    "section": "Using Posit Cloud",
+    "text": "Using Posit Cloud\nThe materials for this workshop are available in a cloud environment that can be run with no downloads or setup. If you plan to go this route, then there is nothing else you need to do in preparation."
+  },
+  {
+    "objectID": "index.html#using-a-local-installation",
+    "href": "index.html#using-a-local-installation",
+    "title": "Apra PD 2023 Workshop",
+    "section": "Using a Local Installation",
+    "text": "Using a Local Installation\nIf you are a workshop attendee and have any trouble with installation locally, please reach out to me directly!\n\nInstall latest version of RStudio, 2023.06.0+421) or later\nIdeally upgrade/use to R 4.3.1 (I’m using the magittr pipe %&gt;%)\nInstall these R packages:\n\n\npkg_list &lt;- c(\n  \"tidyverse\", \"tidytext\", \"wordcloud\"\n  )\ninstall.packages(pkg_list)\n\n\n\n\n\n\n\nTip\n\n\n\nIf you are a workshop attendee who would like to use their own RStudio installation, please clone https://github.com/mattfarrow1/text-mining-workshop.git via RStudio on Monday morning (August 28).\n\n\n\n\n\n\n\n\nHow to clone a Github repo\n\n\n\n\n\n\nNavigate to https://github.com/mattfarrow1/apra-intro-to-text-mining\nClick on the green “Code” button and copy the url under the HTTPS tab https://github.com/mattfarrow1/apra-intro-to-text-mining.git\nIn RStudio, use File &gt; New Project &gt; Version Control &gt; From Git &gt; and then paste the URL into the source repo box and then click enter!\n\n\n\n\n\n\n\n\n\n\n(Optional!) Pre-Work for Python\n\n\n\n\n\nThis will be a R/RStudio centric course based on the attendees, but we will briefly cover other editors and Python. You are not required to install Jupyter/Python/VScode, but if you’d like to test them out:\n\nInstall Python, following instructions at Minimum Viable Python\nInstall Jupyter\nInstall VSCode, Quarto VSCode extension, Python VSCode extension, Jupyter VSCode extension"
+  },
+  {
+    "objectID": "index.html#competencies",
+    "href": "index.html#competencies",
+    "title": "Apra PD 2023 Workshop",
+    "section": "Competencies",
+    "text": "Competencies\n\n\n\n\n\n\n\nPrimary\nDS: Competency 3: Data Manipulation Skills\n\n\nAuxiliary\nDS: Competency 5: Visualization/Reporting Techniques and Competencies\n\n\nTertiary\nDS: Competency 4: Statistical Techniques and Competencies"
+  },
+  {
+    "objectID": "index.html#learning-objectives",
+    "href": "index.html#learning-objectives",
+    "title": "Apra PD 2023 Workshop",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\n\n\n\n\n\n\nLearning Objective 1\nAttendees will create word counts and keyword searches in Excel.\n\n\nLearning Objective 2\nAttendees will also utilize R (possibly Python too) to work on advanced text mining including stop words, topic modeling, word clouds, and sentiment analysis.\n\n\n\n\nThese materials are developed for a trainer-led workshop at Apra PD 2023, but should be useful for self-guided learning as well."
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "Apra PD 2023 Workshop",
+    "section": "Instructor",
+    "text": "Instructor\nMatt Farrow is the Director of Prospect Development and Strategy at Children’s Health. He previously worked as the Assistant Director of Prospect Management at Southern Methodist University, where he earned an M.S. degree in Data Science. Matt is passionate about helping people extract insights and wisdom from their data. He may also have a small problem with his love of LEGO.\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "materials/01-introduction.html#poll",
+    "href": "materials/01-introduction.html#poll",
+    "title": "",
+    "section": "Poll",
+    "text": "Poll\n\nWhat do you think of when I say text mining?\nHow much experience do you have with coding languages like R or Python?\nWhat types of things are you most interested in? (keywords, sentiment, ngrams, word clouds…)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#what-is-text-mining",
+    "href": "materials/01-introduction.html#what-is-text-mining",
+    "title": "",
+    "section": "What is text mining?",
+    "text": "What is text mining?\nText mining is the process of extracting information and insights from unstructured text."
+  },
+  {
+    "objectID": "materials/01-introduction.html#terms-to-know",
+    "href": "materials/01-introduction.html#terms-to-know",
+    "title": "",
+    "section": "Terms to Know",
+    "text": "Terms to Know\n\nNatural Language: A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (Examples include English or Italian.)\nNatural Language Processing (NLP): refers to the creation and use of computational power in order to process content in natural language."
+  },
+  {
+    "objectID": "materials/01-introduction.html#terms-to-know-1",
+    "href": "materials/01-introduction.html#terms-to-know-1",
+    "title": "",
+    "section": "Terms to Know",
+    "text": "Terms to Know\n\nSegmentation/Tokenization: the process of splitting apart pieces of language. Sentence segmentation is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization. Word tokenization involves breaking out the individual words of a sentence."
+  },
+  {
+    "objectID": "materials/01-introduction.html#terms-to-know-2",
+    "href": "materials/01-introduction.html#terms-to-know-2",
+    "title": "",
+    "section": "Terms to Know",
+    "text": "Terms to Know\n\nText Normalization: involves standardizing text prior to analysis. Examples include the expansion of contractions (don’t -&gt; do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#terms-to-know-3",
+    "href": "materials/01-introduction.html#terms-to-know-3",
+    "title": "",
+    "section": "Terms to Know",
+    "text": "Terms to Know\n\nTerm Frequency: measures how often a term appears in a document.\nDocument Frequency: measures how often a term appears in a corpus of documents."
+  },
+  {
+    "objectID": "materials/01-introduction.html#terms-to-know-4",
+    "href": "materials/01-introduction.html#terms-to-know-4",
+    "title": "",
+    "section": "Terms to Know",
+    "text": "Terms to Know\n\nInverse Document Frequency: a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.\nTF-IDF: “Term Frequency-Inverse Document Frequency”. Higher term frequency and a lower document frequency leads to a higher TF-IDF."
+  },
+  {
+    "objectID": "materials/01-introduction.html#levels-of-analysis",
+    "href": "materials/01-introduction.html#levels-of-analysis",
+    "title": "",
+    "section": "Levels of Analysis",
+    "text": "Levels of Analysis\n\nLexical Analysis: The most basic form of NLP, lexical analysis is focused on analyzing individual words.\nSyntactic Analysis: concerned with processing the grammar of written words.\nSemantic Analysis: builds on lexical and syntactic analyses in order to understand the meanings of words.\nDiscourse Analysis: Understanding inferences in language is the domain of discourse analysis.\n\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#getting-started",
+    "href": "materials/03-intro-to-r.html#getting-started",
+    "title": "",
+    "section": "Getting Started",
+    "text": "Getting Started\n\nWhat is R?\nR vs. Python?\n\n\nR is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990’s and open sourced in 1995.\nFor the purposes of this workshop, there are no significant differences in R vs. Python other than the language and packages/libraries used. I chose to start with R because that’s where I’m most comfortable, it’s the language that I see Apra promoting, and the community is incredibly welcoming and diverse."
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#getting-started-1",
+    "href": "materials/03-intro-to-r.html#getting-started-1",
+    "title": "",
+    "section": "Getting Started",
+    "text": "Getting Started\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n\n\n\n\n\nDiscuss the layout of RStudio and what people are looking at."
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#rstudio-ideposit-cloud",
+    "href": "materials/03-intro-to-r.html#rstudio-ideposit-cloud",
+    "title": "",
+    "section": "RStudio IDE/Posit Cloud",
+    "text": "RStudio IDE/Posit Cloud"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#rstudio-ideposit-cloud-1",
+    "href": "materials/03-intro-to-r.html#rstudio-ideposit-cloud-1",
+    "title": "",
+    "section": "RStudio IDE/Posit Cloud",
+    "text": "RStudio IDE/Posit Cloud"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#packages",
+    "href": "materials/03-intro-to-r.html#packages",
+    "title": "",
+    "section": "Packages",
+    "text": "Packages\n\nLibraries of code\nExpand the “base R” code"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-tidyverse",
+    "href": "materials/03-intro-to-r.html#the-tidyverse",
+    "title": "",
+    "section": "The tidyverse",
+    "text": "The tidyverse\n\n\n\n\n\n\nWhat is it?\nHow does it work?"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-tidyverse-vs-base-r",
+    "href": "materials/03-intro-to-r.html#the-tidyverse-vs-base-r",
+    "title": "",
+    "section": "The tidyverse vs ‘Base R’",
+    "text": "The tidyverse vs ‘Base R’\n\n\n\n\n\nSource: dplyr base R"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#tidytext",
+    "href": "materials/03-intro-to-r.html#tidytext",
+    "title": "",
+    "section": "tidytext",
+    "text": "tidytext\n\n\n\n\n\n\nWhat is it?\nHow does it work?\n\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#python-libraries",
+    "href": "materials/05-python-text-mining.html#python-libraries",
+    "title": "",
+    "section": "Python Libraries",
+    "text": "Python Libraries"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#recreating-r-work",
+    "href": "materials/05-python-text-mining.html#recreating-r-work",
+    "title": "",
+    "section": "Recreating R Work",
+    "text": "Recreating R Work\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "materials/static/custom-layout.html",
+    "href": "materials/static/custom-layout.html",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "::: {layout=\"[[1,1], [1]]\"}\n![Howard sleeping](images/howard-glamour.jpg)\n\n![Howard in a table](images/howard-table.png)\n\n![Howard on a couch](images/howard-comfy.png)\n:::\n\n\n\n\n\n\nHoward sleeping\n\n\n\n\n\n\n\nHoward in a table\n\n\n\n\n\n\n\n\n\nHoward on a couch"
+  },
+  {
+    "objectID": "materials/static/custom-layout.html#layout11-1",
+    "href": "materials/static/custom-layout.html#layout11-1",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "::: {layout=\"[[1,1], [1]]\"}\n![Howard sleeping](images/howard-glamour.jpg)\n\n![Howard in a table](images/howard-table.png)\n\n![Howard on a couch](images/howard-comfy.png)\n:::\n\n\n\n\n\n\nHoward sleeping\n\n\n\n\n\n\n\nHoward in a table\n\n\n\n\n\n\n\n\n\nHoward on a couch"
+  },
+  {
+    "objectID": "materials/static/custom-layout.html#layout7030-100",
+    "href": "materials/static/custom-layout.html#layout7030-100",
+    "title": "Extracting Value from Free Text",
+    "section": "layout=\"[[70,30], [100]]\"",
+    "text": "layout=\"[[70,30], [100]]\"\n::: {layout=\"[[70,30], [100]]\"}\n\n![Howard on a couch](images/howard-comfy.png)\n\n![Howard sleeping](images/boston-sleep.png)\n\n![Howard in a table](images/howard-table.png)\n:::\n\n\n\n\n\n\nHoward on a couch\n\n\n\n\n\n\n\nHoward sleeping\n\n\n\n\n\n\n\n\n\nHoward in a table"
+  },
+  {
+    "objectID": "materials/static/custom-layout.html#layout40-2040-100",
+    "href": "materials/static/custom-layout.html#layout40-2040-100",
+    "title": "Extracting Value from Free Text",
+    "section": "layout=\"[[40,-20,40], [100]]\"",
+    "text": "layout=\"[[40,-20,40], [100]]\"\n::: {layout=\"[[40,-20,40], [100]]\"}\n![Howard on a couch](images/howard-comfy.png)\n\n![Howard sleeping](images/howard-glamour.jpg)\n\n![Howard in a table](images/howard-table.png)\n:::\n\n\n\n\n\n\nHoward on a couch\n\n\n\n\n \n\n\n\n\n\nHoward sleeping\n\n\n\n\n\n\n\n\n\nHoward in a table"
+  },
+  {
+    "objectID": "materials/static/custom-layout.html#layout25-210-layout-valignbottom",
+    "href": "materials/static/custom-layout.html#layout25-210-layout-valignbottom",
+    "title": "Extracting Value from Free Text",
+    "section": "layout=\"[25,-2,10]\" layout-valign=\"bottom\"",
+    "text": "layout=\"[25,-2,10]\" layout-valign=\"bottom\"\n::: {layout=\"[25,-2,10]\" layout-valign=\"bottom\"}\n![Howard on a couch](images/howard-comfy.png)\n\n![Howard in a table](images/howard-table.png)\n:::\n\n\n\n\n\n\nHoward on a couch\n\n\n\n\n \n\n\n\n\n\nHoward in a table"
+  },
+  {
+    "objectID": "materials/static/figure-layout.html",
+    "href": "materials/static/figure-layout.html",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "::: {layout-ncol=2}\n![Howard on a couch](images/howard-comfy.png)\n\n![Howard in a table](images/howard-table.png)\n:::\n\n\n\n\n\n\nHoward on a couch\n\n\n\n\n\n\n\nHoward in a table"
+  },
+  {
+    "objectID": "materials/static/figure-layout.html#layout-ncol2",
+    "href": "materials/static/figure-layout.html#layout-ncol2",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "::: {layout-ncol=2}\n![Howard on a couch](images/howard-comfy.png)\n\n![Howard in a table](images/howard-table.png)\n:::\n\n\n\n\n\n\nHoward on a couch\n\n\n\n\n\n\n\nHoward in a table"
+  },
+  {
+    "objectID": "materials/static/figure-layout.html#layout-nrow2",
+    "href": "materials/static/figure-layout.html#layout-nrow2",
+    "title": "Extracting Value from Free Text",
+    "section": "layout-nrow=2",
+    "text": "layout-nrow=2\n\n\n\n\n\n\nHoward on a couch\n\n\n\n\n\n\n\nHoward in a table\n\n\n\n\n\n\n\n\n\nHoward sleeping\n\n\n\n\n\n\n\nHoward awake"
+  },
+  {
+    "objectID": "materials/static/sub-figure.html",
+    "href": "materials/static/sub-figure.html",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "(a) Excited\n\n\n\n\n\n\n\n(b) Sleeping\n\n\n\n\nFigure 1: Two states of Howard"
+  },
+  {
+    "objectID": "materials/static/vertical-align.html",
+    "href": "materials/static/vertical-align.html",
+    "title": "Extracting Value from Free Text",
+    "section": "",
+    "text": "::: {layout=\"[[40,-20,40], [100]]\"}\n![Howard on a couch](../../materials/images/howard-comfy.png)\n\n![Howard sleeping](../../materials/images/howard-glamour.jpg)\n\n![Howard in a table](../../materials/images/howard-table.png)\n:::\n\n\n\n\n\n\nHoward on a couch\n\n\n\n\n \n\n\n\n\n\nHoward sleeping\n\n\n\n\n\n\n\n\n\nHoward in a table"
+  }
+]
