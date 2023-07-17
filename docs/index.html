@@ -73,6 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/qrcodejs-v1.0.0/qrcode.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -286,7 +287,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Pre-Work</h1>
 <section id="using-posit-cloud" class="level2">
 <h2 class="anchored" data-anchor-id="using-posit-cloud">Using Posit Cloud</h2>
-<p>The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. If you plan to go this route, then there is nothing else you need to do in preparation.</p>
+<p>The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. If you plan to go this route, there is nothing else you need to do in preparation, simply scan the QR code or visit <a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/content/6215314</a>.</p>
+<div id="qrcode" class="qrcode"></div>
+<script type="text/javascript">
+var qrcode = new QRCode("qrcode", {"text":"https://posit.cloud/content/6215314","width":128,"colorLight":"#ffffff","colorDark":"#000000","height":128});
+</script>
+    
 </section>
 <section id="using-a-local-installation" class="level2">
 <h2 class="anchored" data-anchor-id="using-a-local-installation">Using a Local Installation</h2>
@@ -328,8 +334,8 @@ How to clone a Github repo
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Navigate to <a href="https://github.com/mattfarrow1/apra-intro-to-text-mining" class="uri">https://github.com/mattfarrow1/apra-intro-to-text-mining</a></p></li>
-<li><p>Click on the green “Code” button and copy the url under the HTTPS tab <a href="https://github.com/mattfarrow1/apra-intro-to-text-mining.git" class="uri">https://github.com/mattfarrow1/apra-intro-to-text-mining.git</a></p></li>
+<li><p>Navigate to <a href="https://github.com/mattfarrow1/text-mining-workshop" class="uri">https://github.com/mattfarrow1/text-mining-workshop</a></p></li>
+<li><p>Click on the green “Code” button and copy the url under the HTTPS tab <a href="https://github.com/mattfarrow1/text-mining-workshop.git" class="uri">https://github.com/mattfarrow1/text-mining-workshop.git</a></p></li>
 <li><p>In RStudio, use File &gt; New Project &gt; Version Control &gt; From Git &gt; and then paste the URL into the source repo box and then click enter!</p></li>
 </ol>
 </div>
@@ -347,7 +353,7 @@ How to clone a Github repo
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This will be a R/RStudio centric course based on the attendees, but we will briefly cover other editors and Python. You are not required to install Jupyter/Python/VScode, but if you’d like to test them out:</p>
+<p>This will be a R/RStudio-centric course based on the attendees, but we will briefly cover other editors and Python. You are not required to install Jupyter/Python/VScode, but if you’d like to test them out:</p>
 <ul>
 <li>Install Python, following instructions at <a href="https://solutions.rstudio.com/python/minimum-viable-python/installing-python/">Minimum Viable Python</a></li>
 <li>Install <a href="https://quarto.org/docs/computations/python.html#installation">Jupyter</a></li>
