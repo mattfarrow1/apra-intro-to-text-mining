@@ -1,3 +1,11 @@
 .reveal .slides > section > section { 
   text-align:left; 
 }
+
+.reveal .slide aside,
+.reveal .slide div.aside {
+  position: absolute;
+  bottom: 80px;
+  font-size: #{$presentation-font-smaller}em;
+  color: $text-muted;
+}

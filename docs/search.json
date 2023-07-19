@@ -123,7 +123,7 @@
     "href": "materials/04-r-text-mining.html",
     "title": "",
     "section": "",
-    "text": "42,656 reviews from Disney California, Hong Kong, and Paris\n\n\n\n\n\nSource: Kaggle\n\n\n\n# Install libraries\n# install.packages(\"tidyverse\")\n# install.packages(\"tidytext\")\n\n# Load libraries\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(tidytext)\nlibrary(wordcloud)\n\nLoading required package: RColorBrewer\n\n# Read in the data\ndf &lt;- read_csv(\"DisneylandReviews.csv\")\n\nRows: 42656 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Year_Month, Reviewer_Location, Review_Text, Branch\ndbl (2): Review_ID, Rating\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\n\n\n# head(df)\n# str(df)\nglimpse(df)\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…\n\n\n\n\n\n\nunique(df$Branch)\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\"     \n\n\n\n\n\n\ndf &lt;- df %&gt;% \n  rename(Park = Branch) %&gt;% \n  mutate(Park = recode(Park,\n                       \"Disneyland_California\" = \"California\",\n                       \"Disneyland_HongKong\" = \"Hong Kong\",\n                       \"Disneyland_Paris\" = \"Paris\"\n  ))\n\nunique(df$Park)\n\n[1] \"Hong Kong\"  \"California\" \"Paris\"     \n\n\n\n\n\n\ndf %&gt;% \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf %&gt;% \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  scale_fill_discrete() +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf %&gt;% \n  ggplot(aes(Park, Rating, color = Park)) +\n  geom_boxplot(color = \"black\") +\n  geom_jitter(alpha = 0.3) +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
+    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: RColorBrewer\n\nRows: 42656 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Year_Month, Reviewer_Location, Review_Text, Branch\ndbl (2): Review_ID, Rating\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  scale_fill_discrete() +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Park, Rating, color = Park)) +\n  geom_boxplot(color = \"black\") +\n  geom_jitter(alpha = 0.3) +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#getting-started",
@@ -179,7 +179,7 @@
     "href": "materials/04-r-text-mining.html#sample-review",
     "title": "",
     "section": "Sample Review",
-    "text": "Sample Review\n\ndf$Review_Text[15]\n\n\n\n[1] \"This place is HUGE! Definately need more than one day. We had 3 children aged 11, 9 & 6 and they loved it. A great variety of rides and attractions for all ages. Food options were fantastic with 3D models of what you were ordering. Staff were fantastic, very helpful. An awesome family experience.\""
+    "text": "Sample Review\n\ndf$Review_Text[15]\n\n[1] \"This place is HUGE! Definately need more than one day. We had 3 children aged 11, 9 & 6 and they loved it. A great variety of rides and attractions for all ages. Food options were fantastic with 3D models of what you were ordering. Staff were fantastic, very helpful. An awesome family experience.\""
   },
   {
     "objectID": "materials/04-r-text-mining.html#sample-review-1",
@@ -214,28 +214,28 @@
     "href": "materials/04-r-text-mining.html#number-each-review",
     "title": "",
     "section": "Number Each Review",
-    "text": "Number Each Review\n\n# Number each review for each park\nreviews &lt;- df %&gt;%\n  group_by(Park) %&gt;%\n  mutate(linenumber = row_number()) %&gt;% \n  ungroup() %&gt;% \n  select(Park, linenumber, text = Review_Text) %&gt;% \n  arrange(Park, linenumber)\n\nhead(reviews)\n\n\n\n# A tibble: 6 × 3\n  Park       linenumber text                                                    \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                                                   \n1 California          1 This place has always been and forever will be special.…\n2 California          2 A great day of simple fun and thrills. Bring cash, noth…\n3 California          3 All and all a great day was had. The crowds are huge an…\n4 California          4 Having been to the Florida location numerous times over…\n5 California          5 Had the 4 day pass, spent 3 at DL and one at CA. Great …\n6 California          6 Oh my god you can really forget your self and enjoy eve…"
+    "text": "Number Each Review\n\n# Number each review for each park\nreviews &lt;- df |&gt;\n  group_by(Park) |&gt;\n  mutate(linenumber = row_number()) |&gt; \n  ungroup() |&gt; \n  select(Park, linenumber, text = Review_Text) |&gt; \n  arrange(Park, linenumber)\n\nhead(reviews)\n\n# A tibble: 6 × 3\n  Park       linenumber text                                                    \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                                                   \n1 California          1 This place has always been and forever will be special.…\n2 California          2 A great day of simple fun and thrills. Bring cash, noth…\n3 California          3 All and all a great day was had. The crowds are huge an…\n4 California          4 Having been to the Florida location numerous times over…\n5 California          5 Had the 4 day pass, spent 3 at DL and one at CA. Great …\n6 California          6 Oh my god you can really forget your self and enjoy eve…"
   },
   {
     "objectID": "materials/04-r-text-mining.html#unnest-tokens-remove-stop-words",
     "href": "materials/04-r-text-mining.html#unnest-tokens-remove-stop-words",
     "title": "",
     "section": "Unnest Tokens & Remove Stop Words",
-    "text": "Unnest Tokens & Remove Stop Words\n\n# Unnest tokens and remove stop words\ntidy_reviews &lt;- reviews %&gt;% \n  unnest_tokens(word, text) %&gt;% \n  anti_join(stop_words)\n\nhead(tidy_reviews)\n\n\n\n# A tibble: 6 × 3\n  Park       linenumber word      \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;     \n1 California          1 forever   \n2 California          1 special   \n3 California          1 feeling   \n4 California          1 entering  \n5 California          1 park      \n6 California          1 characters"
+    "text": "Unnest Tokens & Remove Stop Words\n\n# Unnest tokens and remove stop words\ntidy_reviews &lt;- reviews |&gt; \n  unnest_tokens(word, text) |&gt; \n  anti_join(stop_words)\n\nJoining with `by = join_by(word)`\n\nhead(tidy_reviews)\n\n# A tibble: 6 × 3\n  Park       linenumber word      \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;     \n1 California          1 forever   \n2 California          1 special   \n3 California          1 feeling   \n4 California          1 entering  \n5 California          1 park      \n6 California          1 characters"
   },
   {
     "objectID": "materials/04-r-text-mining.html#word-counts",
     "href": "materials/04-r-text-mining.html#word-counts",
     "title": "",
     "section": "Word Counts",
-    "text": "Word Counts\n\n# Perform word count\ntidy_reviews %&gt;% \n  count(word, sort = TRUE) %&gt;% \n  head()\n\n\n\n# A tibble: 6 × 2\n  word           n\n  &lt;chr&gt;      &lt;int&gt;\n1 park       44557\n2 disney     36187\n3 rides      34508\n4 disneyland 32935\n5 time       29432\n6 day        28332"
+    "text": "Word Counts\n\n# Perform word count\ntidy_reviews |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n# A tibble: 6 × 2\n  word           n\n  &lt;chr&gt;      &lt;int&gt;\n1 park       44557\n2 disney     36187\n3 rides      34508\n4 disneyland 32935\n5 time       29432\n6 day        28332"
   },
   {
     "objectID": "materials/04-r-text-mining.html#word-clouds",
     "href": "materials/04-r-text-mining.html#word-clouds",
     "title": "",
     "section": "Word Clouds",
-    "text": "Word Clouds"
+    "text": "Word Clouds\n\ntidy_reviews |&gt;\n  anti_join(stop_words) |&gt;\n  count(word) |&gt;\n  with(wordcloud(word, n, max.words = 100))\n\nJoining with `by = join_by(word)`"
   },
   {
     "objectID": "materials/04-r-text-mining.html#n-grams",
@@ -249,14 +249,14 @@
     "href": "materials/04-r-text-mining.html#bigrams-prep",
     "title": "",
     "section": "Bigrams (prep)",
-    "text": "Bigrams (prep)\n\n# Unnest into bigrams\ntidy_bigrams &lt;- reviews %&gt;% \n  unnest_tokens(bigram, text, token = \"ngrams\", n = 2) %&gt;% \n  filter(!is.na(bigram))\n\n# Separate words\ntidy_bigrams &lt;- tidy_bigrams %&gt;%\n  separate(bigram, c(\"word1\", \"word2\"), sep = \" \")\n\n# Remove stop words\ntidy_bigrams &lt;- tidy_bigrams %&gt;%\n  filter(!word1 %in% stop_words$word) %&gt;%\n  filter(!word2 %in% stop_words$word)\n\n# Reunite terms\ntidy_bigrams &lt;- tidy_bigrams %&gt;%\n  unite(bigram, word1, word2, sep = \" \")"
+    "text": "Bigrams (prep)\n\n# Unnest into bigrams\ntidy_bigrams &lt;- reviews |&gt; \n  unnest_tokens(bigram, text, token = \"ngrams\", n = 2) |&gt; \n  filter(!is.na(bigram))\n\n# Separate words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  separate(bigram, c(\"word1\", \"word2\"), sep = \" \")\n\n# Remove stop words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  filter(!word1 %in% stop_words$word) |&gt;\n  filter(!word2 %in% stop_words$word)\n\n# Reunite terms\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  unite(bigram, word1, word2, sep = \" \")"
   },
   {
     "objectID": "materials/04-r-text-mining.html#bigrams",
     "href": "materials/04-r-text-mining.html#bigrams",
     "title": "",
     "section": "Bigrams",
-    "text": "Bigrams\n\ntidy_bigrams %&gt;% \n  group_by(Park) %&gt;% \n  count(bigram) %&gt;% \n  arrange(desc(n)) %&gt;% \n  head()\n\n\n\n# A tibble: 6 × 3\n# Groups:   Park [3]\n  Park       bigram                   n\n  &lt;chr&gt;      &lt;chr&gt;                &lt;int&gt;\n1 California fast pass             3123\n2 Hong Kong  hong kong             3025\n3 Paris      disneyland paris      2932\n4 California california adventure  2293\n5 Paris      fast pass             1940\n6 California disney world          1926"
+    "text": "Bigrams\n\ntidy_bigrams |&gt; \n  group_by(Park) |&gt; \n  count(bigram) |&gt; \n  arrange(desc(n)) |&gt; \n  head()\n\n# A tibble: 6 × 3\n# Groups:   Park [3]\n  Park       bigram                   n\n  &lt;chr&gt;      &lt;chr&gt;                &lt;int&gt;\n1 California fast pass             3123\n2 Hong Kong  hong kong             3025\n3 Paris      disneyland paris      2932\n4 California california adventure  2293\n5 Paris      fast pass             1940\n6 California disney world          1926"
   },
   {
     "objectID": "materials/04-r-text-mining.html#word-document-frequencies",
@@ -270,21 +270,21 @@
     "href": "materials/04-r-text-mining.html#sentiment-analysis",
     "title": "",
     "section": "Sentiment Analysis",
-    "text": "Sentiment Analysis\nAn introduction using the ‘joy’ sentiment.\n\n# Get 'joy' sentiment\nnrc_joy &lt;- tidytext::get_sentiments(\"nrc\")\nnrc_joy &lt;- nrc_joy %&gt;% \n  filter(sentiment == \"joy\")\n\nhead(nrc_joy)\n\n\n\n# A tibble: 6 × 2\n  word          sentiment\n  &lt;chr&gt;         &lt;chr&gt;    \n1 absolution    joy      \n2 abundance     joy      \n3 abundant      joy      \n4 accolade      joy      \n5 accompaniment joy      \n6 accomplish    joy"
+    "text": "Sentiment Analysis\nAn introduction using the ‘joy’ sentiment.\n\n# Get 'joy' sentiment\nnrc_joy &lt;- tidytext::get_sentiments(\"nrc\")\nnrc_joy &lt;- nrc_joy |&gt; \n  filter(sentiment == \"joy\")\n\nhead(nrc_joy)\n\n# A tibble: 6 × 2\n  word          sentiment\n  &lt;chr&gt;         &lt;chr&gt;    \n1 absolution    joy      \n2 abundance     joy      \n3 abundant      joy      \n4 accolade      joy      \n5 accompaniment joy      \n6 accomplish    joy"
   },
   {
     "objectID": "materials/04-r-text-mining.html#sentiment-analysis-1",
     "href": "materials/04-r-text-mining.html#sentiment-analysis-1",
     "title": "",
     "section": "Sentiment Analysis",
-    "text": "Sentiment Analysis\n\n# Most common 'joy' words in the reviews\ntidy_reviews %&gt;%\n  inner_join(nrc_joy) %&gt;%\n  count(word, sort = TRUE) %&gt;% \n  head()\n\n\n\n# A tibble: 6 × 2\n  word        n\n  &lt;chr&gt;   &lt;int&gt;\n1 food    14322\n2 fun      9952\n3 parade   8468\n4 love     5967\n5 magical  5190\n6 enjoy    4807"
+    "text": "Sentiment Analysis\n\n# Most common 'joy' words in the reviews\ntidy_reviews |&gt;\n  inner_join(nrc_joy) |&gt;\n  count(word, sort = TRUE) |&gt; \n  head()\n\nJoining with `by = join_by(word)`\n\n\n# A tibble: 6 × 2\n  word        n\n  &lt;chr&gt;   &lt;int&gt;\n1 food    14322\n2 fun      9952\n3 parade   8468\n4 love     5967\n5 magical  5190\n6 enjoy    4807"
   },
   {
     "objectID": "materials/04-r-text-mining.html#sentiment-analysis-2",
     "href": "materials/04-r-text-mining.html#sentiment-analysis-2",
     "title": "",
     "section": "Sentiment Analysis",
-    "text": "Sentiment Analysis\n\ntidy_reviews_sentiment &lt;- tidy_reviews %&gt;%\n  inner_join(get_sentiments(\"bing\")) %&gt;%\n  count(Park, index = linenumber %/% 80, sentiment) %&gt;%\n  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %&gt;%\n  mutate(sentiment = positive - negative)\n\nhead(tidy_reviews_sentiment)\n\n\n\n# A tibble: 6 × 5\n  Park       index negative positive sentiment\n  &lt;chr&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;     &lt;int&gt;\n1 California     0      144      313       169\n2 California     1      174      310       136\n3 California     2      149      340       191\n4 California     3      143      283       140\n5 California     4      170      399       229\n6 California     5      123      266       143"
+    "text": "Sentiment Analysis\n\ntidy_reviews_sentiment &lt;- tidy_reviews |&gt;\n  inner_join(get_sentiments(\"bing\")) |&gt;\n  count(Park, index = linenumber %/% 80, sentiment) |&gt;\n  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |&gt;\n  mutate(sentiment = positive - negative)\n\nJoining with `by = join_by(word)`\n\n\nWarning in inner_join(tidy_reviews, get_sentiments(\"bing\")): Detected an unexpected many-to-many relationship between `x` and `y`.\nℹ Row 846927 of `x` matches multiple rows in `y`.\nℹ Row 2579 of `y` matches multiple rows in `x`.\nℹ If a many-to-many relationship is expected, set `relationship =\n  \"many-to-many\"` to silence this warning.\n\nhead(tidy_reviews_sentiment)\n\n# A tibble: 6 × 5\n  Park       index negative positive sentiment\n  &lt;chr&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;     &lt;int&gt;\n1 California     0      144      313       169\n2 California     1      174      310       136\n3 California     2      149      340       191\n4 California     3      143      283       140\n5 California     4      170      399       229\n6 California     5      123      266       143"
   },
   {
     "objectID": "materials/04-r-text-mining.html#sentiment-analysis-3",
@@ -298,7 +298,7 @@
     "href": "materials/04-r-text-mining.html#topic-modeling",
     "title": "",
     "section": "Topic Modeling",
-    "text": "Topic Modeling\n\n\nIntroduction to Text Mining"
+    "text": "Topic Modeling"
   },
   {
     "objectID": "materials/02-excel.html",
@@ -466,35 +466,35 @@
     "href": "materials/03-intro-to-r.html#getting-started-1",
     "title": "",
     "section": "Getting Started",
-    "text": "Getting Started\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n\n\n\n\n\nDiscuss the layout of RStudio and what people are looking at."
+    "text": "Getting Started\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n\n    \n\nDiscuss the layout of RStudio and what people are looking at."
   },
   {
     "objectID": "materials/03-intro-to-r.html#packages",
     "href": "materials/03-intro-to-r.html#packages",
     "title": "",
     "section": "Packages",
-    "text": "Packages\n\nLibraries of code\nExpand the “base R” code"
+    "text": "Packages\n\nLibraries of code\nExpand the “base R” code\nFor almost anything you need\nBeware of relying too heavily on niche packages"
   },
   {
     "objectID": "materials/03-intro-to-r.html#the-tidyverse",
     "href": "materials/03-intro-to-r.html#the-tidyverse",
     "title": "",
     "section": "The tidyverse",
-    "text": "The tidyverse\n\n\n\n\n\n\nWhat is it?\nHow does it work?"
+    "text": "The tidyverse\n\n\n\n\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.\n\nhttps://www.tidyverse.org"
   },
   {
     "objectID": "materials/03-intro-to-r.html#the-tidyverse-vs-base-r",
     "href": "materials/03-intro-to-r.html#the-tidyverse-vs-base-r",
     "title": "",
     "section": "The tidyverse vs ‘Base R’",
-    "text": "The tidyverse vs ‘Base R’\n\n\n\n\n\nSource: dplyr base R"
+    "text": "The tidyverse vs ‘Base R’\n\n\n\n\n\n\n\nSource: dplyr base R"
   },
   {
     "objectID": "materials/03-intro-to-r.html#tidytext",
     "href": "materials/03-intro-to-r.html#tidytext",
     "title": "",
     "section": "tidytext",
-    "text": "tidytext\n\n\n\n\n\n\nWhat is it?\nHow does it work?\n\n\n\nIntroduction to Text Mining"
+    "text": "tidytext\n\nWhat is it?\nHow does it work?"
   },
   {
     "objectID": "materials/static/custom-layout.html",
@@ -614,5 +614,306 @@
     "title": "Workshop Materials",
     "section": "04-r-text-mining",
     "text": "04-r-text-mining\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\nmaterials/workshop/04-r-text-mining\n01-unnest-tokens.R\n\n\nmaterials/workshop/04-r-text-mining\n02-bigrams.R\n\n\nmaterials/workshop/04-r-text-mining\n03-sentiment-analysis.R\n\n\nmaterials/workshop/04-r-text-mining\n04-term-frequency.R"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-tidyverse-1",
+    "href": "materials/03-intro-to-r.html#the-tidyverse-1",
+    "title": "",
+    "section": "The tidyverse",
+    "text": "The tidyverse\n\nWhat is it?\nHow does it work?"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-tidyverse-benefits",
+    "href": "materials/03-intro-to-r.html#the-tidyverse-benefits",
+    "title": "",
+    "section": "The tidyverse Benefits",
+    "text": "The tidyverse Benefits\n\nEasier to understand for new users\nPackages all work together\nCan “pipe” instructions together\nCovers most frequent use cases"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-tidyverse-packages",
+    "href": "materials/03-intro-to-r.html#the-tidyverse-packages",
+    "title": "",
+    "section": "The tidyverse Packages",
+    "text": "The tidyverse Packages\n\n\n\n\n\n\n\nSource: RStudio Education"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#dplyr",
+    "href": "materials/03-intro-to-r.html#dplyr",
+    "title": "",
+    "section": "dplyr",
+    "text": "dplyr\n\nmutate() create variables (columns)\nselect() subset variables\nfilter() subset observations (rows) based on criteria\nsummarise() reduces multiple observations down to a single summary\narrange() change the ordering of observations"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#tidymodels",
+    "href": "materials/03-intro-to-r.html#tidymodels",
+    "title": "",
+    "section": "tidymodels",
+    "text": "tidymodels\nAlthough it’s not the focus of this workshop, the tidymodels packages contains a similar collection of packages devoted to modeling that integrates with the tidyverse."
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-beset-benefit-in-my-opinion",
+    "href": "materials/03-intro-to-r.html#the-beset-benefit-in-my-opinion",
+    "title": "",
+    "section": "The Beset Benefit (in my opinion)",
+    "text": "The Beset Benefit (in my opinion)\n\n\n\n“Artwork by @allison_horst.”"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-best-benefit-in-my-opinion",
+    "href": "materials/03-intro-to-r.html#the-best-benefit-in-my-opinion",
+    "title": "",
+    "section": "The Best Benefit (in my opinion)",
+    "text": "The Best Benefit (in my opinion)\n\n\n\n\n\n\n\n“Artwork by @allison_horst.”"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#dplyr-1",
+    "href": "materials/03-intro-to-r.html#dplyr-1",
+    "title": "",
+    "section": "dplyr",
+    "text": "dplyr\n Open 03-intro-to-r/01-examine.R in RStudio\n\n\n\n\n\n\n\n“Artwork by @allison_horst.”"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#your-turn",
+    "href": "materials/03-intro-to-r.html#your-turn",
+    "title": "",
+    "section": " Your Turn",
+    "text": "Your Turn\n\nOpen RStudio and 03-intro-to-r/01-examine.R\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#dplyr-introduction",
+    "href": "materials/03-intro-to-r.html#dplyr-introduction",
+    "title": "",
+    "section": "dplyr Introduction",
+    "text": "dplyr Introduction\n Open 03-intro-to-r/01-intro.R in RStudio\n\n\n\n\n\n\n\nSource: Allison Horst"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#getting-started-2",
+    "href": "materials/03-intro-to-r.html#getting-started-2",
+    "title": "",
+    "section": "Getting Started",
+    "text": "Getting Started\nInstalling and loading packages\n# Install libraries\ninstall.packages(\"tidyverse\")\ninstall.packages(\"palmerpenguins\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data",
+    "href": "materials/03-intro-to-r.html#examine-the-data",
+    "title": "",
+    "section": "Examine the data",
+    "text": "Examine the data\n\npalmerpenguins::penguins\n\n\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-1",
+    "href": "materials/03-intro-to-r.html#examine-the-data-1",
+    "title": "",
+    "section": "Examine the data",
+    "text": "Examine the data\n\nglimpse(penguins)\n\n\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-2",
+    "href": "materials/03-intro-to-r.html#examine-the-data-2",
+    "title": "",
+    "section": "Examine the data",
+    "text": "Examine the data\n\ncolnames(penguins)\n\n\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\""
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#what-species-are-in-the-data",
+    "href": "materials/03-intro-to-r.html#what-species-are-in-the-data",
+    "title": "",
+    "section": "What Species are in the data?",
+    "text": "What Species are in the data?\n\nunique(penguins$species)\n\n\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#how-many-are-male",
+    "href": "materials/03-intro-to-r.html#how-many-are-male",
+    "title": "",
+    "section": "How many are Male?",
+    "text": "How many are Male?\n\nfilter(penguins, sex == \"male\")\n\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
+    "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
+    "title": "",
+    "section": "How many are Male on Biscoe island?",
+    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"biscoe\")\n\n\n\n# A tibble: 0 × 8\n# ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,\n#   bill_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;, sex &lt;fct&gt;,\n#   year &lt;int&gt;\n\n\nWhy no results?"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#why-no-results",
+    "href": "materials/03-intro-to-r.html#why-no-results",
+    "title": "",
+    "section": "Why no results?",
+    "text": "Why no results?"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-3",
+    "href": "materials/03-intro-to-r.html#examine-the-data-3",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\nstr(df)\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island-1",
+    "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island-1",
+    "title": "",
+    "section": "How many are Male on Biscoe island?",
+    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"Biscoe\")\n\n\n\n# A tibble: 83 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Biscoe           37.7          18.7               180        3600\n 2 Adelie  Biscoe           38.2          18.1               185        3950\n 3 Adelie  Biscoe           38.8          17.2               180        3800\n 4 Adelie  Biscoe           40.6          18.6               183        3550\n 5 Adelie  Biscoe           40.5          18.9               180        3950\n 6 Adelie  Biscoe           40.1          18.9               188        4300\n 7 Adelie  Biscoe           42            19.5               200        4050\n 8 Adelie  Biscoe           41.4          18.6               191        3700\n 9 Adelie  Biscoe           40.6          18.8               193        3800\n10 Adelie  Biscoe           37.6          19.1               194        3750\n# ℹ 73 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#chaining-functions",
+    "href": "materials/03-intro-to-r.html#chaining-functions",
+    "title": "",
+    "section": "Chaining functions",
+    "text": "Chaining functions\n\npenguins |&gt; \n  filter(sex == \"female\") |&gt; \n  arrange(flipper_length_mm)\n\n# A tibble: 165 × 8\n   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie    Biscoe             37.9          18.6               172        3150\n 2 Adelie    Biscoe             37.8          18.3               174        3400\n 3 Adelie    Torgers…           40.2          17                 176        3450\n 4 Adelie    Dream              39.5          16.7               178        3250\n 5 Adelie    Dream              33.1          16.1               178        2900\n 6 Chinstrap Dream              46.1          18.2               178        3250\n 7 Adelie    Dream              42.2          18.5               180        3550\n 8 Adelie    Torgers…           38.9          17.8               181        3625\n 9 Adelie    Dream              37.6          19.3               181        3300\n10 Adelie    Biscoe             36.5          16.6               181        2850\n# ℹ 155 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#other-ways-to-filer",
+    "href": "materials/03-intro-to-r.html#other-ways-to-filer",
+    "title": "",
+    "section": "Other ways to filer",
+    "text": "Other ways to filer\n\nUsing Boolean operators\n\n\n# Greater than\npenguins |&gt; \n  filter(bill_length_mm &gt; 40)\n\n# A tibble: 242 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           40.3          18                 195        3250\n 2 Adelie  Torgersen           42            20.2               190        4250\n 3 Adelie  Torgersen           41.1          17.6               182        3200\n 4 Adelie  Torgersen           42.5          20.7               197        4500\n 5 Adelie  Torgersen           46            21.5               194        4200\n 6 Adelie  Biscoe              40.6          18.6               183        3550\n 7 Adelie  Biscoe              40.5          17.9               187        3200\n 8 Adelie  Biscoe              40.5          18.9               180        3950\n 9 Adelie  Dream               40.9          18.9               184        3900\n10 Adelie  Dream               42.2          18.5               180        3550\n# ℹ 232 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n# Greater than or equal to\npenguins |&gt; \n  filter(bill_length_mm &gt;= 40)\n\n# A tibble: 242 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           40.3          18                 195        3250\n 2 Adelie  Torgersen           42            20.2               190        4250\n 3 Adelie  Torgersen           41.1          17.6               182        3200\n 4 Adelie  Torgersen           42.5          20.7               197        4500\n 5 Adelie  Torgersen           46            21.5               194        4200\n 6 Adelie  Biscoe              40.6          18.6               183        3550\n 7 Adelie  Biscoe              40.5          17.9               187        3200\n 8 Adelie  Biscoe              40.5          18.9               180        3950\n 9 Adelie  Dream               40.9          18.9               184        3900\n10 Adelie  Dream               42.2          18.5               180        3550\n# ℹ 232 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\nBy missing values\n\n\n# Flipper length is missing/blank\npenguins |&gt; \n  filter(is.na(flipper_length_mm))\n\n# A tibble: 2 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen             NA            NA                NA          NA\n2 Gentoo  Biscoe                NA            NA                NA          NA\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n# Flipper length is NOT missing/blank\npenguins |&gt; \n  filter(!is.na(flipper_length_mm))\n\n# A tibble: 342 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           36.7          19.3               193        3450\n 5 Adelie  Torgersen           39.3          20.6               190        3650\n 6 Adelie  Torgersen           38.9          17.8               181        3625\n 7 Adelie  Torgersen           39.2          19.6               195        4675\n 8 Adelie  Torgersen           34.1          18.1               193        3475\n 9 Adelie  Torgersen           42            20.2               190        4250\n10 Adelie  Torgersen           37.8          17.1               186        3300\n# ℹ 332 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#making-new-variables",
+    "href": "materials/03-intro-to-r.html#making-new-variables",
+    "title": "",
+    "section": "Making new variables",
+    "text": "Making new variables\nNow let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.\nFirst, let’s make a box plot of the flipper length.\n\npenguins |&gt; \n  ggplot(aes(flipper_length_mm)) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#making-new-variables-1",
+    "href": "materials/03-intro-to-r.html#making-new-variables-1",
+    "title": "",
+    "section": "Making new variables",
+    "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head()\n\n\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#summarize-data",
+    "href": "materials/03-intro-to-r.html#summarize-data",
+    "title": "",
+    "section": "Summarize data",
+    "text": "Summarize data\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm))\n\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                   NA \n2 Chinstrap               196.\n3 Gentoo                   NA"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#summarize-data-1",
+    "href": "materials/03-intro-to-r.html#summarize-data-1",
+    "title": "",
+    "section": "Summarize data",
+    "text": "Summarize data\n#| output-location: fragment\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                  190.\n2 Chinstrap               196.\n3 Gentoo                  217."
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#intro-to-ggplot2",
+    "href": "materials/03-intro-to-r.html#intro-to-ggplot2",
+    "title": "",
+    "section": "Intro to ggplot2",
+    "text": "Intro to ggplot2\n\n\npenguins |&gt; \n  ggplot(aes(flipper_length_mm)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#intro-to-ggplot2-1",
+    "href": "materials/03-intro-to-r.html#intro-to-ggplot2-1",
+    "title": "",
+    "section": "Intro to ggplot2",
+    "text": "Intro to ggplot2\n\n\npenguins |&gt; \n  ggplot(aes(bill_length_mm,\n             flipper_length_mm,\n             color = species)) +\n  geom_point(size = 3, alpha = 0.4) +\n  labs(title = \"Bill vs. Flipper Length\",\n       subtitle = \"by species\",\n       x = \"Bill Length (mm)\",\n       y = \"Flipper Length (mm)\",\n       color = \"\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#getting-started-3",
+    "href": "materials/03-intro-to-r.html#getting-started-3",
+    "title": "",
+    "section": "Getting Started",
+    "text": "Getting Started\n Open 03-intro-to-r/02-our-data.R in RStudio\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\n\n# Read in the data\ndf &lt;- read_csv(\"DisneylandReviews.csv\")"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-4",
+    "href": "materials/03-intro-to-r.html#examine-the-data-4",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\nglimpse(df)\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-5",
+    "href": "materials/03-intro-to-r.html#examine-the-data-5",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\nhead(df)\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; \n1 670772142      4 2019-4     Australia            If you've ever been t… Disne…\n2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…\n3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…\n4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…\n5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…\n6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-6",
+    "href": "materials/03-intro-to-r.html#examine-the-data-6",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\ntail(df)\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; \n1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…\n2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…\n3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…\n4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…\n5   1618637      4 missing    United States     This hotel, part of the … Disne…\n6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-7",
+    "href": "materials/03-intro-to-r.html#examine-the-data-7",
+    "title": "",
+    "section": "Examine the Data",
+    "text": "Examine the Data\n\n\nhead(df$Reviewer_Location)\n\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
+    "href": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
+    "title": "",
+    "section": "Which parks have been reviewed?",
+    "text": "Which parks have been reviewed?\n\n\nunique(df$Branch)\n\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#clean-up-park-names",
+    "href": "materials/03-intro-to-r.html#clean-up-park-names",
+    "title": "",
+    "section": "Clean up Park Names",
+    "text": "Clean up Park Names\n\n\ndf &lt;- df %&gt;% \n  mutate(Branch = case_match(Branch, \n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n  rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
+    "href": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
+    "title": "",
+    "section": "Look at our starting data set",
+    "text": "Look at our starting data set\n\n\nglimpse(df)\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Park              &lt;chr&gt; \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", …\n\n\n\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#distribution-of-ratings",
+    "href": "materials/04-r-text-mining.html#distribution-of-ratings",
+    "title": "",
+    "section": "",
+    "text": "df |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#by-park-histogram",
+    "href": "materials/04-r-text-mining.html#by-park-histogram",
+    "title": "",
+    "section": "",
+    "text": "df |&gt; \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  scale_fill_discrete() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#by-park-box-plot",
+    "href": "materials/04-r-text-mining.html#by-park-box-plot",
+    "title": "",
+    "section": "",
+    "text": "df |&gt; \n  ggplot(aes(Park, Rating, color = Park)) +\n  geom_boxplot(color = \"black\") +\n  geom_jitter(alpha = 0.3) +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#convert-it-to-a-tibble",
+    "href": "materials/04-r-text-mining.html#convert-it-to-a-tibble",
+    "title": "",
+    "section": "Convert it to a tibble",
+    "text": "Convert it to a tibble\n\nsample &lt;- tibble(line = 1, text = df$Review_Text[15])\nsample\n\n# A tibble: 1 × 2\n   line text                                                                    \n  &lt;dbl&gt; &lt;chr&gt;                                                                   \n1     1 This place is HUGE! Definately need more than one day. We had 3 childre…"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#unnest-tokens",
+    "href": "materials/04-r-text-mining.html#unnest-tokens",
+    "title": "",
+    "section": "Unnest Tokens",
+    "text": "Unnest Tokens\n\ntidy_sample &lt;- sample |&gt; \n  unnest_tokens(word, text)\ntidy_sample\n\n# A tibble: 53 × 2\n    line word      \n   &lt;dbl&gt; &lt;chr&gt;     \n 1     1 this      \n 2     1 place     \n 3     1 is        \n 4     1 huge      \n 5     1 definately\n 6     1 need      \n 7     1 more      \n 8     1 than      \n 9     1 one       \n10     1 day       \n# ℹ 43 more rows"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#word-count",
+    "href": "materials/04-r-text-mining.html#word-count",
+    "title": "",
+    "section": "Word Count",
+    "text": "Word Count\n\ntidy_sample |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 were          3\n2 and           2\n3 fantastic     2\n4 of            2\n5 11            1\n6 3             1"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#word-count-wo-stop-words",
+    "href": "materials/04-r-text-mining.html#word-count-wo-stop-words",
+    "title": "",
+    "section": "Word Count w/o Stop Words",
+    "text": "Word Count w/o Stop Words\n\n# Word count without stop words\ntidy_sample |&gt; \n  filter(!word %in% stop_words$word) |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 fantastic     2\n2 11            1\n3 3             1\n4 3d            1\n5 6             1\n6 9             1"
   }
 ]

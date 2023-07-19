@@ -2,9 +2,14 @@
 title: "\0"
 format: 
   revealjs:
+    width: 1920
+    height: 1080
     css: ["theme/theme.css"]
+    incremental: true 
     theme: simple
     preview-links: auto
+    code-line-numbers: true
+    echo: true
     filters: 
       - filter.lua
     footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
@@ -12,15 +17,20 @@ format:
       data-background-image: "/materials/slide templates/Slide1.png"
       data-background-size: contain
       data-background-opacity: "1"
-editor: visual
+editor: source
 ---
 
-# R {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Intro to R {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+
+```{r echo=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
 
 ## Getting Started
 
-1.  What is R?
-2.  R vs. Python?
+-   What is R?
+-   R vs. Python?
 
 ::: notes
 R is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990's and open sourced in 1995.
@@ -34,7 +44,7 @@ For the purposes of this workshop, there are no significant differences in R vs.
 Everything in this workshop can be done through the virtual project. Scan the QR code to get started.
 :::
 
-![](images/qr_code.png){height="250" fig-align="center"}
+{{< qrcode https://posit.cloud/content/6215314 >}}
 
 ::: notes
 Discuss the layout of RStudio and what people are looking at.
@@ -48,27 +58,341 @@ Discuss the layout of RStudio and what people are looking at.
 
 ![](images/rstudio-2.png){fig-align="center" height="500"}
 
-## Packages
+# Packages
 
 -   Libraries of code
 -   Expand the "base R" code
+-   For almost anything you need
+-   Beware of relying too heavily on niche packages
 
-## The `tidyverse`
+## The `tidyverse` {.smaller}
 
 ![](images/tidyverse-logo.png){fig-align="center" height="200"}
 
--   [What is it?](https://www.tidyverse.org)
--   How does it work?
+> The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
+
+<https://www.tidyverse.org>
+
+## The `tidyverse` Benefits
+
+-   Easier to understand for new users
+-   Packages all work together
+-   Can "pipe" instructions together
+-   Covers most frequent use cases
+
+## The Best Benefit *(in my opinion)* {.smaller}
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e4a11b1f-f235-461f-ab73-ce6128c59e49_rw_1920.png?h=a34a4173c717bfbc600a8682d419288e){fig-align="center" height="600"}
+
+::: aside
+"[Artwork by \@allison_horst.](https://allisonhorst.com)"
+:::
+
+## The `tidyverse` Packages {.smaller}
+
+![](images/tidyverse.png){fig-align="center" height="400"}
+
+::: aside
+Source: [RStudio Education](https://education.rstudio.com)
+:::
+
+## `dplyr`
+
+-   `mutate()` create variables (columns)
+-   `select()` subset variables
+-   `filter()` subset observations (rows) based on criteria
+-   `summarise()` reduces multiple observations down to a single summary
+-   `arrange()` change the ordering of observations
 
 ## The `tidyverse` vs 'Base R'
 
 ![](images/dplyr-vs-base-r.png){fig-align="center" height="350"}
 
+::: aside
 Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
+:::
+
+## `dplyr` Introduction
+
+`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/01-intro.R` in RStudio
+
+![](https://allisonhorst.github.io/palmerpenguins/logo.png){fig-align="center" height="350"}
+
+::: aside
+Source: [Allison Horst](https://allisonhorst.github.io/palmerpenguins/)
+:::
+
+# Getting Started
+
+Installing and loading packages
+
+``` {.r echo="TRUE" code-line-numbers="1,2,3|5,6,7"}
+# Install libraries
+install.packages("tidyverse")
+install.packages("palmerpenguins")
+
+# Load libraries
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Examine the data
+
+```{r}
+#| output-location: fragment
+palmerpenguins::penguins
+```
+
+## Examine the data
+
+```{r}
+#| output-location: fragment
+glimpse(penguins)
+```
+
+## Examine the data
+
+```{r}
+#| output-location: fragment
+colnames(penguins)
+```
+
+## What `Species` are in the data?
+
+```{r}
+#| output-location: fragment
+unique(penguins$species)
+```
+
+## How many are `Male`?
+
+```{r}
+#| output-location: fragment
+filter(penguins, sex == "male")
+```
+
+## How many are `Male` on `Biscoe` island?
+
+```{r}
+#| output-location: fragment
+filter(penguins, sex == "male", island == "biscoe")
+```
+
+Why no results?
+
+## How many are `Male` on `Biscoe` island?
+
+```{r}
+#| output-location: fragment
+filter(penguins, sex == "male", island == "Biscoe")
+```
+
+## Chaining functions
+
+```{r}
+penguins |> 
+  filter(sex == "female") |> 
+  arrange(flipper_length_mm)
+```
+
+## Other ways to filer
+
+- Using Boolean operators
+
+```{r}
+# Greater than
+penguins |> 
+  filter(bill_length_mm > 40)
+
+# Greater than or equal to
+penguins |> 
+  filter(bill_length_mm >= 40)
+```
+
+- By missing values
+
+```{r}
+# Flipper length is missing/blank
+penguins |> 
+  filter(is.na(flipper_length_mm))
+
+# Flipper length is NOT missing/blank
+penguins |> 
+  filter(!is.na(flipper_length_mm))
+```
+
+## Making new variables
+
+Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long". 
+
+First, let's make a box plot of the flipper length.
+
+```{r}
+#| output-location: fragment
+penguins |> 
+  ggplot(aes(flipper_length_mm)) +
+  geom_boxplot()
+```
+
+## Making new variables
+
+```{r}
+#| output-location: fragment
+penguins |>
+  mutate(flipper_length = case_when(
+    flipper_length_mm < 190 ~ "short",
+    flipper_length_mm >= 190 &
+      flipper_length_mm < 213 ~ "average",
+    flipper_length_mm > 213 ~ "long"
+  )) |>
+  select(flipper_length_mm, flipper_length) |>
+  head()
+```
+
+## Summarize data
+
+```{r}
+#| output-location: fragment
+penguins |> 
+  group_by(species) |> 
+  summarise(avg_flipper_length = mean(flipper_length_mm))
+```
+
+## Summarize data
+
+```{.r code-line-numbers="4"}
+#| output-location: fragment
+penguins |> 
+  group_by(species) |> 
+  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
+```
+
+```{r echo=FALSE}
+#| output-location: fragment
+penguins |> 
+  group_by(species) |> 
+  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
+```
+
+## Intro to ggplot2
+
+```{r}
+#| output-location: column
+penguins |> 
+  ggplot(aes(flipper_length_mm)) +
+  geom_bar() 
+```
+
+## Intro to ggplot2
+
+```{r}
+#| output-location: column
+penguins |> 
+  ggplot(aes(bill_length_mm,
+             flipper_length_mm,
+             color = species)) +
+  geom_point(size = 3, alpha = 0.4) +
+  labs(title = "Bill vs. Flipper Length",
+       subtitle = "by species",
+       x = "Bill Length (mm)",
+       y = "Flipper Length (mm)",
+       color = "") +
+  theme_minimal()
+```
+
+## `tidymodels`
+
+Although it's not the focus of this workshop, the `tidymodels` packages contains a similar collection of packages devoted to modeling that integrates with the `tidyverse`.
 
 ## `tidytext`
 
-![](images/tidytext-logo.png){fig-align="center" height="200"}
-
 -   What is it?
 -   How does it work?
+
+# The Data
+
+42,656 reviews from Disney California, Hong Kong, and Paris
+
+![](images/disney-logo.png){fig-align="center" height="200"}
+
+Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews)
+
+## Getting Started
+
+`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/02-our-data.R` in RStudio
+
+```{r}
+#| output-location: fragment
+# Load libraries
+library(tidyverse)
+library(tidytext)
+library(wordcloud)
+
+# Read in the data
+df <- read_csv("DisneylandReviews.csv")
+```
+
+## Examine the Data
+
+```{r}
+#| output-location: fragment
+str(df)
+```
+
+## Examine the Data
+
+```{r}
+#| output-location: fragment
+glimpse(df)
+```
+
+## Examine the Data
+
+```{r}
+#| output-location: fragment
+head(df)
+```
+
+## Examine the Data
+
+```{r}
+#| output-location: fragment
+tail(df)
+```
+
+## Examine the Data
+
+```{r}
+#| output-location: fragment
+head(df$Reviewer_Location)
+```
+
+## Which parks have been reviewed?
+
+```{r}
+#| output-location: fragment
+unique(df$Branch)
+```
+
+## Clean up Park Names
+
+```{r}
+#| output-location: fragment
+
+df <- df %>% 
+  mutate(Branch = case_match(Branch, 
+                             "Disneyland_California" ~ "California",
+                             "Disneyland_HongKong" ~ "Hong Kong",
+                             "Disneyland_Paris" ~ "Paris")) |> 
+  rename("Park" = Branch)
+
+unique(df$Park)
+```
+
+## Look at our starting data set
+
+```{r}
+#| output-location: fragment
+glimpse(df)
+```
+
