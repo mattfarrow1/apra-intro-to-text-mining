@@ -22,7 +22,7 @@ editor: source
 
 # Visualize the Data
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 library(tidyverse)
 library(tidytext)
 library(wordcloud)
@@ -36,7 +36,6 @@ df <- df %>%
                              "Disneyland_Paris" ~ "Paris")) |> 
   rename("Park" = Branch)
 ```
-
 
 ## Distribution of ratings
 

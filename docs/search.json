@@ -123,7 +123,7 @@
     "href": "materials/04-r-text-mining.html",
     "title": "",
     "section": "",
-    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: RColorBrewer\n\nRows: 42656 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Year_Month, Reviewer_Location, Review_Text, Branch\ndbl (2): Review_ID, Rating\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  scale_fill_discrete() +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Park, Rating, color = Park)) +\n  geom_boxplot(color = \"black\") +\n  geom_jitter(alpha = 0.3) +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
+    "text": "df |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  scale_fill_discrete() +\n  theme_minimal()\n\n\n\n\n\n\n\n\ndf |&gt; \n  ggplot(aes(Park, Rating, color = Park)) +\n  geom_boxplot(color = \"black\") +\n  geom_jitter(alpha = 0.3) +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#getting-started",
@@ -452,21 +452,21 @@
     "href": "materials/03-intro-to-r.html",
     "title": "",
     "section": "",
-    "text": "What is R?\nR vs. Python?\n\n\nR is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990’s and open sourced in 1995.\nFor the purposes of this workshop, there are no significant differences in R vs. Python other than the language and packages/libraries used. I chose to start with R because that’s where I’m most comfortable, it’s the language that I see Apra promoting, and the community is incredibly welcoming and diverse.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n\n\n\n\nDiscuss the layout of RStudio and what people are looking at.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLibraries of code\nExpand the “base R” code\n\n\n\n\n\n\n\n\n\n\nWhat is it?\nHow does it work?\n\n\n\n\n\n\n\n\n\nSource: dplyr base R\n\n\n\n\n\n\n\n\n\nWhat is it?\nHow does it work?"
+    "text": "What is R?\nR vs. Python?\n\n\nR is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990’s and open sourced in 1995.\nFor the purposes of this workshop, there are no significant differences in R vs. Python other than the language and packages/libraries used. I chose to start with R because that’s where I’m most comfortable, it’s the language that I see Apra promoting, and the community is incredibly welcoming and diverse.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n    \n\nDiscuss the layout of RStudio and what people are looking at."
   },
   {
     "objectID": "materials/03-intro-to-r.html#getting-started",
     "href": "materials/03-intro-to-r.html#getting-started",
     "title": "",
-    "section": "Getting Started",
-    "text": "Getting Started\n\nWhat is R?\nR vs. Python?\n\n\nR is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990’s and open sourced in 1995.\nFor the purposes of this workshop, there are no significant differences in R vs. Python other than the language and packages/libraries used. I chose to start with R because that’s where I’m most comfortable, it’s the language that I see Apra promoting, and the community is incredibly welcoming and diverse."
+    "section": "",
+    "text": "What is R?\nR vs. Python?\n\n\nR is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990’s and open sourced in 1995.\nFor the purposes of this workshop, there are no significant differences in R vs. Python other than the language and packages/libraries used. I chose to start with R because that’s where I’m most comfortable, it’s the language that I see Apra promoting, and the community is incredibly welcoming and diverse."
   },
   {
     "objectID": "materials/03-intro-to-r.html#getting-started-1",
     "href": "materials/03-intro-to-r.html#getting-started-1",
     "title": "",
-    "section": "Getting Started",
-    "text": "Getting Started\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n\n    \n\nDiscuss the layout of RStudio and what people are looking at."
+    "section": "",
+    "text": "Tip\n\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n    \n\nDiscuss the layout of RStudio and what people are looking at."
   },
   {
     "objectID": "materials/03-intro-to-r.html#packages",
@@ -697,42 +697,42 @@
     "href": "materials/03-intro-to-r.html#examine-the-data",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\npalmerpenguins::penguins\n\n\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "Examine the data\n\npalmerpenguins::penguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-1",
     "href": "materials/03-intro-to-r.html#examine-the-data-1",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\nglimpse(penguins)\n\n\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+    "text": "Examine the data\n\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-2",
     "href": "materials/03-intro-to-r.html#examine-the-data-2",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\ncolnames(penguins)\n\n\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\""
+    "text": "Examine the data\n\ncolnames(penguins)\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#what-species-are-in-the-data",
     "href": "materials/03-intro-to-r.html#what-species-are-in-the-data",
     "title": "",
     "section": "What Species are in the data?",
-    "text": "What Species are in the data?\n\nunique(penguins$species)\n\n\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo"
+    "text": "What Species are in the data?\n\nunique(penguins$species)\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male",
     "href": "materials/03-intro-to-r.html#how-many-are-male",
     "title": "",
     "section": "How many are Male?",
-    "text": "How many are Male?\n\nfilter(penguins, sex == \"male\")\n\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "How many are Male?\n\nfilter(penguins, sex == \"male\")\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
     "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
     "title": "",
     "section": "How many are Male on Biscoe island?",
-    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"biscoe\")\n\n\n\n# A tibble: 0 × 8\n# ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,\n#   bill_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;, sex &lt;fct&gt;,\n#   year &lt;int&gt;\n\n\nWhy no results?"
+    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"biscoe\")\n\n# A tibble: 0 × 8\n# ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,\n#   bill_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;, sex &lt;fct&gt;,\n#   year &lt;int&gt;\n\n\nWhy no results?"
   },
   {
     "objectID": "materials/03-intro-to-r.html#why-no-results",
@@ -746,14 +746,14 @@
     "href": "materials/03-intro-to-r.html#examine-the-data-3",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\nstr(df)\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
+    "text": "Examine the Data\n\nstr(df)\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island-1",
     "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island-1",
     "title": "",
     "section": "How many are Male on Biscoe island?",
-    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"Biscoe\")\n\n\n\n# A tibble: 83 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Biscoe           37.7          18.7               180        3600\n 2 Adelie  Biscoe           38.2          18.1               185        3950\n 3 Adelie  Biscoe           38.8          17.2               180        3800\n 4 Adelie  Biscoe           40.6          18.6               183        3550\n 5 Adelie  Biscoe           40.5          18.9               180        3950\n 6 Adelie  Biscoe           40.1          18.9               188        4300\n 7 Adelie  Biscoe           42            19.5               200        4050\n 8 Adelie  Biscoe           41.4          18.6               191        3700\n 9 Adelie  Biscoe           40.6          18.8               193        3800\n10 Adelie  Biscoe           37.6          19.1               194        3750\n# ℹ 73 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"Biscoe\")\n\n# A tibble: 83 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Biscoe           37.7          18.7               180        3600\n 2 Adelie  Biscoe           38.2          18.1               185        3950\n 3 Adelie  Biscoe           38.8          17.2               180        3800\n 4 Adelie  Biscoe           40.6          18.6               183        3550\n 5 Adelie  Biscoe           40.5          18.9               180        3950\n 6 Adelie  Biscoe           40.1          18.9               188        4300\n 7 Adelie  Biscoe           42            19.5               200        4050\n 8 Adelie  Biscoe           41.4          18.6               191        3700\n 9 Adelie  Biscoe           40.6          18.8               193        3800\n10 Adelie  Biscoe           37.6          19.1               194        3750\n# ℹ 73 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#chaining-functions",
@@ -774,21 +774,21 @@
     "href": "materials/03-intro-to-r.html#making-new-variables",
     "title": "",
     "section": "Making new variables",
-    "text": "Making new variables\nNow let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.\nFirst, let’s make a box plot of the flipper length.\n\npenguins |&gt; \n  ggplot(aes(flipper_length_mm)) +\n  geom_boxplot()"
+    "text": "Making new variables\nNow let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.\nFirst, let’s make a box plot of the flipper length.\n\npenguins |&gt; \n  ggplot(aes(flipper_length_mm)) +\n  geom_boxplot()\n\nWarning: Removed 2 rows containing non-finite values (`stat_boxplot()`)."
   },
   {
     "objectID": "materials/03-intro-to-r.html#making-new-variables-1",
     "href": "materials/03-intro-to-r.html#making-new-variables-1",
     "title": "",
     "section": "Making new variables",
-    "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head()\n\n\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
+    "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head()\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
   },
   {
     "objectID": "materials/03-intro-to-r.html#summarize-data",
     "href": "materials/03-intro-to-r.html#summarize-data",
     "title": "",
     "section": "Summarize data",
-    "text": "Summarize data\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm))\n\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                   NA \n2 Chinstrap               196.\n3 Gentoo                   NA"
+    "text": "Summarize data\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm))\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                   NA \n2 Chinstrap               196.\n3 Gentoo                   NA"
   },
   {
     "objectID": "materials/03-intro-to-r.html#summarize-data-1",
@@ -802,70 +802,70 @@
     "href": "materials/03-intro-to-r.html#intro-to-ggplot2",
     "title": "",
     "section": "Intro to ggplot2",
-    "text": "Intro to ggplot2\n\n\npenguins |&gt; \n  ggplot(aes(flipper_length_mm)) +\n  geom_bar()"
+    "text": "Intro to ggplot2\n\npenguins |&gt; \n  ggplot(aes(flipper_length_mm)) +\n  geom_bar() \n\nWarning: Removed 2 rows containing non-finite values (`stat_count()`)."
   },
   {
     "objectID": "materials/03-intro-to-r.html#intro-to-ggplot2-1",
     "href": "materials/03-intro-to-r.html#intro-to-ggplot2-1",
     "title": "",
     "section": "Intro to ggplot2",
-    "text": "Intro to ggplot2\n\n\npenguins |&gt; \n  ggplot(aes(bill_length_mm,\n             flipper_length_mm,\n             color = species)) +\n  geom_point(size = 3, alpha = 0.4) +\n  labs(title = \"Bill vs. Flipper Length\",\n       subtitle = \"by species\",\n       x = \"Bill Length (mm)\",\n       y = \"Flipper Length (mm)\",\n       color = \"\") +\n  theme_minimal()"
+    "text": "Intro to ggplot2\n\npenguins |&gt; \n  ggplot(aes(bill_length_mm,\n             flipper_length_mm,\n             color = species)) +\n  geom_point(size = 3, alpha = 0.4) +\n  labs(title = \"Bill vs. Flipper Length\",\n       subtitle = \"by species\",\n       x = \"Bill Length (mm)\",\n       y = \"Flipper Length (mm)\",\n       color = \"\") +\n  theme_minimal()\n\nWarning: Removed 2 rows containing missing values (`geom_point()`)."
   },
   {
     "objectID": "materials/03-intro-to-r.html#getting-started-3",
     "href": "materials/03-intro-to-r.html#getting-started-3",
     "title": "",
     "section": "Getting Started",
-    "text": "Getting Started\n Open 03-intro-to-r/02-our-data.R in RStudio\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\n\n# Read in the data\ndf &lt;- read_csv(\"DisneylandReviews.csv\")"
+    "text": "Getting Started\n Open 03-intro-to-r/02-our-data.R in RStudio\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\n\nLoading required package: RColorBrewer\n\n# Read in the data\ndf &lt;- read_csv(\"DisneylandReviews.csv\")\n\nRows: 42656 Columns: 6\n\n\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Year_Month, Reviewer_Location, Review_Text, Branch\ndbl (2): Review_ID, Rating\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-4",
     "href": "materials/03-intro-to-r.html#examine-the-data-4",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\nglimpse(df)\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
+    "text": "Examine the Data\n\nglimpse(df)\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-5",
     "href": "materials/03-intro-to-r.html#examine-the-data-5",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\nhead(df)\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; \n1 670772142      4 2019-4     Australia            If you've ever been t… Disne…\n2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…\n3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…\n4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…\n5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…\n6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…"
+    "text": "Examine the Data\n\nhead(df)\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; \n1 670772142      4 2019-4     Australia            If you've ever been t… Disne…\n2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…\n3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…\n4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…\n5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…\n6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-6",
     "href": "materials/03-intro-to-r.html#examine-the-data-6",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\ntail(df)\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; \n1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…\n2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…\n3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…\n4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…\n5   1618637      4 missing    United States     This hotel, part of the … Disne…\n6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…"
+    "text": "Examine the Data\n\ntail(df)\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; \n1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…\n2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…\n3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…\n4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…\n5   1618637      4 missing    United States     This hotel, part of the … Disne…\n6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-7",
     "href": "materials/03-intro-to-r.html#examine-the-data-7",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\nhead(df$Reviewer_Location)\n\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
+    "text": "Examine the Data\n\nhead(df$Reviewer_Location)\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
     "href": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
     "title": "",
     "section": "Which parks have been reviewed?",
-    "text": "Which parks have been reviewed?\n\n\nunique(df$Branch)\n\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
+    "text": "Which parks have been reviewed?\n\nunique(df$Branch)\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#clean-up-park-names",
     "href": "materials/03-intro-to-r.html#clean-up-park-names",
     "title": "",
     "section": "Clean up Park Names",
-    "text": "Clean up Park Names\n\n\ndf &lt;- df %&gt;% \n  mutate(Branch = case_match(Branch, \n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n  rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
+    "text": "Clean up Park Names\n\ndf &lt;- df %&gt;% \n  mutate(Branch = case_match(Branch, \n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n  rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
     "href": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
     "title": "",
     "section": "Look at our starting data set",
-    "text": "Look at our starting data set\n\n\nglimpse(df)\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Park              &lt;chr&gt; \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", …\n\n\n\n\n\nIntroduction to Text Mining"
+    "text": "Look at our starting data set\n\nglimpse(df)\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Park              &lt;chr&gt; \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", …"
   },
   {
     "objectID": "materials/04-r-text-mining.html#distribution-of-ratings",
@@ -915,5 +915,26 @@
     "title": "",
     "section": "Word Count w/o Stop Words",
     "text": "Word Count w/o Stop Words\n\n# Word count without stop words\ntidy_sample |&gt; \n  filter(!word %in% stop_words$word) |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 fantastic     2\n2 11            1\n3 3             1\n4 3d            1\n5 6             1\n6 9             1"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#packages-1",
+    "href": "materials/03-intro-to-r.html#packages-1",
+    "title": "",
+    "section": "Packages",
+    "text": "Packages\n\nLibraries of code\nExpand the “base R” code\nFor almost anything you need\nBeware of relying too heavily on niche packages"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#installing-and-loading-packages",
+    "href": "materials/03-intro-to-r.html#installing-and-loading-packages",
+    "title": "",
+    "section": "Installing and loading packages",
+    "text": "Installing and loading packages\n# Install libraries\ninstall.packages(\"tidyverse\")\ninstall.packages(\"palmerpenguins\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#the-data-1",
+    "href": "materials/03-intro-to-r.html#the-data-1",
+    "title": "",
+    "section": "The Data",
+    "text": "The Data\n42,656 reviews from Disney California, Hong Kong, and Paris\n\n\n\n\n\nSource: Kaggle"
   }
 ]

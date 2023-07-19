@@ -22,7 +22,7 @@ editor: source
 
 # Intro to R {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 library(tidyverse)
 library(palmerpenguins)
 ```
@@ -59,6 +59,8 @@ Discuss the layout of RStudio and what people are looking at.
 ![](images/rstudio-2.png){fig-align="center" height="500"}
 
 # Packages
+
+## Packages
 
 -   Libraries of code
 -   Expand the "base R" code
@@ -124,7 +126,7 @@ Source: [Allison Horst](https://allisonhorst.github.io/palmerpenguins/)
 
 # Getting Started
 
-Installing and loading packages
+## Installing and loading packages
 
 ``` {.r echo="TRUE" code-line-numbers="1,2,3|5,6,7"}
 # Install libraries
@@ -268,7 +270,6 @@ penguins |>
 ```
 
 ```{r echo=FALSE}
-#| output-location: fragment
 penguins |> 
   group_by(species) |> 
   summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
@@ -310,6 +311,8 @@ Although it's not the focus of this workshop, the `tidymodels` packages contains
 -   How does it work?
 
 # The Data
+
+## The Data
 
 42,656 reviews from Disney California, Hong Kong, and Paris
 
