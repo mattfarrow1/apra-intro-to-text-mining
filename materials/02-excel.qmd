@@ -5,6 +5,7 @@ format:
     css: ["theme/theme.css"]
     theme: simple
     preview-links: auto
+    code-line-numbers: true
     filters: 
       - filter.lua
     footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"

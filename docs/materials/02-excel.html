@@ -343,7 +343,7 @@
 <h1>Excel</h1>
 
 </section>
-<section id="excel-agenda" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="excel-agenda" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Excel Agenda</h2>
 <ul>
 <li>Pros and Cons</li>
@@ -353,7 +353,7 @@
 <li>Word Count</li>
 </ul>
 </section>
-<section id="pros-and-cons" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="pros-and-cons" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Pros and Cons</h2>
 <div class="columns">
 
@@ -365,19 +365,19 @@
 <p>:::</p>
 <p>::::</p>
 </section>
-<section id="formula-vlookup" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-vlookup" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: vlookup</h2>
 <p>=<strong>VLOOKUP</strong>(<font color="red">Value to look up</font>, <font color="blue">Range to look for value</font>, <font color="orange">Column for the return value</font>, <font color="green">Type of match</font>)<br>
 =VLOOKUP(<font color="red">A1</font>, <font color="blue">Lookup!A1:B7</font>, <font color="orange">2</font>, <font color="green">TRUE</font>)</p>
 </section>
-<section id="formula-absoluterelative-references" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-absoluterelative-references" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: absolute/relative references</h2>
 <p>Relative references <strong>can</strong> move.</p>
 <p>A1</p>
 <p>Absolute references <strong>can’t</strong> move.</p>
 <p>$A$1</p>
 </section>
-<section id="formula-absoluterelative-references-1" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-absoluterelative-references-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: absolute/relative references</h2>
 <div class="cell">
 <div class="cell-output-display">
@@ -404,12 +404,12 @@
 </div>
 </div>
 </section>
-<section id="formula-countif" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-countif" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: countif</h2>
 <p>=<strong>COUNTIF</strong>(<font color="red">Where are we looking?</font>, <font color="blue">What are we looking for?</font>)</p>
 <p>=COUNTIF(<font color="red">A:A</font>, <font color="blue">“Washington”</font>)</p>
 </section>
-<section id="chatgpt-for-formula-help" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="chatgpt-for-formula-help" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>ChatGPT for Formula Help</h2>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -427,30 +427,30 @@
 <p>Tell ChatGPT what is is you need assistance with:</p>
 
 <img data-src="images/chatgpt-excel-1.png" class="r-stretch quarto-figure-center"></section>
-<section id="chatgpt-for-formula-help-1" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="chatgpt-for-formula-help-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>ChatGPT for Formula Help</h2>
 
 <img data-src="images/chatgpt-excel-2.png" class="r-stretch quarto-figure-center"></section>
-<section id="formula-keyword-search" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-keyword-search" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: keyword search</h2>
 <p>Source: ChatGPT</p>
 <p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)</p>
 </section>
-<section id="formula-keyword-search-1" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-keyword-search-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: keyword search</h2>
 <p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(<font color="red">Keywords_Range</font>, Cell)))&gt;0, “Found”, “Not Found”)</p>
 <ol type="1">
 <li>Replace <code>Keywords_Range</code> with the actual range of keywords you want to search for. For example, if your keywords are in cells A1 to A10, the range would be <code>A1:A10</code>.</li>
 </ol>
 </section>
-<section id="formula-keyword-search-2" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-keyword-search-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: keyword search</h2>
 <p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, <font color="red">Cell</font>)))&gt;0, “Found”, “Not Found”)</p>
 <ol start="2" type="1">
 <li>Replace <code>Cell</code> with the cell reference of the cell in the column you want to search. This is the cell where you want to check if any of the keywords are present. For example, if you want to search in column B, and the first cell is B2, you would use <code>B2</code> as the cell reference.</li>
 </ol>
 </section>
-<section id="formula-keyword-search-3" class="slide level2" data-background-image="../slide templates/Slide7.png" data-background-size="contain">
+<section id="formula-keyword-search-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Formula: keyword search</h2>
 <p>Source: ChatGPT</p>
 <p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)</p>

@@ -2,14 +2,10 @@
 title: "\0"
 format: 
   revealjs:
-    width: 1920
-    height: 1080
     css: ["theme/theme.css"]
-    incremental: true 
     theme: simple
     preview-links: auto
     code-line-numbers: true
-    echo: true
     filters: 
       - filter.lua
     footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
@@ -17,15 +13,10 @@ format:
       data-background-image: "/materials/slide templates/Slide1.png"
       data-background-size: contain
       data-background-opacity: "1"
-editor: source
+editor: visual
 ---
 
 # Intro to R {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
-
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(palmerpenguins)
-```
 
 ## Getting Started
 
@@ -127,6 +118,11 @@ Source: [Allison Horst](https://allisonhorst.github.io/palmerpenguins/)
 # Getting Started
 
 ## Installing and loading packages
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
 
 ``` {.r echo="TRUE" code-line-numbers="1,2,3|5,6,7"}
 # Install libraries

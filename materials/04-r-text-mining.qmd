@@ -2,14 +2,10 @@
 title: "\0"
 format: 
   revealjs:
-    width: 1920
-    height: 1080
     css: ["theme/theme.css"]
-    incremental: true 
     theme: simple
     preview-links: auto
     code-line-numbers: true
-    echo: true
     filters: 
       - filter.lua
     footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
@@ -17,10 +13,12 @@ format:
       data-background-image: "/materials/slide templates/Slide1.png"
       data-background-size: contain
       data-background-opacity: "1"
-editor: source
+editor: visual
 ---
 
 # Visualize the Data
+
+## Distribution of ratings
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -36,8 +34,6 @@ df <- df %>%
                              "Disneyland_Paris" ~ "Paris")) |> 
   rename("Park" = Branch)
 ```
-
-## Distribution of ratings
 
 ```{r}
 #| output-location: column-fragment
