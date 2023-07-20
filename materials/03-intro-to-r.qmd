@@ -137,6 +137,7 @@ library(palmerpenguins)
 ## Examine the data
 
 ```{r}
+#| 
 #| output-location: fragment
 palmerpenguins::penguins
 ```

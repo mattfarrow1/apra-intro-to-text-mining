@@ -312,14 +312,14 @@
     "href": "materials/02-excel.html#excel-agenda",
     "title": "",
     "section": "Excel Agenda",
-    "text": "Excel Agenda\n\nPros and Cons\nFormulas\nUsing ChatGPT to help with formulas\nKeyword Search\nWord Count"
+    "text": "Excel Agenda\n\nWhy Excel?\nWord Counts\nReferences & VLOOKUP\nKeyword Search\nChatGPT"
   },
   {
     "objectID": "materials/02-excel.html#pros-and-cons",
     "href": "materials/02-excel.html#pros-and-cons",
     "title": "",
     "section": "Pros and Cons",
-    "text": "Pros and Cons\n\n\n\nPros - Universally available - Not going anywhere - Low barrier to entry - Scales in complexity\n:::\n:::\nCons - Can be difficult to reproduce - Potentially destructive - Doesn’t scale well - Limited options for text mining\n:::\n::::"
+    "text": "Pros and Cons\n\n\nPros\n\nUniversally available\nNot going anywhere\nLow barrier to entry\nScales in complexity\n\n\nCons\n\nCan be difficult to reproduce\nPotentially destructive\nDoesn’t scale well\nLimited options for text mining"
   },
   {
     "objectID": "materials/02-excel.html#formula-vlookup",
@@ -361,7 +361,7 @@
     "href": "materials/02-excel.html#formula-keyword-search",
     "title": "",
     "section": "Formula: keyword search",
-    "text": "Formula: keyword search\nSource: ChatGPT\n=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)"
+    "text": "Formula: keyword search\nSource: ChatGPT"
   },
   {
     "objectID": "materials/02-excel.html#formula-keyword-search-1",
@@ -382,7 +382,7 @@
     "href": "materials/02-excel.html#formula-keyword-search-3",
     "title": "",
     "section": "Formula: keyword search",
-    "text": "Formula: keyword search\nSource: ChatGPT\n=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)\n\nEnter the formula in the cell where you want the search result to appear.\n\nThe formula will return “Found” if any of the keywords in the range are found in the specified cell, and “Not Found” if none of the keywords are found.\nNote: This formula is case-insensitive, so it will match keywords regardless of their case. If you want case-sensitive matching, you can use the FIND function instead of SEARCH in the formula.\n\n\nIntroduction to Text Mining"
+    "text": "Formula: keyword search\nSource: ChatGPT\n=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)\n\nEnter the formula in the cell where you want the search result to appear.\n\nThe formula will return “Found” if any of the keywords in the range are found in the specified cell, and “Not Found” if none of the keywords are found.\nNote: This formula is case-insensitive, so it will match keywords regardless of their case. If you want case-sensitive matching, you can use the FIND function instead of SEARCH in the formula."
   },
   {
     "objectID": "materials/01-introduction.html",
@@ -592,7 +592,7 @@
     "href": "materials/02-excel.html#chatgpt-for-formula-help-1",
     "title": "",
     "section": "ChatGPT for Formula Help",
-    "text": "ChatGPT for Formula Help"
+    "text": "ChatGPT for Formula Help\n\n\n\nIntroduction to Text Mining"
   },
   {
     "objectID": "workshop-materials.html",
@@ -936,5 +936,40 @@
     "title": "",
     "section": "The Data",
     "text": "The Data\n42,656 reviews from Disney California, Hong Kong, and Paris\n\n\n\n\n\nSource: Kaggle"
+  },
+  {
+    "objectID": "materials/02-excel.html#why-choose-excel",
+    "href": "materials/02-excel.html#why-choose-excel",
+    "title": "",
+    "section": "Why Choose Excel?",
+    "text": "Why Choose Excel?\n\n\nPros\n\nUniversally available\nNot going anywhere\nLow barrier to entry\nScales in complexity\n\n\nCons\n\nCan be difficult to reproduce\nPotentially destructive\nDoesn’t scale well\nLimited options for text mining"
+  },
+  {
+    "objectID": "materials/02-excel.html#word-counts",
+    "href": "materials/02-excel.html#word-counts",
+    "title": "",
+    "section": "Word Counts",
+    "text": "Word Counts\n=LEN(TRIM(A1))-LEN(SUBSTITUTE(A1,\" \",\"\"))+1\n\nLEN(A1) counts the total number of characters in A1\nTRIM removes any leading, trailing, and extra spaces (except single spaces between words)\nSUBSTITUTE(A1,” “,””) removes all spaces from the text\nLEN(SUBSTITUTE(A1,” “,“”) – counts the total number of characters in the text that have no spaces\nLEN(A1)-LEN(SUBSTITUTE(A1,” “,“”)) subtracts the text length without spaces from the text length with spaces\n=LEN(A1)-LEN(SUBSTITUTE(A1,” “,“”))+1 add 1 to the result as the number of spaces is one less than the total number of words"
+  },
+  {
+    "objectID": "materials/02-excel.html#vlookup",
+    "href": "materials/02-excel.html#vlookup",
+    "title": "",
+    "section": "VLOOKUP",
+    "text": "VLOOKUP\n=VLOOKUP(A1, '[WorkbookName.xlsx]SheetName'!A1:B10,2,FALSE)\n\nA1 the value you are looking up\n'[WorkbookName.xlsx]SheetName'!A1:B10 the range where you are looking for a match\n2 the column the match is found in\nFALSE indicates whether you want to match exactly (FALSE) or approximately (TRUE)"
+  },
+  {
+    "objectID": "materials/02-excel.html#absoluterelative-references",
+    "href": "materials/02-excel.html#absoluterelative-references",
+    "title": "",
+    "section": "Absolute/Relative References",
+    "text": "Absolute/Relative References\n\nRelative references can move.\nAbsolute references can’t move.\n\n\n\n\nReference\nResult When Copied\n\n\n\n\nA2\nThe row and column both change\n\n\n$A2\nThe column does not change\n\n\nA$2\nThe row does not change\n\n\n$A$2\nNeither the row nor the column change"
+  },
+  {
+    "objectID": "materials/02-excel.html#keyword-searches",
+    "href": "materials/02-excel.html#keyword-searches",
+    "title": "",
+    "section": "Keyword Searches",
+    "text": "Keyword Searches\n=IF(SUMPRODUCT(--ISNUMBER(SEARCH(keyword,A2)))&gt;0,\"Yes\",\"No\")\n\nkeyword is a named range of the words you are searching for\nA2 is the cell in the column you’re searching in\nSEARCH(keyword,A2) returns the start number of the found string as a number\nISNUMBER(SEARCH(keyword,A2)) converts items to either TRUE or FALSE\n--ISNUMBER(SEARCH(keyword,A2)) coerces the TRUE and FALSE values to 1 and 0\nSUMPRODUCT sums the 1’s and 0’s\nIF(SUMPRODUCT...)&gt;0,\"Yes\",\"No\") if the result of SUMPRODUCT is greater than 1, then the formula returns “Yes” (or any other result you want)"
   }
 ]

@@ -319,9 +319,6 @@
       margin-right: 0; 
     }
   </style>
-  
-  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <meta name="twitter:title" content="Extracting Value from Free Text - ">
 <meta name="twitter:description" content="Apra PD 2023 workshop on text mining">
 <meta name="twitter:image" content="materials/slide templates/Slide1.png">
@@ -346,68 +343,102 @@
 <section id="excel-agenda" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Excel Agenda</h2>
 <ul>
-<li>Pros and Cons</li>
-<li>Formulas</li>
-<li>Using ChatGPT to help with formulas</li>
+<li>Why Excel?</li>
+<li>Word Counts</li>
+<li>References &amp; VLOOKUP</li>
 <li>Keyword Search</li>
-<li>Word Count</li>
+<li>ChatGPT</li>
 </ul>
 </section>
-<section id="pros-and-cons" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Pros and Cons</h2>
+<section id="why-choose-excel" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Why Choose Excel?</h2>
 <div class="columns">
-
+<div class="column" style="width:50%;">
+<p><strong>Pros</strong></p>
+<ul>
+<li>Universally available</li>
+<li>Not going anywhere</li>
+<li>Low barrier to entry</li>
+<li>Scales in complexity</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Cons</strong></p>
+<ul>
+<li>Can be difficult to reproduce</li>
+<li>Potentially destructive</li>
+<li>Doesn’t scale well</li>
+<li>Limited options for text mining</li>
+</ul>
 </div>
-<p><strong>Pros</strong> - Universally available - Not going anywhere - Low barrier to entry - Scales in complexity</p>
-<p>:::</p>
-<p>:::</p>
-<p><strong>Cons</strong> - Can be difficult to reproduce - Potentially destructive - Doesn’t scale well - Limited options for text mining</p>
-<p>:::</p>
-<p>::::</p>
+</div>
 </section>
-<section id="formula-vlookup" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: vlookup</h2>
-<p>=<strong>VLOOKUP</strong>(<font color="red">Value to look up</font>, <font color="blue">Range to look for value</font>, <font color="orange">Column for the return value</font>, <font color="green">Type of match</font>)<br>
-=VLOOKUP(<font color="red">A1</font>, <font color="blue">Lookup!A1:B7</font>, <font color="orange">2</font>, <font color="green">TRUE</font>)</p>
+<section id="word-counts" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Word Counts</h2>
+<p><code>=LEN(TRIM(A1))-LEN(SUBSTITUTE(A1," ",""))+1</code></p>
+<ul>
+<li><code>LEN(A1)</code> counts the total number of characters in <code>A1</code></li>
+<li><code>TRIM</code> removes any leading, trailing, and extra spaces (except single spaces between words)</li>
+<li><code>SUBSTITUTE(A1,” “,””)</code> removes all spaces from the text</li>
+<li><code>LEN(SUBSTITUTE(A1,” “,“”)</code> – counts the total number of characters in the text that have no spaces</li>
+<li><code>LEN(A1)-LEN(SUBSTITUTE(A1,” “,“”))</code> subtracts the text length without spaces from the text length with spaces</li>
+<li><code>=LEN(A1)-LEN(SUBSTITUTE(A1,” “,“”))+1</code> add 1 to the result as the number of spaces is one less than the total number of words</li>
+</ul>
 </section>
-<section id="formula-absoluterelative-references" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: absolute/relative references</h2>
-<p>Relative references <strong>can</strong> move.</p>
-<p>A1</p>
-<p>Absolute references <strong>can’t</strong> move.</p>
-<p>$A$1</p>
+<section id="vlookup" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>VLOOKUP</h2>
+<p><code>=VLOOKUP(A1, '[WorkbookName.xlsx]SheetName'!A1:B10,2,FALSE)</code></p>
+<ul>
+<li><code>A1</code> the value you are looking up</li>
+<li><code>'[WorkbookName.xlsx]SheetName'!A1:B10</code> the range where you are looking for a match</li>
+<li><code>2</code> the column the match is found in</li>
+<li><code>FALSE</code> indicates whether you want to match exactly (FALSE) or approximately (TRUE)</li>
+</ul>
 </section>
-<section id="formula-absoluterelative-references-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: absolute/relative references</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="font-size: 24px; margin-left: auto; margin-right: auto;">
+<section id="absoluterelative-references" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Absolute/Relative References</h2>
+<ul>
+<li>Relative references <strong>can</strong> move.</li>
+<li>Absolute references <strong>can’t</strong> move.</li>
+</ul>
+<table>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">$A$2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">The column and the row do not change when copied.</th>
+<th style="text-align: center;">Reference</th>
+<th>Result When Copied</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">A$2</td>
-<td style="text-align: left;">The row does not change when copied.</td>
+<td style="text-align: center;">A2</td>
+<td>The row and column both change</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">$A2</td>
-<td style="text-align: left;">The column does not change when copied.</td>
+<td style="text-align: center;"><strong>$</strong>A2</td>
+<td>The column does not change</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">A<strong>$</strong>2</td>
+<td>The row does not change</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>$</strong>A<strong>$</strong>2</td>
+<td>Neither the row nor the column change</td>
 </tr>
 </tbody>
 </table>
-
-
-</div>
-</div>
 </section>
-<section id="formula-countif" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: countif</h2>
-<p>=<strong>COUNTIF</strong>(<font color="red">Where are we looking?</font>, <font color="blue">What are we looking for?</font>)</p>
-<p>=COUNTIF(<font color="red">A:A</font>, <font color="blue">“Washington”</font>)</p>
+<section id="keyword-searches" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Keyword Searches</h2>
+<p><code>=IF(SUMPRODUCT(--ISNUMBER(SEARCH(keyword,A2)))&gt;0,"Yes","No")</code></p>
+<ul>
+<li><code>keyword</code> is a named range of the words you are searching for</li>
+<li><code>A2</code> is the cell in the column you’re searching in</li>
+<li><code>SEARCH(keyword,A2)</code> returns the start number of the found string as a number</li>
+<li><code>ISNUMBER(SEARCH(keyword,A2))</code> converts items to either TRUE or FALSE</li>
+<li><code>--ISNUMBER(SEARCH(keyword,A2))</code> coerces the TRUE and FALSE values to 1 and 0</li>
+<li><code>SUMPRODUCT</code> sums the 1’s and 0’s</li>
+<li><code>IF(SUMPRODUCT...)&gt;0,"Yes","No")</code> if the result of <code>SUMPRODUCT</code> is greater than 1, then the formula returns “Yes” (or any other result you want)</li>
+</ul>
 </section>
 <section id="chatgpt-for-formula-help" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>ChatGPT for Formula Help</h2>
@@ -430,37 +461,8 @@
 <section id="chatgpt-for-formula-help-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>ChatGPT for Formula Help</h2>
 
-<img data-src="images/chatgpt-excel-2.png" class="r-stretch quarto-figure-center"></section>
-<section id="formula-keyword-search" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: keyword search</h2>
-<p>Source: ChatGPT</p>
-<p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)</p>
-</section>
-<section id="formula-keyword-search-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: keyword search</h2>
-<p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(<font color="red">Keywords_Range</font>, Cell)))&gt;0, “Found”, “Not Found”)</p>
-<ol type="1">
-<li>Replace <code>Keywords_Range</code> with the actual range of keywords you want to search for. For example, if your keywords are in cells A1 to A10, the range would be <code>A1:A10</code>.</li>
-</ol>
-</section>
-<section id="formula-keyword-search-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: keyword search</h2>
-<p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, <font color="red">Cell</font>)))&gt;0, “Found”, “Not Found”)</p>
-<ol start="2" type="1">
-<li>Replace <code>Cell</code> with the cell reference of the cell in the column you want to search. This is the cell where you want to check if any of the keywords are present. For example, if you want to search in column B, and the first cell is B2, you would use <code>B2</code> as the cell reference.</li>
-</ol>
-</section>
-<section id="formula-keyword-search-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Formula: keyword search</h2>
-<p>Source: ChatGPT</p>
-<p>=IF(SUMPRODUCT(–ISNUMBER(SEARCH(Keywords_Range, Cell)))&gt;0, “Found”, “Not Found”)</p>
-<ol start="3" type="1">
-<li>Enter the formula in the cell where you want the search result to appear.</li>
-</ol>
-<p>The formula will return “Found” if any of the keywords in the range are found in the specified cell, and “Not Found” if none of the keywords are found.</p>
-<p>Note: This formula is case-insensitive, so it will match keywords regardless of their case. If you want case-sensitive matching, you can use the <code>FIND</code> function instead of <code>SEARCH</code> in the formula.</p>
 
-<div class="footer footer-default">
+<img data-src="images/chatgpt-excel-2.png" class="r-stretch quarto-figure-center"><div class="footer footer-default">
 <p><a href="https://mattfarrow1.github.io/apra-intro-to-text-mining/">Introduction to Text Mining</a></p>
 </div>
 </section></section>
