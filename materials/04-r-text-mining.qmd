@@ -18,7 +18,14 @@ editor: visual
 
 # Visualize the Data
 
-## Distribution of ratings
+## Why Visualize?
+
+-   Gives us a sense of the data
+-   See the distribution of the data
+-   Raise questions to explore
+-   Help shape your process
+
+## Distribution of Ratings
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -35,6 +42,8 @@ df <- df %>%
   rename("Park" = Branch)
 ```
 
+What is the distribution of all of the ratings (1-5 scale)?
+
 ```{r}
 #| output-location: column-fragment
 df |> 
@@ -47,7 +56,11 @@ df |>
   theme_minimal()
 ```
 
-## By park (histogram)
+Are there any thoughts or questions this raises?
+
+## Ratings by Park
+
+Here, we've created a stacked bar chart showing the distribution of ratings by park.
 
 ```{r}
 #| output-location: column-fragment
@@ -63,20 +76,28 @@ df |>
   theme_minimal()
 ```
 
-## By park (box plot)
+## Avg Ratings Over Time
 
 ```{r}
 #| output-location: column-fragment
 
 df |> 
-  ggplot(aes(Park, Rating, color = Park)) +
-  geom_boxplot(color = "black") +
-  geom_jitter(alpha = 0.3) +
+  filter(Year_Month != "missing",
+         Rating < 4) |> 
+  mutate(Year_Month = ym(Year_Month),
+         Year = year(Year_Month)) |> 
+  group_by(Park, Year_Month) |> 
+  # summarise(avg_rating = mean(Rating, na.rm = TRUE)) |> 
+  ggplot(aes(x = Year_Month, y = Park)) +
+  ggridges::geom_density_ridges(rel_min_height = 0.01,
+                                scale = 1.5) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   labs(title = "Distribution of Ratings by Park",
-       x = "Rating",
-       y = "Count") +
+       x = "",
+       y = "") +
   theme_minimal()
 ```
+
 
 # Sample Data
 

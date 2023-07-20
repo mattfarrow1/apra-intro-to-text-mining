@@ -871,8 +871,8 @@
     "objectID": "materials/04-r-text-mining.html#distribution-of-ratings",
     "href": "materials/04-r-text-mining.html#distribution-of-ratings",
     "title": "",
-    "section": "Distribution of ratings",
-    "text": "Distribution of ratings"
+    "section": "Distribution of Ratings",
+    "text": "Distribution of Ratings\nWhat is the distribution of all of the ratings (1-5 scale)?\n\nAre there any thoughts or questions this raises?"
   },
   {
     "objectID": "materials/04-r-text-mining.html#by-park-histogram",
@@ -971,5 +971,26 @@
     "title": "",
     "section": "Keyword Searches",
     "text": "Keyword Searches\n=IF(SUMPRODUCT(--ISNUMBER(SEARCH(keyword,A2)))&gt;0,\"Yes\",\"No\")\n\nkeyword is a named range of the words you are searching for\nA2 is the cell in the column you’re searching in\nSEARCH(keyword,A2) returns the start number of the found string as a number\nISNUMBER(SEARCH(keyword,A2)) converts items to either TRUE or FALSE\n--ISNUMBER(SEARCH(keyword,A2)) coerces the TRUE and FALSE values to 1 and 0\nSUMPRODUCT sums the 1’s and 0’s\nIF(SUMPRODUCT...)&gt;0,\"Yes\",\"No\") if the result of SUMPRODUCT is greater than 1, then the formula returns “Yes” (or any other result you want)"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#why-visualize",
+    "href": "materials/04-r-text-mining.html#why-visualize",
+    "title": "",
+    "section": "Why Visualize?",
+    "text": "Why Visualize?\n\nGives us a sense of the data\nSee the distribution of the data\nRaise questions to explore\nHelp shape your process"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-by-park",
+    "href": "materials/04-r-text-mining.html#ratings-by-park",
+    "title": "",
+    "section": "Ratings by Park",
+    "text": "Ratings by Park\nHere, we’ve created a stacked bar chart showing the distribution of ratings by park."
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#avg-ratings-over-time",
+    "href": "materials/04-r-text-mining.html#avg-ratings-over-time",
+    "title": "",
+    "section": "Avg Ratings Over Time",
+    "text": "Avg Ratings Over Time"
   }
 ]
