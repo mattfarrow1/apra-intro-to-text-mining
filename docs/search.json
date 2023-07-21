@@ -992,5 +992,89 @@
     "title": "",
     "section": "Avg Ratings Over Time",
     "text": "Avg Ratings Over Time"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#libraries",
+    "href": "materials/05-python-text-mining.html#libraries",
+    "title": "",
+    "section": "Libraries",
+    "text": "Libraries\n\nimport re\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom collections import Counter\nimport nltk\n# nltk.download('stopwords')\nfrom nltk.corpus import stopwords\n# nltk.download('wordnet')\nfrom nltk.stem import WordNetLemmatizer\nfrom wordcloud import WordCloud\nimport os\nimport warnings\nwarnings.filterwarnings(action = 'ignore')"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#load-data",
+    "href": "materials/05-python-text-mining.html#load-data",
+    "title": "",
+    "section": "Load Data",
+    "text": "Load Data\n\n# What file are in the current directory\nos.listdir()\n\n# Import the data\ndf=pd.read_csv(\"DisneylandReviews.csv\", encoding='latin-1')"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#examine-data",
+    "href": "materials/05-python-text-mining.html#examine-data",
+    "title": "",
+    "section": "Examine Data",
+    "text": "Examine Data\n\ndf.head()\n\n\n\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n0\n670772142\n4\n2019-4\nAustralia\nIf you've ever been to Disneyland anywhere you...\nDisneyland_HongKong\n\n\n1\n670682799\n4\n2019-5\nPhilippines\nIts been a while since d last time we visit HK...\nDisneyland_HongKong\n\n\n2\n670623270\n4\n2019-4\nUnited Arab Emirates\nThanks God it wasn t too hot or too humid wh...\nDisneyland_HongKong\n\n\n3\n670607911\n4\n2019-4\nAustralia\nHK Disneyland is a great compact park. Unfortu...\nDisneyland_HongKong\n\n\n4\n670607296\n4\n2019-4\nUnited Kingdom\nthe location is not in the city, took around 1...\nDisneyland_HongKong"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#examine-data-1",
+    "href": "materials/05-python-text-mining.html#examine-data-1",
+    "title": "",
+    "section": "Examine Data",
+    "text": "Examine Data\n\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 42656 entries, 0 to 42655\nData columns (total 6 columns):\n #   Column             Non-Null Count  Dtype \n---  ------             --------------  ----- \n 0   Review_ID          42656 non-null  int64 \n 1   Rating             42656 non-null  int64 \n 2   Year_Month         42656 non-null  object\n 3   Reviewer_Location  42656 non-null  object\n 4   Review_Text        42656 non-null  object\n 5   Branch             42656 non-null  object\ndtypes: int64(2), object(4)\nmemory usage: 2.0+ MB"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#data-info",
+    "href": "materials/05-python-text-mining.html#data-info",
+    "title": "",
+    "section": "Data Info",
+    "text": "Data Info\n\nprint (\"Rows     : \" ,df.shape[0])\nprint (\"Columns  : \" ,df.shape[1])\nprint (\"\\nFeatures : \\n\" ,df.columns.tolist())\nprint (\"\\nMissing values :  \", df.isnull().sum().values.sum())\nprint (\"\\nUnique values :  \\n\",df.nunique())\n\nRows     :  42656\nColumns  :  6\n\nFeatures : \n ['Review_ID', 'Rating', 'Year_Month', 'Reviewer_Location', 'Review_Text', 'Branch']\n\nMissing values :   0\n\nUnique values :  \n Review_ID            42636\nRating                   5\nYear_Month             112\nReviewer_Location      162\nReview_Text          42632\nBranch                   3\ndtype: int64"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#sample-the-data",
+    "href": "materials/05-python-text-mining.html#sample-the-data",
+    "title": "",
+    "section": "Sample the Data",
+    "text": "Sample the Data\n\nnp.random.seed(42)\ndf=df.sample(n=1000)"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#examine-a-review",
+    "href": "materials/05-python-text-mining.html#examine-a-review",
+    "title": "",
+    "section": "Examine a Review",
+    "text": "Examine a Review\n\ndf.loc[:,'Review_Text'].values[10]\n\n'A very good once in a lifetime experience. Great parade with music and Disney characters. Many people so get here early. Also for the parade.'"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#prep-data",
+    "href": "materials/05-python-text-mining.html#prep-data",
+    "title": "",
+    "section": "Prep Data",
+    "text": "Prep Data\n\n# Convert to lowercase\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))\ndf['Review_Text'].head()\n\n31092    disneyland is so beautiful and large.to see al...\n28105    the lines for rides are too long. yes, the fas...\n1121     loved hong kong disneyland although it is much...\n17687    love disneyland! we are annual pass holders an...\n23059    the california adventure park is much improved...\nName: Review_Text, dtype: object\n\n\n\n# Remove punctuation\ndf['Review_Text'] = df['Review_Text'].str.replace('[^\\w\\s]', '')"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#remove-stop-words",
+    "href": "materials/05-python-text-mining.html#remove-stop-words",
+    "title": "",
+    "section": "Remove Stop Words",
+    "text": "Remove Stop Words\n\nstop = stopwords.words('english')\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(x for x in x.split() if x not in stop))\ndf['Review_Text'].head()\n\n31092    disneyland beautiful large.to see need stay le...\n28105    lines rides long. yes, fast passes help little...\n1121     loved hong kong disneyland although much small...\n17687    love disneyland! annual pass holders love nost...\n23059    california adventure park much improved additi...\nName: Review_Text, dtype: object"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#lemmatizing",
+    "href": "materials/05-python-text-mining.html#lemmatizing",
+    "title": "",
+    "section": "Lemmatizing",
+    "text": "Lemmatizing\n\nlemmatizer = WordNetLemmatizer()\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(lemmatizer.lemmatize(word) for word in x.split()))\ndf['Review_Text'].head()\n\n31092    disneyland beautiful large.to see need stay le...\n28105    line ride long. yes, fast pass help little sta...\n1121     loved hong kong disneyland although much small...\n17687    love disneyland! annual pas holder love nostal...\n23059    california adventure park much improved additi...\nName: Review_Text, dtype: object"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#most-common-words",
+    "href": "materials/05-python-text-mining.html#most-common-words",
+    "title": "",
+    "section": "Most Common Words",
+    "text": "Most Common Words\n\nmost_common = Counter(' '.join(df['Review_Text']).split()).most_common(50)\nmost_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])\nplt.figure(figsize = (15,7))\nsns.barplot(data = most_common_df, x = 'Words', y = 'Freq')\nplt.title('Most Common words')\nplt.xticks(rotation = 60)\nplt.show()"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#word-cloud",
+    "href": "materials/05-python-text-mining.html#word-cloud",
+    "title": "",
+    "section": "Word Cloud",
+    "text": "Word Cloud\n\nword_index = Counter(\" \".join(df['Review_Text']).split())\nw_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)\nplt.figure(figsize = (20,18))\nplt.imshow(w_cloud)\nplt.axis('off')\nplt.show()\n\n\n\n\n\n\nIntroduction to Text Mining"
   }
 ]

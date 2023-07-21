@@ -13,10 +13,151 @@ format:
       data-background-size: contain
       data-background-opacity: "1"
 editor: visual
+jupyter: python3
 ---
 
 # Python
 
-## Python Libraries
+## Libraries
 
-## Recreating R Work
+```{python}
+#| echo: true
+
+import re
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from collections import Counter
+import nltk
+# nltk.download('stopwords')
+from nltk.corpus import stopwords
+# nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+from wordcloud import WordCloud
+import os
+import warnings
+warnings.filterwarnings(action = 'ignore')
+```
+
+## Load Data
+
+```{python}
+#| echo: true
+
+# What file are in the current directory
+os.listdir()
+
+# Import the data
+df=pd.read_csv("DisneylandReviews.csv", encoding='latin-1')
+```
+
+## Examine Data
+
+```{python}
+#| echo: true
+
+df.head()
+```
+
+## Examine Data
+
+```{python}
+#| echo: true
+
+df.info()
+```
+
+## Data Info
+
+```{python}
+#| echo: true
+
+print ("Rows     : " ,df.shape[0])
+print ("Columns  : " ,df.shape[1])
+print ("\nFeatures : \n" ,df.columns.tolist())
+print ("\nMissing values :  ", df.isnull().sum().values.sum())
+print ("\nUnique values :  \n",df.nunique())
+```
+
+## Sample the Data
+
+```{python}
+#| echo: true
+
+np.random.seed(42)
+df=df.sample(n=1000)
+```
+
+## Examine a Review
+
+```{python}
+#| echo: true
+
+df.loc[:,'Review_Text'].values[10]
+```
+
+## Prep Data
+
+```{python}
+#| echo: true
+
+# Convert to lowercase
+df['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))
+df['Review_Text'].head()
+```
+
+```{python}
+#| echo: true
+
+# Remove punctuation
+df['Review_Text'] = df['Review_Text'].str.replace('[^\w\s]', '')
+```
+
+## Remove Stop Words
+
+```{python}
+#| echo: true
+
+stop = stopwords.words('english')
+df['Review_Text'] = df['Review_Text'].apply(lambda x : " ".join(x for x in x.split() if x not in stop))
+df['Review_Text'].head()
+```
+
+## Lemmatizing
+
+```{python}
+#| echo: true
+
+lemmatizer = WordNetLemmatizer()
+df['Review_Text'] = df['Review_Text'].apply(lambda x : " ".join(lemmatizer.lemmatize(word) for word in x.split()))
+df['Review_Text'].head()
+```
+
+## Most Common Words
+
+```{python}
+#| echo: true
+
+most_common = Counter(' '.join(df['Review_Text']).split()).most_common(50)
+most_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])
+plt.figure(figsize = (15,7))
+sns.barplot(data = most_common_df, x = 'Words', y = 'Freq')
+plt.title('Most Common words')
+plt.xticks(rotation = 60)
+plt.show()
+```
+
+## Word Cloud
+
+```{python}
+#| echo: true
+
+word_index = Counter(" ".join(df['Review_Text']).split())
+w_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)
+plt.figure(figsize = (20,18))
+plt.imshow(w_cloud)
+plt.axis('off')
+plt.show()
+```
+
