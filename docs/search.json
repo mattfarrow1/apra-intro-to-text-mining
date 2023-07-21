@@ -1076,5 +1076,40 @@
     "title": "",
     "section": "Word Cloud",
     "text": "Word Cloud\n\nword_index = Counter(\" \".join(df['Review_Text']).split())\nw_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)\nplt.figure(figsize = (20,18))\nplt.imshow(w_cloud)\nplt.axis('off')\nplt.show()\n\n\n\n\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "materials/06-learning-more.html#give-yourself-grace",
+    "href": "materials/06-learning-more.html#give-yourself-grace",
+    "title": "",
+    "section": "Give Yourself Grace",
+    "text": "Give Yourself Grace\n\n\n\n\n\n\n\n“Artwork by @allison_horst.”"
+  },
+  {
+    "objectID": "materials/06-learning-more.html#be-patient",
+    "href": "materials/06-learning-more.html#be-patient",
+    "title": "",
+    "section": "Be Patient",
+    "text": "Be Patient\n\n\n\n\n\n\n\n“Artwork by @allison_horst.”"
+  },
+  {
+    "objectID": "materials/06-learning-more.html#workshop-related-links",
+    "href": "materials/06-learning-more.html#workshop-related-links",
+    "title": "",
+    "section": "Workshop Related Links",
+    "text": "Workshop Related Links\n\nR for Data Science\nText Mining with R\nDisneyland Reviews\nBig Book of R - Text Analysis"
+  },
+  {
+    "objectID": "materials/06-learning-more.html#software-links",
+    "href": "materials/06-learning-more.html#software-links",
+    "title": "",
+    "section": "Software Links",
+    "text": "Software Links\n\nPosit (formerly RStudio)\nComprehensive R Network (CRAN)\nPython"
+  },
+  {
+    "objectID": "materials/06-learning-more.html#other-r-links",
+    "href": "materials/06-learning-more.html#other-r-links",
+    "title": "",
+    "section": "Other R Links",
+    "text": "Other R Links\n\nBig Book of R\nHappy Git with R\nR for Excel Users"
   }
 ]
