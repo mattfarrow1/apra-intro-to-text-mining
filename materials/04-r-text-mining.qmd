@@ -42,10 +42,68 @@ df <- df %>%
   rename("Park" = Branch)
 ```
 
-What is the distribution of all of the ratings (1-5 scale)?
+```{r}
+#| echo: true
+#| output-location: column
+
+df |> 
+  ggplot(aes(Rating)) +
+  geom_bar()
+```
+
+## Distribution of Ratings
 
 ```{r}
-#| output-location: column-fragment
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "4-6"
+
+df |> 
+  ggplot(aes(Rating)) +
+  geom_bar() +
+  labs(title = "Distribution of Ratings",
+       x = "Rating",
+       y = "Count")
+```
+
+## Distribution of Ratings
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "3"
+
+df |> 
+  ggplot(aes(Rating)) +
+  geom_bar(fill = "steelblue", color = "black") +
+  labs(title = "Distribution of Ratings",
+       x = "Rating",
+       y = "Count")
+```
+
+## Distribution of Ratings
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "7"
+
+df |> 
+  ggplot(aes(Rating)) +
+  geom_bar(fill = "steelblue", color = "black") +
+  labs(title = "Distribution of Ratings",
+       x = "Rating",
+       y = "Count") +
+  theme_minimal()
+```
+
+## Distribution of Ratings
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "7"
+
 df |> 
   ggplot(aes(Rating)) +
   geom_bar(fill = "steelblue", color = "black") +
@@ -56,14 +114,17 @@ df |>
   theme_minimal()
 ```
 
+::: {.notes}
 Are there any thoughts or questions this raises?
+:::
 
 ## Ratings by Park
 
-Here, we've created a stacked bar chart showing the distribution of ratings by park.
-
 ```{r}
-#| output-location: column-fragment
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "2-3,5"
+
 df |> 
   ggplot(aes(Rating, fill = Park)) +
   geom_bar(color = "black") +
@@ -72,14 +133,163 @@ df |>
        y = "Count",
        fill = "Park") +
   scale_y_continuous(labels = scales::comma) +
-  scale_fill_discrete() +
   theme_minimal()
 ```
 
-## Avg Ratings Over Time
+## Ratings by Park
 
 ```{r}
-#| output-location: column-fragment
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "10"
+
+df |> 
+  ggplot(aes(Rating, fill = Park)) +
+  geom_bar(color = "black") +
+  labs(title = "Distribution of Ratings by Park",
+       x = "Rating",
+       y = "Count",
+       fill = "Park") +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+## Ratings Over Time
+
+What if we wanted to look at the park ratings over time? What would we need to do?
+
+- Make sure `Year_Month` is a date
+- Group by `Park`
+- Count ratings per year
+
+## Ratings Over Time
+
+```{r}
+#| echo: true
+#| output-location: column
+
+df |> 
+  filter(Year_Month != "missing") |> 
+  mutate(Year_Month = ym(Year_Month),
+         Year = year(Year_Month),
+         Month = month(Year_Month)) |> 
+  group_by(Park) |> 
+  count(Year) |> 
+  rename(Ratings = n)
+```
+
+## Ratings Over Time
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "9-10"
+
+df |> 
+  filter(Year_Month != "missing") |> 
+  mutate(Year_Month = ym(Year_Month),
+         Year = year(Year_Month),
+         Month = month(Year_Month)) |> 
+  group_by(Park) |> 
+  count(Year) |> 
+  rename(Ratings = n) |> 
+  ggplot(aes(Year, Ratings, color = Park)) +
+  geom_line()
+```
+
+## Ratings Over Time
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "11-12"
+
+df |> 
+  filter(Year_Month != "missing") |> 
+  mutate(Year_Month = ym(Year_Month),
+         Year = year(Year_Month),
+         Month = month(Year_Month)) |> 
+  group_by(Park) |> 
+  count(Year) |> 
+  rename(Ratings = n) |> 
+  ggplot(aes(Year, Ratings, color = Park)) +
+  geom_line() +
+  labs(title = "Ratings by Park per Year",
+       x = "Year",
+       y = "Ratings")
+```
+
+## Ratings Over Time
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "14-24"
+
+df |> 
+  filter(Year_Month != "missing") |> 
+  mutate(Year_Month = ym(Year_Month),
+         Year = year(Year_Month),
+         Month = month(Year_Month)) |> 
+  group_by(Park) |> 
+  count(Year) |> 
+  rename(Ratings = n) |> 
+  ggplot(aes(Year, Ratings, color = Park)) +
+  geom_line() +
+  labs(title = "Ratings by Park per Year",
+       x = "Year",
+       y = "Ratings") +
+    scale_x_continuous(breaks = c(2010,
+                                  2011,
+                                  2012,
+                                  2013,
+                                  2014,
+                                  2015,
+                                  2016,
+                                  2017,
+                                  2018,
+                                  2019,
+                                  2020))
+```
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "25"
+
+df |> 
+  filter(Year_Month != "missing") |> 
+  mutate(Year_Month = ym(Year_Month),
+         Year = year(Year_Month),
+         Month = month(Year_Month)) |> 
+  group_by(Park) |> 
+  count(Year) |> 
+  rename(Ratings = n) |> 
+  ggplot(aes(Year, Ratings, color = Park)) +
+  geom_line() +
+  labs(title = "Ratings by Park per Year",
+       x = "Year",
+       y = "Ratings") +
+    scale_x_continuous(breaks = c(2010,
+                                  2011,
+                                  2012,
+                                  2013,
+                                  2014,
+                                  2015,
+                                  2016,
+                                  2017,
+                                  2018,
+                                  2019,
+                                  2020)) +
+  ggthemes::theme_hc()
+```
+
+## Ratings Over Time
+
+```{r}
+#| echo: true
+#| output-location: column
 
 df |> 
   filter(Year_Month != "missing",
@@ -98,13 +308,13 @@ df |>
   theme_minimal()
 ```
 
-
-# Sample Data
+# Sample Prep
 
 ## Sample Review
 
 ```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: column
 
 df$Review_Text[15]
 ```
@@ -112,43 +322,78 @@ df$Review_Text[15]
 ## Convert it to a tibble
 
 ```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: column
 
 sample <- tibble(line = 1, text = df$Review_Text[15])
 sample
 ```
 
+::: aside
+[What is a tibble?](https://tibble.tidyverse.org/reference/tibble.html)
+:::
+
 ## Unnest Tokens
 
+> "This place is HUGE! Definately need more than one day..."
+
+<br>
+
 ```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: column
 
 tidy_sample <- sample |> 
   unnest_tokens(word, text)
-tidy_sample
+
+head(tidy_sample)
 ```
+
+## Advantages of `unnest_tokens`
+
+- splits text into one word/token per row along with the original line number
+- takes care of converting to lowercase
+- removes punctuation
 
 ## Word Count
 
 ```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: column
 
 tidy_sample |> 
   count(word, sort = TRUE) |> 
   head()
+```
+
+## Stop Words
+
+```{r}
+head(stop_words)
 ```
 
 ## Word Count w/o Stop Words
 
 ```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: column
 
 # Word count without stop words
 tidy_sample |> 
-  filter(!word %in% stop_words$word) |> 
+  anti_join(stop_words) |> 
   count(word, sort = TRUE) |> 
   head()
 ```
+
+## `anti_join`
+
+> An anti_join return all rows from the left table where there are not matching values in the right table, keeping just columns from the left table.
+
+![](https://psyteachr.github.io/glossary/images/joins/anti_join.png)
+
+::: aside
+[Source](https://psyteachr.github.io/ads-v1/joins.html#anti_join)
+:::
 
 # Processing the Data
 

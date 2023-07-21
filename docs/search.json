@@ -179,7 +179,7 @@
     "href": "materials/04-r-text-mining.html#sample-review",
     "title": "",
     "section": "Sample Review",
-    "text": "Sample Review\n\n\n[1] \"This place is HUGE! Definately need more than one day. We had 3 children aged 11, 9 & 6 and they loved it. A great variety of rides and attractions for all ages. Food options were fantastic with 3D models of what you were ordering. Staff were fantastic, very helpful. An awesome family experience.\""
+    "text": "Sample Review\n\n\ndf$Review_Text[15]\n\n\n[1] \"This place is HUGE! Definately need more than one day. We had 3 children aged 11, 9 & 6 and they loved it. A great variety of rides and attractions for all ages. Food options were fantastic with 3D models of what you were ordering. Staff were fantastic, very helpful. An awesome family experience.\""
   },
   {
     "objectID": "materials/04-r-text-mining.html#sample-review-1",
@@ -872,7 +872,7 @@
     "href": "materials/04-r-text-mining.html#distribution-of-ratings",
     "title": "",
     "section": "Distribution of Ratings",
-    "text": "Distribution of Ratings\nWhat is the distribution of all of the ratings (1-5 scale)?\n\nAre there any thoughts or questions this raises?"
+    "text": "Distribution of Ratings\n\n\ndf |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#by-park-histogram",
@@ -893,28 +893,28 @@
     "href": "materials/04-r-text-mining.html#convert-it-to-a-tibble",
     "title": "",
     "section": "Convert it to a tibble",
-    "text": "Convert it to a tibble\n\n\n# A tibble: 1 × 2\n   line text                                                                    \n  &lt;dbl&gt; &lt;chr&gt;                                                                   \n1     1 This place is HUGE! Definately need more than one day. We had 3 childre…"
+    "text": "Convert it to a tibble\n\n\nsample &lt;- tibble(line = 1, text = df$Review_Text[15])\nsample\n\n\n# A tibble: 1 × 2\n   line text                                                                    \n  &lt;dbl&gt; &lt;chr&gt;                                                                   \n1     1 This place is HUGE! Definately need more than one day. We had 3 childre…\n\n\n\n\n\nWhat is a tibble?"
   },
   {
     "objectID": "materials/04-r-text-mining.html#unnest-tokens",
     "href": "materials/04-r-text-mining.html#unnest-tokens",
     "title": "",
     "section": "Unnest Tokens",
-    "text": "Unnest Tokens\n\n\n# A tibble: 53 × 2\n    line word      \n   &lt;dbl&gt; &lt;chr&gt;     \n 1     1 this      \n 2     1 place     \n 3     1 is        \n 4     1 huge      \n 5     1 definately\n 6     1 need      \n 7     1 more      \n 8     1 than      \n 9     1 one       \n10     1 day       \n# ℹ 43 more rows"
+    "text": "Unnest Tokens\n\n“This place is HUGE! Definately need more than one day…”\n\n\n\n\ntidy_sample &lt;- sample |&gt; \n  unnest_tokens(word, text)\n\nhead(tidy_sample)\n\n\n# A tibble: 6 × 2\n   line word      \n  &lt;dbl&gt; &lt;chr&gt;     \n1     1 this      \n2     1 place     \n3     1 is        \n4     1 huge      \n5     1 definately\n6     1 need"
   },
   {
     "objectID": "materials/04-r-text-mining.html#word-count",
     "href": "materials/04-r-text-mining.html#word-count",
     "title": "",
     "section": "Word Count",
-    "text": "Word Count\n\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 were          3\n2 and           2\n3 fantastic     2\n4 of            2\n5 11            1\n6 3             1"
+    "text": "Word Count\n\n\ntidy_sample |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 were          3\n2 and           2\n3 fantastic     2\n4 of            2\n5 11            1\n6 3             1"
   },
   {
     "objectID": "materials/04-r-text-mining.html#word-count-wo-stop-words",
     "href": "materials/04-r-text-mining.html#word-count-wo-stop-words",
     "title": "",
     "section": "Word Count w/o Stop Words",
-    "text": "Word Count w/o Stop Words\n\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 fantastic     2\n2 11            1\n3 3             1\n4 3d            1\n5 6             1\n6 9             1"
+    "text": "Word Count w/o Stop Words\n\n\n# Word count without stop words\ntidy_sample |&gt; \n  anti_join(stop_words) |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n\n# A tibble: 6 × 2\n  word          n\n  &lt;chr&gt;     &lt;int&gt;\n1 fantastic     2\n2 11            1\n3 3             1\n4 3d            1\n5 6             1\n6 9             1"
   },
   {
     "objectID": "materials/03-intro-to-r.html#packages-1",
@@ -984,7 +984,7 @@
     "href": "materials/04-r-text-mining.html#ratings-by-park",
     "title": "",
     "section": "Ratings by Park",
-    "text": "Ratings by Park\nHere, we’ve created a stacked bar chart showing the distribution of ratings by park."
+    "text": "Ratings by Park\n\n\ndf |&gt; \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#avg-ratings-over-time",
@@ -1111,5 +1111,103 @@
     "title": "",
     "section": "Other R Links",
     "text": "Other R Links\n\nBig Book of R\nHappy Git with R\nR for Excel Users"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#distribution-of-ratings-1",
+    "href": "materials/04-r-text-mining.html#distribution-of-ratings-1",
+    "title": "",
+    "section": "Distribution of Ratings",
+    "text": "Distribution of Ratings\n\n\ndf |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar() +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#distribution-of-ratings-2",
+    "href": "materials/04-r-text-mining.html#distribution-of-ratings-2",
+    "title": "",
+    "section": "Distribution of Ratings",
+    "text": "Distribution of Ratings\n\n\ndf |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#distribution-of-ratings-3",
+    "href": "materials/04-r-text-mining.html#distribution-of-ratings-3",
+    "title": "",
+    "section": "Distribution of Ratings",
+    "text": "Distribution of Ratings\n\n\ndf |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#distribution-of-ratings-4",
+    "href": "materials/04-r-text-mining.html#distribution-of-ratings-4",
+    "title": "",
+    "section": "Distribution of Ratings",
+    "text": "Distribution of Ratings\n\n\ndf |&gt; \n  ggplot(aes(Rating)) +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal()\n\n\n\n\n\n\n\nAre there any thoughts or questions this raises?"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-by-park-1",
+    "href": "materials/04-r-text-mining.html#ratings-by-park-1",
+    "title": "",
+    "section": "Ratings by Park",
+    "text": "Ratings by Park\n\n\ndf |&gt; \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_y_continuous(labels = scales::comma) +\n  theme_minimal() +\n  theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-over-time",
+    "href": "materials/04-r-text-mining.html#ratings-over-time",
+    "title": "",
+    "section": "Ratings Over Time",
+    "text": "Ratings Over Time\nWhat if we wanted to look at the park ratings over time? What would we need to do?\n\nMake sure Year_Month is a date\nGroup by Park\nCount ratings per year"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-over-time-1",
+    "href": "materials/04-r-text-mining.html#ratings-over-time-1",
+    "title": "",
+    "section": "Ratings Over Time",
+    "text": "Ratings Over Time\n\n\ndf |&gt; \n  filter(Year_Month != \"missing\") |&gt; \n  mutate(Year_Month = ym(Year_Month),\n         Year = year(Year_Month),\n         Month = month(Year_Month)) |&gt; \n  group_by(Park) |&gt; \n  count(Year) |&gt; \n  rename(Ratings = n)\n\n\n# A tibble: 30 × 3\n# Groups:   Park [3]\n   Park        Year Ratings\n   &lt;chr&gt;      &lt;dbl&gt;   &lt;int&gt;\n 1 California  2010      72\n 2 California  2011     953\n 3 California  2012    2310\n 4 California  2013    2328\n 5 California  2014    2643\n 6 California  2015    3239\n 7 California  2016    2800\n 8 California  2017    2064\n 9 California  2018    1501\n10 California  2019     292\n# ℹ 20 more rows"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-over-time-2",
+    "href": "materials/04-r-text-mining.html#ratings-over-time-2",
+    "title": "",
+    "section": "Ratings Over Time",
+    "text": "Ratings Over Time\n\n\ndf |&gt; \n  filter(Year_Month != \"missing\") |&gt; \n  mutate(Year_Month = ym(Year_Month),\n         Year = year(Year_Month),\n         Month = month(Year_Month)) |&gt; \n  group_by(Park) |&gt; \n  count(Year) |&gt; \n  rename(Ratings = n) |&gt; \n  ggplot(aes(Year, Ratings, color = Park)) +\n  geom_line()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-over-time-3",
+    "href": "materials/04-r-text-mining.html#ratings-over-time-3",
+    "title": "",
+    "section": "Ratings Over Time",
+    "text": "Ratings Over Time\n\n\ndf |&gt; \n  filter(Year_Month != \"missing\") |&gt; \n  mutate(Year_Month = ym(Year_Month),\n         Year = year(Year_Month),\n         Month = month(Year_Month)) |&gt; \n  group_by(Park) |&gt; \n  count(Year) |&gt; \n  rename(Ratings = n) |&gt; \n  ggplot(aes(Year, Ratings, color = Park)) +\n  geom_line() +\n  labs(title = \"Ratings by Park per Year\",\n       x = \"Year\",\n       y = \"Ratings\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-over-time-4",
+    "href": "materials/04-r-text-mining.html#ratings-over-time-4",
+    "title": "",
+    "section": "Ratings Over Time",
+    "text": "Ratings Over Time\n\n\ndf |&gt; \n  filter(Year_Month != \"missing\") |&gt; \n  mutate(Year_Month = ym(Year_Month),\n         Year = year(Year_Month),\n         Month = month(Year_Month)) |&gt; \n  group_by(Park) |&gt; \n  count(Year) |&gt; \n  rename(Ratings = n) |&gt; \n  ggplot(aes(Year, Ratings, color = Park)) +\n  geom_line() +\n  labs(title = \"Ratings by Park per Year\",\n       x = \"Year\",\n       y = \"Ratings\") +\n    scale_x_continuous(breaks = c(2010,\n                                  2011,\n                                  2012,\n                                  2013,\n                                  2014,\n                                  2015,\n                                  2016,\n                                  2017,\n                                  2018,\n                                  2019,\n                                  2020))\n\n\n\n\n\n\n\n\ndf |&gt; \n  filter(Year_Month != \"missing\") |&gt; \n  mutate(Year_Month = ym(Year_Month),\n         Year = year(Year_Month),\n         Month = month(Year_Month)) |&gt; \n  group_by(Park) |&gt; \n  count(Year) |&gt; \n  rename(Ratings = n) |&gt; \n  ggplot(aes(Year, Ratings, color = Park)) +\n  geom_line() +\n  labs(title = \"Ratings by Park per Year\",\n       x = \"Year\",\n       y = \"Ratings\") +\n    scale_x_continuous(breaks = c(2010,\n                                  2011,\n                                  2012,\n                                  2013,\n                                  2014,\n                                  2015,\n                                  2016,\n                                  2017,\n                                  2018,\n                                  2019,\n                                  2020)) +\n  ggthemes::theme_hc()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#ratings-over-time-5",
+    "href": "materials/04-r-text-mining.html#ratings-over-time-5",
+    "title": "",
+    "section": "Ratings Over Time",
+    "text": "Ratings Over Time\n\n\ndf |&gt; \n  filter(Year_Month != \"missing\",\n         Rating &lt; 4) |&gt; \n  mutate(Year_Month = ym(Year_Month),\n         Year = year(Year_Month)) |&gt; \n  group_by(Park, Year_Month) |&gt; \n  # summarise(avg_rating = mean(Rating, na.rm = TRUE)) |&gt; \n  ggplot(aes(x = Year_Month, y = Park)) +\n  ggridges::geom_density_ridges(rel_min_height = 0.01,\n                                scale = 1.5) +\n  scale_x_date(date_breaks = \"1 year\", date_labels = \"%Y\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"\",\n       y = \"\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#advantages-of-unnest_tokens",
+    "href": "materials/04-r-text-mining.html#advantages-of-unnest_tokens",
+    "title": "",
+    "section": "Advantages of unnest_tokens",
+    "text": "Advantages of unnest_tokens\n\nsplits text into one word/token per row along with the original line number\ntakes care of converting to lowercase\nremoves punctuation"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#stop-words",
+    "href": "materials/04-r-text-mining.html#stop-words",
+    "title": "",
+    "section": "Stop Words",
+    "text": "Stop Words\n\n\n# A tibble: 6 × 2\n  word      lexicon\n  &lt;chr&gt;     &lt;chr&gt;  \n1 a         SMART  \n2 a's       SMART  \n3 able      SMART  \n4 about     SMART  \n5 above     SMART  \n6 according SMART"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#anti_join",
+    "href": "materials/04-r-text-mining.html#anti_join",
+    "title": "",
+    "section": "anti_join",
+    "text": "anti_join\n\nAn anti_join return all rows from the left table where there are not matching values in the right table, keeping just columns from the left table.\n\n\n\n\nSource"
   }
 ]
