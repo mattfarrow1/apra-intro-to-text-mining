@@ -37,17 +37,24 @@ Everything in this workshop can be done through the virtual project. Scan the QR
 
 {{< qrcode https://posit.cloud/content/6215314 >}}
 
-::: notes
-Discuss the layout of RStudio and what people are looking at.
+## RStudio IDE
+
+> RStudio is an integrated development environment (IDE) for R and Python. It includes a console, syntax-highlighting editor that supports direct code execution, and tools for plotting, history, debugging, and workspace management. RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux).
+
+::: aside
+Source: [Posit](https://posit.co/products/open-source/rstudio/)
 :::
 
-## RStudio IDE/Posit Cloud
+## Why RStudio/Posit?
 
-![](images/rstudio-1.png){fig-align="center" height="500"}
+- RStudio became Posit in July 2022
+- No need for attendees to install anything
+- Everything in one place
+- Multiple language suppot
 
-## RStudio IDE/Posit Cloud
+# {background-image="/materials/images/rstudio-clean.png" background-size="contain"}
 
-![](images/rstudio-2.png){fig-align="center" height="500"}
+# {background-image="/materials/images/rstudio-annotated.png" background-size="contain"}
 
 # Packages
 
@@ -66,16 +73,16 @@ Discuss the layout of RStudio and what people are looking at.
 
 <https://www.tidyverse.org>
 
-## The `tidyverse` Benefits
+## The `tidyverse` benefits
 
 -   Easier to understand for new users
 -   Packages all work together
 -   Can "pipe" instructions together
 -   Covers most frequent use cases
 
-## The Best Benefit *(in my opinion)* {.smaller}
+## The best benefit *(in my opinion)* {.smaller}
 
-![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e4a11b1f-f235-461f-ab73-ce6128c59e49_rw_1920.png?h=a34a4173c717bfbc600a8682d419288e){fig-align="center" height="600"}
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e4a11b1f-f235-461f-ab73-ce6128c59e49_rw_1920.png?h=a34a4173c717bfbc600a8682d419288e){fig-align="center" height="500"}
 
 ::: aside
 "[Artwork by \@allison_horst.](https://allisonhorst.com)"
@@ -89,7 +96,7 @@ Discuss the layout of RStudio and what people are looking at.
 Source: [RStudio Education](https://education.rstudio.com)
 :::
 
-## `dplyr`
+## `dplyr` {.smaller}
 
 -   `mutate()` create variables (columns)
 -   `select()` subset variables
@@ -122,6 +129,7 @@ Source: [Allison Horst](https://allisonhorst.github.io/palmerpenguins/)
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
 library(palmerpenguins)
+library(kableExtra)
 ```
 
 ``` {.r echo="TRUE" code-line-numbers="1,2,3|5,6,7"}
@@ -132,19 +140,24 @@ install.packages("palmerpenguins")
 # Load libraries
 library(tidyverse)
 library(palmerpenguins)
+library(kableExtra) # Optional - only used for presentation tables
 ```
 
-## Examine the data
+## Examine the data {.smaller .hscroll .scrollable}
 
 ```{r}
-#| 
+#| echo: true
 #| output-location: fragment
-palmerpenguins::penguins
+palmerpenguins::penguins |> 
+  head() |> 
+  kable() |> 
+  kable_styling(latex_options = "striped")
 ```
 
-## Examine the data
+## Examine the data {.smaller}
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 glimpse(penguins)
 ```
@@ -159,13 +172,15 @@ colnames(penguins)
 ## What `Species` are in the data?
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 unique(penguins$species)
 ```
 
-## How many are `Male`?
+## How many are `Male`? {.smaller .hscroll .scrollable}
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 filter(penguins, sex == "male")
 ```
@@ -173,32 +188,39 @@ filter(penguins, sex == "male")
 ## How many are `Male` on `Biscoe` island?
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 filter(penguins, sex == "male", island == "biscoe")
 ```
 
 Why no results?
 
-## How many are `Male` on `Biscoe` island?
+## How many are `Male` on `Biscoe` island? {.smaller .hscroll .scrollable}
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 filter(penguins, sex == "male", island == "Biscoe")
 ```
 
-## Chaining functions
+## Chaining functions {.smaller .hscroll .scrollable}
 
 ```{r}
+#| echo: true
+#| output-location: fragment
 penguins |> 
   filter(sex == "female") |> 
-  arrange(flipper_length_mm)
+  arrange(flipper_length_mm) |> 
+  head() |> 
+  kable() |> 
+  kable_styling(latex_options = "striped")
 ```
 
-## Other ways to filer
+## Other ways to filter
 
 - Using Boolean operators
 
-```{r}
+```{.r}
 # Greater than
 penguins |> 
   filter(bill_length_mm > 40)
@@ -208,9 +230,11 @@ penguins |>
   filter(bill_length_mm >= 40)
 ```
 
+## Other ways to filter
+
 - By missing values
 
-```{r}
+```{.r}
 # Flipper length is missing/blank
 penguins |> 
   filter(is.na(flipper_length_mm))
@@ -220,7 +244,7 @@ penguins |>
   filter(!is.na(flipper_length_mm))
 ```
 
-## Making new variables
+## Making new variables {.smaller}
 
 Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long". 
 
@@ -230,12 +254,14 @@ First, let's make a box plot of the flipper length.
 #| output-location: fragment
 penguins |> 
   ggplot(aes(flipper_length_mm)) +
-  geom_boxplot()
+  geom_boxplot() +
+  theme_minimal()
 ```
 
 ## Making new variables
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 penguins |>
   mutate(flipper_length = case_when(
@@ -245,16 +271,21 @@ penguins |>
     flipper_length_mm > 213 ~ "long"
   )) |>
   select(flipper_length_mm, flipper_length) |>
-  head()
+  head() |> 
+  kable() |> 
+  kable_styling(latex_options = "striped")
 ```
 
 ## Summarize data
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 penguins |> 
   group_by(species) |> 
-  summarise(avg_flipper_length = mean(flipper_length_mm))
+  summarise(avg_flipper_length = mean(flipper_length_mm)) |> 
+  kable() |> 
+  kable_styling(latex_options = "striped")
 ```
 
 ## Summarize data
@@ -269,10 +300,12 @@ penguins |>
 ```{r echo=FALSE}
 penguins |> 
   group_by(species) |> 
-  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
+  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE)) |> 
+  kable() |> 
+  kable_styling(latex_options = "striped")
 ```
 
-## Intro to ggplot2
+## ggplot2
 
 ```{r}
 #| output-location: column
@@ -281,7 +314,7 @@ penguins |>
   geom_bar() 
 ```
 
-## Intro to ggplot2
+## ggplot2
 
 ```{r}
 #| output-location: column
@@ -295,17 +328,13 @@ penguins |>
        x = "Bill Length (mm)",
        y = "Flipper Length (mm)",
        color = "") +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "bottom")
 ```
 
-## `tidymodels`
+## `tidymodels` {.smaller}
 
 Although it's not the focus of this workshop, the `tidymodels` packages contains a similar collection of packages devoted to modeling that integrates with the `tidyverse`.
-
-## `tidytext`
-
--   What is it?
--   How does it work?
 
 # The Data
 
@@ -335,41 +364,45 @@ df <- read_csv("DisneylandReviews.csv")
 ## Examine the Data
 
 ```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: column
 str(df)
 ```
 
 ## Examine the Data
 
 ```{r}
-#| output-location: fragment
 glimpse(df)
 ```
 
-## Examine the Data
+## Examine the Data {.smaller .scrollable}
 
 ```{r}
-#| output-location: fragment
-head(df)
+head(df) |> 
+  kable() |> 
+  kable_styling(latex_options = "striped")
+```
+
+## Examine the Data {.smaller .scrollable}
+
+```{r}
+tail(df) |> 
+  kable() |> 
+  kable_styling(latex_options = "striped")
 ```
 
 ## Examine the Data
 
 ```{r}
-#| output-location: fragment
-tail(df)
-```
-
-## Examine the Data
-
-```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: column
 head(df$Reviewer_Location)
 ```
 
 ## Which parks have been reviewed?
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 unique(df$Branch)
 ```
@@ -377,6 +410,7 @@ unique(df$Branch)
 ## Clean up Park Names
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 df <- df %>% 
@@ -392,6 +426,7 @@ unique(df$Park)
 ## Look at our starting data set
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 glimpse(df)
 ```

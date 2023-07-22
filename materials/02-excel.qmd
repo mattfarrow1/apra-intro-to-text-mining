@@ -68,7 +68,7 @@ editor: visual
 -   `2` the column the match is found in
 -   `FALSE` indicates whether you want to match exactly (FALSE) or approximately (TRUE)
 
-## Absolute/Relative References  {.smaller}
+## Absolute/Relative References {.smaller}
 
 -   Relative references **can** move.
 -   Absolute references **can't** move.
@@ -108,4 +108,4 @@ Tell ChatGPT what is is you need assistance with:
 
 ## ChatGPT for Formula Help
 
-![](images/chatgpt-excel-2.png){fig-align="center"}
+![](images/chatgpt-excel-2.png){fig-align="center" height="500"}

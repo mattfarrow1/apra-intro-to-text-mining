@@ -385,6 +385,9 @@
       margin-right: 0; 
     }
   </style>
+  
+  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <meta name="twitter:title" content="Extracting Value from Free Text - ">
 <meta name="twitter:description" content="Apra PD 2023 workshop on text mining">
 <meta name="twitter:image" content="materials/slide templates/Slide1.png">
@@ -444,39 +447,38 @@
 </div>
 <div id="qrcode" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","height":128,"width":128,"colorDark":"#000000","text":"https://posit.cloud/content/6215314"});
+var qrcode = new QRCode("qrcode", {"text":"https://posit.cloud/content/6215314","colorLight":"#ffffff","width":128,"colorDark":"#000000","height":128});
 </script>
     
-<aside class="notes">
-<p>Discuss the layout of RStudio and what people are looking at.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="rstudio-ideposit-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>RStudio IDE/Posit Cloud</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/rstudio-1.png" height="500"></p>
-</figure>
-</div>
-</section>
-<section id="rstudio-ideposit-cloud-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>RStudio IDE/Posit Cloud</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/rstudio-2.png" height="500"></p>
-</figure>
-</div>
+<section id="rstudio-ide" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>RStudio IDE</h2>
+<blockquote>
+<p>RStudio is an integrated development environment (IDE) for R and Python. It includes a console, syntax-highlighting editor that supports direct code execution, and tools for plotting, history, debugging, and workspace management. RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux).</p>
+</blockquote>
+
+<aside><div>
+<p>Source: <a href="https://posit.co/products/open-source/rstudio/">Posit</a></p>
+</div></aside></section>
+<section id="why-rstudioposit" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Why RStudio/Posit?</h2>
+<ul>
+<li>RStudio became Posit in July 2022</li>
+<li>No need for attendees to install anything</li>
+<li>Everything in one place</li>
+<li>Multiple language suppot</li>
+</ul>
 </section></section>
+<section id="section" class="title-slide slide level1 center" data-background-image="../materials/images/rstudio-clean.png" data-background-size="contain">
+<h1></h1>
+
+</section>
+
+<section id="section-1" class="title-slide slide level1 center" data-background-image="../materials/images/rstudio-annotated.png" data-background-size="contain">
+<h1></h1>
+
+</section>
+
 <section>
 <section id="packages" class="title-slide slide level1 center">
 <h1>Packages</h1>
@@ -504,7 +506,7 @@ var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","height":128,"width":1
 <p><a href="https://www.tidyverse.org" class="uri">https://www.tidyverse.org</a></p>
 </section>
 <section id="the-tidyverse-benefits" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>The <code>tidyverse</code> Benefits</h2>
+<h2>The <code>tidyverse</code> benefits</h2>
 <ul>
 <li>Easier to understand for new users</li>
 <li>Packages all work together</li>
@@ -513,10 +515,10 @@ var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","height":128,"width":1
 </ul>
 </section>
 <section id="the-best-benefit-in-my-opinion" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>The Best Benefit <em>(in my opinion)</em></h2>
+<h2>The best benefit <em>(in my opinion)</em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e4a11b1f-f235-461f-ab73-ce6128c59e49_rw_1920.png?h=a34a4173c717bfbc600a8682d419288e" height="600"></p>
+<p><img data-src="https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e4a11b1f-f235-461f-ab73-ce6128c59e49_rw_1920.png?h=a34a4173c717bfbc600a8682d419288e" height="500"></p>
 </figure>
 </div>
 
@@ -534,7 +536,7 @@ var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","height":128,"width":1
 <aside><div>
 <p>Source: <a href="https://education.rstudio.com">RStudio Education</a></p>
 </div></aside></section>
-<section id="dplyr" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="dplyr" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2><code>dplyr</code></h2>
 <ul>
 <li><code>mutate()</code> create variables (columns)</li>
@@ -580,33 +582,106 @@ var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","height":128,"width":1
 <span id="cb1-4"><a href="#cb1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Load libraries</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(kableExtra) <span class="co"># Optional - only used for presentation tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="examine-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="examine-the-data" class="slide level2 smaller hscroll scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the data</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie  Torgersen           39.1          18.7               181        3750
- 2 Adelie  Torgersen           39.5          17.4               186        3800
- 3 Adelie  Torgersen           40.3          18                 195        3250
- 4 Adelie  Torgersen           NA            NA                  NA          NA
- 5 Adelie  Torgersen           36.7          19.3               193        3450
- 6 Adelie  Torgersen           39.3          20.6               190        3650
- 7 Adelie  Torgersen           38.9          17.8               181        3625
- 8 Adelie  Torgersen           39.2          19.6               195        4675
- 9 Adelie  Torgersen           34.1          18.1               193        3475
-10 Adelie  Torgersen           42            20.2               190        4250
-# ℹ 334 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">island</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_length_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">body_mass_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">sex</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.1</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">3750</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.5</td>
+<td style="text-align: right;">17.4</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">40.3</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">3250</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">36.7</td>
+<td style="text-align: right;">19.3</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">3450</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.3</td>
+<td style="text-align: right;">20.6</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">3650</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
-<section id="examine-the-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="examine-the-data-1" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the data</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
@@ -634,15 +709,21 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <section id="what-species-are-in-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>What <code>Species</code> are in the data?</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">unique</span>(penguins<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Adelie    Gentoo    Chinstrap
 Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 </div>
 </section>
-<section id="how-many-are-male" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="how-many-are-male" class="slide level2 smaller hscroll scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>How many are <code>Male</code>?</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 168 × 8
    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -665,6 +746,9 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <section id="how-many-are-male-on-biscoe-island" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>How many are <code>Male</code> on <code>Biscoe</code> island?</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>, island <span class="sc">==</span> <span class="st">"biscoe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 0 × 8
 # ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,
@@ -674,9 +758,12 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 <p>Why no results?</p>
 </section>
-<section id="how-many-are-male-on-biscoe-island-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="how-many-are-male-on-biscoe-island-1" class="slide level2 smaller hscroll scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>How many are <code>Male</code> on <code>Biscoe</code> island?</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>, island <span class="sc">==</span> <span class="st">"Biscoe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 83 × 8
    species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -696,170 +783,271 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 </div>
 </section>
-<section id="chaining-functions" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="chaining-functions" class="slide level2 smaller hscroll scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Chaining functions</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 165 × 8
-   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie    Biscoe             37.9          18.6               172        3150
- 2 Adelie    Biscoe             37.8          18.3               174        3400
- 3 Adelie    Torgers…           40.2          17                 176        3450
- 4 Adelie    Dream              39.5          16.7               178        3250
- 5 Adelie    Dream              33.1          16.1               178        2900
- 6 Chinstrap Dream              46.1          18.2               178        3250
- 7 Adelie    Dream              42.2          18.5               180        3550
- 8 Adelie    Torgers…           38.9          17.8               181        3625
- 9 Adelie    Dream              37.6          19.3               181        3300
-10 Adelie    Biscoe             36.5          16.6               181        2850
-# ℹ 155 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"female"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">arrange</span>(flipper_length_mm) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">island</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_length_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">body_mass_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">sex</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">37.9</td>
+<td style="text-align: right;">18.6</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: right;">3150</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">37.8</td>
+<td style="text-align: right;">18.3</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">40.2</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: right;">3450</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">39.5</td>
+<td style="text-align: right;">16.7</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">3250</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">33.1</td>
+<td style="text-align: right;">16.1</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">2900</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">46.1</td>
+<td style="text-align: right;">18.2</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">3250</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
-<section id="other-ways-to-filer" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Other ways to filer</h2>
+<section id="other-ways-to-filter" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Other ways to filter</h2>
 <ul>
 <li>Using Boolean operators</li>
 </ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 242 × 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie  Torgersen           40.3          18                 195        3250
- 2 Adelie  Torgersen           42            20.2               190        4250
- 3 Adelie  Torgersen           41.1          17.6               182        3200
- 4 Adelie  Torgersen           42.5          20.7               197        4500
- 5 Adelie  Torgersen           46            21.5               194        4200
- 6 Adelie  Biscoe              40.6          18.6               183        3550
- 7 Adelie  Biscoe              40.5          17.9               187        3200
- 8 Adelie  Biscoe              40.5          18.9               180        3950
- 9 Adelie  Dream               40.9          18.9               184        3900
-10 Adelie  Dream               42.2          18.5               180        3550
-# ℹ 232 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 242 × 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie  Torgersen           40.3          18                 195        3250
- 2 Adelie  Torgersen           42            20.2               190        4250
- 3 Adelie  Torgersen           41.1          17.6               182        3200
- 4 Adelie  Torgersen           42.5          20.7               197        4500
- 5 Adelie  Torgersen           46            21.5               194        4200
- 6 Adelie  Biscoe              40.6          18.6               183        3550
- 7 Adelie  Biscoe              40.5          17.9               187        3200
- 8 Adelie  Biscoe              40.5          18.9               180        3950
- 9 Adelie  Dream               40.9          18.9               184        3900
-10 Adelie  Dream               42.2          18.5               180        3550
-# ℹ 232 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Greater than</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>)</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co"># Greater than or equal to</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;=</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="other-ways-to-filter-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Other ways to filter</h2>
 <ul>
 <li>By missing values</li>
 </ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 8
-  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
-1 Adelie  Torgersen             NA            NA                NA          NA
-2 Gentoo  Biscoe                NA            NA                NA          NA
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 342 × 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie  Torgersen           39.1          18.7               181        3750
- 2 Adelie  Torgersen           39.5          17.4               186        3800
- 3 Adelie  Torgersen           40.3          18                 195        3250
- 4 Adelie  Torgersen           36.7          19.3               193        3450
- 5 Adelie  Torgersen           39.3          20.6               190        3650
- 6 Adelie  Torgersen           38.9          17.8               181        3625
- 7 Adelie  Torgersen           39.2          19.6               195        4675
- 8 Adelie  Torgersen           34.1          18.1               193        3475
- 9 Adelie  Torgersen           42            20.2               190        4250
-10 Adelie  Torgersen           37.8          17.1               186        3300
-# ℹ 332 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Flipper length is missing/blank</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(flipper_length_mm))</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># Flipper length is NOT missing/blank</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="making-new-variables" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="making-new-variables" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
 <p>Now let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.</p>
 <p>First, let’s make a box plot of the flipper length.</p>
 
-<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="making-new-variables-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  flipper_length_mm flipper_length
-              &lt;int&gt; &lt;chr&gt;         
-1               181 short         
-2               186 short         
-3               195 average       
-4                NA &lt;NA&gt;          
-5               193 average       
-6               190 average       </code></pre>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">mutate</span>(<span class="at">flipper_length =</span> <span class="fu">case_when</span>(</span>
+<span id="cb17-3"><a href="#cb17-3"></a>    flipper_length_mm <span class="sc">&lt;</span> <span class="dv">190</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>    flipper_length_mm <span class="sc">&gt;=</span> <span class="dv">190</span> <span class="sc">&amp;</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>      flipper_length_mm <span class="sc">&lt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"average"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6"></a>    flipper_length_mm <span class="sc">&gt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"long"</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="fu">select</span>(flipper_length_mm, flipper_length) <span class="sc">|&gt;</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-10"><a href="#cb17-10"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">flipper_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">short</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">short</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">average</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">average</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">average</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
 <section id="summarize-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Summarize data</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  species   avg_flipper_length
-  &lt;fct&gt;                  &lt;dbl&gt;
-1 Adelie                   NA 
-2 Chinstrap               196.
-3 Gentoo                   NA </code></pre>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm)) <span class="sc">|&gt;</span> </span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">avg_flipper_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: right;">195.8235</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
 <section id="summarize-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Summarize data</h2>
-<div class="sourceCode" id="cb16" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  species   avg_flipper_length
-  &lt;fct&gt;                  &lt;dbl&gt;
-1 Adelie                  190.
-2 Chinstrap               196.
-3 Gentoo                  217.</code></pre>
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">avg_flipper_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: right;">189.9536</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: right;">195.8235</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: right;">217.1870</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
-<section id="intro-to-ggplot2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Intro to ggplot2</h2>
+<section id="ggplot2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>ggplot2</h2>
 
-<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
-<section id="intro-to-ggplot2-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Intro to ggplot2</h2>
+<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section id="ggplot2-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>ggplot2</h2>
 
-<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
-<section id="tidymodels" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<section id="tidymodels" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2><code>tidymodels</code></h2>
 <p>Although it’s not the focus of this workshop, the <code>tidymodels</code> packages contains a similar collection of packages devoted to modeling that integrates with the <code>tidyverse</code>.</p>
-</section>
-<section id="tidytext" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2><code>tidytext</code></h2>
-<ul>
-<li>What is it?</li>
-<li>How does it work?</li>
-</ul>
 </section></section>
 <section>
 <section id="the-data" class="title-slide slide level1 center">
@@ -885,7 +1073,10 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="examine-the-data-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the Data</h2>
-<div class="cell">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...
@@ -906,6 +1097,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
  - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="examine-the-data-4" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the Data</h2>
@@ -922,50 +1114,167 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </div>
 </div>
 </section>
-<section id="examine-the-data-5" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="examine-the-data-5" class="slide level2 smaller scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the Data</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch
-      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; 
-1 670772142      4 2019-4     Australia            If you've ever been t… Disne…
-2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…
-3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…
-4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…
-5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…
-6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…</code></pre>
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Review_ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Rating</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Year_Month</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Reviewer_Location</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Review_Text</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Branch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">670772142</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2019-4</td>
+<td style="text-align: left;">Australia</td>
+<td style="text-align: left;">If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you walk into main street! It has a very familiar feel. One of the rides its a Small World is absolutely fabulous and worth doing. The day we visited was fairly hot and relatively busy but the queues moved fairly well.</td>
+<td style="text-align: left;">Disneyland_HongKong</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">670682799</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2019-5</td>
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA Marvel land!Now they have Iron Man Experience n d Newly open Ant Man n d Wasp!!Ironman .. Great feature n so Exciting, especially d whole scenery of HK (HK central area to Kowloon)!Antman .. Changed by previous Buzz lightyear! More or less d same, but I'm expecting to have something most!!However, my boys like it!!Space Mountain .. Turns into Star Wars!! This 1 is Great!!!For cast members (staffs) .. Felt bit MINUS point from before!!! Just dun feel like its a Disney brand!! Seems more local like Ocean Park or even worst!!They got no SMILING face, but just wanna u to enter n attraction n leave!!Hello this is supposed to be Happiest Place on Earth brand!! But, just really Dont feel it!!Bakery in Main Street now have more attractive delicacies n Disney theme sweets .. These are Good Points!!Last, they also have Starbucks now inside the theme park!!</td>
+<td style="text-align: left;">Disneyland_HongKong</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">670623270</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2019-4</td>
+<td style="text-align: left;">United Arab Emirates</td>
+<td style="text-align: left;">Thanks God it wasn t too hot or too humid when I was visiting the park otherwise it would be a big issue (there is not a lot of shade).I have arrived around 10:30am and left at 6pm. Unfortunately I didn t last until evening parade, but 8.5 hours was too much for me.There is plenty to do and everyone will find something interesting for themselves to enjoy.It wasn t extremely busy and the longest time I had to queue for certain attractions was 45 minutes (which is really not that bad).Although I had an amazing time, I felt a bit underwhelmed with choice of rides and attractions. The park itself is quite small (I was really expecting something grand even the main castle which was closed by the way was quite small).The food options are good, few coffee shops (including Starbucks) and plenty of gift shops. There was no issue with toilets as they are everywhere.All together it was a great day out and I really enjoyed it.</td>
+<td style="text-align: left;">Disneyland_HongKong</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">670607911</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2019-4</td>
+<td style="text-align: left;">Australia</td>
+<td style="text-align: left;">HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at present so a number of areas are closed off (including the famous castle) If you go midweek, it is not too crowded and certainly no where near as bus as LA Disneyland. We did notice on this visit that prices for food, drinks etc have really gone through the roof so be prepared to pay top dollar for snacks (and avoid the souvenir shops if you can) Regardless, kids will love it.</td>
+<td style="text-align: left;">Disneyland_HongKong</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">670607296</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2019-4</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">the location is not in the city, took around 1 hour from Kowlon, my kids like disneyland so much, everything is fine. but its really crowded and hot in Hong Kong</td>
+<td style="text-align: left;">Disneyland_HongKong</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">670591897</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">2019-4</td>
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">Have been to Disney World, Disneyland Anaheim and Tokyo Disneyland but I feel that Disneyland Hong Kong is really too small to be called a Disneyland. It has way too few rides and attractions. Souvenirs, food and even entrance tickets are slightly more expensive than other Disneyland as well. Basically, this park is good only for small children and people who has never been to Disney. The food choices were acceptable, mostly fast food, and not too expensive. Bottled water, however, was VERY expensive but they do have water fountains around for you to refill your water bottles. The parade was pretty good. It was crowded not a problem but what was the problem was the people were just so rude, the pushing and shoving cutting in lines for the rides, gift shops, food stands was just to much to take. forget trying to see one of the shows its a free for all for seats, i don't see how Disney can let this happen, it was by far the worst managed Disney property.</td>
+<td style="text-align: left;">Disneyland_HongKong</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
-<section id="examine-the-data-6" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="examine-the-data-6" class="slide level2 smaller scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the Data</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch
-      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; 
-1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…
-2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…
-3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…
-4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…
-5   1618637      4 missing    United States     This hotel, part of the … Disne…
-6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…</code></pre>
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Review_ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Rating</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Year_Month</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Reviewer_Location</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Review_Text</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Branch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1879452</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">missing</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">Did the kids free trip last week in March no crowds great weather. Stayed at Hotel Cheyenne great value. Lots to see and do. Felt the Magic, bigtime. Breakfast included lots of choices for lunch and diner you get what you pay for. Try Billy Bobs buffet or Disney hotel (make reservations for that one) for a really good evening meal, well worth paying extra for.Everyone spoke good English. Character breakfast great. Always carry a camera and spare film and bottles of water. Loved the parades and shows or shorter lines for rides when parades are on.Also stayed at Golden Tulip Hotel Bussey st George 5 mins down the road. 35 Euros per person per night with breakfast. Across from train station Easy traveling for Paris Hotel gave lots of information on special price train tickets. Good dinner in hotel. Four adults and three kids went on this trip and we all came home happy.</td>
+<td style="text-align: left;">Disneyland_Paris</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1765031</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">missing</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">i went to disneyland paris in july 03 and thought it was brilliant. i visited all the hotels and stayed in the newport bay and also the kyriad hotels. the newport is a really nice hotel within walking distance of the parks. very big hotel. the kyriad is further away but still a really nice hotel..i saw all rooms at all hotels and they are all pretty much the same. thought the parks were brill and as it was july didn't really have to queue that much i thought. the food was the most expensive thing there. i did the character breakfast which is a must especially if you have young kids and also did buffalo bills which is a really good night. stayed up til late in the nightclub which i didn't think was expensive at all and it was free entry as we were staying in the disney hotel.. altogether a really good 4 nts that we were there even better that it was all free!!!!!! can't wait to go back</td>
+<td style="text-align: left;">Disneyland_Paris</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1659553</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">missing</td>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: left;">2 adults and 1 child of 11 visited Disneyland Paris beginning of Feb 04 and had an absolute fantastic time.We went on a Thursday for 3 nights and there were no queues until the Saturday when lots more people seemed to arrive.We stayed in the Sequioa Lodge which was really nice, drinks in the hotel were pretty expensive but we were expecting that and found it cheaper to buy alcohol from the in hotel shop!!The rides were fantastic much better than i ever expected and we did the park 1 day and the studios 1 day then anything that we wanted to do again we did on the 3rd day.The parades were amazing and i would highly recommend that you try and fit time in to watch at least the fantallusion show of an evening as it's just magical.Yes i agree with some of the other reviews that things were expensive but what theme park can you go to where prices are reasonable????All in all we had an absolute magical time, but would recommend that if you want to fit everything in go mid week and try to avoid childrens holidays.</td>
+<td style="text-align: left;">Disneyland_Paris</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1645894</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">missing</td>
+<td style="text-align: left;">South Africa</td>
+<td style="text-align: left;">My eleven year old daughter and myself went to visit my son in London and we decided to go on to Disneyland Paris. We stayed for two nights and three days at the Hotel Du Moulon, which was great value for money and close to Disneyland. The highlight of our stay was the Walt Disney Studios. Unfortunately, by the third day we had to rush to see everything, so I would suggest three nights and four days to do and see all. We went in May, which I would recommend to all, as the lines on most rides were not very long and the weather is also good.Colleen Smit</td>
+<td style="text-align: left;">Disneyland_Paris</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1618637</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">missing</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">This hotel, part of the Disneyland Paris complex, is a wonderful place for families. Since we have 3 kids, we needed a room with a crew area . This consisted of a nice bath with separate toilet area from the shower tub, a large room with TV and 2 double beds, plus a smaller room with bunk beds and a 2nd TV. The rate was reasonable and included unlimited entry to the park. Also included was a wonderful breakfast. The service was fantastic. The only drawback throughout Europe was the size of their bath cloths. They are much too large. Larger than our hand towels. Carry your own wash cloths with you!</td>
+<td style="text-align: left;">Disneyland_Paris</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1536786</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">missing</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">I went to the Disneyparis resort, in 1996, with a small child. The minute you enter, the transport to disneyland paris, you are treated like a special guest. The compnay really know how to treat there guest from start to finsh. We arrive at the disneyland resort. The hotels are out of this world, like a storybook coming alive, in front of your eyes. The hotel Santa Fa, is based around a mexico villiage, all rooms are themed in a mexico style. Large beds and large rooms. the one disadvantage is no swimming pool, which would be have been great in a french climate( we went in June) 90 100 degrees everyday. the hotel has playgrounds and themed facilities. There is a nice walk to the disneyland parks and boardwalks. It takes around 20 mins on foot.We are revisting Disneyland paris resort in 2004, I would like to stay at this hotel, very friendly and helpful. It is a change from beach resort, with magic and fun as a added extra, disney magic is never forgotten,. Yours michelle Pilling</td>
+<td style="text-align: left;">Disneyland_Paris</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
 <section id="examine-the-data-7" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the Data</h2>
-<div class="cell">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">head</span>(df<span class="sc">$</span>Reviewer_Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Australia"            "Philippines"          "United Arab Emirates"
 [4] "Australia"            "United Kingdom"       "Singapore"           </code></pre>
+</div>
 </div>
 </div>
 </section>
 <section id="which-parks-have-been-reviewed" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Which parks have been reviewed?</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Branch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Disneyland_HongKong"   "Disneyland_California" "Disneyland_Paris"     </code></pre>
 </div>
@@ -974,6 +1283,16 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 <section id="clean-up-park-names" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Clean up Park Names</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">mutate</span>(<span class="at">Branch =</span> <span class="fu">case_match</span>(Branch, </span>
+<span id="cb27-3"><a href="#cb27-3"></a>                             <span class="st">"Disneyland_California"</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4"></a>                             <span class="st">"Disneyland_HongKong"</span> <span class="sc">~</span> <span class="st">"Hong Kong"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5"></a>                             <span class="st">"Disneyland_Paris"</span> <span class="sc">~</span> <span class="st">"Paris"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">rename</span>(<span class="st">"Park"</span> <span class="ot">=</span> Branch)</span>
+<span id="cb27-7"><a href="#cb27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="fu">unique</span>(df<span class="sc">$</span>Park)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Hong Kong"  "California" "Paris"     </code></pre>
 </div>
@@ -982,6 +1301,9 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 <section id="look-at-our-starting-data-set" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Look at our starting data set</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 42,656
 Columns: 6

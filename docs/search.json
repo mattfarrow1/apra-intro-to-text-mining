@@ -466,7 +466,7 @@
     "href": "materials/03-intro-to-r.html#getting-started-1",
     "title": "",
     "section": "Getting Started",
-    "text": "Getting Started\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started.\n\n\n\n\n\n    \n\nDiscuss the layout of RStudio and what people are looking at."
+    "text": "Getting Started\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started."
   },
   {
     "objectID": "materials/03-intro-to-r.html#packages",
@@ -578,21 +578,21 @@
     "href": "materials/03-intro-to-r.html#rstudio-ideposit-cloud",
     "title": "",
     "section": "RStudio IDE/Posit Cloud",
-    "text": "RStudio IDE/Posit Cloud"
+    "text": "RStudio IDE/Posit Cloud\n{background-image=“/materials/images/rstudio-clean.png” background-size=“contain”}"
   },
   {
     "objectID": "materials/03-intro-to-r.html#rstudio-ideposit-cloud-1",
     "href": "materials/03-intro-to-r.html#rstudio-ideposit-cloud-1",
     "title": "",
     "section": "RStudio IDE/Posit Cloud",
-    "text": "RStudio IDE/Posit Cloud"
+    "text": "RStudio IDE/Posit Cloud\n{background-image=“/materials/images/rstudio-annotated.png” background-size=“contain”}"
   },
   {
     "objectID": "materials/02-excel.html#chatgpt-for-formula-help-1",
     "href": "materials/02-excel.html#chatgpt-for-formula-help-1",
     "title": "",
     "section": "ChatGPT for Formula Help",
-    "text": "ChatGPT for Formula Help\n\n\n\nIntroduction to Text Mining"
+    "text": "ChatGPT for Formula Help\n\n\n\n\n\n\n\nIntroduction to Text Mining"
   },
   {
     "objectID": "workshop-materials.html",
@@ -626,8 +626,8 @@
     "objectID": "materials/03-intro-to-r.html#the-tidyverse-benefits",
     "href": "materials/03-intro-to-r.html#the-tidyverse-benefits",
     "title": "",
-    "section": "The tidyverse Benefits",
-    "text": "The tidyverse Benefits\n\nEasier to understand for new users\nPackages all work together\nCan “pipe” instructions together\nCovers most frequent use cases"
+    "section": "The tidyverse benefits",
+    "text": "The tidyverse benefits\n\nEasier to understand for new users\nPackages all work together\nCan “pipe” instructions together\nCovers most frequent use cases"
   },
   {
     "objectID": "materials/03-intro-to-r.html#the-tidyverse-packages",
@@ -661,8 +661,8 @@
     "objectID": "materials/03-intro-to-r.html#the-best-benefit-in-my-opinion",
     "href": "materials/03-intro-to-r.html#the-best-benefit-in-my-opinion",
     "title": "",
-    "section": "The Best Benefit (in my opinion)",
-    "text": "The Best Benefit (in my opinion)\n\n\n\n\n\n\n\n“Artwork by @allison_horst.”"
+    "section": "The best benefit (in my opinion)",
+    "text": "The best benefit (in my opinion)\n\n\n\n\n\n\n\n“Artwork by @allison_horst.”"
   },
   {
     "objectID": "materials/03-intro-to-r.html#dplyr-1",
@@ -697,14 +697,14 @@
     "href": "materials/03-intro-to-r.html#examine-the-data",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "Examine the data\n\npalmerpenguins::penguins |&gt; \n  head() |&gt; \n  kable() |&gt; \n  kable_styling(latex_options = \"striped\")\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n2007\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-1",
     "href": "materials/03-intro-to-r.html#examine-the-data-1",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+    "text": "Examine the data\n\nglimpse(penguins)\n\n\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-2",
@@ -718,21 +718,21 @@
     "href": "materials/03-intro-to-r.html#what-species-are-in-the-data",
     "title": "",
     "section": "What Species are in the data?",
-    "text": "What Species are in the data?\n\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo"
+    "text": "What Species are in the data?\n\nunique(penguins$species)\n\n\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male",
     "href": "materials/03-intro-to-r.html#how-many-are-male",
     "title": "",
     "section": "How many are Male?",
-    "text": "How many are Male?\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "How many are Male?\n\nfilter(penguins, sex == \"male\")\n\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
     "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
     "title": "",
     "section": "How many are Male on Biscoe island?",
-    "text": "How many are Male on Biscoe island?\n\n\n# A tibble: 0 × 8\n# ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,\n#   bill_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;, sex &lt;fct&gt;,\n#   year &lt;int&gt;\n\n\nWhy no results?"
+    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"biscoe\")\n\n\n\n# A tibble: 0 × 8\n# ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,\n#   bill_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;, sex &lt;fct&gt;,\n#   year &lt;int&gt;\n\n\nWhy no results?"
   },
   {
     "objectID": "materials/03-intro-to-r.html#why-no-results",
@@ -746,21 +746,21 @@
     "href": "materials/03-intro-to-r.html#examine-the-data-3",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
+    "text": "Examine the Data\n\n\nstr(df)\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island-1",
     "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island-1",
     "title": "",
     "section": "How many are Male on Biscoe island?",
-    "text": "How many are Male on Biscoe island?\n\n\n# A tibble: 83 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Biscoe           37.7          18.7               180        3600\n 2 Adelie  Biscoe           38.2          18.1               185        3950\n 3 Adelie  Biscoe           38.8          17.2               180        3800\n 4 Adelie  Biscoe           40.6          18.6               183        3550\n 5 Adelie  Biscoe           40.5          18.9               180        3950\n 6 Adelie  Biscoe           40.1          18.9               188        4300\n 7 Adelie  Biscoe           42            19.5               200        4050\n 8 Adelie  Biscoe           41.4          18.6               191        3700\n 9 Adelie  Biscoe           40.6          18.8               193        3800\n10 Adelie  Biscoe           37.6          19.1               194        3750\n# ℹ 73 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "How many are Male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"Biscoe\")\n\n\n\n# A tibble: 83 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Biscoe           37.7          18.7               180        3600\n 2 Adelie  Biscoe           38.2          18.1               185        3950\n 3 Adelie  Biscoe           38.8          17.2               180        3800\n 4 Adelie  Biscoe           40.6          18.6               183        3550\n 5 Adelie  Biscoe           40.5          18.9               180        3950\n 6 Adelie  Biscoe           40.1          18.9               188        4300\n 7 Adelie  Biscoe           42            19.5               200        4050\n 8 Adelie  Biscoe           41.4          18.6               191        3700\n 9 Adelie  Biscoe           40.6          18.8               193        3800\n10 Adelie  Biscoe           37.6          19.1               194        3750\n# ℹ 73 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#chaining-functions",
     "href": "materials/03-intro-to-r.html#chaining-functions",
     "title": "",
     "section": "Chaining functions",
-    "text": "Chaining functions\n\n\n# A tibble: 165 × 8\n   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie    Biscoe             37.9          18.6               172        3150\n 2 Adelie    Biscoe             37.8          18.3               174        3400\n 3 Adelie    Torgers…           40.2          17                 176        3450\n 4 Adelie    Dream              39.5          16.7               178        3250\n 5 Adelie    Dream              33.1          16.1               178        2900\n 6 Chinstrap Dream              46.1          18.2               178        3250\n 7 Adelie    Dream              42.2          18.5               180        3550\n 8 Adelie    Torgers…           38.9          17.8               181        3625\n 9 Adelie    Dream              37.6          19.3               181        3300\n10 Adelie    Biscoe             36.5          16.6               181        2850\n# ℹ 155 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "Chaining functions\n\npenguins |&gt; \n  filter(sex == \"female\") |&gt; \n  arrange(flipper_length_mm) |&gt; \n  head() |&gt; \n  kable() |&gt; \n  kable_styling(latex_options = \"striped\")\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nBiscoe\n37.9\n18.6\n172\n3150\nfemale\n2007\n\n\nAdelie\nBiscoe\n37.8\n18.3\n174\n3400\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.2\n17.0\n176\n3450\nfemale\n2009\n\n\nAdelie\nDream\n39.5\n16.7\n178\n3250\nfemale\n2007\n\n\nAdelie\nDream\n33.1\n16.1\n178\n2900\nfemale\n2008\n\n\nChinstrap\nDream\n46.1\n18.2\n178\n3250\nfemale\n2007"
   },
   {
     "objectID": "materials/03-intro-to-r.html#other-ways-to-filer",
@@ -781,21 +781,21 @@
     "href": "materials/03-intro-to-r.html#making-new-variables-1",
     "title": "",
     "section": "Making new variables",
-    "text": "Making new variables\n\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
+    "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head() |&gt; \n  kable() |&gt; \n  kable_styling(latex_options = \"striped\")\n\n\n\n\n\n\nflipper_length_mm\nflipper_length\n\n\n\n\n181\nshort\n\n\n186\nshort\n\n\n195\naverage\n\n\nNA\nNA\n\n\n193\naverage\n\n\n190\naverage"
   },
   {
     "objectID": "materials/03-intro-to-r.html#summarize-data",
     "href": "materials/03-intro-to-r.html#summarize-data",
     "title": "",
     "section": "Summarize data",
-    "text": "Summarize data\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                   NA \n2 Chinstrap               196.\n3 Gentoo                   NA"
+    "text": "Summarize data\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm)) |&gt; \n  kable() |&gt; \n  kable_styling(latex_options = \"striped\")\n\n\n\n\n\n\nspecies\navg_flipper_length\n\n\n\n\nAdelie\nNA\n\n\nChinstrap\n195.8235\n\n\nGentoo\nNA"
   },
   {
     "objectID": "materials/03-intro-to-r.html#summarize-data-1",
     "href": "materials/03-intro-to-r.html#summarize-data-1",
     "title": "",
     "section": "Summarize data",
-    "text": "Summarize data\n#| output-location: fragment\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                  190.\n2 Chinstrap               196.\n3 Gentoo                  217."
+    "text": "Summarize data\n#| output-location: fragment\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))\n\n\n\n\n\nspecies\navg_flipper_length\n\n\n\n\nAdelie\n189.9536\n\n\nChinstrap\n195.8235\n\n\nGentoo\n217.1870"
   },
   {
     "objectID": "materials/03-intro-to-r.html#intro-to-ggplot2",
@@ -830,42 +830,42 @@
     "href": "materials/03-intro-to-r.html#examine-the-data-5",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; \n1 670772142      4 2019-4     Australia            If you've ever been t… Disne…\n2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…\n3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…\n4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…\n5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…\n6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…"
+    "text": "Examine the Data\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n670772142\n4\n2019-4\nAustralia\nIf you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you walk into main street! It has a very familiar feel. One of the rides its a Small World is absolutely fabulous and worth doing. The day we visited was fairly hot and relatively busy but the queues moved fairly well.\nDisneyland_HongKong\n\n\n670682799\n4\n2019-5\nPhilippines\nIts been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA Marvel land!Now they have Iron Man Experience n d Newly open Ant Man n d Wasp!!Ironman .. Great feature n so Exciting, especially d whole scenery of HK (HK central area to Kowloon)!Antman .. Changed by previous Buzz lightyear! More or less d same, but I'm expecting to have something most!!However, my boys like it!!Space Mountain .. Turns into Star Wars!! This 1 is Great!!!For cast members (staffs) .. Felt bit MINUS point from before!!! Just dun feel like its a Disney brand!! Seems more local like Ocean Park or even worst!!They got no SMILING face, but just wanna u to enter n attraction n leave!!Hello this is supposed to be Happiest Place on Earth brand!! But, just really Dont feel it!!Bakery in Main Street now have more attractive delicacies n Disney theme sweets .. These are Good Points!!Last, they also have Starbucks now inside the theme park!!\nDisneyland_HongKong\n\n\n670623270\n4\n2019-4\nUnited Arab Emirates\nThanks God it wasn t too hot or too humid when I was visiting the park otherwise it would be a big issue (there is not a lot of shade).I have arrived around 10:30am and left at 6pm. Unfortunately I didn t last until evening parade, but 8.5 hours was too much for me.There is plenty to do and everyone will find something interesting for themselves to enjoy.It wasn t extremely busy and the longest time I had to queue for certain attractions was 45 minutes (which is really not that bad).Although I had an amazing time, I felt a bit underwhelmed with choice of rides and attractions. The park itself is quite small (I was really expecting something grand even the main castle which was closed by the way was quite small).The food options are good, few coffee shops (including Starbucks) and plenty of gift shops. There was no issue with toilets as they are everywhere.All together it was a great day out and I really enjoyed it.\nDisneyland_HongKong\n\n\n670607911\n4\n2019-4\nAustralia\nHK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at present so a number of areas are closed off (including the famous castle) If you go midweek, it is not too crowded and certainly no where near as bus as LA Disneyland. We did notice on this visit that prices for food, drinks etc have really gone through the roof so be prepared to pay top dollar for snacks (and avoid the souvenir shops if you can) Regardless, kids will love it.\nDisneyland_HongKong\n\n\n670607296\n4\n2019-4\nUnited Kingdom\nthe location is not in the city, took around 1 hour from Kowlon, my kids like disneyland so much, everything is fine. but its really crowded and hot in Hong Kong\nDisneyland_HongKong\n\n\n670591897\n3\n2019-4\nSingapore\nHave been to Disney World, Disneyland Anaheim and Tokyo Disneyland but I feel that Disneyland Hong Kong is really too small to be called a Disneyland. It has way too few rides and attractions. Souvenirs, food and even entrance tickets are slightly more expensive than other Disneyland as well. Basically, this park is good only for small children and people who has never been to Disney. The food choices were acceptable, mostly fast food, and not too expensive. Bottled water, however, was VERY expensive but they do have water fountains around for you to refill your water bottles. The parade was pretty good. It was crowded not a problem but what was the problem was the people were just so rude, the pushing and shoving cutting in lines for the rides, gift shops, food stands was just to much to take. forget trying to see one of the shows its a free for all for seats, i don't see how Disney can let this happen, it was by far the worst managed Disney property.\nDisneyland_HongKong"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-6",
     "href": "materials/03-intro-to-r.html#examine-the-data-6",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; \n1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…\n2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…\n3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…\n4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…\n5   1618637      4 missing    United States     This hotel, part of the … Disne…\n6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…"
+    "text": "Examine the Data\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n1879452\n5\nmissing\nUnited Kingdom\nDid the kids free trip last week in March no crowds great weather. Stayed at Hotel Cheyenne great value. Lots to see and do. Felt the Magic, bigtime. Breakfast included lots of choices for lunch and diner you get what you pay for. Try Billy Bobs buffet or Disney hotel (make reservations for that one) for a really good evening meal, well worth paying extra for.Everyone spoke good English. Character breakfast great. Always carry a camera and spare film and bottles of water. Loved the parades and shows or shorter lines for rides when parades are on.Also stayed at Golden Tulip Hotel Bussey st George 5 mins down the road. 35 Euros per person per night with breakfast. Across from train station Easy traveling for Paris Hotel gave lots of information on special price train tickets. Good dinner in hotel. Four adults and three kids went on this trip and we all came home happy.\nDisneyland_Paris\n\n\n1765031\n5\nmissing\nUnited Kingdom\ni went to disneyland paris in july 03 and thought it was brilliant. i visited all the hotels and stayed in the newport bay and also the kyriad hotels. the newport is a really nice hotel within walking distance of the parks. very big hotel. the kyriad is further away but still a really nice hotel..i saw all rooms at all hotels and they are all pretty much the same. thought the parks were brill and as it was july didn't really have to queue that much i thought. the food was the most expensive thing there. i did the character breakfast which is a must especially if you have young kids and also did buffalo bills which is a really good night. stayed up til late in the nightclub which i didn't think was expensive at all and it was free entry as we were staying in the disney hotel.. altogether a really good 4 nts that we were there even better that it was all free!!!!!! can't wait to go back\nDisneyland_Paris\n\n\n1659553\n5\nmissing\nCanada\n2 adults and 1 child of 11 visited Disneyland Paris beginning of Feb 04 and had an absolute fantastic time.We went on a Thursday for 3 nights and there were no queues until the Saturday when lots more people seemed to arrive.We stayed in the Sequioa Lodge which was really nice, drinks in the hotel were pretty expensive but we were expecting that and found it cheaper to buy alcohol from the in hotel shop!!The rides were fantastic much better than i ever expected and we did the park 1 day and the studios 1 day then anything that we wanted to do again we did on the 3rd day.The parades were amazing and i would highly recommend that you try and fit time in to watch at least the fantallusion show of an evening as it's just magical.Yes i agree with some of the other reviews that things were expensive but what theme park can you go to where prices are reasonable????All in all we had an absolute magical time, but would recommend that if you want to fit everything in go mid week and try to avoid childrens holidays.\nDisneyland_Paris\n\n\n1645894\n5\nmissing\nSouth Africa\nMy eleven year old daughter and myself went to visit my son in London and we decided to go on to Disneyland Paris. We stayed for two nights and three days at the Hotel Du Moulon, which was great value for money and close to Disneyland. The highlight of our stay was the Walt Disney Studios. Unfortunately, by the third day we had to rush to see everything, so I would suggest three nights and four days to do and see all. We went in May, which I would recommend to all, as the lines on most rides were not very long and the weather is also good.Colleen Smit\nDisneyland_Paris\n\n\n1618637\n4\nmissing\nUnited States\nThis hotel, part of the Disneyland Paris complex, is a wonderful place for families. Since we have 3 kids, we needed a room with a crew area . This consisted of a nice bath with separate toilet area from the shower tub, a large room with TV and 2 double beds, plus a smaller room with bunk beds and a 2nd TV. The rate was reasonable and included unlimited entry to the park. Also included was a wonderful breakfast. The service was fantastic. The only drawback throughout Europe was the size of their bath cloths. They are much too large. Larger than our hand towels. Carry your own wash cloths with you!\nDisneyland_Paris\n\n\n1536786\n4\nmissing\nUnited Kingdom\nI went to the Disneyparis resort, in 1996, with a small child. The minute you enter, the transport to disneyland paris, you are treated like a special guest. The compnay really know how to treat there guest from start to finsh. We arrive at the disneyland resort. The hotels are out of this world, like a storybook coming alive, in front of your eyes. The hotel Santa Fa, is based around a mexico villiage, all rooms are themed in a mexico style. Large beds and large rooms. the one disadvantage is no swimming pool, which would be have been great in a french climate( we went in June) 90 100 degrees everyday. the hotel has playgrounds and themed facilities. There is a nice walk to the disneyland parks and boardwalks. It takes around 20 mins on foot.We are revisting Disneyland paris resort in 2004, I would like to stay at this hotel, very friendly and helpful. It is a change from beach resort, with magic and fun as a added extra, disney magic is never forgotten,. Yours michelle Pilling\nDisneyland_Paris"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-7",
     "href": "materials/03-intro-to-r.html#examine-the-data-7",
     "title": "",
     "section": "Examine the Data",
-    "text": "Examine the Data\n\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
+    "text": "Examine the Data\n\n\nhead(df$Reviewer_Location)\n\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
     "href": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
     "title": "",
     "section": "Which parks have been reviewed?",
-    "text": "Which parks have been reviewed?\n\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
+    "text": "Which parks have been reviewed?\n\nunique(df$Branch)\n\n\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#clean-up-park-names",
     "href": "materials/03-intro-to-r.html#clean-up-park-names",
     "title": "",
     "section": "Clean up Park Names",
-    "text": "Clean up Park Names\n\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
+    "text": "Clean up Park Names\n\ndf &lt;- df %&gt;% \n  mutate(Branch = case_match(Branch, \n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n  rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
     "href": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
     "title": "",
     "section": "Look at our starting data set",
-    "text": "Look at our starting data set\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Park              &lt;chr&gt; \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", …\n\n\n\n\nIntroduction to Text Mining"
+    "text": "Look at our starting data set\n\nglimpse(df)\n\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Park              &lt;chr&gt; \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", …\n\n\n\n\nIntroduction to Text Mining"
   },
   {
     "objectID": "materials/04-r-text-mining.html#distribution-of-ratings",
@@ -928,7 +928,7 @@
     "href": "materials/03-intro-to-r.html#installing-and-loading-packages",
     "title": "",
     "section": "Installing and loading packages",
-    "text": "Installing and loading packages\n# Install libraries\ninstall.packages(\"tidyverse\")\ninstall.packages(\"palmerpenguins\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
+    "text": "Installing and loading packages\n# Install libraries\ninstall.packages(\"tidyverse\")\ninstall.packages(\"palmerpenguins\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(palmerpenguins)\nlibrary(kableExtra) # Optional - only used for presentation tables"
   },
   {
     "objectID": "materials/03-intro-to-r.html#the-data-1",
@@ -1209,5 +1209,68 @@
     "title": "",
     "section": "anti_join",
     "text": "anti_join\n\nAn anti_join return all rows from the left table where there are not matching values in the right table, keeping just columns from the left table.\n\n\n\n\nSource"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#rstudio-ide",
+    "href": "materials/03-intro-to-r.html#rstudio-ide",
+    "title": "",
+    "section": "RStudio IDE",
+    "text": "RStudio IDE\n\nRStudio is an integrated development environment (IDE) for R and Python. It includes a console, syntax-highlighting editor that supports direct code execution, and tools for plotting, history, debugging, and workspace management. RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux).\n\n\n\nSource: Posit"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#why-rstudioposit",
+    "href": "materials/03-intro-to-r.html#why-rstudioposit",
+    "title": "",
+    "section": "Why RStudio/Posit?",
+    "text": "Why RStudio/Posit?\n\nRStudio became Posit in July 2022\nNo need for attendees to install anything\nEverything in one place\nMultiple language suppot"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#other-ways-to-filter",
+    "href": "materials/03-intro-to-r.html#other-ways-to-filter",
+    "title": "",
+    "section": "Other ways to filter",
+    "text": "Other ways to filter\n\nUsing Boolean operators\n\n# Greater than\npenguins |&gt; \n  filter(bill_length_mm &gt; 40)\n\n# Greater than or equal to\npenguins |&gt; \n  filter(bill_length_mm &gt;= 40)"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#other-ways-to-filter-1",
+    "href": "materials/03-intro-to-r.html#other-ways-to-filter-1",
+    "title": "",
+    "section": "Other ways to filter",
+    "text": "Other ways to filter\n\nBy missing values\n\n# Flipper length is missing/blank\npenguins |&gt; \n  filter(is.na(flipper_length_mm))\n\n# Flipper length is NOT missing/blank\npenguins |&gt; \n  filter(!is.na(flipper_length_mm))"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#ggplot2",
+    "href": "materials/03-intro-to-r.html#ggplot2",
+    "title": "",
+    "section": "ggplot2",
+    "text": "ggplot2"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#ggplot2-1",
+    "href": "materials/03-intro-to-r.html#ggplot2-1",
+    "title": "",
+    "section": "ggplot2",
+    "text": "ggplot2"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-headdf",
+    "href": "materials/03-intro-to-r.html#examine-the-data-headdf",
+    "title": "",
+    "section": "Examine the Data (head(df))",
+    "text": "Examine the Data (head(df))\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n670772142\n4\n2019-4\nAustralia\nIf you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you walk into main street! It has a very familiar feel. One of the rides its a Small World is absolutely fabulous and worth doing. The day we visited was fairly hot and relatively busy but the queues moved fairly well.\nDisneyland_HongKong\n\n\n670682799\n4\n2019-5\nPhilippines\nIts been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA Marvel land!Now they have Iron Man Experience n d Newly open Ant Man n d Wasp!!Ironman .. Great feature n so Exciting, especially d whole scenery of HK (HK central area to Kowloon)!Antman .. Changed by previous Buzz lightyear! More or less d same, but I'm expecting to have something most!!However, my boys like it!!Space Mountain .. Turns into Star Wars!! This 1 is Great!!!For cast members (staffs) .. Felt bit MINUS point from before!!! Just dun feel like its a Disney brand!! Seems more local like Ocean Park or even worst!!They got no SMILING face, but just wanna u to enter n attraction n leave!!Hello this is supposed to be Happiest Place on Earth brand!! But, just really Dont feel it!!Bakery in Main Street now have more attractive delicacies n Disney theme sweets .. These are Good Points!!Last, they also have Starbucks now inside the theme park!!\nDisneyland_HongKong\n\n\n670623270\n4\n2019-4\nUnited Arab Emirates\nThanks God it wasn t too hot or too humid when I was visiting the park otherwise it would be a big issue (there is not a lot of shade).I have arrived around 10:30am and left at 6pm. Unfortunately I didn t last until evening parade, but 8.5 hours was too much for me.There is plenty to do and everyone will find something interesting for themselves to enjoy.It wasn t extremely busy and the longest time I had to queue for certain attractions was 45 minutes (which is really not that bad).Although I had an amazing time, I felt a bit underwhelmed with choice of rides and attractions. The park itself is quite small (I was really expecting something grand even the main castle which was closed by the way was quite small).The food options are good, few coffee shops (including Starbucks) and plenty of gift shops. There was no issue with toilets as they are everywhere.All together it was a great day out and I really enjoyed it.\nDisneyland_HongKong\n\n\n670607911\n4\n2019-4\nAustralia\nHK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at present so a number of areas are closed off (including the famous castle) If you go midweek, it is not too crowded and certainly no where near as bus as LA Disneyland. We did notice on this visit that prices for food, drinks etc have really gone through the roof so be prepared to pay top dollar for snacks (and avoid the souvenir shops if you can) Regardless, kids will love it.\nDisneyland_HongKong\n\n\n670607296\n4\n2019-4\nUnited Kingdom\nthe location is not in the city, took around 1 hour from Kowlon, my kids like disneyland so much, everything is fine. but its really crowded and hot in Hong Kong\nDisneyland_HongKong\n\n\n670591897\n3\n2019-4\nSingapore\nHave been to Disney World, Disneyland Anaheim and Tokyo Disneyland but I feel that Disneyland Hong Kong is really too small to be called a Disneyland. It has way too few rides and attractions. Souvenirs, food and even entrance tickets are slightly more expensive than other Disneyland as well. Basically, this park is good only for small children and people who has never been to Disney. The food choices were acceptable, mostly fast food, and not too expensive. Bottled water, however, was VERY expensive but they do have water fountains around for you to refill your water bottles. The parade was pretty good. It was crowded not a problem but what was the problem was the people were just so rude, the pushing and shoving cutting in lines for the rides, gift shops, food stands was just to much to take. forget trying to see one of the shows its a free for all for seats, i don't see how Disney can let this happen, it was by far the worst managed Disney property.\nDisneyland_HongKong"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-glimpsedf",
+    "href": "materials/03-intro-to-r.html#examine-the-data-glimpsedf",
+    "title": "",
+    "section": "Examine the Data (glimpse(df))",
+    "text": "Examine the Data (glimpse(df))\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#examine-the-data-taildf",
+    "href": "materials/03-intro-to-r.html#examine-the-data-taildf",
+    "title": "",
+    "section": "Examine the Data (tail(df))",
+    "text": "Examine the Data (tail(df))\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n1879452\n5\nmissing\nUnited Kingdom\nDid the kids free trip last week in March no crowds great weather. Stayed at Hotel Cheyenne great value. Lots to see and do. Felt the Magic, bigtime. Breakfast included lots of choices for lunch and diner you get what you pay for. Try Billy Bobs buffet or Disney hotel (make reservations for that one) for a really good evening meal, well worth paying extra for.Everyone spoke good English. Character breakfast great. Always carry a camera and spare film and bottles of water. Loved the parades and shows or shorter lines for rides when parades are on.Also stayed at Golden Tulip Hotel Bussey st George 5 mins down the road. 35 Euros per person per night with breakfast. Across from train station Easy traveling for Paris Hotel gave lots of information on special price train tickets. Good dinner in hotel. Four adults and three kids went on this trip and we all came home happy.\nDisneyland_Paris\n\n\n1765031\n5\nmissing\nUnited Kingdom\ni went to disneyland paris in july 03 and thought it was brilliant. i visited all the hotels and stayed in the newport bay and also the kyriad hotels. the newport is a really nice hotel within walking distance of the parks. very big hotel. the kyriad is further away but still a really nice hotel..i saw all rooms at all hotels and they are all pretty much the same. thought the parks were brill and as it was july didn't really have to queue that much i thought. the food was the most expensive thing there. i did the character breakfast which is a must especially if you have young kids and also did buffalo bills which is a really good night. stayed up til late in the nightclub which i didn't think was expensive at all and it was free entry as we were staying in the disney hotel.. altogether a really good 4 nts that we were there even better that it was all free!!!!!! can't wait to go back\nDisneyland_Paris\n\n\n1659553\n5\nmissing\nCanada\n2 adults and 1 child of 11 visited Disneyland Paris beginning of Feb 04 and had an absolute fantastic time.We went on a Thursday for 3 nights and there were no queues until the Saturday when lots more people seemed to arrive.We stayed in the Sequioa Lodge which was really nice, drinks in the hotel were pretty expensive but we were expecting that and found it cheaper to buy alcohol from the in hotel shop!!The rides were fantastic much better than i ever expected and we did the park 1 day and the studios 1 day then anything that we wanted to do again we did on the 3rd day.The parades were amazing and i would highly recommend that you try and fit time in to watch at least the fantallusion show of an evening as it's just magical.Yes i agree with some of the other reviews that things were expensive but what theme park can you go to where prices are reasonable????All in all we had an absolute magical time, but would recommend that if you want to fit everything in go mid week and try to avoid childrens holidays.\nDisneyland_Paris\n\n\n1645894\n5\nmissing\nSouth Africa\nMy eleven year old daughter and myself went to visit my son in London and we decided to go on to Disneyland Paris. We stayed for two nights and three days at the Hotel Du Moulon, which was great value for money and close to Disneyland. The highlight of our stay was the Walt Disney Studios. Unfortunately, by the third day we had to rush to see everything, so I would suggest three nights and four days to do and see all. We went in May, which I would recommend to all, as the lines on most rides were not very long and the weather is also good.Colleen Smit\nDisneyland_Paris\n\n\n1618637\n4\nmissing\nUnited States\nThis hotel, part of the Disneyland Paris complex, is a wonderful place for families. Since we have 3 kids, we needed a room with a crew area . This consisted of a nice bath with separate toilet area from the shower tub, a large room with TV and 2 double beds, plus a smaller room with bunk beds and a 2nd TV. The rate was reasonable and included unlimited entry to the park. Also included was a wonderful breakfast. The service was fantastic. The only drawback throughout Europe was the size of their bath cloths. They are much too large. Larger than our hand towels. Carry your own wash cloths with you!\nDisneyland_Paris\n\n\n1536786\n4\nmissing\nUnited Kingdom\nI went to the Disneyparis resort, in 1996, with a small child. The minute you enter, the transport to disneyland paris, you are treated like a special guest. The compnay really know how to treat there guest from start to finsh. We arrive at the disneyland resort. The hotels are out of this world, like a storybook coming alive, in front of your eyes. The hotel Santa Fa, is based around a mexico villiage, all rooms are themed in a mexico style. Large beds and large rooms. the one disadvantage is no swimming pool, which would be have been great in a french climate( we went in June) 90 100 degrees everyday. the hotel has playgrounds and themed facilities. There is a nice walk to the disneyland parks and boardwalks. It takes around 20 mins on foot.We are revisting Disneyland paris resort in 2004, I would like to stay at this hotel, very friendly and helpful. It is a change from beach resort, with magic and fun as a added extra, disney magic is never forgotten,. Yours michelle Pilling\nDisneyland_Paris"
   }
 ]
