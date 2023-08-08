@@ -25,21 +25,14 @@ editor: visual
 -   Raise questions to explore
 -   Help shape your process
 
-## Distribution of Ratings
+## Basic histogram
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
 library(tidytext)
 library(wordcloud)
 
-df <- read_csv("DisneylandReviews.csv")
-
-df <- df %>% 
-  mutate(Branch = case_match(Branch, 
-                             "Disneyland_California" ~ "California",
-                             "Disneyland_HongKong" ~ "Hong Kong",
-                             "Disneyland_Paris" ~ "Paris")) |> 
-  rename("Park" = Branch)
+load("workshop_data.RData")
 ```
 
 ```{r}
@@ -51,7 +44,7 @@ df |>
   geom_bar()
 ```
 
-## Distribution of Ratings
+## Add title and labels
 
 ```{r}
 #| echo: true
@@ -66,7 +59,7 @@ df |>
        y = "Count")
 ```
 
-## Distribution of Ratings
+## Add color
 
 ```{r}
 #| echo: true
@@ -81,7 +74,7 @@ df |>
        y = "Count")
 ```
 
-## Distribution of Ratings
+## Add a theme
 
 ```{r}
 #| echo: true
@@ -97,28 +90,11 @@ df |>
   theme_minimal()
 ```
 
-## Distribution of Ratings
-
-```{r}
-#| echo: true
-#| output-location: column
-#| code-line-numbers: "7"
-
-df |> 
-  ggplot(aes(Rating)) +
-  geom_bar(fill = "steelblue", color = "black") +
-  labs(title = "Distribution of Ratings",
-       x = "Rating",
-       y = "Count") +
-  scale_y_continuous(labels = scales::comma) +
-  theme_minimal()
-```
-
-::: {.notes}
+::: notes
 Are there any thoughts or questions this raises?
 :::
 
-## Ratings by Park
+## Histogram by park
 
 ```{r}
 #| echo: true
@@ -132,11 +108,10 @@ df |>
        x = "Rating",
        y = "Count",
        fill = "Park") +
-  scale_y_continuous(labels = scales::comma) +
   theme_minimal()
 ```
 
-## Ratings by Park
+## Move legend
 
 ```{r}
 #| echo: true
@@ -150,26 +125,25 @@ df |>
        x = "Rating",
        y = "Count",
        fill = "Park") +
-  scale_y_continuous(labels = scales::comma) +
   theme_minimal() +
   theme(legend.position = "bottom")
 ```
 
-## Ratings Over Time
+## Ratings over time
 
 What if we wanted to look at the park ratings over time? What would we need to do?
 
-- Make sure `Year_Month` is a date
-- Group by `Park`
-- Count ratings per year
+-   Make sure `Year_Month` is a date
+-   Group by `Park`
+-   Count ratings per year
 
-## Ratings Over Time
+## Prepare the data
 
 ```{r}
 #| echo: true
 #| output-location: column
 
-df |> 
+ratings_by_year <- df |> 
   filter(Year_Month != "missing") |> 
   mutate(Year_Month = ym(Year_Month),
          Year = year(Year_Month),
@@ -177,42 +151,28 @@ df |>
   group_by(Park) |> 
   count(Year) |> 
   rename(Ratings = n)
+
+ratings_by_year
 ```
 
-## Ratings Over Time
+## Line plot
 
 ```{r}
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "9-10"
 
-df |> 
-  filter(Year_Month != "missing") |> 
-  mutate(Year_Month = ym(Year_Month),
-         Year = year(Year_Month),
-         Month = month(Year_Month)) |> 
-  group_by(Park) |> 
-  count(Year) |> 
-  rename(Ratings = n) |> 
+ratings_by_year |> 
   ggplot(aes(Year, Ratings, color = Park)) +
   geom_line()
 ```
 
-## Ratings Over Time
+## Add title and labels
 
 ```{r}
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "11-12"
 
-df |> 
-  filter(Year_Month != "missing") |> 
-  mutate(Year_Month = ym(Year_Month),
-         Year = year(Year_Month),
-         Month = month(Year_Month)) |> 
-  group_by(Park) |> 
-  count(Year) |> 
-  rename(Ratings = n) |> 
+ratings_by_year |> 
   ggplot(aes(Year, Ratings, color = Park)) +
   geom_line() +
   labs(title = "Ratings by Park per Year",
@@ -220,21 +180,14 @@ df |>
        y = "Ratings")
 ```
 
-## Ratings Over Time
+## Custom x-axis
 
 ```{r}
 #| echo: true
 #| output-location: column
 #| code-line-numbers: "14-24"
 
-df |> 
-  filter(Year_Month != "missing") |> 
-  mutate(Year_Month = ym(Year_Month),
-         Year = year(Year_Month),
-         Month = month(Year_Month)) |> 
-  group_by(Park) |> 
-  count(Year) |> 
-  rename(Ratings = n) |> 
+ratings_by_year |> 
   ggplot(aes(Year, Ratings, color = Park)) +
   geom_line() +
   labs(title = "Ratings by Park per Year",
@@ -252,6 +205,8 @@ df |>
                                   2019,
                                   2020))
 ```
+
+## Custom theme
 
 ```{r}
 #| echo: true
@@ -285,7 +240,7 @@ df |>
   ggthemes::theme_hc()
 ```
 
-## Ratings Over Time
+## Ridge plot
 
 ```{r}
 #| echo: true
@@ -308,9 +263,9 @@ df |>
   theme_minimal()
 ```
 
-# Sample Prep
+# Sample the data
 
-## Sample Review
+## Look at one review
 
 ```{r}
 #| echo: true
@@ -319,7 +274,7 @@ df |>
 df$Review_Text[15]
 ```
 
-## Convert it to a tibble
+## Convert it to a `tibble`
 
 ```{r}
 #| echo: true
@@ -333,7 +288,7 @@ sample
 [What is a tibble?](https://tibble.tidyverse.org/reference/tibble.html)
 :::
 
-## Unnest Tokens
+## `unnest_tokens`
 
 > "This place is HUGE! Definately need more than one day..."
 
@@ -351,55 +306,16 @@ head(tidy_sample)
 
 ## Advantages of `unnest_tokens`
 
-- splits text into one word/token per row along with the original line number
-- takes care of converting to lowercase
-- removes punctuation
+-   splits text into one word/token per row along with the original line number
+-   takes care of converting to lowercase
+-   removes punctuation
 
-## Word Count
+# Process the data
 
-```{r}
-#| echo: true
-#| output-location: column
-
-tidy_sample |> 
-  count(word, sort = TRUE) |> 
-  head()
-```
-
-## Stop Words
-
-```{r}
-head(stop_words)
-```
-
-## Word Count w/o Stop Words
+## Number each review
 
 ```{r}
 #| echo: true
-#| output-location: column
-
-# Word count without stop words
-tidy_sample |> 
-  anti_join(stop_words) |> 
-  count(word, sort = TRUE) |> 
-  head()
-```
-
-## `anti_join`
-
-> An anti_join return all rows from the left table where there are not matching values in the right table, keeping just columns from the left table.
-
-![](https://psyteachr.github.io/glossary/images/joins/anti_join.png)
-
-::: aside
-[Source](https://psyteachr.github.io/ads-v1/joins.html#anti_join)
-:::
-
-# Processing the Data
-
-## Number Each Review
-
-```{r}
 #| output-location: fragment
 
 # Number each review for each park
@@ -413,14 +329,46 @@ reviews <- df |>
 head(reviews)
 ```
 
-## Unnest Tokens & Remove Stop Words
+## Unnest tokens & Remove Stop Words
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 # Unnest tokens and remove stop words
 tidy_reviews <- reviews |> 
-  unnest_tokens(word, text) |> 
+  unnest_tokens(word, text)
+
+head(tidy_reviews)
+```
+
+## Stop Words
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+head(stop_words)
+```
+
+## `anti_join`
+
+> An anti_join return all rows from the left table where there are not matching values in the right table, keeping just columns from the left table.
+
+![](https://psyteachr.github.io/glossary/images/joins/anti_join.png){fig-align="center" height="500"}
+
+::: aside
+[Source](https://psyteachr.github.io/ads-v1/joins.html#anti_join)
+:::
+
+## Remove stop words
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# Unnest tokens and remove stop words
+tidy_reviews <- tidy_reviews |>
   anti_join(stop_words)
 
 head(tidy_reviews)
@@ -429,6 +377,7 @@ head(tidy_reviews)
 ## Word Counts
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 # Perform word count
@@ -437,15 +386,33 @@ tidy_reviews |>
   head()
 ```
 
-## Word Clouds
+## Set up word cloud
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 tidy_reviews |>
   anti_join(stop_words) |>
   count(word) |>
   with(wordcloud(word, n, max.words = 100))
 ```
+
+::: aside
+What jumps out to you? How might we improve it?
+:::
+
+## removing common words
+
+```{r}
+wc_removals <- c("disney", "park", "disneyland")
+
+tidy_reviews |>
+  anti_join(stop_words) |>
+  filter(!word %in% wc_removals) |> 
+  count(word) |>
+  with(wordcloud(word, n, max.words = 100))
+```
+
 
 ## N-Grams
 
@@ -456,6 +423,7 @@ tidy_reviews |>
 ## Bigrams (prep)
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 # Unnest into bigrams

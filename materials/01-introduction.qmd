@@ -17,7 +17,7 @@ editor: visual
 
 # Overall Goals
 
--   Into to Text Mining
+-   What is text mining?
 -   Keyword searches in Excel
 -   Getting started with R
 -   Text mining in R
@@ -32,37 +32,76 @@ library(wordcloud)
 ## Poll
 
 1.  What do you think of when I say text mining?
-2.  How much experience do you have with coding languages like R or Python?
-3.  What types of things are you most interested in? (keywords, sentiment, ngrams, word clouds...)
+2.  How much experience do you have with programming languages like SQL, R, or Python?
+3.  What are you hoping to take away from this workshop?
 
 # Intro to Text Mining {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
-## What is text mining?
+# Terms to Know
 
-Text mining is the process of extracting information and insights from unstructured text.
+## Text Mining
 
-## Terms to Know
+**Text mining** is the process of extracting information and insights from unstructured text.
 
--   **Natural Language**: A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (*Examples include English or Italian.*)
--   **Natural Language Processing (NLP)**: refers to the creation and use of computational power in order to process content in natural language.
+## Natural Language
 
-## Terms to Know
+> A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (*Examples include English or Italian.*)
 
--   **Segmentation/Tokenization**: the process of splitting apart pieces of language. *Sentence segmentation* is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization. *Word tokenization* involves breaking out the individual words of a sentence.
+## Natural Language Processing (NLP)
 
-## Terms to Know
+The process of understanding what text is saying, and being able to analyze it grammatically, is what is referred to as **natural language processing (NLP)**.
 
--   **Text Normalization**: involves standardizing text prior to analysis. Examples include the expansion of contractions (don't -\> do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)
+> ## refers to the creation and use of computational power in order to process content in natural language.
 
-## Terms to Know
+## Segmentation/Tokenization
 
--   **Term Frequency**: measures how often a term appears in a document.
--   **Document Frequency**: measures how often a term appears in a corpus of documents.
+> the process of splitting apart pieces of language. 
 
-## Terms to Know
+-   *Sentence segmentation* is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization.
+-   *Word tokenization* involves breaking out the individual words of a sentence.
 
--   **Inverse Document Frequency**: a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.
--   **TF-IDF**: "Term Frequency-Inverse Document Frequency". Higher term frequency and a lower document frequency leads to a higher TF-IDF.
+## Stop Words
+
+> Filler words that don't convey a lot of information (pronouns, articles, etc.)
+
+*the, and, of, a, he, she, for, to, that*
+
+## Normalization
+
+> involves standardizing text prior to analysis. Examples include the expansion of contractions (don't -\> do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)
+
+## Stems/Stemming
+
+- **Stems**: the morpheme that supplies the main meaning of a word (*jump* in *jumping*)
+- **Stemming**: a tool that takes a word and returns the stem (*running* -> *run*)
+
+## Term Frequency
+
+> Measures how often a term appears in a document.
+
+## Document Frequency
+
+> Measures how often a term appears in a corpus of documents.
+
+## Corpus
+
+## Inverse Document Frequency
+
+> a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.
+
+## Term Frequency-Inverse Document Frequency (TF-IDF)
+
+> Higher term frequency and a lower document frequency leads to a higher TF-IDF.
+
+## _____ Similarity
+
+-   **Word Similarity**: similarity between individual words or tokens
+-   **Document Similarity**: similarity between short phrases or documents
+-   **Jaccard Similarity**: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary
+![](https://wikimedia.org/api/rest_v1/media/math/render/svg/eaef5aa86949f49e7dc6b9c8c3dd8b233332c9e7)
+-   **Cosine Similarity**: similarity between words
+![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863)
+-   **Latent Semantic Analysis (LSA)**: an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e. king:male, queen:female, doctor:male, nurse:female)
 
 ## Levels of Analysis
 

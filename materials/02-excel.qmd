@@ -44,7 +44,7 @@ editor: visual
 -   Can be difficult to reproduce
 -   Potentially destructive
 -   Doesn't scale well
--   Limited options for text mining
+-   Complex formulas can be difficult
 :::
 :::
 
@@ -96,7 +96,7 @@ editor: visual
 -   `SUMPRODUCT` sums the 1's and 0's
 -   `IF(SUMPRODUCT...)>0,"Yes","No")` if the result of `SUMPRODUCT` is greater than 1, then the formula returns "Yes" (or any other result you want)
 
-## ChatGPT for Formula Help
+## ChatGPT for Code & Formula Help
 
 ::: callout-warning
 Assume that everything you put into ChatGPT (or other LLMs) is public. Do not enter confidential or proprietary information into it.
@@ -109,3 +109,7 @@ Tell ChatGPT what is is you need assistance with:
 ## ChatGPT for Formula Help
 
 ![](images/chatgpt-excel-2.png){fig-align="center" height="500"}
+
+## Let's Try!
+
+`r fontawesome::fa("laptop-code", "black")` Open `02-excel/excel-examples.xlsx` if you'd like to follow along.

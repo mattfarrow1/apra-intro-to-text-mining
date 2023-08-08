@@ -16,12 +16,19 @@ format:
 editor: visual
 ---
 
-# Intro to R {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Why R {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
-## Getting Started
+## R vs. Python
 
--   What is R?
--   R vs. Python?
+::: columns
+::: {.column width="50%"}
+![](images/r-logo.png){fig-align="center" width="148"}
+:::
+
+::: {.column width="50%"}
+![](images/python-logo.png){fig-align="center" width="400"}
+:::
+:::
 
 ::: notes
 R is a programming language started by professors Ross Ihaka and Robert Gentleman as a programming language to teach introductory statistics at the University of Auckland. It was developed in the early 1990's and open sourced in 1995.
@@ -29,13 +36,12 @@ R is a programming language started by professors Ross Ihaka and Robert Gentlema
 For the purposes of this workshop, there are no significant differences in R vs. Python other than the language and packages/libraries used. I chose to start with R because that's where I'm most comfortable, it's the language that I see Apra promoting, and the community is incredibly welcoming and diverse.
 :::
 
-## Getting Started
+## Why RStudio/Posit?
 
-::: callout-tip
-Everything in this workshop can be done through the virtual project. Scan the QR code to get started.
-:::
-
-{{< qrcode https://posit.cloud/content/6215314 >}}
+-   RStudio became Posit in July 2022
+-   No need for attendees to install anything
+-   Everything in one place
+-   Multiple language support
 
 ## RStudio IDE
 
@@ -45,27 +51,55 @@ Everything in this workshop can be done through the virtual project. Scan the QR
 Source: [Posit](https://posit.co/products/open-source/rstudio/)
 :::
 
-## Why RStudio/Posit?
+##  {background-image="/materials/images/rstudio-clean.png" background-size="contain"}
 
-- RStudio became Posit in July 2022
-- No need for attendees to install anything
-- Everything in one place
-- Multiple language suppot
+##  {background-image="/materials/images/rstudio-annotated.png" background-size="contain"}
 
-# {background-image="/materials/images/rstudio-clean.png" background-size="contain"}
+## Posit Cloud
 
-# {background-image="/materials/images/rstudio-annotated.png" background-size="contain"}
+::: callout-tip
+Everything in this workshop can be done through the virtual project. Scan the QR code to get started.
+:::
+
+{{< qrcode https://posit.cloud/content/6215314 >}}
 
 # Packages
 
-## Packages
+## What are packages?
 
 -   Libraries of code
 -   Expand the "base R" code
 -   For almost anything you need
 -   Beware of relying too heavily on niche packages
 
-## The `tidyverse` {.smaller}
+## Example packages
+
+| Package        | Description                         |
+|----------------|-------------------------------------|
+| `DBI`          | Connect to databases                |
+| `googlesheets` | Access data in Google Sheets        |
+| `janitor`      | Clean up data                       |
+| `openxlsx`     | Read, write, and edit `.xlsx` files |
+| `shiny`        | Interactive widgets                 |
+
+## Installing and using packages
+
+Installing packages only needs to be done once.
+
+```{.r}
+install.packages("DBI")
+```
+
+Packages need to be loaded each time you use them.
+
+```{.r}
+library(DBI)
+DBI::dbConnect()
+```
+
+Beware of dependencies.
+
+# The `tidyverse` {.smaller}
 
 ![](images/tidyverse-logo.png){fig-align="center" height="200"}
 
@@ -77,10 +111,18 @@ Source: [Posit](https://posit.co/products/open-source/rstudio/)
 
 -   Easier to understand for new users
 -   Packages all work together
--   Can "pipe" instructions together
 -   Covers most frequent use cases
+-   Can "pipe" instructions together
 
-## The best benefit *(in my opinion)* {.smaller}
+## An aside on piping
+
+-   **%\>%** is the traditional method that came from the \`magrittr\` package
+
+-   **\|\>** the "native" pipe that was introduced to R in version 4.1
+
+-   Both work by 'piping' information from the left hand side (LHS) to the right hand side (RHS)
+
+## Community {.smaller}
 
 ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e4a11b1f-f235-461f-ab73-ce6128c59e49_rw_1920.png?h=a34a4173c717bfbc600a8682d419288e){fig-align="center" height="500"}
 
@@ -88,7 +130,7 @@ Source: [Posit](https://posit.co/products/open-source/rstudio/)
 "[Artwork by \@allison_horst.](https://allisonhorst.com)"
 :::
 
-## The `tidyverse` Packages {.smaller}
+## `tidyverse` packages {.smaller}
 
 ![](images/tidyverse.png){fig-align="center" height="400"}
 
@@ -96,7 +138,7 @@ Source: [Posit](https://posit.co/products/open-source/rstudio/)
 Source: [RStudio Education](https://education.rstudio.com)
 :::
 
-## `dplyr` {.smaller}
+## `dplyr` functions {.smaller}
 
 -   `mutate()` create variables (columns)
 -   `select()` subset variables
@@ -104,7 +146,7 @@ Source: [RStudio Education](https://education.rstudio.com)
 -   `summarise()` reduces multiple observations down to a single summary
 -   `arrange()` change the ordering of observations
 
-## The `tidyverse` vs 'Base R'
+## `dplyr` vs 'base R'
 
 ![](images/dplyr-vs-base-r.png){fig-align="center" height="350"}
 
@@ -112,7 +154,7 @@ Source: [RStudio Education](https://education.rstudio.com)
 Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 :::
 
-## `dplyr` Introduction
+# Intro to `dplyr`
 
 `r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/01-intro.R` in RStudio
 
@@ -122,9 +164,7 @@ Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 Source: [Allison Horst](https://allisonhorst.github.io/palmerpenguins/)
 :::
 
-# Getting Started
-
-## Installing and loading packages
+## Examine the data {.smaller}
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -132,29 +172,22 @@ library(palmerpenguins)
 library(kableExtra)
 ```
 
-``` {.r echo="TRUE" code-line-numbers="1,2,3|5,6,7"}
-# Install libraries
-install.packages("tidyverse")
-install.packages("palmerpenguins")
-
+``` {r echo="TRUE"}
 # Load libraries
 library(tidyverse)
 library(palmerpenguins)
-library(kableExtra) # Optional - only used for presentation tables
+
+head(palmerpenguins::penguins)
 ```
 
-## Examine the data {.smaller .hscroll .scrollable}
+## Column names
 
 ```{r}
-#| echo: true
 #| output-location: fragment
-palmerpenguins::penguins |> 
-  head() |> 
-  kable() |> 
-  kable_styling(latex_options = "striped")
+colnames(penguins)
 ```
 
-## Examine the data {.smaller}
+## Examining the data with `dplyr` {.smaller}
 
 ```{r}
 #| echo: true
@@ -162,14 +195,7 @@ palmerpenguins::penguins |>
 glimpse(penguins)
 ```
 
-## Examine the data
-
-```{r}
-#| output-location: fragment
-colnames(penguins)
-```
-
-## What `Species` are in the data?
+## What `species` are in the data?
 
 ```{r}
 #| echo: true
@@ -177,7 +203,7 @@ colnames(penguins)
 unique(penguins$species)
 ```
 
-## How many are `Male`? {.smaller .hscroll .scrollable}
+## How many are `male`? {.smaller}
 
 ```{r}
 #| echo: true
@@ -185,7 +211,7 @@ unique(penguins$species)
 filter(penguins, sex == "male")
 ```
 
-## How many are `Male` on `Biscoe` island?
+## How many are `male` on `Biscoe` island?
 
 ```{r}
 #| echo: true
@@ -193,9 +219,7 @@ filter(penguins, sex == "male")
 filter(penguins, sex == "male", island == "biscoe")
 ```
 
-Why no results?
-
-## How many are `Male` on `Biscoe` island? {.smaller .hscroll .scrollable}
+## How many are `male` on `Biscoe` island? {.smaller .hscroll .scrollable}
 
 ```{r}
 #| echo: true
@@ -203,7 +227,9 @@ Why no results?
 filter(penguins, sex == "male", island == "Biscoe")
 ```
 
-## Chaining functions {.smaller .hscroll .scrollable}
+R is case sensitive!
+
+## Chaining functions {.smaller}
 
 ```{r}
 #| echo: true
@@ -211,16 +237,14 @@ filter(penguins, sex == "male", island == "Biscoe")
 penguins |> 
   filter(sex == "female") |> 
   arrange(flipper_length_mm) |> 
-  head() |> 
-  kable() |> 
-  kable_styling(latex_options = "striped")
+  head()
 ```
 
 ## Other ways to filter
 
-- Using Boolean operators
+-   Using Boolean operators
 
-```{.r}
+``` r
 # Greater than
 penguins |> 
   filter(bill_length_mm > 40)
@@ -232,9 +256,9 @@ penguins |>
 
 ## Other ways to filter
 
-- By missing values
+-   By missing values
 
-```{.r}
+``` r
 # Flipper length is missing/blank
 penguins |> 
   filter(is.na(flipper_length_mm))
@@ -246,7 +270,7 @@ penguins |>
 
 ## Making new variables {.smaller}
 
-Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long". 
+Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long".
 
 First, let's make a box plot of the flipper length.
 
@@ -262,7 +286,7 @@ penguins |>
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column
 penguins |>
   mutate(flipper_length = case_when(
     flipper_length_mm < 190 ~ "short",
@@ -290,7 +314,7 @@ penguins |>
 
 ## Summarize data
 
-```{.r code-line-numbers="4"}
+``` {.r code-line-numbers="4"}
 #| output-location: fragment
 penguins |> 
   group_by(species) |> 
@@ -336,7 +360,7 @@ penguins |>
 
 Although it's not the focus of this workshop, the `tidymodels` packages contains a similar collection of packages devoted to modeling that integrates with the `tidyverse`.
 
-# The Data
+# Examining Disney Reviews
 
 ## The Data
 
@@ -346,7 +370,7 @@ Although it's not the focus of this workshop, the `tidymodels` packages contains
 
 Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews)
 
-## Getting Started
+## Read the data
 
 `r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/02-our-data.R` in RStudio
 
@@ -361,41 +385,43 @@ library(wordcloud)
 df <- read_csv("DisneylandReviews.csv")
 ```
 
-## Examine the Data
+## `str`
 
 ```{r}
 #| echo: true
-#| output-location: column
+#| output-location: fragment
 str(df)
 ```
 
-## Examine the Data
-
-```{r}
-glimpse(df)
-```
-
-## Examine the Data {.smaller .scrollable}
-
-```{r}
-head(df) |> 
-  kable() |> 
-  kable_styling(latex_options = "striped")
-```
-
-## Examine the Data {.smaller .scrollable}
-
-```{r}
-tail(df) |> 
-  kable() |> 
-  kable_styling(latex_options = "striped")
-```
-
-## Examine the Data
+## `glimpse`
 
 ```{r}
 #| echo: true
-#| output-location: column
+#| output-location: fragment
+glimpse(df)
+```
+
+## `head`
+
+```{r}
+#| echo: true
+#| output-location: fragment
+head(df)
+```
+
+## `tail`
+
+```{r}
+#| echo: true
+#| output-location: fragment
+tail(df)
+```
+
+## Where are reviewers from?
+
+```{r}
+#| echo: true
+#| output-location: fragment
 head(df$Reviewer_Location)
 ```
 
@@ -413,7 +439,7 @@ unique(df$Branch)
 #| echo: true
 #| output-location: fragment
 
-df <- df %>% 
+df <- df |> 
   mutate(Branch = case_match(Branch, 
                              "Disneyland_California" ~ "California",
                              "Disneyland_HongKong" ~ "Hong Kong",
@@ -430,4 +456,3 @@ unique(df$Park)
 #| output-location: fragment
 glimpse(df)
 ```
-
