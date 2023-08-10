@@ -86,13 +86,13 @@ Everything in this workshop can be done through the virtual project. Scan the QR
 
 Installing packages only needs to be done once.
 
-```{.r}
+``` r
 install.packages("DBI")
 ```
 
 Packages need to be loaded each time you use them.
 
-```{.r}
+``` r
 library(DBI)
 DBI::dbConnect()
 ```
@@ -172,7 +172,7 @@ library(palmerpenguins)
 library(kableExtra)
 ```
 
-``` {r echo="TRUE"}
+```{r echo="TRUE"}
 # Load libraries
 library(tidyverse)
 library(palmerpenguins)
@@ -286,7 +286,7 @@ penguins |>
 
 ```{r}
 #| echo: true
-#| output-location: column
+#| output-location: fragment
 penguins |>
   mutate(flipper_length = case_when(
     flipper_length_mm < 190 ~ "short",
@@ -295,9 +295,7 @@ penguins |>
     flipper_length_mm > 213 ~ "long"
   )) |>
   select(flipper_length_mm, flipper_length) |>
-  head() |> 
-  kable() |> 
-  kable_styling(latex_options = "striped")
+  head()
 ```
 
 ## Summarize data
@@ -307,9 +305,7 @@ penguins |>
 #| output-location: fragment
 penguins |> 
   group_by(species) |> 
-  summarise(avg_flipper_length = mean(flipper_length_mm)) |> 
-  kable() |> 
-  kable_styling(latex_options = "striped")
+  summarise(avg_flipper_length = mean(flipper_length_mm))
 ```
 
 ## Summarize data
@@ -324,9 +320,7 @@ penguins |>
 ```{r echo=FALSE}
 penguins |> 
   group_by(species) |> 
-  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE)) |> 
-  kable() |> 
-  kable_styling(latex_options = "striped")
+  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
 ```
 
 ## ggplot2
@@ -372,10 +366,14 @@ Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews
 
 ## Read the data
 
-`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/02-our-data.R` in RStudio
+`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/02-our-data.R` in RStudio if you'd like to follow along.
 
 ```{r}
+#| echo: true
 #| output-location: fragment
+#| message: false
+#| warning: false
+
 # Load libraries
 library(tidyverse)
 library(tidytext)
@@ -387,6 +385,8 @@ df <- read_csv("DisneylandReviews.csv")
 
 ## `str`
 
+Look at the structure of the data using base R.
+
 ```{r}
 #| echo: true
 #| output-location: fragment
@@ -394,6 +394,8 @@ str(df)
 ```
 
 ## `glimpse`
+
+`glimpse` is a function from `dplyr` that allows for a different way to view your data.
 
 ```{r}
 #| echo: true
@@ -403,6 +405,8 @@ glimpse(df)
 
 ## `head`
 
+`head` returns the first *n*-rows (defaults to 6).
+
 ```{r}
 #| echo: true
 #| output-location: fragment
@@ -410,6 +414,8 @@ head(df)
 ```
 
 ## `tail`
+
+`tail` returns the last *n*-rows (defaults to 6).
 
 ```{r}
 #| echo: true
@@ -419,6 +425,8 @@ tail(df)
 
 ## Where are reviewers from?
 
+By adding a dollar sign `$` after the name of our data, we can specify a single column.
+
 ```{r}
 #| echo: true
 #| output-location: fragment
@@ -427,6 +435,8 @@ head(df$Reviewer_Location)
 
 ## Which parks have been reviewed?
 
+The `unique` function lists only the different values in a string or column. It is particularly useful when looking at a limited list of options *(action types, fundraiser names, etc.)*
+
 ```{r}
 #| echo: true
 #| output-location: fragment
@@ -434,6 +444,8 @@ unique(df$Branch)
 ```
 
 ## Clean up Park Names
+
+Here we use two `dplyr` functions: `mutate` and `rename` to remove *Disneyland\_* from the start of our values and choose a different column name.
 
 ```{r}
 #| echo: true

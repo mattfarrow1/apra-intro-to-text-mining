@@ -385,9 +385,6 @@
       margin-right: 0; 
     }
   </style>
-  
-  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <meta name="twitter:title" content="Extracting Value from Free Text - ">
 <meta name="twitter:description" content="Apra PD 2023 workshop on text mining">
 <meta name="twitter:image" content="materials/slide templates/Slide1.png">
@@ -482,7 +479,7 @@
 </div>
 <div id="qrcode" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"width":128,"colorDark":"#000000","colorLight":"#ffffff","height":128,"text":"https://posit.cloud/content/6215314"});
+var qrcode = new QRCode("qrcode", {"colorDark":"#000000","height":128,"text":"https://posit.cloud/content/6215314","colorLight":"#ffffff","width":128});
 </script>
     
 </section></section>
@@ -814,8 +811,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="making-new-variables-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
-<div class="cell columns column-output-location">
-<div class="column">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">mutate</span>(<span class="at">flipper_length =</span> <span class="fu">case_when</span>(</span>
 <span id="cb20-3"><a href="#cb20-3"></a>    flipper_length_mm <span class="sc">&lt;</span> <span class="dv">190</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
@@ -824,121 +820,54 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <span id="cb20-6"><a href="#cb20-6"></a>    flipper_length_mm <span class="sc">&gt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"long"</span></span>
 <span id="cb20-7"><a href="#cb20-7"></a>  )) <span class="sc">|&gt;</span></span>
 <span id="cb20-8"><a href="#cb20-8"></a>  <span class="fu">select</span>(flipper_length_mm, flipper_length) <span class="sc">|&gt;</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">flipper_length_mm</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">flipper_length</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">181</td>
-<td style="text-align: left;">short</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">186</td>
-<td style="text-align: left;">short</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">195</td>
-<td style="text-align: left;">average</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">193</td>
-<td style="text-align: left;">average</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">190</td>
-<td style="text-align: left;">average</td>
-</tr>
-</tbody>
-</table>
-
-
+<span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  flipper_length_mm flipper_length
+              &lt;int&gt; &lt;chr&gt;         
+1               181 short         
+2               186 short         
+3               195 average       
+4                NA &lt;NA&gt;          
+5               193 average       
+6               190 average       </code></pre>
 </div>
 </div>
 </section>
 <section id="summarize-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Summarize data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm)) <span class="sc">|&gt;</span> </span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
-<div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">avg_flipper_length</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Chinstrap</td>
-<td style="text-align: right;">195.8235</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gentoo</td>
-<td style="text-align: right;">NA</td>
-</tr>
-</tbody>
-</table>
-
-
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  species   avg_flipper_length
+  &lt;fct&gt;                  &lt;dbl&gt;
+1 Adelie                   NA 
+2 Chinstrap               196.
+3 Gentoo                   NA </code></pre>
 </div>
 </div>
 </section>
 <section id="summarize-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Summarize data</h2>
-<div class="sourceCode" id="cb22" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
-<div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">avg_flipper_length</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: right;">189.9536</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Chinstrap</td>
-<td style="text-align: right;">195.8235</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gentoo</td>
-<td style="text-align: right;">217.1870</td>
-</tr>
-</tbody>
-</table>
-
-
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  species   avg_flipper_length
+  &lt;fct&gt;                  &lt;dbl&gt;
+1 Adelie                  190.
+2 Chinstrap               196.
+3 Gentoo                  217.</code></pre>
 </div>
 </div>
 </section>
@@ -971,15 +900,25 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="read-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Read the data</h2>
-<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>03-intro-to-r/02-our-data.R</code> in RStudio</p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>03-intro-to-r/02-our-data.R</code> in RStudio if you’d like to follow along.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="co"># Read in the data</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"DisneylandReviews.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 
 </div>
 </section>
 <section id="str" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2><code>str</code></h2>
+<p>Look at the structure of the data using base R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1005,8 +944,9 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="glimpse" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2><code>glimpse</code></h2>
+<p><code>glimpse</code> is a function from <code>dplyr</code> that allows for a different way to view your data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1023,8 +963,9 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </section>
 <section id="head" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2><code>head</code></h2>
+<p><code>head</code> returns the first <em>n</em>-rows (defaults to 6).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1042,8 +983,9 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </section>
 <section id="tail" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2><code>tail</code></h2>
+<p><code>tail</code> returns the last <em>n</em>-rows (defaults to 6).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">tail</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">tail</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1061,8 +1003,9 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </section>
 <section id="where-are-reviewers-from" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Where are reviewers from?</h2>
+<p>By adding a dollar sign <code>$</code> after the name of our data, we can specify a single column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">head</span>(df<span class="sc">$</span>Reviewer_Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">head</span>(df<span class="sc">$</span>Reviewer_Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1073,8 +1016,9 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </section>
 <section id="which-parks-have-been-reviewed" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Which parks have been reviewed?</h2>
+<p>The <code>unique</code> function lists only the different values in a string or column. It is particularly useful when looking at a limited list of options <em>(action types, fundraiser names, etc.)</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Branch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Branch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1084,15 +1028,16 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </section>
 <section id="clean-up-park-names" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Clean up Park Names</h2>
+<p>Here we use two <code>dplyr</code> functions: <code>mutate</code> and <code>rename</code> to remove <em>Disneyland_</em> from the start of our values and choose a different column name.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">mutate</span>(<span class="at">Branch =</span> <span class="fu">case_match</span>(Branch, </span>
-<span id="cb35-3"><a href="#cb35-3"></a>                             <span class="st">"Disneyland_California"</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
-<span id="cb35-4"><a href="#cb35-4"></a>                             <span class="st">"Disneyland_HongKong"</span> <span class="sc">~</span> <span class="st">"Hong Kong"</span>,</span>
-<span id="cb35-5"><a href="#cb35-5"></a>                             <span class="st">"Disneyland_Paris"</span> <span class="sc">~</span> <span class="st">"Paris"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb35-6"><a href="#cb35-6"></a>  <span class="fu">rename</span>(<span class="st">"Park"</span> <span class="ot">=</span> Branch)</span>
-<span id="cb35-7"><a href="#cb35-7"></a></span>
-<span id="cb35-8"><a href="#cb35-8"></a><span class="fu">unique</span>(df<span class="sc">$</span>Park)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">mutate</span>(<span class="at">Branch =</span> <span class="fu">case_match</span>(Branch, </span>
+<span id="cb39-3"><a href="#cb39-3"></a>                             <span class="st">"Disneyland_California"</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
+<span id="cb39-4"><a href="#cb39-4"></a>                             <span class="st">"Disneyland_HongKong"</span> <span class="sc">~</span> <span class="st">"Hong Kong"</span>,</span>
+<span id="cb39-5"><a href="#cb39-5"></a>                             <span class="st">"Disneyland_Paris"</span> <span class="sc">~</span> <span class="st">"Paris"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb39-6"><a href="#cb39-6"></a>  <span class="fu">rename</span>(<span class="st">"Park"</span> <span class="ot">=</span> Branch)</span>
+<span id="cb39-7"><a href="#cb39-7"></a></span>
+<span id="cb39-8"><a href="#cb39-8"></a><span class="fu">unique</span>(df<span class="sc">$</span>Park)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1103,7 +1048,7 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 <section id="look-at-our-starting-data-set" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Look at our starting data set</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">

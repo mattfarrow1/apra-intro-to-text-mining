@@ -781,21 +781,21 @@
     "href": "materials/03-intro-to-r.html#making-new-variables-1",
     "title": "",
     "section": "Making new variables",
-    "text": "Making new variables\n\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head() |&gt; \n  kable() |&gt; \n  kable_styling(latex_options = \"striped\")\n\n\n\n\n\nflipper_length_mm\nflipper_length\n\n\n\n\n181\nshort\n\n\n186\nshort\n\n\n195\naverage\n\n\nNA\nNA\n\n\n193\naverage\n\n\n190\naverage"
+    "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head()\n\n\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
   },
   {
     "objectID": "materials/03-intro-to-r.html#summarize-data",
     "href": "materials/03-intro-to-r.html#summarize-data",
     "title": "",
     "section": "Summarize data",
-    "text": "Summarize data\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm)) |&gt; \n  kable() |&gt; \n  kable_styling(latex_options = \"striped\")\n\n\n\n\n\n\nspecies\navg_flipper_length\n\n\n\n\nAdelie\nNA\n\n\nChinstrap\n195.8235\n\n\nGentoo\nNA"
+    "text": "Summarize data\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm))\n\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                   NA \n2 Chinstrap               196.\n3 Gentoo                   NA"
   },
   {
     "objectID": "materials/03-intro-to-r.html#summarize-data-1",
     "href": "materials/03-intro-to-r.html#summarize-data-1",
     "title": "",
     "section": "Summarize data",
-    "text": "Summarize data\n#| output-location: fragment\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))\n\n\n\n\n\nspecies\navg_flipper_length\n\n\n\n\nAdelie\n189.9536\n\n\nChinstrap\n195.8235\n\n\nGentoo\n217.1870"
+    "text": "Summarize data\n#| output-location: fragment\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                  190.\n2 Chinstrap               196.\n3 Gentoo                  217."
   },
   {
     "objectID": "materials/03-intro-to-r.html#intro-to-ggplot2",
@@ -851,14 +851,14 @@
     "href": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
     "title": "",
     "section": "Which parks have been reviewed?",
-    "text": "Which parks have been reviewed?\n\nunique(df$Branch)\n\n\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
+    "text": "Which parks have been reviewed?\nThe unique function lists only the different values in a string or column. It is particularly useful when looking at a limited list of options (action types, fundraiser names, etc.)\n\nunique(df$Branch)\n\n\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#clean-up-park-names",
     "href": "materials/03-intro-to-r.html#clean-up-park-names",
     "title": "",
     "section": "Clean up Park Names",
-    "text": "Clean up Park Names\n\ndf &lt;- df |&gt; \n  mutate(Branch = case_match(Branch, \n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n  rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
+    "text": "Clean up Park Names\nHere we use two dplyr functions: mutate and rename to remove Disneyland_ from the start of our values and choose a different column name.\n\ndf &lt;- df |&gt; \n  mutate(Branch = case_match(Branch, \n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n  rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
@@ -1369,42 +1369,42 @@
     "href": "materials/03-intro-to-r.html#read-the-data",
     "title": "",
     "section": "Read the data",
-    "text": "Read the data\n Open 03-intro-to-r/02-our-data.R in RStudio"
+    "text": "Read the data\n Open 03-intro-to-r/02-our-data.R in RStudio if you’d like to follow along.\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\n\n# Read in the data\ndf &lt;- read_csv(\"DisneylandReviews.csv\")"
   },
   {
     "objectID": "materials/03-intro-to-r.html#str",
     "href": "materials/03-intro-to-r.html#str",
     "title": "",
     "section": "str",
-    "text": "str\n\nstr(df)\n\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
+    "text": "str\nLook at the structure of the data using base R.\n\nstr(df)\n\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#glimpse",
     "href": "materials/03-intro-to-r.html#glimpse",
     "title": "",
     "section": "glimpse",
-    "text": "glimpse\n\nglimpse(df)\n\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
+    "text": "glimpse\nglimpse is a function from dplyr that allows for a different way to view your data.\n\nglimpse(df)\n\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#head",
     "href": "materials/03-intro-to-r.html#head",
     "title": "",
     "section": "head",
-    "text": "head\n\nhead(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; \n1 670772142      4 2019-4     Australia            If you've ever been t… Disne…\n2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…\n3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…\n4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…\n5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…\n6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…"
+    "text": "head\nhead returns the first n-rows (defaults to 6).\n\nhead(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; \n1 670772142      4 2019-4     Australia            If you've ever been t… Disne…\n2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…\n3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…\n4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…\n5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…\n6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#tail",
     "href": "materials/03-intro-to-r.html#tail",
     "title": "",
     "section": "tail",
-    "text": "tail\n\ntail(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; \n1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…\n2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…\n3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…\n4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…\n5   1618637      4 missing    United States     This hotel, part of the … Disne…\n6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…"
+    "text": "tail\ntail returns the last n-rows (defaults to 6).\n\ntail(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; \n1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…\n2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…\n3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…\n4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…\n5   1618637      4 missing    United States     This hotel, part of the … Disne…\n6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#where-are-reviewers-from",
     "href": "materials/03-intro-to-r.html#where-are-reviewers-from",
     "title": "",
     "section": "Where are reviewers from?",
-    "text": "Where are reviewers from?\n\nhead(df$Reviewer_Location)\n\n\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
+    "text": "Where are reviewers from?\nBy adding a dollar sign $ after the name of our data, we can specify a single column.\n\nhead(df$Reviewer_Location)\n\n\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
   },
   {
     "objectID": "materials/04-r-text-mining.html#basic-histogram",
