@@ -16,6 +16,33 @@ format:
 editor: visual
 ---
 
+# Getting Started
+
+## Load the Data
+
+`r fontawesome::fa("laptop-code", "black")` Open `04-intro-to-r/01-ggplot2.R` in RStudio if you'd like to follow along.
+
+```{r}
+#| echo: true
+#| warning: false
+#| message: false
+
+# Install packages
+# install.packages("tidyverse")
+# install.packages("tidytext")
+# install.packages("wordcloud")
+# install.packages("here")
+
+# Load libraries
+library(tidyverse)
+library(tidytext)
+library(wordcloud)
+library(here)
+
+# Load data
+load(here::here("materials", "workshop_data.RData"))
+```
+
 # Visualize the Data
 
 ## Why Visualize?
@@ -26,14 +53,6 @@ editor: visual
 -   Help shape your process
 
 ## Basic histogram
-
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(tidytext)
-library(wordcloud)
-
-load("workshop_data.RData")
-```
 
 ```{r}
 #| echo: true
@@ -267,11 +286,13 @@ df |>
 
 ## Look at one review
 
+Brackets allow us to isolate a single cell.
+
 ```{r}
 #| echo: true
 #| output-location: column
 
-df$Review_Text[15]
+df$Review_Text[11]
 ```
 
 ## Convert it to a `tibble`
@@ -280,7 +301,7 @@ df$Review_Text[15]
 #| echo: true
 #| output-location: column
 
-sample <- tibble(line = 1, text = df$Review_Text[15])
+sample <- tibble(line = 1, text = df$Review_Text[11])
 sample
 ```
 
@@ -298,10 +319,8 @@ sample
 #| echo: true
 #| output-location: column
 
-tidy_sample <- sample |> 
+sample |> 
   unnest_tokens(word, text)
-
-head(tidy_sample)
 ```
 
 ## Advantages of `unnest_tokens`
@@ -329,13 +348,13 @@ reviews <- df |>
 head(reviews)
 ```
 
-## Unnest tokens & Remove Stop Words
+## Unnest Tokens
 
 ```{r}
 #| echo: true
 #| output-location: fragment
 
-# Unnest tokens and remove stop words
+# Unnest tokens
 tidy_reviews <- reviews |> 
   unnest_tokens(word, text)
 
@@ -374,7 +393,7 @@ tidy_reviews <- tidy_reviews |>
 head(tidy_reviews)
 ```
 
-## Word Counts
+## Create Word Counts
 
 ```{r}
 #| echo: true
@@ -390,11 +409,13 @@ tidy_reviews |>
 
 ```{r}
 #| echo: true
+#| warning: false
+#| message: false
 #| output-location: fragment
 tidy_reviews |>
   anti_join(stop_words) |>
   count(word) |>
-  with(wordcloud(word, n, max.words = 100))
+  with(wordcloud(word, n, max.words = 40))
 ```
 
 ::: aside
@@ -404,23 +425,27 @@ What jumps out to you? How might we improve it?
 ## removing common words
 
 ```{r}
-wc_removals <- c("disney", "park", "disneyland")
+#| echo: true
+#| warning: false
+#| message: false
+#| output-location: fragment
+
+wc_removals <- c("day", "disney", "disneyland", "rides")
 
 tidy_reviews |>
   anti_join(stop_words) |>
   filter(!word %in% wc_removals) |> 
   count(word) |>
-  with(wordcloud(word, n, max.words = 100))
+  with(wordcloud(word, n, max.words = 50))
 ```
 
-
-## N-Grams
+# N-Grams
 
 -   A continuous sequence of `n` words
 -   Can be used 'as is', or run through a stemmer to get morphemes
 -   Offers greater context than single words
 
-## Bigrams (prep)
+## Set up bigrams
 
 ```{r}
 #| echo: true
@@ -431,23 +456,53 @@ tidy_bigrams <- reviews |>
   unnest_tokens(bigram, text, token = "ngrams", n = 2) |> 
   filter(!is.na(bigram))
 
+head(tidy_bigrams)
+```
+
+## Separate words
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
 # Separate words
 tidy_bigrams <- tidy_bigrams |>
   separate(bigram, c("word1", "word2"), sep = " ")
+
+head(tidy_bigrams)
+```
+
+## Remove stop words
+
+```{r}
+#| echo: true
+#| output-location: fragment
 
 # Remove stop words
 tidy_bigrams <- tidy_bigrams |>
   filter(!word1 %in% stop_words$word) |>
   filter(!word2 %in% stop_words$word)
 
+head(tidy_bigrams)
+```
+
+## Reunite terms
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
 # Reunite terms
 tidy_bigrams <- tidy_bigrams |>
   unite(bigram, word1, word2, sep = " ")
+
+head(tidy_bigrams)
 ```
 
-## Bigrams
+## Look at bigrams by park
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 tidy_bigrams |> 
@@ -457,9 +512,68 @@ tidy_bigrams |>
   head()
 ```
 
-## Word & Document Frequencies
+# Word & Document Frequencies
 
-## Sentiment Analysis {.smaller}
+## Total Words per Review
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+review_words <- tidy_reviews %>%
+  count(Park, word, sort = TRUE)
+
+total_words <- review_words %>% 
+  group_by(Park) %>% 
+  summarize(total = sum(n))
+
+review_words <- left_join(review_words, total_words)
+
+head(review_words)
+```
+
+## Review length by park
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| output-location: fragment
+ggplot(review_words, aes(n/total, fill = Park)) +
+  geom_histogram(show.legend = FALSE) +
+  xlim(NA, 0.001) +
+  facet_wrap(~Park, ncol = 1, scales = "free_y") +
+  theme_minimal()
+```
+
+## TF-IDF
+
+```{r}
+#| echo: true
+#| output-location: fragment
+freq_by_rank <- review_words %>% 
+  group_by(Park) %>% 
+  mutate(rank = row_number(), 
+         `term frequency` = n/total) %>%
+  ungroup()
+
+head(freq_by_rank)
+```
+
+## Plot TF-IDF
+
+```{r}
+#| echo: true
+#| output-location: fragment
+freq_by_rank %>% 
+  ggplot(aes(rank, `term frequency`, color = Park)) + 
+  geom_line(size = 1.1, alpha = 0.8, show.legend = FALSE) + 
+  scale_x_log10() +
+  scale_y_log10() +
+  theme_minimal()
+```
+
+# Sentiment Analysis
 
 An introduction using the 'joy' sentiment.
 

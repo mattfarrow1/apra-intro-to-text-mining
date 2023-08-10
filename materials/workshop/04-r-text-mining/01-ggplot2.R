@@ -1,14 +1,11 @@
-install.packages("tidyverse")
-
 # Load libraries
 library(tidyverse)
-library(scales) # optional
 
 # Data source
 # https://www.kaggle.com/datasets/arushchillar/disneyland-reviews?resource=download
 
 # Load data
-df <- read_csv("DisneylandReviews.csv")
+load("materials/workshop_data.RData")
 
 # Distribution of ratings
 df %>% 

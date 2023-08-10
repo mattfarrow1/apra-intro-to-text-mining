@@ -366,7 +366,7 @@ Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews
 
 ## Read the data
 
-`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/02-our-data.R` in RStudio if you'd like to follow along.
+`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/01-examine.R` in RStudio if you'd like to follow along.
 
 ```{r}
 #| echo: true
