@@ -396,7 +396,7 @@
     "href": "materials/01-introduction.html#poll",
     "title": "",
     "section": "Poll",
-    "text": "Poll\n\nWhat do you think of when I say text mining?\nHow much experience do you have with coding languages like R or Python?\nWhat types of things are you most interested in? (keywords, sentiment, ngrams, word clouds…)"
+    "text": "Poll\n\nWhat do you think of when I say text mining?\nHow much experience do you have with programming languages like SQL, R, or Python?\nWhat are you hoping to take away from this workshop?"
   },
   {
     "objectID": "materials/01-introduction.html#what-is-text-mining",
@@ -1531,5 +1531,159 @@
     "title": "",
     "section": "removing common words",
     "text": "removing common words"
+  },
+  {
+    "objectID": "materials/01-introduction.html#text-mining",
+    "href": "materials/01-introduction.html#text-mining",
+    "title": "",
+    "section": "Text Mining",
+    "text": "Text Mining\nText mining is the process of extracting information and insights from unstructured text."
+  },
+  {
+    "objectID": "materials/01-introduction.html#natural-language",
+    "href": "materials/01-introduction.html#natural-language",
+    "title": "",
+    "section": "Natural Language",
+    "text": "Natural Language\nA natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time.\n(Examples include English or Italian.)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#natural-language-processing-nlp",
+    "href": "materials/01-introduction.html#natural-language-processing-nlp",
+    "title": "",
+    "section": "Natural Language Processing (NLP)",
+    "text": "Natural Language Processing (NLP)\nThe process of understanding what text is saying, and being able to analyze it grammatically."
+  },
+  {
+    "objectID": "materials/01-introduction.html#segmentationtokenization",
+    "href": "materials/01-introduction.html#segmentationtokenization",
+    "title": "",
+    "section": "Segmentation/Tokenization",
+    "text": "Segmentation/Tokenization\n\nthe process of splitting apart pieces of language.\n\n\nSentence segmentation is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization.\nWord tokenization involves breaking out the individual words of a sentence."
+  },
+  {
+    "objectID": "materials/01-introduction.html#stop-words",
+    "href": "materials/01-introduction.html#stop-words",
+    "title": "",
+    "section": "Stop Words",
+    "text": "Stop Words\nStop words are filler words that don’t convey a lot of information (pronouns, articles, etc.)\nthe, and, of, a, he, she, for, to, that"
+  },
+  {
+    "objectID": "materials/01-introduction.html#normalization",
+    "href": "materials/01-introduction.html#normalization",
+    "title": "",
+    "section": "Normalization",
+    "text": "Normalization\nNormalization involves standardizing text prior to analysis.\n\nExpanding contractions\nRemoving stop words\nCorrect misspellings\nStemming (if required)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#stemsstemming",
+    "href": "materials/01-introduction.html#stemsstemming",
+    "title": "",
+    "section": "Stems/Stemming",
+    "text": "Stems/Stemming\n\nStems: the morpheme that supplies the main meaning of a word (jump in jumping)\nStemming: a tool that takes a word and returns the stem (running -&gt; run)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#term-frequency",
+    "href": "materials/01-introduction.html#term-frequency",
+    "title": "",
+    "section": "Term Frequency",
+    "text": "Term Frequency\nTerm frequency measures how often a term occurs in a document—in raw form, it is a simply a word count divided by the total number of words in the document."
+  },
+  {
+    "objectID": "materials/01-introduction.html#document-frequency",
+    "href": "materials/01-introduction.html#document-frequency",
+    "title": "",
+    "section": "Document Frequency",
+    "text": "Document Frequency\nDocument frequencymeasures how common the term is within a domain represented by a corpus of documents (C)."
+  },
+  {
+    "objectID": "materials/01-introduction.html#corpus",
+    "href": "materials/01-introduction.html#corpus",
+    "title": "",
+    "section": "Corpus",
+    "text": "Corpus\nA corpus is a collection of documents that you want to perform NLP on."
+  },
+  {
+    "objectID": "materials/01-introduction.html#inverse-document-frequency",
+    "href": "materials/01-introduction.html#inverse-document-frequency",
+    "title": "",
+    "section": "Inverse Document Frequency",
+    "text": "Inverse Document Frequency\nInverse document frequencyis computed by dividing the total number of documents in the corpus by the number of documents containing our target term, and applying a log scale.\n\\[\nidf(t)=1+log\\frac{C}{1+df(t)}\n\\]"
+  },
+  {
+    "objectID": "materials/01-introduction.html#term-frequency-inverse-document-frequency-tf-idf",
+    "href": "materials/01-introduction.html#term-frequency-inverse-document-frequency-tf-idf",
+    "title": "",
+    "section": "Term Frequency-Inverse Document Frequency (TF-IDF)",
+    "text": "Term Frequency-Inverse Document Frequency (TF-IDF)\nHigher term frequency and a lower document frequency leads to a higher TF-IDF.\n\\[\ntfidf=tf(idf)\n\\]"
+  },
+  {
+    "objectID": "materials/01-introduction.html#similarity",
+    "href": "materials/01-introduction.html#similarity",
+    "title": "",
+    "section": "_____ Similarity",
+    "text": "_____ Similarity\n\nWord Similarity: similarity between individual words or tokens\nDocument Similarity: similarity between short phrases or documents\nJaccard Similarity: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary \nCosine Similarity: similarity between words \nLatent Semantic Analysis (LSA): an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e. king:male, queen:female, doctor:male, nurse:female)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#natural-vs.-artificial-language",
+    "href": "materials/01-introduction.html#natural-vs.-artificial-language",
+    "title": "",
+    "section": "Natural vs. Artificial Language",
+    "text": "Natural vs. Artificial Language\n\nNatural languages are those that evolved or emerged gradually over time, largely unconsciously.\nArtificial languages are those that were designed, crafted, or invented with conscious purpose, largely all at once and not gradually."
+  },
+  {
+    "objectID": "materials/01-introduction.html#natural-vs.-artificial-language-1",
+    "href": "materials/01-introduction.html#natural-vs.-artificial-language-1",
+    "title": "",
+    "section": "Natural vs. Artificial Language",
+    "text": "Natural vs. Artificial Language\n\n\n\nNatural Language\nArtificial Language\n\n\n\n\nEnglish\nJava\n\n\nChinese\nPython\n\n\nSpanish\nR\n\n\nGreek\nKlingon\n\n\nArabic\nElvish"
+  },
+  {
+    "objectID": "materials/01-introduction.html#nlp-challenges",
+    "href": "materials/01-introduction.html#nlp-challenges",
+    "title": "",
+    "section": "NLP Challenges",
+    "text": "NLP Challenges\n\nLarge vocabulary\nComplex syntax\nIrregularities\nAmbiguous semantics\nEven more problems such as humor, irony, metaphor, connotation, neologisms"
+  },
+  {
+    "objectID": "materials/01-introduction.html#tokens-tokenization",
+    "href": "materials/01-introduction.html#tokens-tokenization",
+    "title": "",
+    "section": "Tokens & Tokenization",
+    "text": "Tokens & Tokenization\nTokens are meaningful units of text, most commonly individual words.\nTokenization is the process of breaking text down into tokens."
+  },
+  {
+    "objectID": "materials/01-introduction.html#morphemes",
+    "href": "materials/01-introduction.html#morphemes",
+    "title": "",
+    "section": "Morphemes",
+    "text": "Morphemes\nMorphemes are the units that our words are made of. (Not the same as syllables)\n\nCats = “Cat” + “s”\nRunning = “Run” + “ing”\nDesirability = “Desire” + “able” + “ity”"
+  },
+  {
+    "objectID": "materials/01-introduction.html#morphemes-1",
+    "href": "materials/01-introduction.html#morphemes-1",
+    "title": "",
+    "section": "Morphemes",
+    "text": "Morphemes\n\n\n\n\n\n\n\nStems\nAffixes\n\n\n\n\n\nSupplies the main meaning\nCan sometimes be a word in itself (e.g., \"jump\" in \"jumping\")\n\n\nAdds or alters meaning\nCannot usually be a word by itself"
+  },
+  {
+    "objectID": "materials/01-introduction.html#stemsstemmer",
+    "href": "materials/01-introduction.html#stemsstemmer",
+    "title": "",
+    "section": "Stems/Stemmer",
+    "text": "Stems/Stemmer\n\nStems: the morpheme that supplies the main meaning of a word (jump in jumping)\nStemmer: a tool that takes a word and returns the stem (running -&gt; run)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#tf-idf-example",
+    "href": "materials/01-introduction.html#tf-idf-example",
+    "title": "",
+    "section": "TF-IDF Example",
+    "text": "TF-IDF Example\n\n\n\n\n\n\n\nSource: SMU MSDS Program"
+  },
+  {
+    "objectID": "materials/01-introduction.html#tf-idf-example-1",
+    "href": "materials/01-introduction.html#tf-idf-example-1",
+    "title": "",
+    "section": "TF-IDF Example",
+    "text": "TF-IDF Example\n\n\n\n\n\n\n\nSportingNews\nWashington Examiner\n\n\n\n\n\nTrump\nCommander in Chief\nTaft\nNationals\npoliticians\nWhite House\nrace\nethnicity\n\n\nWashington Nationals\nMiami Marlins\nMLB\nTaft\npitch\nTrump\n1910\nWhite House"
   }
 ]

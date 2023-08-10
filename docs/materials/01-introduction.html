@@ -339,7 +339,7 @@
 <section id="overall-goals" class="title-slide slide level1 center">
 <h1>Overall Goals</h1>
 <ul>
-<li>Into to Text Mining</li>
+<li>What is text mining?</li>
 <li>Keyword searches in Excel</li>
 <li>Getting started with R</li>
 <li>Text mining in R</li>
@@ -350,50 +350,220 @@
 <h2>Poll</h2>
 <ol type="1">
 <li>What do you think of when I say text mining?</li>
-<li>How much experience do you have with coding languages like R or Python?</li>
-<li>What types of things are you most interested in? (keywords, sentiment, ngrams, word clouds…)</li>
+<li>How much experience do you have with programming languages like SQL, R, or Python?</li>
+<li>What are you hoping to take away from this workshop?</li>
 </ol>
 </section></section>
 <section>
-<section id="intro-to-text-mining" class="title-slide slide level1 center" data-background-image="../materials/slide templates/Slide3.png" data-background-size="contain">
-<h1>Intro to Text Mining</h1>
+<section id="terminology" class="title-slide slide level1 center">
+<h1>Terminology</h1>
 
 </section>
-<section id="what-is-text-mining" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>What is text mining?</h2>
-<p>Text mining is the process of extracting information and insights from unstructured text.</p>
+<section id="text-mining" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Text Mining</h2>
+<p><strong>Text mining</strong> is the process of extracting information and insights from unstructured text.</p>
 </section>
-<section id="terms-to-know" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Terms to Know</h2>
+<section id="natural-vs.-artificial-language" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Natural vs.&nbsp;Artificial Language</h2>
 <ul>
-<li><strong>Natural Language</strong>: A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (<em>Examples include English or Italian.</em>)</li>
-<li><strong>Natural Language Processing (NLP)</strong>: refers to the creation and use of computational power in order to process content in natural language.</li>
+<li><p>Natural languages are those that evolved or emerged gradually over time, largely unconsciously.</p></li>
+<li><p>Artificial languages are those that were designed, crafted, or invented with conscious purpose, largely all at once and not gradually.</p></li>
 </ul>
 </section>
-<section id="terms-to-know-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Terms to Know</h2>
+<section id="natural-vs.-artificial-language-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Natural vs.&nbsp;Artificial Language</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Natural Language</th>
+<th>Artificial Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>English</td>
+<td>Java</td>
+</tr>
+<tr class="even">
+<td>Chinese</td>
+<td>Python</td>
+</tr>
+<tr class="odd">
+<td>Spanish</td>
+<td>R</td>
+</tr>
+<tr class="even">
+<td>Greek</td>
+<td>Klingon</td>
+</tr>
+<tr class="odd">
+<td>Arabic</td>
+<td>Elvish</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="natural-language-processing-nlp" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Natural Language Processing (NLP)</h2>
+<p>The process of understanding what text is saying, and being able to analyze it grammatically.</p>
+</section>
+<section id="nlp-challenges" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>NLP Challenges</h2>
 <ul>
-<li><strong>Segmentation/Tokenization</strong>: the process of splitting apart pieces of language. <em>Sentence segmentation</em> is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization. <em>Word tokenization</em> involves breaking out the individual words of a sentence.</li>
+<li><p>Large vocabulary</p></li>
+<li><p>Complex syntax</p></li>
+<li><p>Irregularities</p></li>
+<li><p>Ambiguous semantics</p></li>
+<li><p>Even more problems such as humor, irony, metaphor, connotation, neologisms</p></li>
 </ul>
 </section>
-<section id="terms-to-know-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Terms to Know</h2>
+<section id="tokens-tokenization" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Tokens &amp; Tokenization</h2>
+<p><strong>Tokens</strong> are meaningful units of text, most commonly individual words.</p>
+<p><strong>Tokenization</strong> is the process of breaking text down into tokens.</p>
+</section>
+<section id="stop-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Stop Words</h2>
+<p><strong>Stop words</strong> are filler words that don’t convey a lot of information (pronouns, articles, etc.)</p>
+<p><em>the, and, of, a, he, she, for, to, that</em></p>
+</section>
+<section id="normalization" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Normalization</h2>
+<p><strong>Normalization</strong> involves standardizing text prior to analysis.</p>
 <ul>
-<li><strong>Text Normalization</strong>: involves standardizing text prior to analysis. Examples include the expansion of contractions (don’t -&gt; do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)</li>
+<li><p>Expanding contractions</p></li>
+<li><p>Removing stop words</p></li>
+<li><p>Correct misspellings</p></li>
+<li><p>Stemming (if required)</p></li>
 </ul>
 </section>
-<section id="terms-to-know-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Terms to Know</h2>
+<section id="morphemes" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Morphemes</h2>
+<p><strong>Morphemes</strong> are the units that our words are made of. <em>(Not the same as syllables)</em></p>
 <ul>
-<li><strong>Term Frequency</strong>: measures how often a term appears in a document.</li>
-<li><strong>Document Frequency</strong>: measures how often a term appears in a corpus of documents.</li>
+<li><p>Cats = “Cat” + “s”</p></li>
+<li><p>Running = “Run” + “ing”</p></li>
+<li><p>Desirability = “Desire” + “able” + “ity”</p></li>
 </ul>
 </section>
-<section id="terms-to-know-4" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Terms to Know</h2>
+<section id="morphemes-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Morphemes</h2>
+<table>
+<colgroup>
+<col style="width: 64%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stems</th>
+<th>Affixes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li><p>Supplies the main meaning</p></li>
+<li><p>Can <em>sometimes</em> be a word in itself (e.g., "jump" in "jumping")</p></li>
+</ul></td>
+<td><ul>
+<li><p>Adds or alters meaning</p></li>
+<li><p>Cannot usually be a word by itself</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stemsstemmer" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Stems/Stemmer</h2>
 <ul>
-<li><strong>Inverse Document Frequency</strong>: a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.</li>
-<li><strong>TF-IDF</strong>: “Term Frequency-Inverse Document Frequency”. Higher term frequency and a lower document frequency leads to a higher TF-IDF.</li>
+<li><strong>Stems</strong>: the morpheme that supplies the main meaning of a word (<em>jump</em> in <em>jumping</em>)</li>
+<li><strong>Stemmer</strong>: a tool that takes a word and returns the stem (<em>running</em> -&gt; <em>run</em>)</li>
+</ul>
+</section>
+<section id="term-frequency" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Term Frequency</h2>
+<p><strong>Term frequency</strong> measures how often a term occurs in a document—in raw form, it is a simply a word count divided by the total number of words in the document.</p>
+</section>
+<section id="document-frequency" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Document Frequency</h2>
+<p><strong>Document frequency</strong>measures how common the term is within a domain represented by a corpus of documents (C<em>)</em>.</p>
+</section>
+<section id="corpus" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Corpus</h2>
+<p>A <strong>corpus</strong> is a collection of documents that you want to perform NLP on.</p>
+</section>
+<section id="inverse-document-frequency" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Inverse Document Frequency</h2>
+<p><strong>Inverse document frequency</strong>is computed by dividing the total number of documents in the corpus by the number of documents containing our target term, and applying a log scale.</p>
+<p><span class="math display">\[
+idf(t)=1+log\frac{C}{1+df(t)}
+\]</span></p>
+</section>
+<section id="term-frequency-inverse-document-frequency-tf-idf" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Term Frequency-Inverse Document Frequency (TF-IDF)</h2>
+<p>Higher term frequency and a lower document frequency leads to a higher TF-IDF.</p>
+<p><span class="math display">\[
+tfidf=tf(idf)
+\]</span></p>
+</section>
+<section id="tf-idf-example" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>TF-IDF Example</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/tf_idf-example.png"></p>
+</figure>
+</div>
+
+<aside><div>
+<p>Source: SMU MSDS Program</p>
+</div></aside></section>
+<section id="tf-idf-example-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>TF-IDF Example</h2>
+<table style="width:75%;">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>SportingNews</th>
+<th>Washington Examiner</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li><p>Trump</p></li>
+<li><p>Commander in Chief</p></li>
+<li><p>Taft</p></li>
+<li><p>Nationals</p></li>
+<li><p>politicians</p></li>
+<li><p>White House</p></li>
+<li><p>race</p></li>
+<li><p>ethnicity</p></li>
+</ul></td>
+<td><ul>
+<li><p>Washington Nationals</p></li>
+<li><p>Miami Marlins</p></li>
+<li><p>MLB</p></li>
+<li><p>Taft</p></li>
+<li><p>pitch</p></li>
+<li><p>Trump</p></li>
+<li><p>1910</p></li>
+<li><p>White House</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="similarity" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>_____ Similarity</h2>
+<ul>
+<li><strong>Word Similarity</strong>: similarity between individual words or tokens</li>
+<li><strong>Document Similarity</strong>: similarity between short phrases or documents</li>
+<li><strong>Jaccard Similarity</strong>: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary <img data-src="https://wikimedia.org/api/rest_v1/media/math/render/svg/eaef5aa86949f49e7dc6b9c8c3dd8b233332c9e7.png"></li>
+<li><strong>Cosine Similarity</strong>: similarity between words <img data-src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863.png"></li>
+<li><strong>Latent Semantic Analysis (LSA)</strong>: an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e.&nbsp;king:male, queen:female, doctor:male, nurse:female)</li>
 </ul>
 </section>
 <section id="levels-of-analysis" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">

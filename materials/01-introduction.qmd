@@ -35,72 +35,157 @@ library(wordcloud)
 2.  How much experience do you have with programming languages like SQL, R, or Python?
 3.  What are you hoping to take away from this workshop?
 
-# Intro to Text Mining {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
-
-# Terms to Know
+# Terminology
 
 ## Text Mining
 
 **Text mining** is the process of extracting information and insights from unstructured text.
 
-## Natural Language
+## Natural vs. Artificial Language
 
-> A natural language, as opposed to an artificially created language such as R or Python, develops gradually and often without thought, over time. (*Examples include English or Italian.*)
+-   Natural languages are those that evolved or emerged gradually over time, largely unconsciously.
+
+-   Artificial languages are those that were designed, crafted, or invented with conscious purpose, largely all at once and not gradually.
+
+## Natural vs. Artificial Language
+
+| Natural Language | Artificial Language |
+|------------------|---------------------|
+| English          | Java                |
+| Chinese          | Python              |
+| Spanish          | R                   |
+| Greek            | Klingon             |
+| Arabic           | Elvish              |
 
 ## Natural Language Processing (NLP)
 
-The process of understanding what text is saying, and being able to analyze it grammatically, is what is referred to as **natural language processing (NLP)**.
+The process of understanding what text is saying, and being able to analyze it grammatically.
 
-> ## refers to the creation and use of computational power in order to process content in natural language.
+## NLP Challenges
 
-## Segmentation/Tokenization
+-   Large vocabulary
 
-> the process of splitting apart pieces of language. 
+-   Complex syntax
 
--   *Sentence segmentation* is the process of breaking sentences apart using tokenizers to examine punctuation, abbreviations, and capitalization.
--   *Word tokenization* involves breaking out the individual words of a sentence.
+-   Irregularities
+
+-   Ambiguous semantics
+
+-   Even more problems such as humor, irony, metaphor, connotation, neologisms
+
+## Tokens & Tokenization
+
+**Tokens** are meaningful units of text, most commonly individual words.
+
+**Tokenization** is the process of breaking text down into tokens.
 
 ## Stop Words
 
-> Filler words that don't convey a lot of information (pronouns, articles, etc.)
+**Stop words** are filler words that don't convey a lot of information (pronouns, articles, etc.)
 
 *the, and, of, a, he, she, for, to, that*
 
 ## Normalization
 
-> involves standardizing text prior to analysis. Examples include the expansion of contractions (don't -\> do not), removal of stop words (of, and, it), correcting misspellings, and stemming (if required)
+**Normalization** involves standardizing text prior to analysis.
 
-## Stems/Stemming
+-   Expanding contractions
 
-- **Stems**: the morpheme that supplies the main meaning of a word (*jump* in *jumping*)
-- **Stemming**: a tool that takes a word and returns the stem (*running* -> *run*)
+-   Removing stop words
+
+-   Correct misspellings
+
+-   Stemming (if required)
+
+## Morphemes
+
+**Morphemes** are the units that our words are made of. *(Not the same as syllables)*
+
+-   Cats = "Cat" + "s"
+
+-   Running = "Run" + "ing"
+
+-   Desirability = "Desire" + "able" + "ity"
+
+## Morphemes
+
++-------------------------------------------------------------------------+----------------------------------------+
+| Stems                                                                   | Affixes                                |
++=========================================================================+========================================+
+| -   Supplies the main meaning                                           | -   Adds or alters meaning             |
+|                                                                         |                                        |
+| -   Can *sometimes* be a word in itself (e.g., \"jump\" in \"jumping\") | -   Cannot usually be a word by itself |
++-------------------------------------------------------------------------+----------------------------------------+
+
+## Stems/Stemmer
+
+-   **Stems**: the morpheme that supplies the main meaning of a word (*jump* in *jumping*)
+-   **Stemmer**: a tool that takes a word and returns the stem (*running* -\> *run*)
 
 ## Term Frequency
 
-> Measures how often a term appears in a document.
+**Term frequency** measures how often a term occurs in a document---in raw form, it is a simply a word count divided by the total number of words in the document.
 
 ## Document Frequency
 
-> Measures how often a term appears in a corpus of documents.
+**Document frequency**measures how common the term is within a domain represented by a corpus of documents (C*)*.
 
 ## Corpus
 
+A **corpus** is a collection of documents that you want to perform NLP on.
+
 ## Inverse Document Frequency
 
-> a number computed by dividing the total number of documents in the corpus by the number of documents containing the target term and applying a log scale.
+**Inverse document frequency**is computed by dividing the total number of documents in the corpus by the number of documents containing our target term, and applying a log scale.
+
+$$
+idf(t)=1+log\frac{C}{1+df(t)}
+$$
 
 ## Term Frequency-Inverse Document Frequency (TF-IDF)
 
-> Higher term frequency and a lower document frequency leads to a higher TF-IDF.
+Higher term frequency and a lower document frequency leads to a higher TF-IDF.
 
-## _____ Similarity
+$$
+tfidf=tf(idf)
+$$
+
+## TF-IDF Example
+
+![](images/tf_idf-example.png){fig-align="center"}
+
+::: aside
+Source: SMU MSDS Program
+:::
+
+## TF-IDF Example
+
++-------------------------+---------------------------+
+| SportingNews            | Washington Examiner       |
++=========================+===========================+
+| -   Trump               | -   Washington Nationals  |
+|                         |                           |
+| -   Commander in Chief  | -   Miami Marlins         |
+|                         |                           |
+| -   Taft                | -   MLB                   |
+|                         |                           |
+| -   Nationals           | -   Taft                  |
+|                         |                           |
+| -   politicians         | -   pitch                 |
+|                         |                           |
+| -   White House         | -   Trump                 |
+|                         |                           |
+| -   race                | -   1910                  |
+|                         |                           |
+| -   ethnicity           | -   White House           |
++-------------------------+---------------------------+
+
+## \_\_\_\_\_ Similarity
 
 -   **Word Similarity**: similarity between individual words or tokens
 -   **Document Similarity**: similarity between short phrases or documents
--   **Jaccard Similarity**: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary
-![](https://wikimedia.org/api/rest_v1/media/math/render/svg/eaef5aa86949f49e7dc6b9c8c3dd8b233332c9e7)
--   **Cosine Similarity**: similarity between words
-![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863)
+-   **Jaccard Similarity**: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/eaef5aa86949f49e7dc6b9c8c3dd8b233332c9e7)
+-   **Cosine Similarity**: similarity between words ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863)
 -   **Latent Semantic Analysis (LSA)**: an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e. king:male, queen:female, doctor:male, nurse:female)
 
 ## Levels of Analysis
