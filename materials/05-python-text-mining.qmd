@@ -18,26 +18,59 @@ jupyter: python3
 
 # Python
 
-## Libraries
+# Libraries
+
+## General Purpose
+
+```{python}
+#| echo: true
+from collections import Counter
+import numpy as np
+import os
+import warnings
+warnings.filterwarnings(action = 'ignore')
+```
+
+## Pandas
+
+-   Similar functions to the `tidyverse`
+
+```{python}
+#| echo: true
+import pandas as pd
+```
+
+## Visualization
 
 ```{python}
 #| echo: true
 
-import re
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from collections import Counter
+```
+
+## Text Mining
+
+```{python}
+#| echo: true
+
 import nltk
-# nltk.download('stopwords')
+
+nltk.download('stopwords')
+nltk.download('wordnet')
+
 from nltk.corpus import stopwords
-# nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 from wordcloud import WordCloud
-import os
-import warnings
-warnings.filterwarnings(action = 'ignore')
+```
+
+# Setup
+
+## View Files
+
+```{python}
+#| echo: true
+os.listdir()
 ```
 
 ## Load Data
@@ -45,14 +78,13 @@ warnings.filterwarnings(action = 'ignore')
 ```{python}
 #| echo: true
 
-# What file are in the current directory
-os.listdir()
-
 # Import the data
 df=pd.read_csv("DisneylandReviews.csv", encoding='latin-1')
 ```
 
-## Examine Data
+# Examine the Data
+
+## Head
 
 ```{python}
 #| echo: true
@@ -60,7 +92,7 @@ df=pd.read_csv("DisneylandReviews.csv", encoding='latin-1')
 df.head()
 ```
 
-## Examine Data
+## Info
 
 ```{python}
 #| echo: true
@@ -68,19 +100,16 @@ df.head()
 df.info()
 ```
 
-## Data Info
+## Rows & Columns
 
 ```{python}
 #| echo: true
-
-print ("Rows     : " ,df.shape[0])
-print ("Columns  : " ,df.shape[1])
-print ("\nFeatures : \n" ,df.columns.tolist())
-print ("\nMissing values :  ", df.isnull().sum().values.sum())
-print ("\nUnique values :  \n",df.nunique())
+df.shape
 ```
 
 ## Sample the Data
+
+-   The `random.seed(42)` code ensures we all get the same sampled data
 
 ```{python}
 #| echo: true
@@ -97,7 +126,7 @@ df=df.sample(n=1000)
 df.loc[:,'Review_Text'].values[10]
 ```
 
-## Prep Data
+## Convert to lowercase
 
 ```{python}
 #| echo: true
@@ -106,6 +135,8 @@ df.loc[:,'Review_Text'].values[10]
 df['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))
 df['Review_Text'].head()
 ```
+
+## Remove Punctuation
 
 ```{python}
 #| echo: true
@@ -160,4 +191,3 @@ plt.imshow(w_cloud)
 plt.axis('off')
 plt.show()
 ```
-

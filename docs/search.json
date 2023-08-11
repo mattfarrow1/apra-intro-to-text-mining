@@ -998,14 +998,14 @@
     "href": "materials/05-python-text-mining.html#libraries",
     "title": "",
     "section": "Libraries",
-    "text": "Libraries\n\nimport re\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom collections import Counter\nimport nltk\n# nltk.download('stopwords')\nfrom nltk.corpus import stopwords\n# nltk.download('wordnet')\nfrom nltk.stem import WordNetLemmatizer\nfrom wordcloud import WordCloud\nimport os\nimport warnings\nwarnings.filterwarnings(action = 'ignore')"
+    "text": "Libraries\n\nimport re\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom collections import Counter\nimport nltk\nnltk.download('stopwords')\nfrom nltk.corpus import stopwords\nnltk.download('wordnet')\nfrom nltk.stem import WordNetLemmatizer\nfrom wordcloud import WordCloud\nimport os\nimport warnings\nwarnings.filterwarnings(action = 'ignore')"
   },
   {
     "objectID": "materials/05-python-text-mining.html#load-data",
     "href": "materials/05-python-text-mining.html#load-data",
     "title": "",
     "section": "Load Data",
-    "text": "Load Data\n\n# What file are in the current directory\nos.listdir()\n\n# Import the data\ndf=pd.read_csv(\"DisneylandReviews.csv\", encoding='latin-1')"
+    "text": "Load Data\n\n# Import the data\ndf=pd.read_csv(\"DisneylandReviews.csv\", encoding='latin-1')"
   },
   {
     "objectID": "materials/05-python-text-mining.html#examine-data",
@@ -1033,7 +1033,7 @@
     "href": "materials/05-python-text-mining.html#sample-the-data",
     "title": "",
     "section": "Sample the Data",
-    "text": "Sample the Data\n\nnp.random.seed(42)\ndf=df.sample(n=1000)"
+    "text": "Sample the Data\n\nThe random.seed(42) code ensures we all get the same sampled data\n\n\nnp.random.seed(42)\ndf=df.sample(n=1000)"
   },
   {
     "objectID": "materials/05-python-text-mining.html#examine-a-review",
@@ -1762,5 +1762,75 @@
     "title": "",
     "section": "Plot TF-IDF",
     "text": "Plot TF-IDF\n\nfreq_by_rank %&gt;% \n  ggplot(aes(rank, `term frequency`, color = Park)) + \n  geom_line(size = 1.1, alpha = 0.8, show.legend = FALSE) + \n  scale_x_log10() +\n  scale_y_log10() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#general-purpose",
+    "href": "materials/05-python-text-mining.html#general-purpose",
+    "title": "",
+    "section": "General Purpose",
+    "text": "General Purpose\n\nfrom collections import Counter\nimport numpy as np\nimport os\nimport warnings\nwarnings.filterwarnings(action = 'ignore')"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#pandas",
+    "href": "materials/05-python-text-mining.html#pandas",
+    "title": "",
+    "section": "Pandas",
+    "text": "Pandas\n\nSimilar functions to the tidyverse\n\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#visualization",
+    "href": "materials/05-python-text-mining.html#visualization",
+    "title": "",
+    "section": "Visualization",
+    "text": "Visualization\n\nimport matplotlib.pyplot as plt\nimport seaborn as sns"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#text-mining",
+    "href": "materials/05-python-text-mining.html#text-mining",
+    "title": "",
+    "section": "Text Mining",
+    "text": "Text Mining\n\nimport nltk\n\nnltk.download('stopwords')\nnltk.download('wordnet')\n\nfrom nltk.corpus import stopwords\nfrom nltk.stem import WordNetLemmatizer\nfrom wordcloud import WordCloud"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#view-files",
+    "href": "materials/05-python-text-mining.html#view-files",
+    "title": "",
+    "section": "View Files",
+    "text": "View Files\n\nos.listdir()\n\n['.Rhistory',\n 'workshop',\n '06-learning-more.qmd',\n '01-introduction.qmd',\n 'slide templates',\n 'images',\n '05-python-text-mining.qmd',\n '02-excel.qmd',\n 'resources_files',\n 'theme',\n '03-intro-to-r.qmd',\n 'static',\n '05-python-text-mining.ipynb',\n 'DisneylandReviews.csv',\n 'filter.lua',\n 'workshop_data.RData',\n '04-r-text-mining.qmd']"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#head",
+    "href": "materials/05-python-text-mining.html#head",
+    "title": "",
+    "section": "Head",
+    "text": "Head\n\ndf.head()\n\n\n\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n0\n670772142\n4\n2019-4\nAustralia\nIf you've ever been to Disneyland anywhere you...\nDisneyland_HongKong\n\n\n1\n670682799\n4\n2019-5\nPhilippines\nIts been a while since d last time we visit HK...\nDisneyland_HongKong\n\n\n2\n670623270\n4\n2019-4\nUnited Arab Emirates\nThanks God it wasn t too hot or too humid wh...\nDisneyland_HongKong\n\n\n3\n670607911\n4\n2019-4\nAustralia\nHK Disneyland is a great compact park. Unfortu...\nDisneyland_HongKong\n\n\n4\n670607296\n4\n2019-4\nUnited Kingdom\nthe location is not in the city, took around 1...\nDisneyland_HongKong"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#info",
+    "href": "materials/05-python-text-mining.html#info",
+    "title": "",
+    "section": "Info",
+    "text": "Info\n\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 42656 entries, 0 to 42655\nData columns (total 6 columns):\n #   Column             Non-Null Count  Dtype \n---  ------             --------------  ----- \n 0   Review_ID          42656 non-null  int64 \n 1   Rating             42656 non-null  int64 \n 2   Year_Month         42656 non-null  object\n 3   Reviewer_Location  42656 non-null  object\n 4   Review_Text        42656 non-null  object\n 5   Branch             42656 non-null  object\ndtypes: int64(2), object(4)\nmemory usage: 2.0+ MB"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#rows-columns",
+    "href": "materials/05-python-text-mining.html#rows-columns",
+    "title": "",
+    "section": "Rows & Columns",
+    "text": "Rows & Columns\n\ndf.shape\n\n(42656, 6)"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#convert-to-lowercase",
+    "href": "materials/05-python-text-mining.html#convert-to-lowercase",
+    "title": "",
+    "section": "Convert to lowercase",
+    "text": "Convert to lowercase\n\n# Convert to lowercase\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))\ndf['Review_Text'].head()\n\n31092    disneyland is so beautiful and large.to see al...\n28105    the lines for rides are too long. yes, the fas...\n1121     loved hong kong disneyland although it is much...\n17687    love disneyland! we are annual pass holders an...\n23059    the california adventure park is much improved...\nName: Review_Text, dtype: object"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#remove-punctuation",
+    "href": "materials/05-python-text-mining.html#remove-punctuation",
+    "title": "",
+    "section": "Remove Punctuation",
+    "text": "Remove Punctuation\n\n# Remove punctuation\ndf['Review_Text'] = df['Review_Text'].str.replace('[^\\w\\s]', '')"
   }
 ]
