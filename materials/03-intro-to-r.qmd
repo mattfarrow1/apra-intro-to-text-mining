@@ -55,14 +55,6 @@ Source: [Posit](https://posit.co/products/open-source/rstudio/)
 
 ##  {background-image="/materials/images/rstudio-annotated.png" background-size="contain"}
 
-## Posit Cloud
-
-::: callout-tip
-Everything in this workshop can be done through the virtual project. Scan the QR code to get started.
-:::
-
-{{< qrcode https://posit.cloud/content/6215314 >}}
-
 # Packages
 
 ## What are packages?
@@ -156,6 +148,20 @@ Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 
 # Intro to `dplyr`
 
+## Posit Cloud
+
+::: callout-tip
+Everything in this workshop can be done through the virtual project. Scan the QR code or visit the URL to get started.
+:::
+
+<br>
+
+<https://posit.cloud/content/6215314>
+
+{{< qrcode https://posit.cloud/content/6215314 >}}
+
+## Open the file
+
 `r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/01-intro.R` in RStudio
 
 ![](https://allisonhorst.github.io/palmerpenguins/logo.png){fig-align="center" height="350"}
@@ -164,7 +170,19 @@ Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 Source: [Allison Horst](https://allisonhorst.github.io/palmerpenguins/)
 :::
 
+## Running the code
+
+To run the code for this workshop, simply click on the row with your code, or select it, and press **Ctrl/⌘ + Enter.**
+
+::: aside
+If you ever want to clear out your results and start fresh, go to *Session ➔ Restart R*
+:::
+
 ## Examine the data {.smaller}
+
+::: callout-note
+`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Setup**
+:::
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -172,8 +190,14 @@ library(palmerpenguins)
 library(kableExtra)
 ```
 
-```{r echo="TRUE"}
+::: callout-note
+`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Examine the Data**
+:::
+
+```{r}
+#| echo: true
 # Load libraries
+#| output-location: fragment
 library(tidyverse)
 library(palmerpenguins)
 
@@ -182,12 +206,17 @@ head(palmerpenguins::penguins)
 
 ## Column names
 
+Sometimes it is nice to remind yourself of the names of your columns, or to be able to refer to them by their position.
+
 ```{r}
+#| echo: true
 #| output-location: fragment
 colnames(penguins)
 ```
 
 ## Examining the data with `dplyr` {.smaller}
+
+`dplyr` also offers a function to view the data that is a little easier to use in the console.
 
 ```{r}
 #| echo: true
@@ -195,7 +224,19 @@ colnames(penguins)
 glimpse(penguins)
 ```
 
+# Other ways to view the data
+
+```{r}
+#| echo: true
+#| eval: false
+
+str(penguins)
+view(penguins)
+```
+
 ## What `species` are in the data?
+
+To specify a column in the data, simply insert a `$` after the name of the data (i.e. `data$column`).
 
 ```{r}
 #| echo: true
@@ -204,6 +245,10 @@ unique(penguins$species)
 ```
 
 ## How many are `male`? {.smaller}
+
+::: callout-note
+`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Intro to dplyr**
+:::
 
 ```{r}
 #| echo: true
@@ -325,6 +370,10 @@ penguins |>
 
 ## ggplot2
 
+::: callout-note
+`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Intro to ggplot2**
+:::
+
 ```{r}
 #| output-location: column
 penguins |> 
@@ -366,7 +415,7 @@ Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews
 
 ## Read the data
 
-`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/01-examine.R` in RStudio if you'd like to follow along.
+`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/02-our-data.R` in RStudio if you'd like to follow along.
 
 ```{r}
 #| echo: true
@@ -376,11 +425,10 @@ Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews
 
 # Load libraries
 library(tidyverse)
-library(tidytext)
-library(wordcloud)
 
 # Read in the data
-df <- read_csv("DisneylandReviews.csv")
+# df <- read_csv("DisneylandReviews.csv")
+load("workshop_data.RData")
 ```
 
 ## `str`
@@ -425,12 +473,10 @@ tail(df)
 
 ## Where are reviewers from?
 
-By adding a dollar sign `$` after the name of our data, we can specify a single column.
-
 ```{r}
 #| echo: true
 #| output-location: fragment
-head(df$Reviewer_Location)
+unique(df$Reviewer_Location)
 ```
 
 ## Which parks have been reviewed?

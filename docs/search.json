@@ -697,7 +697,7 @@
     "href": "materials/03-intro-to-r.html#examine-the-data",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\nhead(palmerpenguins::penguins)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "Examine the data\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Setup\n\n\n\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Examine the Data\n\n\n\n\n# Load libraries\n#| output-location: fragment\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\nhead(palmerpenguins::penguins)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-1",
@@ -718,14 +718,14 @@
     "href": "materials/03-intro-to-r.html#what-species-are-in-the-data",
     "title": "",
     "section": "What species are in the data?",
-    "text": "What species are in the data?\n\nunique(penguins$species)\n\n\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo"
+    "text": "What species are in the data?\nTo specify a column in the data, simply insert a $ after the name of the data (i.e. data$column).\n\nunique(penguins$species)\n\n\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male",
     "href": "materials/03-intro-to-r.html#how-many-are-male",
     "title": "",
     "section": "How many are male?",
-    "text": "How many are male?\n\nfilter(penguins, sex == \"male\")\n\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "How many are male?\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Intro to dplyr\n\n\n\n\nfilter(penguins, sex == \"male\")\n\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
@@ -1306,7 +1306,7 @@
     "href": "materials/03-intro-to-r.html#posit-cloud",
     "title": "",
     "section": "Posit Cloud",
-    "text": "Posit Cloud\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code to get started."
+    "text": "Posit Cloud\n\n\n\n\n\n\nTip\n\n\nEverything in this workshop can be done through the virtual project. Scan the QR code or visit the URL to get started.\n\n\n\n\nhttps://posit.cloud/content/6215314"
   },
   {
     "objectID": "materials/03-intro-to-r.html#what-are-packages",
@@ -1348,14 +1348,14 @@
     "href": "materials/03-intro-to-r.html#column-names",
     "title": "",
     "section": "Column names",
-    "text": "Column names\n\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\""
+    "text": "Column names\nSometimes it is nice to remind yourself of the names of your columns, or to be able to refer to them by their position.\n\ncolnames(penguins)\n\n\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#examining-the-data-with-dplyr",
     "href": "materials/03-intro-to-r.html#examining-the-data-with-dplyr",
     "title": "",
     "section": "Examining the data with dplyr",
-    "text": "Examining the data with dplyr\n\nglimpse(penguins)\n\n\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+    "text": "Examining the data with dplyr\ndplyr also offers a function to view the data that is a little easier to use in the console.\n\nglimpse(penguins)\n\n\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#the-data",
@@ -1832,5 +1832,19 @@
     "title": "",
     "section": "Remove Punctuation",
     "text": "Remove Punctuation\n\n# Remove punctuation\ndf['Review_Text'] = df['Review_Text'].str.replace('[^\\w\\s]', '')"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#open-the-file",
+    "href": "materials/03-intro-to-r.html#open-the-file",
+    "title": "",
+    "section": "Open the file",
+    "text": "Open the file\n Open 03-intro-to-r/01-intro.R in RStudio\n\n\n\n\n\n\n\nSource: Allison Horst"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#running-the-code",
+    "href": "materials/03-intro-to-r.html#running-the-code",
+    "title": "",
+    "section": "Running the code",
+    "text": "Running the code\nTo run the code for this workshop, simply click on the row with your code, or select it, and press Ctrl/⌘ + Enter.\n\n\nIf you ever want to clear out your results and start fresh, go to Session ➔ Restart R"
   }
 ]
