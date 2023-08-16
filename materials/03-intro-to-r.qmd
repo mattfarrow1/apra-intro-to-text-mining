@@ -497,12 +497,12 @@ Here we use two `dplyr` functions: `mutate` and `rename` to remove *Disneyland\_
 #| echo: true
 #| output-location: fragment
 
-df <- df |> 
-  mutate(Branch = case_match(Branch, 
-                             "Disneyland_California" ~ "California",
-                             "Disneyland_HongKong" ~ "Hong Kong",
-                             "Disneyland_Paris" ~ "Paris")) |> 
-  rename("Park" = Branch)
+# df <- df |> 
+#   mutate(Branch = case_match(Branch, 
+#                              "Disneyland_California" ~ "California",
+#                              "Disneyland_HongKong" ~ "Hong Kong",
+#                              "Disneyland_Paris" ~ "Paris")) |> 
+#   rename("Park" = Branch)
 
 unique(df$Park)
 ```

@@ -615,7 +615,7 @@
 <p><a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/content/6215314</a></p>
 <div id="qrcode" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","height":128,"width":128,"colorDark":"#000000","text":"https://posit.cloud/content/6215314"});
+var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","text":"https://posit.cloud/content/6215314","width":128,"height":128,"colorDark":"#000000"});
 </script>
     
 </section>
@@ -754,7 +754,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z"></path></svg> &nbsp;&nbsp;Code begins in the section labeled <strong>Intro to <code>dplyr</code></strong></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z"></path></svg> &nbsp;&nbsp;Code begins in the section labeled <strong>Intro to dplyr</strong></p>
 </div>
 </div>
 </div>
@@ -940,6 +940,19 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="ggplot2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>ggplot2</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z"></path></svg> &nbsp;&nbsp;Code begins in the section labeled <strong>Intro to ggplot2</strong></p>
+</div>
+</div>
+</div>
 
 <img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
 <section id="ggplot2-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
@@ -967,15 +980,14 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </section>
 <section id="read-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Read the data</h2>
-<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>03-intro-to-r/01-examine.R</code> in RStudio if you’d like to follow along.</p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>03-intro-to-r/02-our-data.R</code> in RStudio if you’d like to follow along.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Load libraries</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="fu">library</span>(wordcloud)</span>
-<span id="cb28-5"><a href="#cb28-5"></a></span>
-<span id="cb28-6"><a href="#cb28-6"></a><span class="co"># Read in the data</span></span>
-<span id="cb28-7"><a href="#cb28-7"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"DisneylandReviews.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="co"># Read in the data</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="co"># df &lt;- read_csv("DisneylandReviews.csv")</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="fu">load</span>(<span class="st">"workshop_data.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -989,23 +1001,13 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>spc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...
- $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...
- $ Year_Month       : chr [1:42656] "2019-4" "2019-5" "2019-4" "2019-4" ...
- $ Reviewer_Location: chr [1:42656] "Australia" "Philippines" "United Arab Emirates" "Australia" ...
- $ Review_Text      : chr [1:42656] "If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you"| __truncated__ "Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA"| __truncated__ "Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t"| __truncated__ "HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese"| __truncated__ ...
- $ Branch           : chr [1:42656] "Disneyland_HongKong" "Disneyland_HongKong" "Disneyland_HongKong" "Disneyland_HongKong" ...
- - attr(*, "spec")=
-  .. cols(
-  ..   Review_ID = col_double(),
-  ..   Rating = col_double(),
-  ..   Year_Month = col_character(),
-  ..   Reviewer_Location = col_character(),
-  ..   Review_Text = col_character(),
-  ..   Branch = col_character()
-  .. )
- - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+<pre><code>tibble [1,000 × 6] (S3: tbl_df/tbl/data.frame)
+ $ Review_ID        : num [1:1000] 5.91e+08 6.03e+08 1.61e+08 1.89e+08 1.88e+08 ...
+ $ Rating           : num [1:1000] 3 4 5 5 5 5 5 5 5 5 ...
+ $ Year_Month       : chr [1:1000] "2017-10" "2017-11" "2012-6" "2013-12" ...
+ $ Reviewer_Location: chr [1:1000] "United States" "United States" "Canada" "Hong Kong" ...
+ $ Review_Text      : chr [1:1000] "We took the RER to from Disneyland Paris as it seemed to be the most efficient mode of transportation. As a hug"| __truncated__ "Having traveled to all the Disney parks in the world, I would have to say this was the smallest. The castle (wh"| __truncated__ "Have been to Disneyworld and Disneyland and must say that Disneyland Park in France is comparable and in some w"| __truncated__ "It had been a while (about 4 year) and three new areas have been added.Grizzle Gulch bring a touch of Messa Thu"| __truncated__ ...
+ $ Park             : chr [1:1000] "Paris" "Hong Kong" "Paris" "Hong Kong" ...</code></pre>
 </div>
 </div>
 </section>
@@ -1017,14 +1019,14 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 42,656
+<pre><code>Rows: 1,000
 Columns: 6
-$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…
-$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…
-$ Year_Month        &lt;chr&gt; "2019-4", "2019-5", "2019-4", "2019-4", "2019-4", "2…
-$ Reviewer_Location &lt;chr&gt; "Australia", "Philippines", "United Arab Emirates", …
-$ Review_Text       &lt;chr&gt; "If you've ever been to Disneyland anywhere you'll f…
-$ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "Disne…</code></pre>
+$ Review_ID         &lt;dbl&gt; 590727742, 603029626, 161202210, 189401395, 18800927…
+$ Rating            &lt;dbl&gt; 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 4, 5, 5, 5, 3, 5…
+$ Year_Month        &lt;chr&gt; "2017-10", "2017-11", "2012-6", "2013-12", "2013-9",…
+$ Reviewer_Location &lt;chr&gt; "United States", "United States", "Canada", "Hong Ko…
+$ Review_Text       &lt;chr&gt; "We took the RER to from Disneyland Paris as it seem…
+$ Park              &lt;chr&gt; "Paris", "Hong Kong", "Paris", "Hong Kong", "Califor…</code></pre>
 </div>
 </div>
 </section>
@@ -1037,14 +1039,14 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
-  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch
-      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; 
-1 670772142      4 2019-4     Australia            If you've ever been t… Disne…
-2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…
-3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…
-4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…
-5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…
-6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…</code></pre>
+  Review_ID Rating Year_Month Reviewer_Location Review_Text                Park 
+      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                      &lt;chr&gt;
+1 590727742      3 2017-10    United States     We took the RER to from D… Paris
+2 603029626      4 2017-11    United States     Having traveled to all th… Hong…
+3 161202210      5 2012-6     Canada            Have been to Disneyworld … Paris
+4 189401395      5 2013-12    Hong Kong         It had been a while (abou… Hong…
+5 188009273      5 2013-9     Australia         This place is AMAZING for… Cali…
+6 337833322      5 2015-2     South Africa      This was my kids first ov… Hong…</code></pre>
 </div>
 </div>
 </section>
@@ -1057,27 +1059,44 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
-  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch
-      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; 
-1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…
-2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…
-3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…
-4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…
-5   1618637      4 missing    United States     This hotel, part of the … Disne…
-6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…</code></pre>
+  Review_ID Rating Year_Month Reviewer_Location Review_Text                Park 
+      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                      &lt;chr&gt;
+1 138757015      4 2012-8     Netherlands       Disneyland was great alth… Cali…
+2  94788304      4 2010-12    United States     My husband and I purchase… Cali…
+3 191211132      5 2014-1     United Kingdom    Just returned from a four… Paris
+4 135365882      4 2012-7     United Kingdom    Loved it, it's just the s… Paris
+5 393299068      5 2015-11    United States     Made Disney part of a Wes… Cali…
+6 133277224      5 2012-6     India             I have always been a Walt… Paris</code></pre>
 </div>
 </div>
 </section>
 <section id="where-are-reviewers-from" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Where are reviewers from?</h2>
-<p>By adding a dollar sign <code>$</code> after the name of our data, we can specify a single column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">head</span>(df<span class="sc">$</span>Reviewer_Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Reviewer_Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Australia"            "Philippines"          "United Arab Emirates"
-[4] "Australia"            "United Kingdom"       "Singapore"           </code></pre>
+<pre><code> [1] "United States"        "Canada"               "Hong Kong"           
+ [4] "Australia"            "South Africa"         "United Kingdom"      
+ [7] "United Arab Emirates" "New Zealand"          "Indonesia"           
+[10] "Portugal"             "Singapore"            "Ireland"             
+[13] "Philippines"          "Norway"               "Belgium"             
+[16] "China"                "Malaysia"             "Taiwan"              
+[19] "Switzerland"          "India"                "Romania"             
+[22] "Pakistan"             "Mexico"               "Thailand"            
+[25] "Turkey"               "Italy"                "Saudi Arabia"        
+[28] "Netherlands"          "Chile"                "Greece"              
+[31] "Spain"                "France"               "Austria"             
+[34] "Denmark"              "Sweden"               "Lebanon"             
+[37] "Estonia"              "Czechia"              "Germany"             
+[40] "Azerbaijan"           "Brazil"               "Finland"             
+[43] "Myanmar (Burma)"      "Iran"                 "Egypt"               
+[46] "Kuwait"               "Peru"                 "Guatemala"           
+[49] "Brunei"               "Malta"                "Nigeria"             
+[52] "Isle of Man"          "Vietnam"              "Latvia"              
+[55] "Israel"               "Ecuador"              "Cura\xe7ao"          
+[58] "Poland"               "Kenya"                "Cyprus"              </code></pre>
 </div>
 </div>
 </section>
@@ -1089,7 +1108,7 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Disneyland_HongKong"   "Disneyland_California" "Disneyland_Paris"     </code></pre>
+<pre><code>NULL</code></pre>
 </div>
 </div>
 </section>
@@ -1097,18 +1116,18 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 <h2>Clean up Park Names</h2>
 <p>Here we use two <code>dplyr</code> functions: <code>mutate</code> and <code>rename</code> to remove <em>Disneyland_</em> from the start of our values and choose a different column name.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">mutate</span>(<span class="at">Branch =</span> <span class="fu">case_match</span>(Branch, </span>
-<span id="cb41-3"><a href="#cb41-3"></a>                             <span class="st">"Disneyland_California"</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
-<span id="cb41-4"><a href="#cb41-4"></a>                             <span class="st">"Disneyland_HongKong"</span> <span class="sc">~</span> <span class="st">"Hong Kong"</span>,</span>
-<span id="cb41-5"><a href="#cb41-5"></a>                             <span class="st">"Disneyland_Paris"</span> <span class="sc">~</span> <span class="st">"Paris"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb41-6"><a href="#cb41-6"></a>  <span class="fu">rename</span>(<span class="st">"Park"</span> <span class="ot">=</span> Branch)</span>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># df &lt;- df |&gt; </span></span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="co">#   mutate(Branch = case_match(Branch, </span></span>
+<span id="cb41-3"><a href="#cb41-3"></a><span class="co">#                              "Disneyland_California" ~ "California",</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="co">#                              "Disneyland_HongKong" ~ "Hong Kong",</span></span>
+<span id="cb41-5"><a href="#cb41-5"></a><span class="co">#                              "Disneyland_Paris" ~ "Paris")) |&gt; </span></span>
+<span id="cb41-6"><a href="#cb41-6"></a><span class="co">#   rename("Park" = Branch)</span></span>
 <span id="cb41-7"><a href="#cb41-7"></a></span>
 <span id="cb41-8"><a href="#cb41-8"></a><span class="fu">unique</span>(df<span class="sc">$</span>Park)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Hong Kong"  "California" "Paris"     </code></pre>
+<pre><code>[1] "Paris"      "Hong Kong"  "California"</code></pre>
 </div>
 </div>
 </section>
@@ -1119,14 +1138,14 @@ $ Branch            &lt;chr&gt; "Disneyland_HongKong", "Disneyland_HongKong", "D
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 42,656
+<pre><code>Rows: 1,000
 Columns: 6
-$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…
-$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…
-$ Year_Month        &lt;chr&gt; "2019-4", "2019-5", "2019-4", "2019-4", "2019-4", "2…
-$ Reviewer_Location &lt;chr&gt; "Australia", "Philippines", "United Arab Emirates", …
-$ Review_Text       &lt;chr&gt; "If you've ever been to Disneyland anywhere you'll f…
-$ Park              &lt;chr&gt; "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", …</code></pre>
+$ Review_ID         &lt;dbl&gt; 590727742, 603029626, 161202210, 189401395, 18800927…
+$ Rating            &lt;dbl&gt; 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 4, 5, 5, 5, 3, 5…
+$ Year_Month        &lt;chr&gt; "2017-10", "2017-11", "2012-6", "2013-12", "2013-9",…
+$ Reviewer_Location &lt;chr&gt; "United States", "United States", "Canada", "Hong Ko…
+$ Review_Text       &lt;chr&gt; "We took the RER to from Disneyland Paris as it seem…
+$ Park              &lt;chr&gt; "Paris", "Hong Kong", "Paris", "Hong Kong", "Califor…</code></pre>
 </div>
 </div>
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Extracting Value from Free Text - Apra PD 2023 Workshop</title>
+<title>Extracting Value from Free Text - Workshop Script</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,7 +39,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/qrcodejs-v1.0.0/qrcode.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -96,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta name="twitter:title" content="Extracting Value from Free Text - Apra PD 2023 Workshop">
+<meta name="twitter:title" content="Extracting Value from Free Text - Workshop Script">
 <meta name="twitter:description" content="Apra PD 2023 workshop on text mining">
 <meta name="twitter:image" content="materials/slide templates/Slide1.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -120,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -184,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Apra PD 2023 Workshop</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop Script</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -242,17 +207,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-introduction-to-text-mining" id="toc-an-introduction-to-text-mining" class="nav-link active" data-scroll-target="#an-introduction-to-text-mining">An Introduction to Text Mining</a></li>
-  <li><a href="#pre-work" id="toc-pre-work" class="nav-link" data-scroll-target="#pre-work">Pre-Work</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#using-posit-cloud" id="toc-using-posit-cloud" class="nav-link" data-scroll-target="#using-posit-cloud">Using Posit Cloud</a></li>
-  <li><a href="#using-a-local-installation" id="toc-using-a-local-installation" class="nav-link" data-scroll-target="#using-a-local-installation">Using a Local Installation</a></li>
-  </ul></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
-  <ul class="collapse">
-  <li><a href="#competencies" id="toc-competencies" class="nav-link" data-scroll-target="#competencies">Competencies</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
+  <li><a href="#overall-goals" id="toc-overall-goals" class="nav-link" data-scroll-target="#overall-goals">Overall Goals</a></li>
+  <li><a href="#poll" id="toc-poll" class="nav-link" data-scroll-target="#poll">Poll</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -262,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Apra PD 2023 Workshop</h1>
+<h1 class="title">Workshop Script</h1>
 </div>
 
 
@@ -277,150 +235,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="an-introduction-to-text-mining" class="level2">
-<h2 class="anchored" data-anchor-id="an-introduction-to-text-mining">An Introduction to Text Mining</h2>
-<p>by Matt Farrow</p>
-<hr>
-<p>🗓️August 28, 2023<br>
-⏰ 1:00 - 4:00 pm<br>
-🏨 JW Marriott Indianapolis: White River AB<br>
-</p>
-<hr>
-</section>
-<section id="pre-work" class="level1">
-<h1>Pre-Work</h1>
-<section id="using-posit-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="using-posit-cloud">Using Posit Cloud</h2>
-<p>The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. If you plan to go this route, there is nothing else you need to do in preparation, simply scan the QR code or visit <a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/content/6215314</a>.</p>
-<div id="qrcode" class="qrcode"></div>
-<script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"width":128,"text":"https://posit.cloud/content/6215314","colorDark":"#000000","colorLight":"#ffffff","height":128});
-</script>
-    
-</section>
-<section id="using-a-local-installation" class="level2">
-<h2 class="anchored" data-anchor-id="using-a-local-installation">Using a Local Installation</h2>
-<p>If you are a workshop attendee and have any trouble with installation locally, please reach out to me directly!</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <ul>
-<li>Install latest version of RStudio, <a href="https://posit.co/products/open-source/rstudio/"><code>2023.06.0+421)</code> or later</a></li>
-<li>Ideally upgrade/use to R 4.3.1 (I’m using the magittr pipe <code>%&gt;%</code>)</li>
-<li>Install these R packages:</li>
+<li>Why am I?</li>
+<li>What are my expectations?</li>
+<li>How is this workshop going to be structured?</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_list <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>, <span class="st">"tidytext"</span>, <span class="st">"wordcloud"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are a workshop attendee who would like to use their own RStudio installation, please clone <a href="https://github.com/mattfarrow1/text-mining-workshop.git" class="uri">https://github.com/mattfarrow1/text-mining-workshop.git</a> via RStudio on Monday morning (August 28).</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How to clone a Github repo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<section id="overall-goals" class="level2">
+<h2 class="anchored" data-anchor-id="overall-goals">Overall Goals</h2>
+<ul>
+<li>Intro to Text Mining</li>
+<li>Keyword Searches in Excel</li>
+<li>Getting Started with R</li>
+<li>Text Mining in R</li>
+<li>Text Mining in Python</li>
+</ul>
+</section>
+<section id="poll" class="level2">
+<h2 class="anchored" data-anchor-id="poll">Poll</h2>
 <ol type="1">
-<li><p>Navigate to <a href="https://github.com/mattfarrow1/text-mining-workshop" class="uri">https://github.com/mattfarrow1/text-mining-workshop</a></p></li>
-<li><p>Click on the green “Code” button and copy the url under the HTTPS tab <a href="https://github.com/mattfarrow1/text-mining-workshop.git" class="uri">https://github.com/mattfarrow1/text-mining-workshop.git</a></p></li>
-<li><p>In RStudio, use File &gt; New Project &gt; Version Control &gt; From Git &gt; and then paste the URL into the source repo box and then click enter!</p></li>
+<li><p>What do you think of when I say text mining?</p></li>
+<li><p>How much experience do you have with coding languages like R or Python?</p></li>
+<li><p>What types of things are you most interested in? (keywords, sentiment, ngrams, word clouds…)</p></li>
 </ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-(Optional!) Pre-Work for Python
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This will be a R/RStudio-centric course based on the attendees, but we will briefly cover using Python for text mining. This code can be run in Posit Cloud, but if you are interested in installing it on your machine, here are some helpful links:</p>
-<ul>
-<li>Install Python, following instructions at <a href="https://solutions.rstudio.com/python/minimum-viable-python/installing-python/">Minimum Viable Python</a></li>
-<li>Install <a href="https://quarto.org/docs/computations/python.html#installation">Jupyter</a></li>
-<li>Install VSCode, <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">Quarto VSCode extension</a>, <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python VSCode extension</a>, <a href="https://open-vsx.org/extension/ms-toolsai/jupyter">Jupyter VSCode extension</a></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>Free text, or unstructured data, is found throughout our CRMs in places like contact reports, notes, research profiles, emails, and more. In this workshop, we’ll look at ways to get started with text mining in order to begin answering questions, surfacing insights, understanding sentiment, and bringing more value to your work. The workshop will be split into sections on Excel, R, and Python and will allow attendees the opportunity to work through examples and takeaway ideas for implementing these concepts at their own organizations.</p>
-<section id="competencies" class="level2">
-<h2 class="anchored" data-anchor-id="competencies">Competencies</h2>
-<table class="table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Primary</strong></td>
-<td>DS: Competency 3: Data Manipulation Skills</td>
-</tr>
-<tr class="even">
-<td><strong>Auxiliary</strong></td>
-<td>DS: Competency 5: Visualization/Reporting Techniques and Competencies</td>
-</tr>
-<tr class="odd">
-<td><strong>Tertiary</strong></td>
-<td>DS: Competency 4: Statistical Techniques and Competencies</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<table class="table">
-<colgroup>
-<col style="width: 37%">
-<col style="width: 62%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Learning Objective 1</strong></td>
-<td>Attendees will create word counts and keyword searches in Excel.</td>
-</tr>
-<tr class="even">
-<td><strong>Learning Objective 2</strong></td>
-<td>Attendees will also utilize R (possibly Python too) to work on advanced text mining including stop words, topic modeling, word clouds, and sentiment analysis.</td>
-</tr>
-</tbody>
-</table>
-<blockquote class="blockquote">
-<p>These materials are developed for a trainer-led workshop at Apra PD 2023, but should be useful for self-guided learning as well.</p>
-</blockquote>
-</section>
-<section id="instructor" class="level2">
-<h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
-<p>Matt Farrow is the Director of Prospect Development and Strategy at Children’s Health. He previously worked as the Assistant Director of Prospect Management at Southern Methodist University, where he earned an M.S. degree in Data Science. Matt is passionate about helping people extract insights and wisdom from their data. He may also have a small problem with his love of LEGO.</p>
-<hr>
-<p><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="img-fluid"> This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 
 
 </section>

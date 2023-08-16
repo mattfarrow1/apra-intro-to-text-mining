@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Apra PD 2023 Workshop",
     "section": "",
-    "text": "by Matt Farrow\n\n🗓️August 28, 2023\n⏰ 13:00 - 16:00\n🏨 JW Marriott Indianapolis: White River AB"
+    "text": "by Matt Farrow\n\n🗓️August 28, 2023\n⏰ 1:00 - 4:00 pm\n🏨 JW Marriott Indianapolis: White River AB"
   },
   {
     "objectID": "index.html#an-introduction-to-text-mining",
     "href": "index.html#an-introduction-to-text-mining",
     "title": "Apra PD 2023 Workshop",
     "section": "",
-    "text": "by Matt Farrow\n\n🗓️August 28, 2023\n⏰ 13:00 - 16:00\n🏨 JW Marriott Indianapolis: White River AB"
+    "text": "by Matt Farrow\n\n🗓️August 28, 2023\n⏰ 1:00 - 4:00 pm\n🏨 JW Marriott Indianapolis: White River AB"
   },
   {
     "objectID": "index.html#using-posit-cloud",
@@ -25,7 +25,7 @@
     "href": "index.html#using-a-local-installation",
     "title": "Apra PD 2023 Workshop",
     "section": "Using a Local Installation",
-    "text": "Using a Local Installation\nIf you are a workshop attendee and have any trouble with installation locally, please reach out to me directly!\n\nInstall latest version of RStudio, 2023.06.0+421) or later\nIdeally upgrade/use to R 4.3.1 (I’m using the magittr pipe %&gt;%)\nInstall these R packages:\n\n\npkg_list &lt;- c(\n  \"tidyverse\", \"tidytext\", \"wordcloud\"\n  )\ninstall.packages(pkg_list)\n\n\n\n\n\n\n\nTip\n\n\n\nIf you are a workshop attendee who would like to use their own RStudio installation, please clone https://github.com/mattfarrow1/text-mining-workshop.git via RStudio on Monday morning (August 28).\n\n\n\n\n\n\n\n\nHow to clone a Github repo\n\n\n\n\n\n\nNavigate to https://github.com/mattfarrow1/text-mining-workshop\nClick on the green “Code” button and copy the url under the HTTPS tab https://github.com/mattfarrow1/text-mining-workshop.git\nIn RStudio, use File &gt; New Project &gt; Version Control &gt; From Git &gt; and then paste the URL into the source repo box and then click enter!\n\n\n\n\n\n\n\n\n\n\n(Optional!) Pre-Work for Python\n\n\n\n\n\nThis will be a R/RStudio-centric course based on the attendees, but we will briefly cover other editors and Python. You are not required to install Jupyter/Python/VScode, but if you’d like to test them out:\n\nInstall Python, following instructions at Minimum Viable Python\nInstall Jupyter\nInstall VSCode, Quarto VSCode extension, Python VSCode extension, Jupyter VSCode extension"
+    "text": "Using a Local Installation\nIf you are a workshop attendee and have any trouble with installation locally, please reach out to me directly!\n\nInstall latest version of RStudio, 2023.06.0+421) or later\nIdeally upgrade/use to R 4.3.1 (I’m using the magittr pipe %&gt;%)\nInstall these R packages:\n\n\npkg_list &lt;- c(\n  \"tidyverse\", \"tidytext\", \"wordcloud\"\n  )\ninstall.packages(pkg_list)\n\n\n\n\n\n\n\nTip\n\n\n\nIf you are a workshop attendee who would like to use their own RStudio installation, please clone https://github.com/mattfarrow1/text-mining-workshop.git via RStudio on Monday morning (August 28).\n\n\n\n\n\n\n\n\nHow to clone a Github repo\n\n\n\n\n\n\nNavigate to https://github.com/mattfarrow1/text-mining-workshop\nClick on the green “Code” button and copy the url under the HTTPS tab https://github.com/mattfarrow1/text-mining-workshop.git\nIn RStudio, use File &gt; New Project &gt; Version Control &gt; From Git &gt; and then paste the URL into the source repo box and then click enter!\n\n\n\n\n\n\n\n\n\n\n(Optional!) Pre-Work for Python\n\n\n\n\n\nThis will be a R/RStudio-centric course based on the attendees, but we will briefly cover using Python for text mining. This code can be run in Posit Cloud, but if you are interested in installing it on your machine, here are some helpful links:\n\nInstall Python, following instructions at Minimum Viable Python\nInstall Jupyter\nInstall VSCode, Quarto VSCode extension, Python VSCode extension, Jupyter VSCode extension"
   },
   {
     "objectID": "index.html#competencies",
@@ -599,21 +599,21 @@
     "href": "workshop-materials.html",
     "title": "Workshop Materials",
     "section": "",
-    "text": "To get access to the workshop materials, please clone the repo:\nhttps://github.com/mattfarrow1/text-mining-workshop.git"
+    "text": "To get access to the workshop materials, please clone the repo:\nhttps://github.com/mattfarrow1/text-mining-workshop.git\n\n\n\n\n\n\n\n02-excel\n\n\n\n\nFilename\n\n\n\n\n\n\n\nexcel-examples.xlsx\n\n\n\n\n\n\n\n\n\n\n\n\n\n03-intro-to-r\n\n\n\n\nFilename\n\n\n\n\n\n\n\n01-intro.R\n\n\n\n\n02-our-data.R\n\n\n\n\n\n\n\n\n\n\n\n\n\n04-r-text-mining\n\n\n\n\nFilename\n\n\n\n\n\n\n\n01-unnest-tokens.R\n\n\n\n\n01-visualize.R\n\n\n\n\n02-bigrams.R\n\n\n\n\n03-sentiment-analysis.R\n\n\n\n\n04-term-frequency.R\n\n\n\n\n\n\n\n\n\n\n\n\n\n05-python-text-mining\n\n\n\n\nFilename\n\n\n\n\n\n\n\npython-text-mining.py"
   },
   {
     "objectID": "workshop-materials.html#intro-to-r",
     "href": "workshop-materials.html#intro-to-r",
     "title": "Workshop Materials",
     "section": "03-intro-to-r",
-    "text": "03-intro-to-r\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\nmaterials/workshop/03-intro-to-r\n01-examine.R\n\n\nmaterials/workshop/03-intro-to-r\n02-dplyr.R\n\n\nmaterials/workshop/03-intro-to-r\n03-ggplot2.R"
+    "text": "03-intro-to-r\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\n03-intro-to-r\n01-intro.R\n\n\n03-intro-to-r\n02-our-data.R"
   },
   {
     "objectID": "workshop-materials.html#r-text-mining",
     "href": "workshop-materials.html#r-text-mining",
     "title": "Workshop Materials",
     "section": "04-r-text-mining",
-    "text": "04-r-text-mining\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\nmaterials/workshop/04-r-text-mining\n01-unnest-tokens.R\n\n\nmaterials/workshop/04-r-text-mining\n02-bigrams.R\n\n\nmaterials/workshop/04-r-text-mining\n03-sentiment-analysis.R\n\n\nmaterials/workshop/04-r-text-mining\n04-term-frequency.R"
+    "text": "04-r-text-mining\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\n04-r-text-mining\n01-unnest-tokens.R\n\n\n04-r-text-mining\n01-visualize.R\n\n\n04-r-text-mining\n02-bigrams.R\n\n\n04-r-text-mining\n03-sentiment-analysis.R\n\n\n04-r-text-mining\n04-term-frequency.R"
   },
   {
     "objectID": "materials/03-intro-to-r.html#the-tidyverse-1",
@@ -851,21 +851,21 @@
     "href": "materials/03-intro-to-r.html#which-parks-have-been-reviewed",
     "title": "",
     "section": "Which parks have been reviewed?",
-    "text": "Which parks have been reviewed?\nThe unique function lists only the different values in a string or column. It is particularly useful when looking at a limited list of options (action types, fundraiser names, etc.)\n\nunique(df$Branch)\n\n\n\n[1] \"Disneyland_HongKong\"   \"Disneyland_California\" \"Disneyland_Paris\""
+    "text": "Which parks have been reviewed?\nThe unique function lists only the different values in a string or column. It is particularly useful when looking at a limited list of options (action types, fundraiser names, etc.)\n\nunique(df$Branch)\n\n\n\nNULL"
   },
   {
     "objectID": "materials/03-intro-to-r.html#clean-up-park-names",
     "href": "materials/03-intro-to-r.html#clean-up-park-names",
     "title": "",
     "section": "Clean up Park Names",
-    "text": "Clean up Park Names\nHere we use two dplyr functions: mutate and rename to remove Disneyland_ from the start of our values and choose a different column name.\n\ndf &lt;- df |&gt; \n  mutate(Branch = case_match(Branch, \n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n  rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n\n\n[1] \"Hong Kong\"  \"California\" \"Paris\""
+    "text": "Clean up Park Names\nHere we use two dplyr functions: mutate and rename to remove Disneyland_ from the start of our values and choose a different column name.\n\n# df &lt;- df |&gt; \n#   mutate(Branch = case_match(Branch, \n#                              \"Disneyland_California\" ~ \"California\",\n#                              \"Disneyland_HongKong\" ~ \"Hong Kong\",\n#                              \"Disneyland_Paris\" ~ \"Paris\")) |&gt; \n#   rename(\"Park\" = Branch)\n\nunique(df$Park)\n\n\n\n[1] \"Paris\"      \"Hong Kong\"  \"California\""
   },
   {
     "objectID": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
     "href": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
     "title": "",
     "section": "Look at our starting data set",
-    "text": "Look at our starting data set\n\nglimpse(df)\n\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Park              &lt;chr&gt; \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", \"Hong Kong\", …\n\n\n\n\nIntroduction to Text Mining"
+    "text": "Look at our starting data set\n\nglimpse(df)\n\n\n\nRows: 1,000\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 590727742, 603029626, 161202210, 189401395, 18800927…\n$ Rating            &lt;dbl&gt; 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 4, 5, 5, 5, 3, 5…\n$ Year_Month        &lt;chr&gt; \"2017-10\", \"2017-11\", \"2012-6\", \"2013-12\", \"2013-9\",…\n$ Reviewer_Location &lt;chr&gt; \"United States\", \"United States\", \"Canada\", \"Hong Ko…\n$ Review_Text       &lt;chr&gt; \"We took the RER to from Disneyland Paris as it seem…\n$ Park              &lt;chr&gt; \"Paris\", \"Hong Kong\", \"Paris\", \"Hong Kong\", \"Califor…\n\n\n\n\nIntroduction to Text Mining"
   },
   {
     "objectID": "materials/04-r-text-mining.html#distribution-of-ratings",
@@ -1243,7 +1243,7 @@
     "href": "materials/03-intro-to-r.html#ggplot2",
     "title": "",
     "section": "ggplot2",
-    "text": "ggplot2"
+    "text": "ggplot2\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Intro to ggplot2"
   },
   {
     "objectID": "materials/03-intro-to-r.html#ggplot2-1",
@@ -1369,42 +1369,42 @@
     "href": "materials/03-intro-to-r.html#read-the-data",
     "title": "",
     "section": "Read the data",
-    "text": "Read the data\n Open 03-intro-to-r/01-examine.R in RStudio if you’d like to follow along.\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\n\n# Read in the data\ndf &lt;- read_csv(\"DisneylandReviews.csv\")"
+    "text": "Read the data\n Open 03-intro-to-r/02-our-data.R in RStudio if you’d like to follow along.\n\n# Load libraries\nlibrary(tidyverse)\n\n# Read in the data\n# df &lt;- read_csv(\"DisneylandReviews.csv\")\nload(\"workshop_data.RData\")"
   },
   {
     "objectID": "materials/03-intro-to-r.html#str",
     "href": "materials/03-intro-to-r.html#str",
     "title": "",
     "section": "str",
-    "text": "str\nLook at the structure of the data using base R.\n\nstr(df)\n\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
+    "text": "str\nLook at the structure of the data using base R.\n\nstr(df)\n\n\n\ntibble [1,000 × 6] (S3: tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:1000] 5.91e+08 6.03e+08 1.61e+08 1.89e+08 1.88e+08 ...\n $ Rating           : num [1:1000] 3 4 5 5 5 5 5 5 5 5 ...\n $ Year_Month       : chr [1:1000] \"2017-10\" \"2017-11\" \"2012-6\" \"2013-12\" ...\n $ Reviewer_Location: chr [1:1000] \"United States\" \"United States\" \"Canada\" \"Hong Kong\" ...\n $ Review_Text      : chr [1:1000] \"We took the RER to from Disneyland Paris as it seemed to be the most efficient mode of transportation. As a hug\"| __truncated__ \"Having traveled to all the Disney parks in the world, I would have to say this was the smallest. The castle (wh\"| __truncated__ \"Have been to Disneyworld and Disneyland and must say that Disneyland Park in France is comparable and in some w\"| __truncated__ \"It had been a while (about 4 year) and three new areas have been added.Grizzle Gulch bring a touch of Messa Thu\"| __truncated__ ...\n $ Park             : chr [1:1000] \"Paris\" \"Hong Kong\" \"Paris\" \"Hong Kong\" ..."
   },
   {
     "objectID": "materials/03-intro-to-r.html#glimpse",
     "href": "materials/03-intro-to-r.html#glimpse",
     "title": "",
     "section": "glimpse",
-    "text": "glimpse\nglimpse is a function from dplyr that allows for a different way to view your data.\n\nglimpse(df)\n\n\n\nRows: 42,656\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 670772142, 670682799, 670623270, 670607911, 67060729…\n$ Rating            &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 5, 3, 2, 5, 5, 5, 4, 5, 5, 3, 4, 3…\n$ Year_Month        &lt;chr&gt; \"2019-4\", \"2019-5\", \"2019-4\", \"2019-4\", \"2019-4\", \"2…\n$ Reviewer_Location &lt;chr&gt; \"Australia\", \"Philippines\", \"United Arab Emirates\", …\n$ Review_Text       &lt;chr&gt; \"If you've ever been to Disneyland anywhere you'll f…\n$ Branch            &lt;chr&gt; \"Disneyland_HongKong\", \"Disneyland_HongKong\", \"Disne…"
+    "text": "glimpse\nglimpse is a function from dplyr that allows for a different way to view your data.\n\nglimpse(df)\n\n\n\nRows: 1,000\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 590727742, 603029626, 161202210, 189401395, 18800927…\n$ Rating            &lt;dbl&gt; 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 4, 5, 5, 5, 3, 5…\n$ Year_Month        &lt;chr&gt; \"2017-10\", \"2017-11\", \"2012-6\", \"2013-12\", \"2013-9\",…\n$ Reviewer_Location &lt;chr&gt; \"United States\", \"United States\", \"Canada\", \"Hong Ko…\n$ Review_Text       &lt;chr&gt; \"We took the RER to from Disneyland Paris as it seem…\n$ Park              &lt;chr&gt; \"Paris\", \"Hong Kong\", \"Paris\", \"Hong Kong\", \"Califor…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#head",
     "href": "materials/03-intro-to-r.html#head",
     "title": "",
     "section": "head",
-    "text": "head\nhead returns the first n-rows (defaults to 6).\n\nhead(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location    Review_Text            Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                &lt;chr&gt;                  &lt;chr&gt; \n1 670772142      4 2019-4     Australia            If you've ever been t… Disne…\n2 670682799      4 2019-5     Philippines          Its been a while sinc… Disne…\n3 670623270      4 2019-4     United Arab Emirates Thanks God it wasn   … Disne…\n4 670607911      4 2019-4     Australia            HK Disneyland is a gr… Disne…\n5 670607296      4 2019-4     United Kingdom       the location is not i… Disne…\n6 670591897      3 2019-4     Singapore            Have been to Disney W… Disne…"
+    "text": "head\nhead returns the first n-rows (defaults to 6).\n\nhead(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text                Park \n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                      &lt;chr&gt;\n1 590727742      3 2017-10    United States     We took the RER to from D… Paris\n2 603029626      4 2017-11    United States     Having traveled to all th… Hong…\n3 161202210      5 2012-6     Canada            Have been to Disneyworld … Paris\n4 189401395      5 2013-12    Hong Kong         It had been a while (abou… Hong…\n5 188009273      5 2013-9     Australia         This place is AMAZING for… Cali…\n6 337833322      5 2015-2     South Africa      This was my kids first ov… Hong…"
   },
   {
     "objectID": "materials/03-intro-to-r.html#tail",
     "href": "materials/03-intro-to-r.html#tail",
     "title": "",
     "section": "tail",
-    "text": "tail\ntail returns the last n-rows (defaults to 6).\n\ntail(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text               Branch\n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt; \n1   1879452      5 missing    United Kingdom    Did the kids free trip l… Disne…\n2   1765031      5 missing    United Kingdom    i went to disneyland par… Disne…\n3   1659553      5 missing    Canada            2 adults and 1 child of … Disne…\n4   1645894      5 missing    South Africa      My eleven year old daugh… Disne…\n5   1618637      4 missing    United States     This hotel, part of the … Disne…\n6   1536786      4 missing    United Kingdom    I went to the Disneypari… Disne…"
+    "text": "tail\ntail returns the last n-rows (defaults to 6).\n\ntail(df)\n\n\n\n# A tibble: 6 × 6\n  Review_ID Rating Year_Month Reviewer_Location Review_Text                Park \n      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;                      &lt;chr&gt;\n1 138757015      4 2012-8     Netherlands       Disneyland was great alth… Cali…\n2  94788304      4 2010-12    United States     My husband and I purchase… Cali…\n3 191211132      5 2014-1     United Kingdom    Just returned from a four… Paris\n4 135365882      4 2012-7     United Kingdom    Loved it, it's just the s… Paris\n5 393299068      5 2015-11    United States     Made Disney part of a Wes… Cali…\n6 133277224      5 2012-6     India             I have always been a Walt… Paris"
   },
   {
     "objectID": "materials/03-intro-to-r.html#where-are-reviewers-from",
     "href": "materials/03-intro-to-r.html#where-are-reviewers-from",
     "title": "",
     "section": "Where are reviewers from?",
-    "text": "Where are reviewers from?\nBy adding a dollar sign $ after the name of our data, we can specify a single column.\n\nhead(df$Reviewer_Location)\n\n\n\n[1] \"Australia\"            \"Philippines\"          \"United Arab Emirates\"\n[4] \"Australia\"            \"United Kingdom\"       \"Singapore\""
+    "text": "Where are reviewers from?\n\nunique(df$Reviewer_Location)\n\n\n\n [1] \"United States\"        \"Canada\"               \"Hong Kong\"           \n [4] \"Australia\"            \"South Africa\"         \"United Kingdom\"      \n [7] \"United Arab Emirates\" \"New Zealand\"          \"Indonesia\"           \n[10] \"Portugal\"             \"Singapore\"            \"Ireland\"             \n[13] \"Philippines\"          \"Norway\"               \"Belgium\"             \n[16] \"China\"                \"Malaysia\"             \"Taiwan\"              \n[19] \"Switzerland\"          \"India\"                \"Romania\"             \n[22] \"Pakistan\"             \"Mexico\"               \"Thailand\"            \n[25] \"Turkey\"               \"Italy\"                \"Saudi Arabia\"        \n[28] \"Netherlands\"          \"Chile\"                \"Greece\"              \n[31] \"Spain\"                \"France\"               \"Austria\"             \n[34] \"Denmark\"              \"Sweden\"               \"Lebanon\"             \n[37] \"Estonia\"              \"Czechia\"              \"Germany\"             \n[40] \"Azerbaijan\"           \"Brazil\"               \"Finland\"             \n[43] \"Myanmar (Burma)\"      \"Iran\"                 \"Egypt\"               \n[46] \"Kuwait\"               \"Peru\"                 \"Guatemala\"           \n[49] \"Brunei\"               \"Malta\"                \"Nigeria\"             \n[52] \"Isle of Man\"          \"Vietnam\"              \"Latvia\"              \n[55] \"Israel\"               \"Ecuador\"              \"Cura\\xe7ao\"          \n[58] \"Poland\"               \"Kenya\"                \"Cyprus\""
   },
   {
     "objectID": "materials/04-r-text-mining.html#basic-histogram",
@@ -1846,5 +1846,68 @@
     "title": "",
     "section": "Running the code",
     "text": "Running the code\nTo run the code for this workshop, simply click on the row with your code, or select it, and press Ctrl/⌘ + Enter.\n\n\nIf you ever want to clear out your results and start fresh, go to Session ➔ Restart R"
+  },
+  {
+    "objectID": "script.html",
+    "href": "script.html",
+    "title": "Workshop Script",
+    "section": "",
+    "text": "Why am I?\nWhat are my expectations?\nHow is this workshop going to be structured?\n\n\n\n\nIntro to Text Mining\nKeyword Searches in Excel\nGetting Started with R\nText Mining in R\nText Mining in Python\n\n\n\n\n\nWhat do you think of when I say text mining?\nHow much experience do you have with coding languages like R or Python?\nWhat types of things are you most interested in? (keywords, sentiment, ngrams, word clouds…)"
+  },
+  {
+    "objectID": "script.html#overall-goals",
+    "href": "script.html#overall-goals",
+    "title": "Workshop Script",
+    "section": "",
+    "text": "Intro to Text Mining\nKeyword Searches in Excel\nGetting Started with R\nText Mining in R\nText Mining in Python"
+  },
+  {
+    "objectID": "script.html#poll",
+    "href": "script.html#poll",
+    "title": "Workshop Script",
+    "section": "",
+    "text": "What do you think of when I say text mining?\nHow much experience do you have with coding languages like R or Python?\nWhat types of things are you most interested in? (keywords, sentiment, ngrams, word clouds…)"
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Code Tips\nWebsites\nBlogs\nFollows"
+  },
+  {
+    "objectID": "workshop-materials.html#materialsworkshop",
+    "href": "workshop-materials.html#materialsworkshop",
+    "title": "Workshop Materials",
+    "section": "materials/workshop",
+    "text": "materials/workshop\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\nmaterials/workshop\n01-introduction\n\n\nmaterials/workshop\n02-excel\n\n\nmaterials/workshop\n03-intro-to-r\n\n\nmaterials/workshop\n04-r-text-mining\n\n\nmaterials/workshop\n05-python-text-mining\n\n\nmaterials/workshop\n06-learning-more"
+  },
+  {
+    "objectID": "workshop-materials.html#excel",
+    "href": "workshop-materials.html#excel",
+    "title": "Workshop Materials",
+    "section": "02-excel",
+    "text": "02-excel\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\n02-excel\nexcel-examples.xlsx"
+  },
+  {
+    "objectID": "workshop-materials.html#python-text-mining",
+    "href": "workshop-materials.html#python-text-mining",
+    "title": "Workshop Materials",
+    "section": "05-python-text-mining",
+    "text": "05-python-text-mining\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\n05-python-text-mining\npython-text-mining.py"
+  },
+  {
+    "objectID": "workshop-materials.html#intro-to-r-03-intro-to-r",
+    "href": "workshop-materials.html#intro-to-r-03-intro-to-r",
+    "title": "Workshop Materials",
+    "section": "03-intro-to-r ## 03-intro-to-r",
+    "text": "03-intro-to-r ## 03-intro-to-r\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\n03-intro-to-r\n01-intro.R\n\n\n03-intro-to-r\n02-our-data.R"
+  },
+  {
+    "objectID": "workshop-materials.html#r-text-mining-04-r-text-mining-04-r-text-mining-04-r-text-mining-04-r-text-mining",
+    "href": "workshop-materials.html#r-text-mining-04-r-text-mining-04-r-text-mining-04-r-text-mining-04-r-text-mining",
+    "title": "Workshop Materials",
+    "section": "04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining",
+    "text": "04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\n04-r-text-mining\n01-unnest-tokens.R\n\n\n04-r-text-mining\n01-visualize.R\n\n\n04-r-text-mining\n02-bigrams.R\n\n\n04-r-text-mining\n03-sentiment-analysis.R\n\n\n04-r-text-mining\n04-term-frequency.R"
   }
 ]
