@@ -18,33 +18,22 @@ jupyter: python3
 
 # Python
 
-# Libraries
-
-## General Purpose
+## Libraries
 
 ```{python}
 #| echo: true
+
+# General purpose
 from collections import Counter
 import numpy as np
 import os
 import warnings
 warnings.filterwarnings(action = 'ignore')
-```
 
-## Pandas
+# Data wrangling
+import pandas as pd  # similar to tidyverse
 
--   Similar functions to the `tidyverse`
-
-```{python}
-#| echo: true
-import pandas as pd
-```
-
-## Visualization
-
-```{python}
-#| echo: true
-
+# visualization
 import matplotlib.pyplot as plt
 import seaborn as sns
 ```
@@ -53,6 +42,8 @@ import seaborn as sns
 
 ```{python}
 #| echo: true
+#| warning: false
+#| message: false
 
 import nltk
 
@@ -66,25 +57,16 @@ from wordcloud import WordCloud
 
 # Setup
 
-## View Files
-
-```{python}
-#| echo: true
-os.listdir()
-```
-
-## Load Data
+## Load the data
 
 ```{python}
 #| echo: true
 
 # Import the data
-df=pd.read_csv("DisneylandReviews.csv", encoding='latin-1')
+df=pd.read_csv("workshop_data.csv", encoding='latin-1')
 ```
 
-# Examine the Data
-
-## Head
+## Examine the data
 
 ```{python}
 #| echo: true
@@ -92,7 +74,7 @@ df=pd.read_csv("DisneylandReviews.csv", encoding='latin-1')
 df.head()
 ```
 
-## Info
+## Examine the data
 
 ```{python}
 #| echo: true
@@ -100,22 +82,11 @@ df.head()
 df.info()
 ```
 
-## Rows & Columns
+## Examine the data
 
 ```{python}
 #| echo: true
 df.shape
-```
-
-## Sample the Data
-
--   The `random.seed(42)` code ensures we all get the same sampled data
-
-```{python}
-#| echo: true
-
-np.random.seed(42)
-df=df.sample(n=1000)
 ```
 
 ## Examine a Review
@@ -126,6 +97,8 @@ df=df.sample(n=1000)
 df.loc[:,'Review_Text'].values[10]
 ```
 
+# Text Mining Prep
+
 ## Convert to lowercase
 
 ```{python}
@@ -133,6 +106,7 @@ df.loc[:,'Review_Text'].values[10]
 
 # Convert to lowercase
 df['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))
+
 df['Review_Text'].head()
 ```
 
@@ -169,10 +143,11 @@ df['Review_Text'].head()
 
 ```{python}
 #| echo: true
+#| output-location: slide
 
 most_common = Counter(' '.join(df['Review_Text']).split()).most_common(50)
 most_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])
-plt.figure(figsize = (15,7))
+plt.figure(figsize = (18,6))
 sns.barplot(data = most_common_df, x = 'Words', y = 'Freq')
 plt.title('Most Common words')
 plt.xticks(rotation = 60)
@@ -183,10 +158,11 @@ plt.show()
 
 ```{python}
 #| echo: true
+#| output-location: slide
 
 word_index = Counter(" ".join(df['Review_Text']).split())
 w_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)
-plt.figure(figsize = (20,18))
+plt.figure(figsize = (18, 6))
 plt.imshow(w_cloud)
 plt.axis('off')
 plt.show()

@@ -998,7 +998,7 @@
     "href": "materials/05-python-text-mining.html#libraries",
     "title": "",
     "section": "Libraries",
-    "text": "Libraries\n\nimport re\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom collections import Counter\nimport nltk\nnltk.download('stopwords')\nfrom nltk.corpus import stopwords\nnltk.download('wordnet')\nfrom nltk.stem import WordNetLemmatizer\nfrom wordcloud import WordCloud\nimport os\nimport warnings\nwarnings.filterwarnings(action = 'ignore')"
+    "text": "Libraries\n\n# General purpose\nfrom collections import Counter\nimport numpy as np\nimport os\nimport warnings\nwarnings.filterwarnings(action = 'ignore')\n\n# Data wrangling\nimport pandas as pd  # similar to tidyverse\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns"
   },
   {
     "objectID": "materials/05-python-text-mining.html#load-data",
@@ -1040,7 +1040,7 @@
     "href": "materials/05-python-text-mining.html#examine-a-review",
     "title": "",
     "section": "Examine a Review",
-    "text": "Examine a Review\n\ndf.loc[:,'Review_Text'].values[10]\n\n'A very good once in a lifetime experience. Great parade with music and Disney characters. Many people so get here early. Also for the parade.'"
+    "text": "Examine a Review\n\ndf.loc[:,'Review_Text'].values[10]\n\n\"I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)\""
   },
   {
     "objectID": "materials/05-python-text-mining.html#prep-data",
@@ -1054,28 +1054,28 @@
     "href": "materials/05-python-text-mining.html#remove-stop-words",
     "title": "",
     "section": "Remove Stop Words",
-    "text": "Remove Stop Words\n\nstop = stopwords.words('english')\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(x for x in x.split() if x not in stop))\ndf['Review_Text'].head()\n\n31092    disneyland beautiful large.to see need stay le...\n28105    lines rides long. yes, fast passes help little...\n1121     loved hong kong disneyland although much small...\n17687    love disneyland! annual pass holders love nost...\n23059    california adventure park much improved additi...\nName: Review_Text, dtype: object"
+    "text": "Remove Stop Words\n\nstop = stopwords.words('english')\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(x for x in x.split() if x not in stop))\ndf['Review_Text'].head()\n\n0    previously 3 disney resorts. expectations sky ...\n1    hong kong disneyland quite small, many people ...\n2    wife, 15 year old son, went disneyland park ju...\n3    family unfortunate experience paris weekend 13...\n4    hk disney small lines big attractions long. en...\nName: Review_Text, dtype: object"
   },
   {
     "objectID": "materials/05-python-text-mining.html#lemmatizing",
     "href": "materials/05-python-text-mining.html#lemmatizing",
     "title": "",
     "section": "Lemmatizing",
-    "text": "Lemmatizing\n\nlemmatizer = WordNetLemmatizer()\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(lemmatizer.lemmatize(word) for word in x.split()))\ndf['Review_Text'].head()\n\n31092    disneyland beautiful large.to see need stay le...\n28105    line ride long. yes, fast pass help little sta...\n1121     loved hong kong disneyland although much small...\n17687    love disneyland! annual pas holder love nostal...\n23059    california adventure park much improved additi...\nName: Review_Text, dtype: object"
+    "text": "Lemmatizing\n\nlemmatizer = WordNetLemmatizer()\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(lemmatizer.lemmatize(word) for word in x.split()))\ndf['Review_Text'].head()\n\n0    previously 3 disney resorts. expectation sky h...\n1    hong kong disneyland quite small, many people ...\n2    wife, 15 year old son, went disneyland park ju...\n3    family unfortunate experience paris weekend 13...\n4    hk disney small line big attraction long. enjo...\nName: Review_Text, dtype: object"
   },
   {
     "objectID": "materials/05-python-text-mining.html#most-common-words",
     "href": "materials/05-python-text-mining.html#most-common-words",
     "title": "",
     "section": "Most Common Words",
-    "text": "Most Common Words\n\nmost_common = Counter(' '.join(df['Review_Text']).split()).most_common(50)\nmost_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])\nplt.figure(figsize = (15,7))\nsns.barplot(data = most_common_df, x = 'Words', y = 'Freq')\nplt.title('Most Common words')\nplt.xticks(rotation = 60)\nplt.show()"
+    "text": "Most Common Words\n\nmost_common = Counter(' '.join(df['Review_Text']).split()).most_common(50)\nmost_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])\nplt.figure(figsize = (18,6))\nsns.barplot(data = most_common_df, x = 'Words', y = 'Freq')\nplt.title('Most Common words')\nplt.xticks(rotation = 60)\nplt.show()"
   },
   {
     "objectID": "materials/05-python-text-mining.html#word-cloud",
     "href": "materials/05-python-text-mining.html#word-cloud",
     "title": "",
     "section": "Word Cloud",
-    "text": "Word Cloud\n\nword_index = Counter(\" \".join(df['Review_Text']).split())\nw_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)\nplt.figure(figsize = (20,18))\nplt.imshow(w_cloud)\nplt.axis('off')\nplt.show()\n\n\n\n\n\n\nIntroduction to Text Mining"
+    "text": "Word Cloud\n\nword_index = Counter(\" \".join(df['Review_Text']).split())\nw_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)\nplt.figure(figsize = (18, 6))\nplt.imshow(w_cloud)\nplt.axis('off')\nplt.show()\n\n\n\n\nIntroduction to Text Mining"
   },
   {
     "objectID": "materials/06-learning-more.html#give-yourself-grace",
@@ -1824,7 +1824,7 @@
     "href": "materials/05-python-text-mining.html#convert-to-lowercase",
     "title": "",
     "section": "Convert to lowercase",
-    "text": "Convert to lowercase\n\n# Convert to lowercase\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))\ndf['Review_Text'].head()\n\n31092    disneyland is so beautiful and large.to see al...\n28105    the lines for rides are too long. yes, the fas...\n1121     loved hong kong disneyland although it is much...\n17687    love disneyland! we are annual pass holders an...\n23059    the california adventure park is much improved...\nName: Review_Text, dtype: object"
+    "text": "Convert to lowercase\n\n# Convert to lowercase\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))\n\ndf['Review_Text'].head()\n\n0    i ve previously been to 3 disney resorts. so i...\n1    the hong kong disneyland is quite small, there...\n2    my wife, my 15 year old son, and i went to dis...\n3    our family had the unfortunate experience of b...\n4    hk disney is very small and lines for the big ...\nName: Review_Text, dtype: object"
   },
   {
     "objectID": "materials/05-python-text-mining.html#remove-punctuation",
@@ -2042,5 +2042,47 @@
     "title": "",
     "section": "Making new variables",
     "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head()\n\n\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#load-the-data",
+    "href": "materials/05-python-text-mining.html#load-the-data",
+    "title": "",
+    "section": "Load the data",
+    "text": "Load the data\n\n# Import the data\ndf=pd.read_csv(\"workshop_data.csv\", encoding='latin-1')"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#examine-the-data",
+    "href": "materials/05-python-text-mining.html#examine-the-data",
+    "title": "",
+    "section": "Examine the data",
+    "text": "Examine the data\n\ndf.head()\n\n\n\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n0\n305683957\n5\n2015-08-01\nPortugal\nI ve previously been to 3 Disney Resorts. So ...\nDisneyland_California\n\n\n1\n666364898\n3\n2018-10-01\nUnited States\nThe Hong Kong Disneyland is quite small, there...\nDisneyland_HongKong\n\n\n2\n293082325\n3\n2015-06-01\nUnited States\nMy wife, my 15 year old son, and I went to Dis...\nDisneyland_Paris\n\n\n3\n334650140\n1\n2015-11-01\nUnited Kingdom\nOur family had the unfortunate experience of b...\nDisneyland_Paris\n\n\n4\n393553042\n3\n2016-07-01\nUnited States\nHK Disney is very small and lines for the big ...\nDisneyland_HongKong"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#examine-the-data-1",
+    "href": "materials/05-python-text-mining.html#examine-the-data-1",
+    "title": "",
+    "section": "Examine the data",
+    "text": "Examine the data\n\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 1000 entries, 0 to 999\nData columns (total 6 columns):\n #   Column             Non-Null Count  Dtype \n---  ------             --------------  ----- \n 0   Review_ID          1000 non-null   int64 \n 1   Rating             1000 non-null   int64 \n 2   Year_Month         1000 non-null   object\n 3   Reviewer_Location  1000 non-null   object\n 4   Review_Text        1000 non-null   object\n 5   Branch             1000 non-null   object\ndtypes: int64(2), object(4)\nmemory usage: 47.0+ KB"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#examine-the-data-2",
+    "href": "materials/05-python-text-mining.html#examine-the-data-2",
+    "title": "",
+    "section": "Examine the data",
+    "text": "Examine the data\n\ndf.shape\n\n(1000, 6)"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#most-common-words-output",
+    "href": "materials/05-python-text-mining.html#most-common-words-output",
+    "title": "",
+    "section": "Most Common Words",
+    "text": "Most Common Words"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#word-cloud-output",
+    "href": "materials/05-python-text-mining.html#word-cloud-output",
+    "title": "",
+    "section": "Word Cloud",
+    "text": "Word Cloud"
   }
 ]

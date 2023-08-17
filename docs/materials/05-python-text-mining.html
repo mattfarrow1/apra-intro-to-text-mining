@@ -403,53 +403,40 @@
 </div>
 
 </section>
+<section>
 <section id="python" class="title-slide slide level1 center">
 <h1>Python</h1>
 
 </section>
-
-<section>
-<section id="libraries" class="title-slide slide level1 center">
-<h1>Libraries</h1>
-
-</section>
-<section id="general-purpose" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>General Purpose</h2>
+<section id="libraries" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Libraries</h2>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> warnings</span>
-<span id="cb1-5"><a href="#cb1-5"></a>warnings.filterwarnings(action <span class="op">=</span> <span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="pandas" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Pandas</h2>
-<ul>
-<li>Similar functions to the <code>tidyverse</code></li>
-</ul>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="visualization" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Visualization</h2>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># General purpose</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> warnings</span>
+<span id="cb1-6"><a href="#cb1-6"></a>warnings.filterwarnings(action <span class="op">=</span> <span class="st">'ignore'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># Data wrangling</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> pandas <span class="im">as</span> pd  <span class="co"># similar to tidyverse</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># visualization</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="text-mining" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Text Mining</h2>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> nltk</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>nltk.download(<span class="st">'wordnet'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer</span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> nltk</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>nltk.download(<span class="st">'wordnet'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -457,48 +444,18 @@
 <h1>Setup</h1>
 
 </section>
-<section id="view-files" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>View Files</h2>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>os.listdir()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>['.Rhistory',
- 'workshop',
- '06-learning-more.qmd',
- '01-introduction.qmd',
- 'slide templates',
- 'images',
- '05-python-text-mining.qmd',
- '02-excel.qmd',
- 'resources_files',
- 'theme',
- '03-intro-to-r.qmd',
- 'static',
- '05-python-text-mining.ipynb',
- 'DisneylandReviews.csv',
- 'filter.lua',
- 'workshop_data.RData',
- '04-r-text-mining.qmd']</code></pre>
-</div>
+<section id="load-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Load the data</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Import the data</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>df<span class="op">=</span>pd.read_csv(<span class="st">"workshop_data.csv"</span>, encoding<span class="op">=</span><span class="st">'latin-1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="load-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Load Data</h2>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Import the data</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>df<span class="op">=</span>pd.read_csv(<span class="st">"DisneylandReviews.csv"</span>, encoding<span class="op">=</span><span class="st">'latin-1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="examine-the-data" class="title-slide slide level1 center">
-<h1>Examine the Data</h1>
-
-</section>
-<section id="head" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Head</h2>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<section id="examine-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Examine the data</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -529,47 +486,47 @@
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>670772142</td>
-<td>4</td>
-<td>2019-4</td>
-<td>Australia</td>
-<td>If you've ever been to Disneyland anywhere you...</td>
-<td>Disneyland_HongKong</td>
+<td>305683957</td>
+<td>5</td>
+<td>2015-08-01</td>
+<td>Portugal</td>
+<td>I ve previously been to 3 Disney Resorts. So ...</td>
+<td>Disneyland_California</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>670682799</td>
-<td>4</td>
-<td>2019-5</td>
-<td>Philippines</td>
-<td>Its been a while since d last time we visit HK...</td>
+<td>666364898</td>
+<td>3</td>
+<td>2018-10-01</td>
+<td>United States</td>
+<td>The Hong Kong Disneyland is quite small, there...</td>
 <td>Disneyland_HongKong</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>670623270</td>
-<td>4</td>
-<td>2019-4</td>
-<td>United Arab Emirates</td>
-<td>Thanks God it wasn t too hot or too humid wh...</td>
-<td>Disneyland_HongKong</td>
+<td>293082325</td>
+<td>3</td>
+<td>2015-06-01</td>
+<td>United States</td>
+<td>My wife, my 15 year old son, and I went to Dis...</td>
+<td>Disneyland_Paris</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>670607911</td>
-<td>4</td>
-<td>2019-4</td>
-<td>Australia</td>
-<td>HK Disneyland is a great compact park. Unfortu...</td>
-<td>Disneyland_HongKong</td>
+<td>334650140</td>
+<td>1</td>
+<td>2015-11-01</td>
+<td>United Kingdom</td>
+<td>Our family had the unfortunate experience of b...</td>
+<td>Disneyland_Paris</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>670607296</td>
-<td>4</td>
-<td>2019-4</td>
-<td>United Kingdom</td>
-<td>the location is not in the city, took around 1...</td>
+<td>393553042</td>
+<td>3</td>
+<td>2016-07-01</td>
+<td>United States</td>
+<td>HK Disney is very small and lines for the big ...</td>
 <td>Disneyland_HongKong</td>
 </tr>
 </tbody>
@@ -579,143 +536,143 @@
 </div>
 </div>
 </section>
-<section id="info" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Info</h2>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="examine-the-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Examine the data</h2>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 42656 entries, 0 to 42655
+RangeIndex: 1000 entries, 0 to 999
 Data columns (total 6 columns):
  #   Column             Non-Null Count  Dtype 
 ---  ------             --------------  ----- 
- 0   Review_ID          42656 non-null  int64 
- 1   Rating             42656 non-null  int64 
- 2   Year_Month         42656 non-null  object
- 3   Reviewer_Location  42656 non-null  object
- 4   Review_Text        42656 non-null  object
- 5   Branch             42656 non-null  object
+ 0   Review_ID          1000 non-null   int64 
+ 1   Rating             1000 non-null   int64 
+ 2   Year_Month         1000 non-null   object
+ 3   Reviewer_Location  1000 non-null   object
+ 4   Review_Text        1000 non-null   object
+ 5   Branch             1000 non-null   object
 dtypes: int64(2), object(4)
-memory usage: 2.0+ MB</code></pre>
+memory usage: 47.0+ KB</code></pre>
 </div>
 </div>
 </section>
-<section id="rows-columns" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Rows &amp; Columns</h2>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>(42656, 6)</code></pre>
+<section id="examine-the-data-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Examine the data</h2>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>(1000, 6)</code></pre>
 </div>
-</div>
-</section>
-<section id="sample-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Sample the Data</h2>
-<ul>
-<li>The <code>random.seed(42)</code> code ensures we all get the same sampled data</li>
-</ul>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>df<span class="op">=</span>df.sample(n<span class="op">=</span><span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="examine-a-review" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine a Review</h2>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df.loc[:,<span class="st">'Review_Text'</span>].values[<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>'A very good once in a lifetime experience. Great parade with music and Disney characters. Many people so get here early. Also for the parade.'</code></pre>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.loc[:,<span class="st">'Review_Text'</span>].values[<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>"I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)"</code></pre>
 </div>
 </div>
+</section></section>
+<section>
+<section id="text-mining-prep" class="title-slide slide level1 center">
+<h1>Text Mining Prep</h1>
+
 </section>
 <section id="convert-to-lowercase" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Convert to lowercase</h2>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Convert to lowercase</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">' '</span>.join(x.lower() <span class="cf">for</span> x <span class="kw">in</span> x.split()))</span>
-<span id="cb16-3"><a href="#cb16-3"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>31092    disneyland is so beautiful and large.to see al...
-28105    the lines for rides are too long. yes, the fas...
-1121     loved hong kong disneyland although it is much...
-17687    love disneyland! we are annual pass holders an...
-23059    the california adventure park is much improved...
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Convert to lowercase</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">' '</span>.join(x.lower() <span class="cf">for</span> x <span class="kw">in</span> x.split()))</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>0    i ve previously been to 3 disney resorts. so i...
+1    the hong kong disneyland is quite small, there...
+2    my wife, my 15 year old son, and i went to dis...
+3    our family had the unfortunate experience of b...
+4    hk disney is very small and lines for the big ...
 Name: Review_Text, dtype: object</code></pre>
 </div>
 </div>
 </section>
 <section id="remove-punctuation" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Remove Punctuation</h2>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Remove punctuation</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">str</span>.replace(<span class="st">'[^\w\s]'</span>, <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Remove punctuation</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">str</span>.replace(<span class="st">'[^\w\s]'</span>, <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="remove-stop-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Remove Stop Words</h2>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>stop <span class="op">=</span> stopwords.words(<span class="st">'english'</span>)</span>
-<span id="cb19-2"><a href="#cb19-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">" "</span>.join(x <span class="cf">for</span> x <span class="kw">in</span> x.split() <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> stop))</span>
-<span id="cb19-3"><a href="#cb19-3"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>31092    disneyland beautiful large.to see need stay le...
-28105    lines rides long. yes, fast passes help little...
-1121     loved hong kong disneyland although much small...
-17687    love disneyland! annual pass holders love nost...
-23059    california adventure park much improved additi...
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>stop <span class="op">=</span> stopwords.words(<span class="st">'english'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">" "</span>.join(x <span class="cf">for</span> x <span class="kw">in</span> x.split() <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> stop))</span>
+<span id="cb14-3"><a href="#cb14-3"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>0    previously 3 disney resorts. expectations sky ...
+1    hong kong disneyland quite small, many people ...
+2    wife, 15 year old son, went disneyland park ju...
+3    family unfortunate experience paris weekend 13...
+4    hk disney small lines big attractions long. en...
 Name: Review_Text, dtype: object</code></pre>
 </div>
 </div>
 </section>
 <section id="lemmatizing" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Lemmatizing</h2>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>lemmatizer <span class="op">=</span> WordNetLemmatizer()</span>
-<span id="cb21-2"><a href="#cb21-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">" "</span>.join(lemmatizer.lemmatize(word) <span class="cf">for</span> word <span class="kw">in</span> x.split()))</span>
-<span id="cb21-3"><a href="#cb21-3"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>31092    disneyland beautiful large.to see need stay le...
-28105    line ride long. yes, fast pass help little sta...
-1121     loved hong kong disneyland although much small...
-17687    love disneyland! annual pas holder love nostal...
-23059    california adventure park much improved additi...
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>lemmatizer <span class="op">=</span> WordNetLemmatizer()</span>
+<span id="cb16-2"><a href="#cb16-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">" "</span>.join(lemmatizer.lemmatize(word) <span class="cf">for</span> word <span class="kw">in</span> x.split()))</span>
+<span id="cb16-3"><a href="#cb16-3"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>0    previously 3 disney resorts. expectation sky h...
+1    hong kong disneyland quite small, many people ...
+2    wife, 15 year old son, went disneyland park ju...
+3    family unfortunate experience paris weekend 13...
+4    hk disney small line big attraction long. enjo...
 Name: Review_Text, dtype: object</code></pre>
 </div>
 </div>
 </section>
 <section id="most-common-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Most Common Words</h2>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>most_common <span class="op">=</span> Counter(<span class="st">' '</span>.join(df[<span class="st">'Review_Text'</span>]).split()).most_common(<span class="dv">50</span>)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>most_common_df <span class="op">=</span> pd.DataFrame(most_common, columns <span class="op">=</span> [<span class="st">'Words'</span>, <span class="st">'Freq'</span>])</span>
-<span id="cb23-3"><a href="#cb23-3"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">15</span>,<span class="dv">7</span>))</span>
-<span id="cb23-4"><a href="#cb23-4"></a>sns.barplot(data <span class="op">=</span> most_common_df, x <span class="op">=</span> <span class="st">'Words'</span>, y <span class="op">=</span> <span class="st">'Freq'</span>)</span>
-<span id="cb23-5"><a href="#cb23-5"></a>plt.title(<span class="st">'Most Common words'</span>)</span>
-<span id="cb23-6"><a href="#cb23-6"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">60</span>)</span>
-<span id="cb23-7"><a href="#cb23-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img data-src="05-python-text-mining_files/figure-revealjs/cell-17-output-1.png" width="1192" height="653"></p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>most_common <span class="op">=</span> Counter(<span class="st">' '</span>.join(df[<span class="st">'Review_Text'</span>]).split()).most_common(<span class="dv">50</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>most_common_df <span class="op">=</span> pd.DataFrame(most_common, columns <span class="op">=</span> [<span class="st">'Words'</span>, <span class="st">'Freq'</span>])</span>
+<span id="cb18-3"><a href="#cb18-3"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">18</span>,<span class="dv">6</span>))</span>
+<span id="cb18-4"><a href="#cb18-4"></a>sns.barplot(data <span class="op">=</span> most_common_df, x <span class="op">=</span> <span class="st">'Words'</span>, y <span class="op">=</span> <span class="st">'Freq'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>plt.title(<span class="st">'Most Common words'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">60</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+
 </section>
-<section id="word-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Word Cloud</h2>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>word_index <span class="op">=</span> Counter(<span class="st">" "</span>.join(df[<span class="st">'Review_Text'</span>]).split())</span>
-<span id="cb24-2"><a href="#cb24-2"></a>w_cloud <span class="op">=</span> WordCloud(max_words <span class="op">=</span> <span class="dv">1500</span>, width <span class="op">=</span> <span class="dv">800</span>, height <span class="op">=</span> <span class="dv">600</span>).generate_from_frequencies(word_index, <span class="va">None</span>)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">18</span>))</span>
-<span id="cb24-4"><a href="#cb24-4"></a>plt.imshow(w_cloud)</span>
-<span id="cb24-5"><a href="#cb24-5"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb24-6"><a href="#cb24-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="most-common-words-output" class="slide level2 output-location-slide"><h2>Most Common Words</h2><div class="cell output-location-slide" data-execution_count="12">
 <div class="cell-output cell-output-display">
-<p><img data-src="05-python-text-mining_files/figure-revealjs/cell-18-output-1.png" width="1507" height="1135"></p>
+<p><img data-src="05-python-text-mining_files/figure-revealjs/cell-13-output-1.png" width="1413" height="579"></p>
 </div>
+</div></section><section id="word-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Word Cloud</h2>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>word_index <span class="op">=</span> Counter(<span class="st">" "</span>.join(df[<span class="st">'Review_Text'</span>]).split())</span>
+<span id="cb19-2"><a href="#cb19-2"></a>w_cloud <span class="op">=</span> WordCloud(max_words <span class="op">=</span> <span class="dv">1500</span>, width <span class="op">=</span> <span class="dv">800</span>, height <span class="op">=</span> <span class="dv">600</span>).generate_from_frequencies(word_index, <span class="va">None</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">18</span>, <span class="dv">6</span>))</span>
+<span id="cb19-4"><a href="#cb19-4"></a>plt.imshow(w_cloud)</span>
+<span id="cb19-5"><a href="#cb19-5"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb19-6"><a href="#cb19-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+
 
 <div class="footer footer-default">
 <p><a href="https://mattfarrow1.github.io/apra-intro-to-text-mining/">Introduction to Text Mining</a></p>
 </div>
-</section></section>
+</section><section id="word-cloud-output" class="slide level2 output-location-slide"><h2>Word Cloud</h2><div class="cell output-location-slide" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<p><img data-src="05-python-text-mining_files/figure-revealjs/cell-14-output-1.png" width="611" height="463"></p>
+</div>
+</div></section></section>
     </div>
   </div>
 
