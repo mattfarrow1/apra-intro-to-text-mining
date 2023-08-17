@@ -2,10 +2,26 @@
 title: "Resources"
 ---
 
-Code Tips
+## Books
 
-Websites
+[R4DS (R for Data Science)](https://r4ds.hadley.nz) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund
 
-Blogs
+![](https://r4ds.hadley.nz/cover.jpg){width="150"}
 
-Follows
+[Tidy Text Mining](https://www.tidytextmining.com) by Julia Silge and David Robinson
+
+![](https://www.tidytextmining.com/images/cover.png){width="150"}
+
+[Happy Git and GitHub for the useR](https://happygitwithr.com) by Jenny Bryan
+
+![](https://happygitwithr.com/img/watch-me-diff-watch-me-rebase-smaller.png){height="300"}
+
+[ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen
+
+![](https://ggplot2-book.org/cover.jpg){width="150"}
+
+## Workshops
+
+[R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/) by Julie Lowndes and Allison Horst
+
+![](https://rstudio-conf-2020.github.io/r-for-excel/img/r-for-excel-monsters.jpg){height="300"}

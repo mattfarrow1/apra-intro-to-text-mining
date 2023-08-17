@@ -28,7 +28,7 @@ The materials for this workshop are available in a cloud environment that can be
 If you are a workshop attendee and have any trouble with installation locally, please reach out to me directly!
 
 -   Install latest version of RStudio, [`2023.06.0+421)` or later](https://posit.co/products/open-source/rstudio/)
--   Ideally upgrade/use to R 4.3.1 (I'm using the magittr pipe `%>%`)
+-   Ideally upgrade/use to R 4.3.1 (I'm using the native pipe `|>`)
 -   Install these R packages:
 
 ```{r pkg-list}

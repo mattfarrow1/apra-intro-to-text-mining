@@ -1873,7 +1873,7 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Code Tips\nWebsites\nBlogs\nFollows"
+    "text": "R4DS (R for Data Science) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund\n\nTidy Text Mining by Julia Silge and David Robinson\n\nHappy Git and GitHub for the useR by Jenny Bryan\n\nggplot2: Elegant Graphics for Data Analysis (3e) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen"
   },
   {
     "objectID": "workshop-materials.html#materialsworkshop",
@@ -1909,5 +1909,19 @@
     "title": "Workshop Materials",
     "section": "04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining",
     "text": "04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining ## 04-r-text-mining\n\n\n\n\n\n\n\nfolder\nfile\n\n\n\n\n04-r-text-mining\n01-unnest-tokens.R\n\n\n04-r-text-mining\n01-visualize.R\n\n\n04-r-text-mining\n02-bigrams.R\n\n\n04-r-text-mining\n03-sentiment-analysis.R\n\n\n04-r-text-mining\n04-term-frequency.R"
+  },
+  {
+    "objectID": "resources.html#books",
+    "href": "resources.html#books",
+    "title": "Resources",
+    "section": "",
+    "text": "R4DS (R for Data Science) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund\n\nTidy Text Mining by Julia Silge and David Robinson\n\nHappy Git and GitHub for the useR by Jenny Bryan\n\nggplot2: Elegant Graphics for Data Analysis (3e) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen"
+  },
+  {
+    "objectID": "resources.html#workshops",
+    "href": "resources.html#workshops",
+    "title": "Resources",
+    "section": "Workshops",
+    "text": "Workshops\nR for Excel Users by Julie Lowndes and Allison Horst"
   }
 ]
