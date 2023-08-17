@@ -447,6 +447,18 @@
 <li>Multiple language support</li>
 </ul>
 </section>
+<section id="r-vs.-rstudio" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>R vs.&nbsp;RStudio</h2>
+<ul>
+<li>R needs to be installed before you can use RStudio</li>
+<li>Download from CRAN (Comprehensive R Archive Network) <a href="https://cran.r-project.org">(link)</a></li>
+</ul>
+</section></section>
+<section>
+<section id="section" class="title-slide slide level1 center" data-background-image="../materials/images/cran.png" data-background-size="contain">
+<h1></h1>
+
+</section>
 <section id="rstudio-ide" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>RStudio IDE</h2>
 <blockquote>
@@ -456,16 +468,51 @@
 <aside><div>
 <p>Source: <a href="https://posit.co/products/open-source/rstudio/">Posit</a></p>
 </div></aside></section>
-<section id="section" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2></h2>
-</section>
-<section id="section-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2></h2>
+<section id="posit-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Posit Cloud</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Everything in this workshop can be done through the virtual project. Scan the QR code or visit the URL to get started.</p>
+</div>
+</div>
+</div>
+<p><br></p>
+<p><a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/content/6215314</a></p>
+<div id="qrcode" class="qrcode"></div>
+<script type="text/javascript">
+var qrcode = new QRCode("qrcode", {"colorDark":"#000000","height":128,"colorLight":"#ffffff","width":128,"text":"https://posit.cloud/content/6215314"});
+</script>
+    
 </section></section>
+<section id="section-1" class="title-slide slide level1 center" data-background-image="../materials/images/rstudio-clean.png" data-background-size="contain">
+<h1></h1>
+
+</section>
+
+<section id="section-2" class="title-slide slide level1 center" data-background-image="../materials/images/rstudio-annotated.png" data-background-size="contain">
+<h1></h1>
+
+</section>
+
 <section>
 <section id="packages" class="title-slide slide level1 center">
 <h1>Packages</h1>
 
+</section>
+<section id="packages-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Packages</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rstudio-packages.png" height="500"></p>
+</figure>
+</div>
 </section>
 <section id="what-are-packages" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>What are packages?</h2>
@@ -517,6 +564,22 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(DBI)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>DBI<span class="sc">::</span><span class="fu">dbConnect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Beware of dependencies.</p>
+</section>
+<section id="cran" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>CRAN</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/package-details.png" height="500"></p>
+</figure>
+</div>
+</section>
+<section id="package-help" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Package Help</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rstudio-help.png" height="500"></p>
+</figure>
+</div>
 </section></section>
 <section>
 <section id="the-tidyverse" class="title-slide slide level1 smaller center">
@@ -540,13 +603,18 @@
 <li>Can “pipe” instructions together</li>
 </ul>
 </section>
-<section id="an-aside-on-piping" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>An aside on piping</h2>
+<section id="piping" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Piping</h2>
 <ul>
-<li><p><strong>%&gt;%</strong> is the traditional method that came from the `magrittr` package</p></li>
-<li><p><strong>|&gt;</strong> the “native” pipe that was introduced to R in version 4.1</p></li>
-<li><p>Both work by ‘piping’ information from the left hand side (LHS) to the right hand side (RHS)</p></li>
+<li><strong>%&gt;%</strong> is the traditional method that came from the `magrittr` package</li>
+<li><strong>|&gt;</strong> the “native” pipe that was introduced to R in version 4.1</li>
+<li>Both work by ‘piping’ information from the left hand side (LHS) to the right hand side (RHS)</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pipe.png" height="150"></p>
+</figure>
+</div>
 </section>
 <section id="community" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Community</h2>
@@ -595,29 +663,6 @@
 <section id="intro-to-dplyr" class="title-slide slide level1 center">
 <h1>Intro to <code>dplyr</code></h1>
 
-</section>
-<section id="posit-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Posit Cloud</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>Everything in this workshop can be done through the virtual project. Scan the QR code or visit the URL to get started.</p>
-</div>
-</div>
-</div>
-<p><br></p>
-<p><a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/content/6215314</a></p>
-<div id="qrcode" class="qrcode"></div>
-<script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","text":"https://posit.cloud/content/6215314","width":128,"height":128,"colorDark":"#000000"});
-</script>
-    
 </section>
 <section id="open-the-file" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Open the file</h2>

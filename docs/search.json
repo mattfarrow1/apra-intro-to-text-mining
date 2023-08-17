@@ -921,7 +921,7 @@
     "href": "materials/03-intro-to-r.html#packages-1",
     "title": "",
     "section": "Packages",
-    "text": "Packages\n\nLibraries of code\nExpand the “base R” code\nFor almost anything you need\nBeware of relying too heavily on niche packages"
+    "text": "Packages"
   },
   {
     "objectID": "materials/03-intro-to-r.html#installing-and-loading-packages",
@@ -1923,5 +1923,33 @@
     "title": "Resources",
     "section": "Workshops",
     "text": "Workshops\nR for Excel Users by Julie Lowndes and Allison Horst"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#package-help",
+    "href": "materials/03-intro-to-r.html#package-help",
+    "title": "",
+    "section": "Package Help",
+    "text": "Package Help"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#r-vs.-rstudio",
+    "href": "materials/03-intro-to-r.html#r-vs.-rstudio",
+    "title": "",
+    "section": "R vs. RStudio",
+    "text": "R vs. RStudio\n\nR needs to be installed before you can use RStudio\nDownload from CRAN (Comprehensive R Archive Network) (link)"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#cran",
+    "href": "materials/03-intro-to-r.html#cran",
+    "title": "",
+    "section": "CRAN",
+    "text": "CRAN"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#piping",
+    "href": "materials/03-intro-to-r.html#piping",
+    "title": "",
+    "section": "Piping",
+    "text": "Piping\n\n%&gt;% is the traditional method that came from the `magrittr` package\n|&gt; the “native” pipe that was introduced to R in version 4.1\nBoth work by ‘piping’ information from the left hand side (LHS) to the right hand side (RHS)"
   }
 ]

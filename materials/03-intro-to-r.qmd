@@ -43,6 +43,13 @@ For the purposes of this workshop, there are no significant differences in R vs.
 -   Everything in one place
 -   Multiple language support
 
+## R vs. RStudio
+
+-   R needs to be installed before you can use RStudio
+-   Download from CRAN (Comprehensive R Archive Network) [(link)](https://cran.r-project.org)
+
+# {background-image="/materials/images/cran.png" background-size="contain"}
+
 ## RStudio IDE
 
 > RStudio is an integrated development environment (IDE) for R and Python. It includes a console, syntax-highlighting editor that supports direct code execution, and tools for plotting, history, debugging, and workspace management. RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux).
@@ -51,11 +58,27 @@ For the purposes of this workshop, there are no significant differences in R vs.
 Source: [Posit](https://posit.co/products/open-source/rstudio/)
 :::
 
-##  {background-image="/materials/images/rstudio-clean.png" background-size="contain"}
+## Posit Cloud
 
-##  {background-image="/materials/images/rstudio-annotated.png" background-size="contain"}
+::: callout-tip
+Everything in this workshop can be done through the virtual project. Scan the QR code or visit the URL to get started.
+:::
+
+<br>
+
+<https://posit.cloud/content/6215314>
+
+{{< qrcode https://posit.cloud/content/6215314 >}}
+
+#  {background-image="/materials/images/rstudio-clean.png" background-size="contain"}
+
+#  {background-image="/materials/images/rstudio-annotated.png" background-size="contain"}
 
 # Packages
+
+## Packages
+
+![](images/rstudio-packages.png){fig-align="center" height="500"}
 
 ## What are packages?
 
@@ -91,6 +114,14 @@ DBI::dbConnect()
 
 Beware of dependencies.
 
+## CRAN
+
+![](images/package-details.png){fig-align="center" height="500"}
+
+## Package Help
+
+![](images/rstudio-help){fig-align="center" height="500"}
+
 # The `tidyverse` {.smaller}
 
 ![](images/tidyverse-logo.png){fig-align="center" height="200"}
@@ -106,13 +137,13 @@ Beware of dependencies.
 -   Covers most frequent use cases
 -   Can "pipe" instructions together
 
-## An aside on piping
+## Piping
 
 -   **%\>%** is the traditional method that came from the \`magrittr\` package
-
 -   **\|\>** the "native" pipe that was introduced to R in version 4.1
-
 -   Both work by 'piping' information from the left hand side (LHS) to the right hand side (RHS)
+
+![](images/pipe.png){fig-align="center" height="150"}
 
 ## Community {.smaller}
 
@@ -147,18 +178,6 @@ Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 :::
 
 # Intro to `dplyr`
-
-## Posit Cloud
-
-::: callout-tip
-Everything in this workshop can be done through the virtual project. Scan the QR code or visit the URL to get started.
-:::
-
-<br>
-
-<https://posit.cloud/content/6215314>
-
-{{< qrcode https://posit.cloud/content/6215314 >}}
 
 ## Open the file
 
