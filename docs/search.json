@@ -697,14 +697,14 @@
     "href": "materials/03-intro-to-r.html#examine-the-data",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Setup\n\n\n\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Examine the Data\n\n\n\n\n# Load libraries\n#| output-location: fragment\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\nhead(palmerpenguins::penguins)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "Examine the data\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Setup\n\n\n\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\nlibrary(kableExtra)"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-1",
     "href": "materials/03-intro-to-r.html#examine-the-data-1",
     "title": "",
-    "section": "Examine the Data",
-    "text": "Examine the Data\n\n\nstr(df)\n\n\nspc_tbl_ [42,656 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Review_ID        : num [1:42656] 6.71e+08 6.71e+08 6.71e+08 6.71e+08 6.71e+08 ...\n $ Rating           : num [1:42656] 4 4 4 4 4 3 5 3 2 5 ...\n $ Year_Month       : chr [1:42656] \"2019-4\" \"2019-5\" \"2019-4\" \"2019-4\" ...\n $ Reviewer_Location: chr [1:42656] \"Australia\" \"Philippines\" \"United Arab Emirates\" \"Australia\" ...\n $ Review_Text      : chr [1:42656] \"If you've ever been to Disneyland anywhere you'll find Disneyland Hong Kong very similar in the layout when you\"| __truncated__ \"Its been a while since d last time we visit HK Disneyland .. Yet, this time we only stay in Tomorrowland .. AKA\"| __truncated__ \"Thanks God it wasn   t too hot or too humid when I was visiting the park   otherwise it would be a big issue (t\"| __truncated__ \"HK Disneyland is a great compact park. Unfortunately there is quite a bit of maintenance work going on at prese\"| __truncated__ ...\n $ Branch           : chr [1:42656] \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" \"Disneyland_HongKong\" ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Review_ID = col_double(),\n  ..   Rating = col_double(),\n  ..   Year_Month = col_character(),\n  ..   Reviewer_Location = col_character(),\n  ..   Review_Text = col_character(),\n  ..   Branch = col_character()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt;"
+    "section": "Examine the data",
+    "text": "Examine the data\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Examine the Data\n\n\n\n\n# Load libraries\n#| output-location: fragment\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\nhead(palmerpenguins::penguins)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-2",
@@ -732,7 +732,7 @@
     "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
     "title": "",
     "section": "How many are male on Biscoe island?",
-    "text": "How many are male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"biscoe\")\n\n\n\n# A tibble: 0 × 8\n# ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,\n#   bill_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;, sex &lt;fct&gt;,\n#   year &lt;int&gt;"
+    "text": "How many are male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"biscoe\")\n\n\n\n# A tibble: 0 × 8\n# ℹ 8 variables: species &lt;fct&gt;, island &lt;fct&gt;, bill_length_mm &lt;dbl&gt;,\n#   bill_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;int&gt;, body_mass_g &lt;int&gt;, sex &lt;fct&gt;,\n#   year &lt;int&gt;\n\n\n\nWhy don’t we have any results?"
   },
   {
     "objectID": "materials/03-intro-to-r.html#why-no-results",
@@ -753,7 +753,7 @@
     "href": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island-1",
     "title": "",
     "section": "How many are male on Biscoe island?",
-    "text": "How many are male on Biscoe island?\n\nfilter(penguins, sex == \"male\", island == \"Biscoe\")\n\n\n\n# A tibble: 83 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Biscoe           37.7          18.7               180        3600\n 2 Adelie  Biscoe           38.2          18.1               185        3950\n 3 Adelie  Biscoe           38.8          17.2               180        3800\n 4 Adelie  Biscoe           40.6          18.6               183        3550\n 5 Adelie  Biscoe           40.5          18.9               180        3950\n 6 Adelie  Biscoe           40.1          18.9               188        4300\n 7 Adelie  Biscoe           42            19.5               200        4050\n 8 Adelie  Biscoe           41.4          18.6               191        3700\n 9 Adelie  Biscoe           40.6          18.8               193        3800\n10 Adelie  Biscoe           37.6          19.1               194        3750\n# ℹ 73 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nR is case sensitive!"
+    "text": "How many are male on Biscoe island?\n\nR is case sensitive\nWhen in doubt, check spelling and punctuation\n\n\nfilter(penguins, sex == \"male\", island == \"Biscoe\")\n\n\n\n# A tibble: 83 × 8\n   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Biscoe           37.7          18.7               180        3600\n 2 Adelie  Biscoe           38.2          18.1               185        3950\n 3 Adelie  Biscoe           38.8          17.2               180        3800\n 4 Adelie  Biscoe           40.6          18.6               183        3550\n 5 Adelie  Biscoe           40.5          18.9               180        3950\n 6 Adelie  Biscoe           40.1          18.9               188        4300\n 7 Adelie  Biscoe           42            19.5               200        4050\n 8 Adelie  Biscoe           41.4          18.6               191        3700\n 9 Adelie  Biscoe           40.6          18.8               193        3800\n10 Adelie  Biscoe           37.6          19.1               194        3750\n# ℹ 73 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#chaining-functions",
@@ -774,14 +774,14 @@
     "href": "materials/03-intro-to-r.html#making-new-variables",
     "title": "",
     "section": "Making new variables",
-    "text": "Making new variables\nNow let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.\nFirst, let’s make a box plot of the flipper length."
+    "text": "Making new variables\nNow let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.\n\npenguins |&gt; \n  ggplot(aes(flipper_length_mm)) +\n  geom_boxplot() +\n  theme_minimal()"
   },
   {
     "objectID": "materials/03-intro-to-r.html#making-new-variables-1",
     "href": "materials/03-intro-to-r.html#making-new-variables-1",
     "title": "",
     "section": "Making new variables",
-    "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head()\n\n\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
+    "text": "Making new variables\nWe’ll use the following as our cutoffs:\n\n\n\nDescription\nLength (mm)\n\n\n\n\nshort\nless than 190\n\n\naverage\nbetween 190 and 213\n\n\nlong\nmore than 213"
   },
   {
     "objectID": "materials/03-intro-to-r.html#summarize-data",
@@ -865,7 +865,7 @@
     "href": "materials/03-intro-to-r.html#look-at-our-starting-data-set",
     "title": "",
     "section": "Look at our starting data set",
-    "text": "Look at our starting data set\n\nglimpse(df)\n\n\n\nRows: 1,000\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 590727742, 603029626, 161202210, 189401395, 18800927…\n$ Rating            &lt;dbl&gt; 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 4, 5, 5, 5, 3, 5…\n$ Year_Month        &lt;chr&gt; \"2017-10\", \"2017-11\", \"2012-6\", \"2013-12\", \"2013-9\",…\n$ Reviewer_Location &lt;chr&gt; \"United States\", \"United States\", \"Canada\", \"Hong Ko…\n$ Review_Text       &lt;chr&gt; \"We took the RER to from Disneyland Paris as it seem…\n$ Park              &lt;chr&gt; \"Paris\", \"Hong Kong\", \"Paris\", \"Hong Kong\", \"Califor…\n\n\n\n\nIntroduction to Text Mining"
+    "text": "Look at our starting data set\n\nglimpse(df)\n\n\n\nRows: 1,000\nColumns: 6\n$ Review_ID         &lt;dbl&gt; 590727742, 603029626, 161202210, 189401395, 18800927…\n$ Rating            &lt;dbl&gt; 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 4, 5, 5, 5, 3, 5…\n$ Year_Month        &lt;chr&gt; \"2017-10\", \"2017-11\", \"2012-6\", \"2013-12\", \"2013-9\",…\n$ Reviewer_Location &lt;chr&gt; \"United States\", \"United States\", \"Canada\", \"Hong Ko…\n$ Review_Text       &lt;chr&gt; \"We took the RER to from Disneyland Paris as it seem…\n$ Park              &lt;chr&gt; \"Paris\", \"Hong Kong\", \"Paris\", \"Hong Kong\", \"Califor…"
   },
   {
     "objectID": "materials/04-r-text-mining.html#distribution-of-ratings",
@@ -2014,5 +2014,33 @@
     "title": "",
     "section": "Bigram TF-IDF",
     "text": "Bigram TF-IDF\n\ntidy_bigrams |&gt; \n  count(Park, bigram) |&gt; \n  bind_tf_idf(bigram, Park, n) |&gt; \n  arrange(desc(tf_idf))\n\n\n\n# A tibble: 10,624 × 6\n   Park      bigram              n      tf   idf  tf_idf\n   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n 1 Hong Kong lion king          24 0.00847  1.10 0.00930\n 2 Hong Kong kong disneyland    19 0.00670  1.10 0.00737\n 3 Hong Kong hk disneyland      17 0.00600  1.10 0.00659\n 4 Hong Kong mystic manor       15 0.00529  1.10 0.00581\n 5 Hong Kong ocean park         12 0.00423  1.10 0.00465\n 6 Hong Kong story land         12 0.00423  1.10 0.00465\n 7 Hong Kong grizzly gulch      11 0.00388  1.10 0.00426\n 8 Hong Kong hollywood hotel     8 0.00282  1.10 0.00310\n 9 Hong Kong kong disney         8 0.00282  1.10 0.00310\n10 Hong Kong river cruise        8 0.00282  1.10 0.00310\n# ℹ 10,614 more rows"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#other-ways-to-view-the-data",
+    "href": "materials/03-intro-to-r.html#other-ways-to-view-the-data",
+    "title": "",
+    "section": "Other ways to view the data",
+    "text": "Other ways to view the data\n\nstr is a base-R method, similar to glimpse\nview will open the data in a new tab, similar to Excel\n\n\nstr(penguins)\nview(penguins)"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#piping-functions",
+    "href": "materials/03-intro-to-r.html#piping-functions",
+    "title": "",
+    "section": "Piping functions",
+    "text": "Piping functions\n\nCTRL or Command + Shift + M\nCan create complex operations by chaining functions together\nOptions for testing - highlight only intended section or comment out (#) lines\n\n\npenguins |&gt; \n  filter(sex == \"female\") |&gt; \n  arrange(flipper_length_mm) |&gt; \n  head()\n\n\n\n# A tibble: 6 × 8\n  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe              37.9          18.6               172        3150\n2 Adelie    Biscoe              37.8          18.3               174        3400\n3 Adelie    Torgersen           40.2          17                 176        3450\n4 Adelie    Dream               39.5          16.7               178        3250\n5 Adelie    Dream               33.1          16.1               178        2900\n6 Chinstrap Dream               46.1          18.2               178        3250\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#making-new-variables-output",
+    "href": "materials/03-intro-to-r.html#making-new-variables-output",
+    "title": "",
+    "section": "Making new variables",
+    "text": "Making new variables"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#making-new-variables-2",
+    "href": "materials/03-intro-to-r.html#making-new-variables-2",
+    "title": "",
+    "section": "Making new variables",
+    "text": "Making new variables\n\npenguins |&gt;\n  mutate(flipper_length = case_when(\n    flipper_length_mm &lt; 190 ~ \"short\",\n    flipper_length_mm &gt;= 190 &\n      flipper_length_mm &lt; 213 ~ \"average\",\n    flipper_length_mm &gt; 213 ~ \"long\"\n  )) |&gt;\n  select(flipper_length_mm, flipper_length) |&gt;\n  head()\n\n\n\n# A tibble: 6 × 2\n  flipper_length_mm flipper_length\n              &lt;int&gt; &lt;chr&gt;         \n1               181 short         \n2               186 short         \n3               195 average       \n4                NA &lt;NA&gt;          \n5               193 average       \n6               190 average"
   }
 ]

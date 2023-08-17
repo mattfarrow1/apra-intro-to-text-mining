@@ -48,7 +48,7 @@ For the purposes of this workshop, there are no significant differences in R vs.
 -   R needs to be installed before you can use RStudio
 -   Download from CRAN (Comprehensive R Archive Network) [(link)](https://cran.r-project.org)
 
-# {background-image="/materials/images/cran.png" background-size="contain"}
+#  {background-image="/materials/images/cran.png" background-size="contain"}
 
 ## RStudio IDE
 
@@ -177,6 +177,18 @@ Source: [RStudio Education](https://education.rstudio.com)
 Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 :::
 
+## Reading data into R
+
+![](images/rstudio-import-1.png){fig-align="center" height="350"}
+
+## Reading data into R
+
+![](images/rstudio-import-2.png){fig-align="center" height="350"}
+
+## Reading data into R
+
+![](images/rstudio-import-3.png){fig-align="center" height="350"}
+
 # Intro to `dplyr`
 
 ## Open the file
@@ -203,11 +215,17 @@ If you ever want to clear out your results and start fresh, go to *Session ➔ R
 `r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Setup**
 :::
 
-```{r echo=FALSE, message=FALSE}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+
 library(tidyverse)
 library(palmerpenguins)
 library(kableExtra)
 ```
+
+## Examine the data
 
 ::: callout-note
 `r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Examine the Data**
@@ -243,7 +261,11 @@ colnames(penguins)
 glimpse(penguins)
 ```
 
-# Other ways to view the data
+## Other ways to view the data
+
+-   `str` is a base-R method, similar to `glimpse`
+
+-   `view` will open the data in a new tab, similar to Excel
 
 ```{r}
 #| echo: true
@@ -283,7 +305,17 @@ filter(penguins, sex == "male")
 filter(penguins, sex == "male", island == "biscoe")
 ```
 
+<div>
+
+Why don't we have any results?
+
+</div>
+
 ## How many are `male` on `Biscoe` island? {.smaller .hscroll .scrollable}
+
+-   R is case sensitive
+
+-   When in doubt, check spelling and punctuation
 
 ```{r}
 #| echo: true
@@ -291,9 +323,13 @@ filter(penguins, sex == "male", island == "biscoe")
 filter(penguins, sex == "male", island == "Biscoe")
 ```
 
-R is case sensitive!
+## Piping functions {.smaller}
 
-## Chaining functions {.smaller}
+-   `CTRL or Command` + `Shift` + `M`
+
+-   Can create complex operations by chaining functions together
+
+-   Options for testing - highlight only intended section or comment out (`#)` lines
 
 ```{r}
 #| echo: true
@@ -336,15 +372,24 @@ penguins |>
 
 Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long".
 
-First, let's make a box plot of the flipper length.
-
 ```{r}
-#| output-location: fragment
+#| echo: true
+#| output-location: slide
 penguins |> 
   ggplot(aes(flipper_length_mm)) +
   geom_boxplot() +
   theme_minimal()
 ```
+
+## Making new variables
+
+We'll use the following as our cutoffs:
+
+| Description | Length (mm)         |
+|-------------|---------------------|
+| short       | less than 190       |
+| average     | between 190 and 213 |
+| long        | more than 213       |
 
 ## Making new variables
 
@@ -417,10 +462,6 @@ penguins |>
   theme_minimal() +
   theme(legend.position = "bottom")
 ```
-
-## `tidymodels` {.smaller}
-
-Although it's not the focus of this workshop, the `tidymodels` packages contains a similar collection of packages devoted to modeling that integrates with the `tidyverse`.
 
 # Examining Disney Reviews
 
@@ -533,3 +574,5 @@ unique(df$Park)
 #| output-location: fragment
 glimpse(df)
 ```
+
+# Break Time! 🎉
