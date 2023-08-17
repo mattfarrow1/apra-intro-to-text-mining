@@ -929,14 +929,18 @@
 6 day          628</code></pre>
 </div>
 </div>
+</section></section>
+<section>
+<section id="word-clouds" class="title-slide slide level1 center">
+<h1>Word Clouds</h1>
+
 </section>
-<section id="set-up-word-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Set up word cloud</h2>
+<section id="create-a-word-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a word cloud</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>tidy_reviews <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>tidy_reviews <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
@@ -947,16 +951,25 @@
 <aside><div>
 <p>What jumps out to you? How might we improve it?</p>
 </div></aside></section>
-<section id="removing-common-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>removing common words</h2>
+<section id="custom-stop-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Custom stop words</h2>
+<ul>
+<li><p>Stop word libraries are great starting points</p></li>
+<li><p>Organization- or industry-specific terms may not be helpful</p></li>
+<li><p>Custom stop word lists can filter these out</p></li>
+</ul>
+<p><br></p>
+<p><code>wc_removals &lt;- c("day", "disney", "disneyland", "rides")</code></p>
+</section>
+<section id="word-cloud-without-custom-stop-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Word Cloud without Custom Stop Words</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>wc_removals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"disney"</span>, <span class="st">"disneyland"</span>, <span class="st">"rides"</span>)</span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>wc_removals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"disney"</span>, <span class="st">"disneyland"</span>, <span class="st">"rides"</span>, <span class="st">"park"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2"></a></span>
 <span id="cb32-3"><a href="#cb32-3"></a>tidy_reviews <span class="sc">|&gt;</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">|&gt;</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> wc_removals) <span class="sc">|&gt;</span> </span>
-<span id="cb32-6"><a href="#cb32-6"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span></span>
-<span id="cb32-7"><a href="#cb32-7"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> wc_removals) <span class="sc">|&gt;</span> <span class="co"># note ! and %in%</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
@@ -970,7 +983,7 @@
 <ul>
 <li>A continuous sequence of <code>n</code> words</li>
 <li>Can be used ‘as is’, or run through a stemmer to get morphemes</li>
-<li>Offers greater context than single words</li>
+<li>Offers more context than single words</li>
 </ul>
 </section>
 <section id="set-up-bigrams" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
@@ -1067,8 +1080,8 @@
 </div>
 </div>
 </section>
-<section id="look-at-bigrams-by-park" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Look at bigrams by park</h2>
+<section id="look-at-top-bigrams-by-park" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Look at top bigrams by park</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>tidy_bigrams <span class="sc">|&gt;</span> </span>
 <span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span> </span>
@@ -1174,9 +1187,36 @@
 <span id="cb48-5"><a href="#cb48-5"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
 <span id="cb48-6"><a href="#cb48-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment">
+
+</section>
+<section id="plot-tf-idf-output" class="slide level2 output-location-slide"><h2>Plot TF-IDF</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</div>
+</div></section><section id="bigram-tf-idf" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Bigram TF-IDF</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>tidy_bigrams <span class="sc">|&gt;</span> </span>
+<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">count</span>(Park, bigram) <span class="sc">|&gt;</span> </span>
+<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">bind_tf_idf</span>(bigram, Park, n) <span class="sc">|&gt;</span> </span>
+<span id="cb49-4"><a href="#cb49-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,624 × 6
+   Park      bigram              n      tf   idf  tf_idf
+   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Hong Kong lion king          24 0.00847  1.10 0.00930
+ 2 Hong Kong kong disneyland    19 0.00670  1.10 0.00737
+ 3 Hong Kong hk disneyland      17 0.00600  1.10 0.00659
+ 4 Hong Kong mystic manor       15 0.00529  1.10 0.00581
+ 5 Hong Kong ocean park         12 0.00423  1.10 0.00465
+ 6 Hong Kong story land         12 0.00423  1.10 0.00465
+ 7 Hong Kong grizzly gulch      11 0.00388  1.10 0.00426
+ 8 Hong Kong hollywood hotel     8 0.00282  1.10 0.00310
+ 9 Hong Kong kong disney         8 0.00282  1.10 0.00310
+10 Hong Kong river cruise        8 0.00282  1.10 0.00310
+# ℹ 10,614 more rows</code></pre>
 </div>
 </div>
 </section></section>
@@ -1233,7 +1273,7 @@
 <section id="sentiment-analysis-3" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Sentiment Analysis</h2>
 
-<img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"></section>
+<img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"></section>
 <section id="topic-modeling" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Topic Modeling</h2>
 

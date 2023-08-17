@@ -405,16 +405,18 @@ tidy_reviews |>
   head()
 ```
 
-## Set up word cloud
+# Word Clouds
+
+## Create a word cloud
 
 ```{r}
 #| echo: true
 #| warning: false
 #| message: false
 #| output-location: fragment
-tidy_reviews |>
-  anti_join(stop_words) |>
-  count(word) |>
+
+tidy_reviews |> 
+  count(word) |> 
   with(wordcloud(word, n, max.words = 40))
 ```
 
@@ -422,7 +424,19 @@ tidy_reviews |>
 What jumps out to you? How might we improve it?
 :::
 
-## removing common words
+## Custom stop words
+
+-   Stop word libraries are great starting points
+
+-   Organization- or industry-specific terms may not be helpful
+
+-   Custom stop word lists can filter these out
+
+<br>
+
+`wc_removals <- c("day", "disney", "disneyland", "rides")`
+
+## Word Cloud without Custom Stop Words
 
 ```{r}
 #| echo: true
@@ -430,11 +444,10 @@ What jumps out to you? How might we improve it?
 #| message: false
 #| output-location: fragment
 
-wc_removals <- c("day", "disney", "disneyland", "rides")
+wc_removals <- c("day", "disney", "disneyland", "rides", "park")
 
 tidy_reviews |>
-  anti_join(stop_words) |>
-  filter(!word %in% wc_removals) |> 
+  filter(!word %in% wc_removals) |> # note ! and %in%
   count(word) |>
   with(wordcloud(word, n, max.words = 50))
 ```
@@ -443,7 +456,7 @@ tidy_reviews |>
 
 -   A continuous sequence of `n` words
 -   Can be used 'as is', or run through a stemmer to get morphemes
--   Offers greater context than single words
+-   Offers more context than single words
 
 ## Set up bigrams
 
@@ -499,7 +512,7 @@ tidy_bigrams <- tidy_bigrams |>
 head(tidy_bigrams)
 ```
 
-## Look at bigrams by park
+## Look at top bigrams by park
 
 ```{r}
 #| echo: true
@@ -564,13 +577,25 @@ head(freq_by_rank)
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: slide
 freq_by_rank %>% 
   ggplot(aes(rank, `term frequency`, color = Park)) + 
   geom_line(size = 1.1, alpha = 0.8, show.legend = FALSE) + 
   scale_x_log10() +
   scale_y_log10() +
   theme_minimal()
+```
+
+## Bigram TF-IDF
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+tidy_bigrams |> 
+  count(Park, bigram) |> 
+  bind_tf_idf(bigram, Park, n) |> 
+  arrange(desc(tf_idf))
 ```
 
 # Sentiment Analysis

@@ -1951,5 +1951,68 @@
     "title": "",
     "section": "Piping",
     "text": "Piping\n\n%&gt;% is the traditional method that came from the `magrittr` package\n|&gt; the “native” pipe that was introduced to R in version 4.1\nBoth work by ‘piping’ information from the left hand side (LHS) to the right hand side (RHS)"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#create-a-word-cloud",
+    "href": "materials/04-r-text-mining.html#create-a-word-cloud",
+    "title": "",
+    "section": "Create a word cloud",
+    "text": "Create a word cloud\n\ntidy_reviews |&gt; \n  count(word) |&gt; \n  with(wordcloud(word, n, max.words = 40))\n\n\n\n\n\n\n\n\nWhat jumps out to you? How might we improve it?"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#re-create-the-word-cloud",
+    "href": "materials/04-r-text-mining.html#re-create-the-word-cloud",
+    "title": "",
+    "section": "Re-create the word cloud",
+    "text": "Re-create the word cloud\n\ntidy_reviews_cloud |&gt; \n  count(word) |&gt;\n  with(wordcloud(word, n, max.words = 40))\n\n\n\n\n\n\n\n\nWhat jumps out to you? How might we improve it?"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#custom-stop-words",
+    "href": "materials/04-r-text-mining.html#custom-stop-words",
+    "title": "",
+    "section": "Custom stop words",
+    "text": "Custom stop words\n\nStop word libraries are great starting points\nOrganization- or industry-specific terms may not be helpful\nCustom stop word lists can filter these out\n\n\nwc_removals &lt;- c(\"day\", \"disney\", \"disneyland\", \"rides\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#word-cloud-without-custom-stop-words",
+    "href": "materials/04-r-text-mining.html#word-cloud-without-custom-stop-words",
+    "title": "",
+    "section": "Word Cloud without Custom Stop Words",
+    "text": "Word Cloud without Custom Stop Words\n\nwc_removals &lt;- c(\"day\", \"disney\", \"disneyland\", \"rides\", \"park\")\n\ntidy_reviews |&gt;\n  filter(!word %in% wc_removals) |&gt; # note ! and %in%\n  count(word) |&gt;\n  with(wordcloud(word, n, max.words = 50))"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#remove-stop-words-2",
+    "href": "materials/04-r-text-mining.html#remove-stop-words-2",
+    "title": "",
+    "section": "Remove stop words",
+    "text": "Remove stop words\n\n# Remove stop words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  filter(!word1 %in% stop_words$word) |&gt;\n  filter(!word2 %in% stop_words$word)\n\nhead(tidy_bigrams)\n\n\n\n# A tibble: 6 × 4\n  Park       linenumber word1  word2  \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 California          1 line   ups    \n2 California          1 30     minutes\n3 California          1 street parade \n4 California          1 1      2      \n5 California          1 1      free   \n6 California          1 free   day"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#word-cloud-without-custom-stop-words-output",
+    "href": "materials/04-r-text-mining.html#word-cloud-without-custom-stop-words-output",
+    "title": "",
+    "section": "Word Cloud without Custom Stop Words",
+    "text": "Word Cloud without Custom Stop Words"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#look-at-top-bigrams-by-park",
+    "href": "materials/04-r-text-mining.html#look-at-top-bigrams-by-park",
+    "title": "",
+    "section": "Look at top bigrams by park",
+    "text": "Look at top bigrams by park\n\ntidy_bigrams |&gt; \n  group_by(Park) |&gt; \n  count(bigram) |&gt; \n  arrange(desc(n)) |&gt; \n  head()\n\n\n\n# A tibble: 6 × 3\n# Groups:   Park [3]\n  Park       bigram                   n\n  &lt;chr&gt;      &lt;chr&gt;                &lt;int&gt;\n1 California fast pass               92\n2 Hong Kong  hong kong               75\n3 Paris      disneyland paris        69\n4 Paris      fast pass               49\n5 California space mountain          41\n6 California california adventure    40"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#plot-tf-idf-output",
+    "href": "materials/04-r-text-mining.html#plot-tf-idf-output",
+    "title": "",
+    "section": "Plot TF-IDF",
+    "text": "Plot TF-IDF"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#bigram-tf-idf",
+    "href": "materials/04-r-text-mining.html#bigram-tf-idf",
+    "title": "",
+    "section": "Bigram TF-IDF",
+    "text": "Bigram TF-IDF\n\ntidy_bigrams |&gt; \n  count(Park, bigram) |&gt; \n  bind_tf_idf(bigram, Park, n) |&gt; \n  arrange(desc(tf_idf))\n\n\n\n# A tibble: 10,624 × 6\n   Park      bigram              n      tf   idf  tf_idf\n   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n 1 Hong Kong lion king          24 0.00847  1.10 0.00930\n 2 Hong Kong kong disneyland    19 0.00670  1.10 0.00737\n 3 Hong Kong hk disneyland      17 0.00600  1.10 0.00659\n 4 Hong Kong mystic manor       15 0.00529  1.10 0.00581\n 5 Hong Kong ocean park         12 0.00423  1.10 0.00465\n 6 Hong Kong story land         12 0.00423  1.10 0.00465\n 7 Hong Kong grizzly gulch      11 0.00388  1.10 0.00426\n 8 Hong Kong hollywood hotel     8 0.00282  1.10 0.00310\n 9 Hong Kong kong disney         8 0.00282  1.10 0.00310\n10 Hong Kong river cruise        8 0.00282  1.10 0.00310\n# ℹ 10,614 more rows"
   }
 ]
