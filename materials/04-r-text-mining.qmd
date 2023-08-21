@@ -18,9 +18,13 @@ editor: visual
 
 # Getting Started
 
-## Load the Data
+## Setup
 
 `r fontawesome::fa("laptop-code", "black")` Open `04-intro-to-r/01-ggplot2.R` in RStudio if you'd like to follow along.
+
+::: {callout-tip}
+Before we get started, it's a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)
+:::
 
 ```{r}
 #| echo: true
@@ -38,9 +42,24 @@ library(tidyverse)
 library(tidytext)
 library(wordcloud)
 library(here)
+library(flipbookr)
+```
+
+## Load the data
+
+```{r}
+#| echo: true
+#| output-location: column
 
 # Load data
 load(here::here("materials", "workshop_data.RData"))
+
+df <- df |>
+  mutate(Branch = case_match(Branch,
+                             "Disneyland_California" ~ "California",
+                             "Disneyland_HongKong" ~ "Hong Kong",
+                             "Disneyland_Paris" ~ "Paris")) |>
+  rename("Park" = Branch)
 ```
 
 # Visualize the Data
@@ -52,56 +71,18 @@ load(here::here("materials", "workshop_data.RData"))
 -   Raise questions to explore
 -   Help shape your process
 
-## Basic histogram
+## Create a basic histogram
 
 ```{r}
+#| label: basic-histogram
 #| echo: true
 #| output-location: column
+#| code-line-numbers: true
 
 df |> 
-  ggplot(aes(Rating)) +
-  geom_bar()
-```
-
-## Add title and labels
-
-```{r}
-#| echo: true
-#| output-location: column
-#| code-line-numbers: "4-6"
-
-df |> 
-  ggplot(aes(Rating)) +
+  ggplot(aes(x = Rating)) +
   geom_bar() +
-  labs(title = "Distribution of Ratings",
-       x = "Rating",
-       y = "Count")
-```
-
-## Add color
-
-```{r}
-#| echo: true
-#| output-location: column
-#| code-line-numbers: "3"
-
-df |> 
-  ggplot(aes(Rating)) +
   geom_bar(fill = "steelblue", color = "black") +
-  labs(title = "Distribution of Ratings",
-       x = "Rating",
-       y = "Count")
-```
-
-## Add a theme
-
-```{r}
-#| echo: true
-#| output-location: column
-#| code-line-numbers: "7"
-
-df |> 
-  ggplot(aes(Rating)) +
   geom_bar(fill = "steelblue", color = "black") +
   labs(title = "Distribution of Ratings",
        x = "Rating",
@@ -109,46 +90,32 @@ df |>
   theme_minimal()
 ```
 
-::: notes
-Are there any thoughts or questions this raises?
-:::
+`r flipbookr:::chunq_reveal("basic-histogram", title = "Create a Basic Histogram", lcolw = "40", rcolw = "60", smallcode = TRUE)`
 
 ## Histogram by park
 
 ```{r}
+#| label: park-histogram
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "2-3,5"
+#| code-line-numbers: true
 
 df |> 
   ggplot(aes(Rating, fill = Park)) +
+  geom_bar() +
   geom_bar(color = "black") +
   labs(title = "Distribution of Ratings by Park",
        x = "Rating",
        y = "Count",
        fill = "Park") +
-  theme_minimal()
-```
-
-## Move legend
-
-```{r}
-#| echo: true
-#| output-location: column
-#| code-line-numbers: "10"
-
-df |> 
-  ggplot(aes(Rating, fill = Park)) +
-  geom_bar(color = "black") +
-  labs(title = "Distribution of Ratings by Park",
-       x = "Rating",
-       y = "Count",
-       fill = "Park") +
+  scale_fill_brewer(palette = 3) + 
   theme_minimal() +
   theme(legend.position = "bottom")
 ```
 
-## Ratings over time
+`r flipbookr:::chunq_reveal("park-histogram", title = "Create a Histogram by Park", lcolw = "40", rcolw = "60", smallcode = TRUE)`
+
+## Line plot
 
 What if we wanted to look at the park ratings over time? What would we need to do?
 
@@ -156,16 +123,12 @@ What if we wanted to look at the park ratings over time? What would we need to d
 -   Group by `Park`
 -   Count ratings per year
 
-## Prepare the data
-
 ```{r}
 #| echo: true
-#| output-location: column
+#| output-location: fragment
 
 ratings_by_year <- df |> 
-  filter(Year_Month != "missing") |> 
-  mutate(Year_Month = ym(Year_Month),
-         Year = year(Year_Month),
+  mutate(Year = year(Year_Month),
          Month = month(Year_Month)) |> 
   group_by(Park) |> 
   count(Year) |> 
@@ -177,69 +140,12 @@ ratings_by_year
 ## Line plot
 
 ```{r}
+#| label: reviews-by-year
 #| echo: true
 #| output-location: column
+#| code-line-numbers: true
 
 ratings_by_year |> 
-  ggplot(aes(Year, Ratings, color = Park)) +
-  geom_line()
-```
-
-## Add title and labels
-
-```{r}
-#| echo: true
-#| output-location: column
-
-ratings_by_year |> 
-  ggplot(aes(Year, Ratings, color = Park)) +
-  geom_line() +
-  labs(title = "Ratings by Park per Year",
-       x = "Year",
-       y = "Ratings")
-```
-
-## Custom x-axis
-
-```{r}
-#| echo: true
-#| output-location: column
-#| code-line-numbers: "14-24"
-
-ratings_by_year |> 
-  ggplot(aes(Year, Ratings, color = Park)) +
-  geom_line() +
-  labs(title = "Ratings by Park per Year",
-       x = "Year",
-       y = "Ratings") +
-    scale_x_continuous(breaks = c(2010,
-                                  2011,
-                                  2012,
-                                  2013,
-                                  2014,
-                                  2015,
-                                  2016,
-                                  2017,
-                                  2018,
-                                  2019,
-                                  2020))
-```
-
-## Custom theme
-
-```{r}
-#| echo: true
-#| output-location: column
-#| code-line-numbers: "25"
-
-df |> 
-  filter(Year_Month != "missing") |> 
-  mutate(Year_Month = ym(Year_Month),
-         Year = year(Year_Month),
-         Month = month(Year_Month)) |> 
-  group_by(Park) |> 
-  count(Year) |> 
-  rename(Ratings = n) |> 
   ggplot(aes(Year, Ratings, color = Park)) +
   geom_line() +
   labs(title = "Ratings by Park per Year",
@@ -259,6 +165,8 @@ df |>
   ggthemes::theme_hc()
 ```
 
+`r flipbookr:::chunq_reveal("reviews-by-year", title = "Park Reviews by Year", lcolw = "40", rcolw = "60", smallcode = TRUE)`
+
 ## Ridge plot
 
 ```{r}
@@ -266,8 +174,7 @@ df |>
 #| output-location: column
 
 df |> 
-  filter(Year_Month != "missing",
-         Rating < 4) |> 
+  filter(Rating < 4) |> 
   mutate(Year_Month = ym(Year_Month),
          Year = year(Year_Month)) |> 
   group_by(Park, Year_Month) |> 

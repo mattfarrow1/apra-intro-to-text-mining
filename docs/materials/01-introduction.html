@@ -339,7 +339,7 @@
 <section id="overall-goals" class="title-slide slide level1 center">
 <h1>Overall Goals</h1>
 <ul>
-<li>What is text mining?</li>
+<li>Understanding terminology</li>
 <li>Keyword searches in Excel</li>
 <li>Getting started with R</li>
 <li>Text mining in R</li>
@@ -361,7 +361,7 @@
 </section>
 <section id="text-mining" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Text Mining</h2>
-<p><strong>Text mining</strong> is the process of extracting information and insights from unstructured text.</p>
+<p><strong>Text mining</strong> is the process of extracting quantitative data from qualitative information.</p>
 </section>
 <section id="natural-vs.-artificial-language" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Natural vs.&nbsp;Artificial Language</h2>
@@ -429,11 +429,11 @@
 </section>
 <section id="normalization" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Normalization</h2>
-<p><strong>Normalization</strong> involves standardizing text prior to analysis.</p>
+<p><strong>Normalization</strong> involves standardizing text prior to analysis. It might include:</p>
 <ul>
 <li><p>Expanding contractions</p></li>
 <li><p>Removing stop words</p></li>
-<li><p>Correct misspellings</p></li>
+<li><p>Correcting misspellings</p></li>
 <li><p>Stemming (if required)</p></li>
 </ul>
 </section>
@@ -450,8 +450,8 @@
 <h2>Morphemes</h2>
 <table>
 <colgroup>
-<col style="width: 64%">
-<col style="width: 35%">
+<col style="width: 55%">
+<col style="width: 44%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -463,11 +463,11 @@
 <tr class="odd">
 <td><ul>
 <li><p>Supplies the main meaning</p></li>
-<li><p>Can <em>sometimes</em> be a word in itself (e.g., "jump" in "jumping")</p></li>
+<li><p>Can <em>sometimes</em> be a word in itself (e.g., “jump” in “jumping”)</p></li>
 </ul></td>
 <td><ul>
 <li><p>Adds or alters meaning</p></li>
-<li><p>Cannot usually be a word by itself</p></li>
+<li><p>Cannot usually be a word by itself (e.g., “-ing”)</p></li>
 </ul></td>
 </tr>
 </tbody>
@@ -483,10 +483,13 @@
 <section id="term-frequency" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Term Frequency</h2>
 <p><strong>Term frequency</strong> measures how often a term occurs in a document—in raw form, it is a simply a word count divided by the total number of words in the document.</p>
+<p><span class="math display">\[
+\frac{word\_count}{total\_words}
+\]</span></p>
 </section>
 <section id="document-frequency" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Document Frequency</h2>
-<p><strong>Document frequency</strong>measures how common the term is within a domain represented by a corpus of documents (C<em>)</em>.</p>
+<p><strong>Document frequency</strong> measures how common the term is within a domain represented by a corpus of documents (C<em>)</em>.</p>
 </section>
 <section id="corpus" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Corpus</h2>
@@ -494,7 +497,7 @@
 </section>
 <section id="inverse-document-frequency" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Inverse Document Frequency</h2>
-<p><strong>Inverse document frequency</strong>is computed by dividing the total number of documents in the corpus by the number of documents containing our target term, and applying a log scale.</p>
+<p><strong>Inverse document frequency</strong> is computed by dividing the total number of documents in the corpus by the number of documents containing our target term, and applying a log scale.</p>
 <p><span class="math display">\[
 idf(t)=1+log\frac{C}{1+df(t)}
 \]</span></p>
@@ -506,64 +509,19 @@ idf(t)=1+log\frac{C}{1+df(t)}
 tfidf=tf(idf)
 \]</span></p>
 </section>
-<section id="tf-idf-example" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>TF-IDF Example</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/tf_idf-example.png"></p>
-</figure>
-</div>
-
-<aside><div>
-<p>Source: SMU MSDS Program</p>
-</div></aside></section>
-<section id="tf-idf-example-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>TF-IDF Example</h2>
-<table style="width:75%;">
-<colgroup>
-<col style="width: 36%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>SportingNews</th>
-<th>Washington Examiner</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><ul>
-<li><p>Trump</p></li>
-<li><p>Commander in Chief</p></li>
-<li><p>Taft</p></li>
-<li><p>Nationals</p></li>
-<li><p>politicians</p></li>
-<li><p>White House</p></li>
-<li><p>race</p></li>
-<li><p>ethnicity</p></li>
-</ul></td>
-<td><ul>
-<li><p>Washington Nationals</p></li>
-<li><p>Miami Marlins</p></li>
-<li><p>MLB</p></li>
-<li><p>Taft</p></li>
-<li><p>pitch</p></li>
-<li><p>Trump</p></li>
-<li><p>1910</p></li>
-<li><p>White House</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="similarity" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>_____ Similarity</h2>
 <ul>
-<li><strong>Word Similarity</strong>: similarity between individual words or tokens</li>
-<li><strong>Document Similarity</strong>: similarity between short phrases or documents</li>
-<li><strong>Jaccard Similarity</strong>: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary <img data-src="https://wikimedia.org/api/rest_v1/media/math/render/svg/eaef5aa86949f49e7dc6b9c8c3dd8b233332c9e7.png"></li>
-<li><strong>Cosine Similarity</strong>: similarity between words <img data-src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863.png"></li>
-<li><strong>Latent Semantic Analysis (LSA)</strong>: an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e.&nbsp;king:male, queen:female, doctor:male, nurse:female)</li>
+<li><p><strong>Word Similarity</strong>: similarity between individual words or tokens</p></li>
+<li><p><strong>Document Similarity</strong>: similarity between short phrases or documents</p></li>
+<li><p><strong>Jaccard Similarity</strong>: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary<br>
+<br>
+$$</p>
+<p>J(A, B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cap B|}</p>
+<p>$$<br>
+</p></li>
+<li><p><strong>Cosine Similarity</strong>: similarity between words <img data-src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863.png"></p></li>
+<li><p><strong>Latent Semantic Analysis (LSA)</strong>: an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e.&nbsp;king:male, queen:female, doctor:male, nurse:female)</p></li>
 </ul>
 </section>
 <section id="levels-of-analysis" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">

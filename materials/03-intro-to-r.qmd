@@ -22,10 +22,14 @@ editor: visual
 
 ::: columns
 ::: {.column width="50%"}
+<br>
+
 ![](images/r-logo.png){fig-align="center" width="148"}
 :::
 
 ::: {.column width="50%"}
+<br>
+
 ![](images/python-logo.png){fig-align="center" width="400"}
 :::
 :::
@@ -45,8 +49,8 @@ For the purposes of this workshop, there are no significant differences in R vs.
 
 ## R vs. RStudio
 
--   R needs to be installed before you can use RStudio
--   Download from CRAN (Comprehensive R Archive Network) [(link)](https://cran.r-project.org)
+-   R is the language and needs to be installed before you can use RStudio
+-   Can be downloaded from CRAN (Comprehensive R Archive Network) [(link)](https://cran.r-project.org)
 
 #  {background-image="/materials/images/cran.png" background-size="contain"}
 
@@ -66,9 +70,9 @@ Everything in this workshop can be done through the virtual project. Scan the QR
 
 <br>
 
-<https://posit.cloud/content/6215314>
+[https://posit.cloud/](https://posit.cloud/content/6215314){.uri}
 
-{{< qrcode https://posit.cloud/content/6215314 >}}
+{{< qrcode https://posit.cloud/ >}}
 
 #  {background-image="/materials/images/rstudio-clean.png" background-size="contain"}
 
@@ -105,20 +109,24 @@ Installing packages only needs to be done once.
 install.packages("DBI")
 ```
 
-Packages need to be loaded each time you use them.
+Packages need to be loaded either at the start of your session, or as you use them.
 
 ``` r
 library(DBI)
 DBI::dbConnect()
 ```
 
+::: aside
 Beware of dependencies.
+:::
 
 ## CRAN
 
 ![](images/package-details.png){fig-align="center" height="500"}
 
 ## Package Help
+
+`?function-name`
 
 ![](images/rstudio-help){fig-align="center" height="500"}
 
@@ -420,54 +428,20 @@ penguins |>
 ## Summarize data
 
 ``` {.r code-line-numbers="4"}
+#| echo: true
 #| output-location: fragment
 penguins |> 
   group_by(species) |> 
   summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
 ```
 
-```{r echo=FALSE}
-penguins |> 
-  group_by(species) |> 
-  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
-```
-
-## ggplot2
-
-::: callout-note
-`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Intro to ggplot2**
-:::
-
-```{r}
-#| output-location: column
-penguins |> 
-  ggplot(aes(flipper_length_mm)) +
-  geom_bar() 
-```
-
-## ggplot2
-
-```{r}
-#| output-location: column
-penguins |> 
-  ggplot(aes(bill_length_mm,
-             flipper_length_mm,
-             color = species)) +
-  geom_point(size = 3, alpha = 0.4) +
-  labs(title = "Bill vs. Flipper Length",
-       subtitle = "by species",
-       x = "Bill Length (mm)",
-       y = "Flipper Length (mm)",
-       color = "") +
-  theme_minimal() +
-  theme(legend.position = "bottom")
-```
-
 # Examining Disney Reviews
 
 ## The Data
 
-42,656 reviews from Disney California, Hong Kong, and Paris
+42,656[^1] reviews from Disney California, Hong Kong, and Paris
+
+[^1]: Downsampled to 1,000 for this workshop
 
 ![](images/disney-logo.png){fig-align="center" height="200"}
 
@@ -557,12 +531,12 @@ Here we use two `dplyr` functions: `mutate` and `rename` to remove *Disneyland\_
 #| echo: true
 #| output-location: fragment
 
-# df <- df |> 
-#   mutate(Branch = case_match(Branch, 
-#                              "Disneyland_California" ~ "California",
-#                              "Disneyland_HongKong" ~ "Hong Kong",
-#                              "Disneyland_Paris" ~ "Paris")) |> 
-#   rename("Park" = Branch)
+df <- df |>
+  mutate(Branch = case_match(Branch,
+                             "Disneyland_California" ~ "California",
+                             "Disneyland_HongKong" ~ "Hong Kong",
+                             "Disneyland_Paris" ~ "Paris")) |>
+  rename("Park" = Branch)
 
 unique(df$Park)
 ```

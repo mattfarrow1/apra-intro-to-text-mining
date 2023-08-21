@@ -17,7 +17,7 @@ editor: visual
 
 # Overall Goals
 
--   What is text mining?
+-   Understanding terminology
 -   Keyword searches in Excel
 -   Getting started with R
 -   Text mining in R
@@ -39,7 +39,7 @@ library(wordcloud)
 
 ## Text Mining
 
-**Text mining** is the process of extracting information and insights from unstructured text.
+**Text mining** is the process of extracting quantitative data from qualitative information.
 
 ## Natural vs. Artificial Language
 
@@ -87,13 +87,13 @@ The process of understanding what text is saying, and being able to analyze it g
 
 ## Normalization
 
-**Normalization** involves standardizing text prior to analysis.
+**Normalization** involves standardizing text prior to analysis. It might include:
 
 -   Expanding contractions
 
 -   Removing stop words
 
--   Correct misspellings
+-   Correcting misspellings
 
 -   Stemming (if required)
 
@@ -109,13 +109,13 @@ The process of understanding what text is saying, and being able to analyze it g
 
 ## Morphemes
 
-+-------------------------------------------------------------------------+----------------------------------------+
-| Stems                                                                   | Affixes                                |
-+=========================================================================+========================================+
-| -   Supplies the main meaning                                           | -   Adds or alters meaning             |
-|                                                                         |                                        |
-| -   Can *sometimes* be a word in itself (e.g., \"jump\" in \"jumping\") | -   Cannot usually be a word by itself |
-+-------------------------------------------------------------------------+----------------------------------------+
++---------------------------------------------------------------------+-------------------------------------------------------+
+| Stems                                                               | Affixes                                               |
++=====================================================================+=======================================================+
+| -   Supplies the main meaning                                       | -   Adds or alters meaning                            |
+|                                                                     |                                                       |
+| -   Can *sometimes* be a word in itself (e.g., "jump" in "jumping") | -   Cannot usually be a word by itself (e.g., "-ing") |
++---------------------------------------------------------------------+-------------------------------------------------------+
 
 ## Stems/Stemmer
 
@@ -126,9 +126,13 @@ The process of understanding what text is saying, and being able to analyze it g
 
 **Term frequency** measures how often a term occurs in a document---in raw form, it is a simply a word count divided by the total number of words in the document.
 
+$$
+\frac{word\_count}{total\_words}
+$$
+
 ## Document Frequency
 
-**Document frequency**measures how common the term is within a domain represented by a corpus of documents (C*)*.
+**Document frequency** measures how common the term is within a domain represented by a corpus of documents (C*)*.
 
 ## Corpus
 
@@ -136,7 +140,7 @@ A **corpus** is a collection of documents that you want to perform NLP on.
 
 ## Inverse Document Frequency
 
-**Inverse document frequency**is computed by dividing the total number of documents in the corpus by the number of documents containing our target term, and applying a log scale.
+**Inverse document frequency** is computed by dividing the total number of documents in the corpus by the number of documents containing our target term, and applying a log scale.
 
 $$
 idf(t)=1+log\frac{C}{1+df(t)}
@@ -150,43 +154,22 @@ $$
 tfidf=tf(idf)
 $$
 
-## TF-IDF Example
-
-![](images/tf_idf-example.png){fig-align="center"}
-
-::: aside
-Source: SMU MSDS Program
-:::
-
-## TF-IDF Example
-
-+-------------------------+---------------------------+
-| SportingNews            | Washington Examiner       |
-+=========================+===========================+
-| -   Trump               | -   Washington Nationals  |
-|                         |                           |
-| -   Commander in Chief  | -   Miami Marlins         |
-|                         |                           |
-| -   Taft                | -   MLB                   |
-|                         |                           |
-| -   Nationals           | -   Taft                  |
-|                         |                           |
-| -   politicians         | -   pitch                 |
-|                         |                           |
-| -   White House         | -   Trump                 |
-|                         |                           |
-| -   race                | -   1910                  |
-|                         |                           |
-| -   ethnicity           | -   White House           |
-+-------------------------+---------------------------+
-
-## \_\_\_\_\_ Similarity
+## Word and document similarity
 
 -   **Word Similarity**: similarity between individual words or tokens
 -   **Document Similarity**: similarity between short phrases or documents
--   **Jaccard Similarity**: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/eaef5aa86949f49e7dc6b9c8c3dd8b233332c9e7)
--   **Cosine Similarity**: similarity between words ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863)
--   **Latent Semantic Analysis (LSA)**: an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e. king:male, queen:female, doctor:male, nurse:female)
+
+## Jaccard Similarity
+
+Calculates the similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary $$J(A, B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cap B|}$$
+
+## **Cosine Similarity**
+
+Calculates the similarity between words $$\cos (\theta)=\frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}=\frac{\sum_{i=1}^n A_i B_i}{\sqrt{\sum_{i=1}^n A_i^2 \cdot \sum_{i=1}^n B_i^2}}$$
+
+## **Latent Semantic Analysis (LSA)**: 
+
+An algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e. king:male, queen:female, doctor:male, nurse:female)
 
 ## Levels of Analysis
 

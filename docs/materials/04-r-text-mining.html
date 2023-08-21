@@ -405,9 +405,12 @@
 <h1>Getting Started</h1>
 
 </section>
-<section id="load-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Load the Data</h2>
+<section id="setup" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Setup</h2>
 <p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>04-intro-to-r/01-ggplot2.R</code> in RStudio if you’d like to follow along.</p>
+<div class="{callout-tip}">
+<p>Before we get started, it’s a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)</p>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Install packages</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co"># install.packages("tidyverse")</span></span>
@@ -420,9 +423,25 @@
 <span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(tidytext)</span>
 <span id="cb1-10"><a href="#cb1-10"></a><span class="fu">library</span>(wordcloud)</span>
 <span id="cb1-11"><a href="#cb1-11"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Load data</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"materials"</span>, <span class="st">"workshop_data.RData"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="fu">library</span>(flipbookr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Load the data</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Load data</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"materials"</span>, <span class="st">"workshop_data.RData"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">mutate</span>(<span class="at">Branch =</span> <span class="fu">case_match</span>(Branch,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>                             <span class="st">"Disneyland_California"</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>                             <span class="st">"Disneyland_HongKong"</span> <span class="sc">~</span> <span class="st">"Hong Kong"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>                             <span class="st">"Disneyland_Paris"</span> <span class="sc">~</span> <span class="st">"Paris"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">rename</span>(<span class="st">"Park"</span> <span class="ot">=</span> Branch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div>
 </div>
 </section></section>
 <section>
@@ -439,259 +458,593 @@
 <li>Help shape your process</li>
 </ul>
 </section>
-<section id="basic-histogram" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Basic histogram</h2>
+<section id="create-a-basic-histogram" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a basic histogram</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating)) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="add-title-and-labels" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Add title and labels</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="4-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="true"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Rating)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6"></a>       <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>       <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/basic-histogram-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </section>
-<section id="add-color" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Add color</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6"></a>       <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<section id="create-a-basic-histogram-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Basic Histogram</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 6
+   Review_ID Rating Year_Month Reviewer_Location Review_Text               Park 
+       &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt;
+ 1 305683957      5 2015-08-01 Portugal          I  ve previously been to… Cali…
+ 2 666364898      3 2018-10-01 United States     The Hong Kong Disneyland… Hong…
+ 3 293082325      3 2015-06-01 United States     My wife, my 15 year old … Paris
+ 4 334650140      1 2015-11-01 United Kingdom    Our family had the unfor… Paris
+ 5 393553042      3 2016-07-01 United States     HK Disney is very small … Hong…
+ 6 175685909      5 2013-08-01 United Kingdom    Nothing but fun fun fun!… Paris
+ 7 150353289      5 2013-01-01 India             Should not miss the Disn… Hong…
+ 8 224797068      5 2014-08-01 United Kingdom    everything   i am disney… Paris
+ 9 310708679      5 2015-04-01 United Kingdom    Wow! What a great experi… Paris
+10 126717664      5 2012-03-01 United States     I loved everything! :)  … Cali…
+# ℹ 990 more rows</code></pre>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="add-a-theme" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Add a theme</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6"></a>       <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+<section id="create-a-basic-histogram-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Basic Histogram</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Rating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/basic-histogram_auto_02_output-1.png" width="960"></p>
 </div>
 </div>
 </div>
-<aside class="notes">
-<p>Are there any thoughts or questions this raises?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div>
+</section>
+<section id="create-a-basic-histogram-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Basic Histogram</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Rating)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/basic-histogram_auto_03_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-basic-histogram-4" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Basic Histogram</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Rating)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/basic-histogram_auto_04_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-basic-histogram-5" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Basic Histogram</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Rating)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/basic-histogram_auto_05_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-basic-histogram-6" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Basic Histogram</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="6-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Rating)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb10-8"><a href="#cb10-8"></a>       <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/basic-histogram_auto_06_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-basic-histogram-7" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Basic Histogram</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="7-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Rating)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8"></a>       <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/basic-histogram_auto_07_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="histogram-by-park" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Histogram by park</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2-3,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7"></a>       <span class="at">fill =</span> <span class="st">"Park"</span>) <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="true"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>df <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8"></a>       <span class="at">fill =</span> <span class="st">"Park"</span>) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </section>
-<section id="move-legend" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Move legend</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7"></a>       <span class="at">fill =</span> <span class="st">"Park"</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<section id="create-a-histogram-by-park" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-</section>
-<section id="ratings-over-time" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Ratings over time</h2>
-<p>What if we wanted to look at the park ratings over time? What would we need to do?</p>
-<ul>
-<li>Make sure <code>Year_Month</code> is a date</li>
-<li>Group by <code>Park</code></li>
-<li>Count ratings per year</li>
-</ul>
-</section>
-<section id="prepare-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Prepare the data</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>ratings_by_year <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(Year_Month <span class="sc">!=</span> <span class="st">"missing"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">mutate</span>(<span class="at">Year_Month =</span> <span class="fu">ym</span>(Year_Month),</span>
-<span id="cb8-4"><a href="#cb8-4"></a>         <span class="at">Year =</span> <span class="fu">year</span>(Year_Month),</span>
-<span id="cb8-5"><a href="#cb8-5"></a>         <span class="at">Month =</span> <span class="fu">month</span>(Year_Month)) <span class="sc">|&gt;</span> </span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span> </span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">count</span>(Year) <span class="sc">|&gt;</span> </span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">rename</span>(<span class="at">Ratings =</span> n)</span>
-<span id="cb8-9"><a href="#cb8-9"></a></span>
-<span id="cb8-10"><a href="#cb8-10"></a>ratings_by_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+</div><div class="column" style="width:60%;">
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 28 × 3
-# Groups:   Park [3]
-   Park        Year Ratings
-   &lt;chr&gt;      &lt;dbl&gt;   &lt;int&gt;
- 1 California  2010       1
- 2 California  2011      29
- 3 California  2012      66
- 4 California  2013      51
- 5 California  2014      58
- 6 California  2015      66
- 7 California  2016      73
- 8 California  2017      48
- 9 California  2018      38
-10 California  2019       7
-# ℹ 18 more rows</code></pre>
+<pre><code># A tibble: 1,000 × 6
+   Review_ID Rating Year_Month Reviewer_Location Review_Text               Park 
+       &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt;
+ 1 305683957      5 2015-08-01 Portugal          I  ve previously been to… Cali…
+ 2 666364898      3 2018-10-01 United States     The Hong Kong Disneyland… Hong…
+ 3 293082325      3 2015-06-01 United States     My wife, my 15 year old … Paris
+ 4 334650140      1 2015-11-01 United Kingdom    Our family had the unfor… Paris
+ 5 393553042      3 2016-07-01 United States     HK Disney is very small … Hong…
+ 6 175685909      5 2013-08-01 United Kingdom    Nothing but fun fun fun!… Paris
+ 7 150353289      5 2013-01-01 India             Should not miss the Disn… Hong…
+ 8 224797068      5 2014-08-01 United Kingdom    everything   i am disney… Paris
+ 9 310708679      5 2015-04-01 United Kingdom    Wow! What a great experi… Paris
+10 126717664      5 2012-03-01 United States     I loved everything! :)  … Cali…
+# ℹ 990 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-histogram-by-park-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram_auto_02_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-histogram-by-park-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram_auto_03_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-histogram-by-park-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram_auto_04_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-histogram-by-park-4" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8"></a>       <span class="at">fill =</span> <span class="st">"Park"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram_auto_05_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-histogram-by-park-5" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="6-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8"></a>       <span class="at">fill =</span> <span class="st">"Park"</span>) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram_auto_06_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-histogram-by-park-6" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="7-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8"></a>       <span class="at">fill =</span> <span class="st">"Park"</span>) <span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram_auto_07_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-histogram-by-park-7" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Create a Histogram by Park</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="8-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Rating, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6"></a>       <span class="at">x =</span> <span class="st">"Rating"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb21-8"><a href="#cb21-8"></a>       <span class="at">fill =</span> <span class="st">"Park"</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/park-histogram_auto_08_output-1.png" width="960"></p>
+</div>
 </div>
 </div>
 </div>
 </section>
 <section id="line-plot" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Line plot</h2>
+<p>What if we wanted to look at the park ratings over time? What would we need to do?</p>
+<ul>
+<li>Make sure <code>Year_Month</code> is a date</li>
+<li>Group by <code>Park</code></li>
+<li>Count ratings per year</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>ratings_by_year <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">year</span>(Year_Month),</span>
+<span id="cb22-3"><a href="#cb22-3"></a>         <span class="at">Month =</span> <span class="fu">month</span>(Year_Month)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">count</span>(Year) <span class="sc">|&gt;</span> </span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">rename</span>(<span class="at">Ratings =</span> n)</span>
+<span id="cb22-7"><a href="#cb22-7"></a></span>
+<span id="cb22-8"><a href="#cb22-8"></a>ratings_by_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 29 × 3
+# Groups:   Park [3]
+   Park        Year Ratings
+   &lt;chr&gt;      &lt;dbl&gt;   &lt;int&gt;
+ 1 California  2011      24
+ 2 California  2012      59
+ 3 California  2013      51
+ 4 California  2014      63
+ 5 California  2015      83
+ 6 California  2016      68
+ 7 California  2017      45
+ 8 California  2018      36
+ 9 California  2019      12
+10 Hong Kong   2010       1
+# ℹ 19 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="line-plot-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Line plot</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>ratings_by_year <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="true"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>ratings_by_year <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings by Park per Year"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6"></a>       <span class="at">y =</span> <span class="st">"Ratings"</span>) <span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2010</span>,</span>
+<span id="cb24-8"><a href="#cb24-8"></a>                                  <span class="dv">2011</span>,</span>
+<span id="cb24-9"><a href="#cb24-9"></a>                                  <span class="dv">2012</span>,</span>
+<span id="cb24-10"><a href="#cb24-10"></a>                                  <span class="dv">2013</span>,</span>
+<span id="cb24-11"><a href="#cb24-11"></a>                                  <span class="dv">2014</span>,</span>
+<span id="cb24-12"><a href="#cb24-12"></a>                                  <span class="dv">2015</span>,</span>
+<span id="cb24-13"><a href="#cb24-13"></a>                                  <span class="dv">2016</span>,</span>
+<span id="cb24-14"><a href="#cb24-14"></a>                                  <span class="dv">2017</span>,</span>
+<span id="cb24-15"><a href="#cb24-15"></a>                                  <span class="dv">2018</span>,</span>
+<span id="cb24-16"><a href="#cb24-16"></a>                                  <span class="dv">2019</span>,</span>
+<span id="cb24-17"><a href="#cb24-17"></a>                                  <span class="dv">2020</span>)) <span class="sc">+</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_hc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/reviews-by-year-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </section>
-<section id="add-title-and-labels-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Add title and labels</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>ratings_by_year <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings by Park per Year"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6"></a>       <span class="at">y =</span> <span class="st">"Ratings"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<section id="park-reviews-by-year" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Park Reviews by Year</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>ratings_by_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 29 × 3
+# Groups:   Park [3]
+   Park        Year Ratings
+   &lt;chr&gt;      &lt;dbl&gt;   &lt;int&gt;
+ 1 California  2011      24
+ 2 California  2012      59
+ 3 California  2013      51
+ 4 California  2014      63
+ 5 California  2015      83
+ 6 California  2016      68
+ 7 California  2017      45
+ 8 California  2018      36
+ 9 California  2019      12
+10 Hong Kong   2010       1
+# ℹ 19 more rows</code></pre>
 </div>
-</div>
-</section>
-<section id="custom-x-axis" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Custom x-axis</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="14-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>ratings_by_year <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings by Park per Year"</span>,</span>
-<span id="cb12-5"><a href="#cb12-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb12-6"><a href="#cb12-6"></a>       <span class="at">y =</span> <span class="st">"Ratings"</span>) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2010</span>,</span>
-<span id="cb12-8"><a href="#cb12-8"></a>                                  <span class="dv">2011</span>,</span>
-<span id="cb12-9"><a href="#cb12-9"></a>                                  <span class="dv">2012</span>,</span>
-<span id="cb12-10"><a href="#cb12-10"></a>                                  <span class="dv">2013</span>,</span>
-<span id="cb12-11"><a href="#cb12-11"></a>                                  <span class="dv">2014</span>,</span>
-<span id="cb12-12"><a href="#cb12-12"></a>                                  <span class="dv">2015</span>,</span>
-<span id="cb12-13"><a href="#cb12-13"></a>                                  <span class="dv">2016</span>,</span>
-<span id="cb12-14"><a href="#cb12-14"></a>                                  <span class="dv">2017</span>,</span>
-<span id="cb12-15"><a href="#cb12-15"></a>                                  <span class="dv">2018</span>,</span>
-<span id="cb12-16"><a href="#cb12-16"></a>                                  <span class="dv">2019</span>,</span>
-<span id="cb12-17"><a href="#cb12-17"></a>                                  <span class="dv">2020</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </section>
-<section id="custom-theme" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Custom theme</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">filter</span>(Year_Month <span class="sc">!=</span> <span class="st">"missing"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">mutate</span>(<span class="at">Year_Month =</span> <span class="fu">ym</span>(Year_Month),</span>
-<span id="cb13-4"><a href="#cb13-4"></a>         <span class="at">Year =</span> <span class="fu">year</span>(Year_Month),</span>
-<span id="cb13-5"><a href="#cb13-5"></a>         <span class="at">Month =</span> <span class="fu">month</span>(Year_Month)) <span class="sc">|&gt;</span> </span>
-<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span> </span>
-<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">count</span>(Year) <span class="sc">|&gt;</span> </span>
-<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">rename</span>(<span class="at">Ratings =</span> n) <span class="sc">|&gt;</span> </span>
-<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb13-11"><a href="#cb13-11"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings by Park per Year"</span>,</span>
-<span id="cb13-12"><a href="#cb13-12"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb13-13"><a href="#cb13-13"></a>       <span class="at">y =</span> <span class="st">"Ratings"</span>) <span class="sc">+</span></span>
-<span id="cb13-14"><a href="#cb13-14"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2010</span>,</span>
-<span id="cb13-15"><a href="#cb13-15"></a>                                  <span class="dv">2011</span>,</span>
-<span id="cb13-16"><a href="#cb13-16"></a>                                  <span class="dv">2012</span>,</span>
-<span id="cb13-17"><a href="#cb13-17"></a>                                  <span class="dv">2013</span>,</span>
-<span id="cb13-18"><a href="#cb13-18"></a>                                  <span class="dv">2014</span>,</span>
-<span id="cb13-19"><a href="#cb13-19"></a>                                  <span class="dv">2015</span>,</span>
-<span id="cb13-20"><a href="#cb13-20"></a>                                  <span class="dv">2016</span>,</span>
-<span id="cb13-21"><a href="#cb13-21"></a>                                  <span class="dv">2017</span>,</span>
-<span id="cb13-22"><a href="#cb13-22"></a>                                  <span class="dv">2018</span>,</span>
-<span id="cb13-23"><a href="#cb13-23"></a>                                  <span class="dv">2019</span>,</span>
-<span id="cb13-24"><a href="#cb13-24"></a>                                  <span class="dv">2020</span>)) <span class="sc">+</span></span>
-<span id="cb13-25"><a href="#cb13-25"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_hc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+<section id="park-reviews-by-year-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Park Reviews by Year</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>ratings_by_year <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/reviews-by-year_auto_02_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="park-reviews-by-year-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Park Reviews by Year</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>ratings_by_year <span class="sc">|&gt;</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/reviews-by-year_auto_03_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="park-reviews-by-year-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Park Reviews by Year</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" data-code-line-numbers="4-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>ratings_by_year <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings by Park per Year"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6"></a>       <span class="at">y =</span> <span class="st">"Ratings"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/reviews-by-year_auto_04_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="park-reviews-by-year-4" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Park Reviews by Year</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30" data-code-line-numbers="5-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>ratings_by_year <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings by Park per Year"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6"></a>       <span class="at">y =</span> <span class="st">"Ratings"</span>) <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2010</span>,</span>
+<span id="cb30-8"><a href="#cb30-8"></a>                                  <span class="dv">2011</span>,</span>
+<span id="cb30-9"><a href="#cb30-9"></a>                                  <span class="dv">2012</span>,</span>
+<span id="cb30-10"><a href="#cb30-10"></a>                                  <span class="dv">2013</span>,</span>
+<span id="cb30-11"><a href="#cb30-11"></a>                                  <span class="dv">2014</span>,</span>
+<span id="cb30-12"><a href="#cb30-12"></a>                                  <span class="dv">2015</span>,</span>
+<span id="cb30-13"><a href="#cb30-13"></a>                                  <span class="dv">2016</span>,</span>
+<span id="cb30-14"><a href="#cb30-14"></a>                                  <span class="dv">2017</span>,</span>
+<span id="cb30-15"><a href="#cb30-15"></a>                                  <span class="dv">2018</span>,</span>
+<span id="cb30-16"><a href="#cb30-16"></a>                                  <span class="dv">2019</span>,</span>
+<span id="cb30-17"><a href="#cb30-17"></a>                                  <span class="dv">2020</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/reviews-by-year_auto_05_output-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="park-reviews-by-year-5" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Park Reviews by Year</h2>
+<div class="columns smallcode">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" data-code-line-numbers="6-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>ratings_by_year <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Ratings, <span class="at">color =</span> Park)) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings by Park per Year"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6"></a>       <span class="at">y =</span> <span class="st">"Ratings"</span>) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2010</span>,</span>
+<span id="cb31-8"><a href="#cb31-8"></a>                                  <span class="dv">2011</span>,</span>
+<span id="cb31-9"><a href="#cb31-9"></a>                                  <span class="dv">2012</span>,</span>
+<span id="cb31-10"><a href="#cb31-10"></a>                                  <span class="dv">2013</span>,</span>
+<span id="cb31-11"><a href="#cb31-11"></a>                                  <span class="dv">2014</span>,</span>
+<span id="cb31-12"><a href="#cb31-12"></a>                                  <span class="dv">2015</span>,</span>
+<span id="cb31-13"><a href="#cb31-13"></a>                                  <span class="dv">2016</span>,</span>
+<span id="cb31-14"><a href="#cb31-14"></a>                                  <span class="dv">2017</span>,</span>
+<span id="cb31-15"><a href="#cb31-15"></a>                                  <span class="dv">2018</span>,</span>
+<span id="cb31-16"><a href="#cb31-16"></a>                                  <span class="dv">2019</span>,</span>
+<span id="cb31-17"><a href="#cb31-17"></a>                                  <span class="dv">2020</span>)) <span class="sc">+</span></span>
+<span id="cb31-18"><a href="#cb31-18"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_hc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="04-r-text-mining_files/figure-revealjs/reviews-by-year_auto_06_output-1.png" width="960"></p>
+</div>
 </div>
 </div>
 </div>
@@ -700,24 +1053,23 @@
 <h2>Ridge plot</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>(Year_Month <span class="sc">!=</span> <span class="st">"missing"</span>,</span>
-<span id="cb14-3"><a href="#cb14-3"></a>         Rating <span class="sc">&lt;</span> <span class="dv">4</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">mutate</span>(<span class="at">Year_Month =</span> <span class="fu">ym</span>(Year_Month),</span>
-<span id="cb14-5"><a href="#cb14-5"></a>         <span class="at">Year =</span> <span class="fu">year</span>(Year_Month)) <span class="sc">|&gt;</span> </span>
-<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">group_by</span>(Park, Year_Month) <span class="sc">|&gt;</span> </span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="co"># summarise(avg_rating = mean(Rating, na.rm = TRUE)) |&gt; </span></span>
-<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year_Month, <span class="at">y =</span> Park)) <span class="sc">+</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a>  ggridges<span class="sc">::</span><span class="fu">geom_density_ridges</span>(<span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
-<span id="cb14-10"><a href="#cb14-10"></a>                                <span class="at">scale =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb14-11"><a href="#cb14-11"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 year"</span>, <span class="at">date_labels =</span> <span class="st">"%Y"</span>) <span class="sc">+</span></span>
-<span id="cb14-12"><a href="#cb14-12"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
-<span id="cb14-13"><a href="#cb14-13"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb14-14"><a href="#cb14-14"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb14-15"><a href="#cb14-15"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>df <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">filter</span>(Rating <span class="sc">&lt;</span> <span class="dv">4</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">mutate</span>(<span class="at">Year_Month =</span> <span class="fu">ym</span>(Year_Month),</span>
+<span id="cb32-4"><a href="#cb32-4"></a>         <span class="at">Year =</span> <span class="fu">year</span>(Year_Month)) <span class="sc">|&gt;</span> </span>
+<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">group_by</span>(Park, Year_Month) <span class="sc">|&gt;</span> </span>
+<span id="cb32-6"><a href="#cb32-6"></a>  <span class="co"># summarise(avg_rating = mean(Rating, na.rm = TRUE)) |&gt; </span></span>
+<span id="cb32-7"><a href="#cb32-7"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year_Month, <span class="at">y =</span> Park)) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a>  ggridges<span class="sc">::</span><span class="fu">geom_density_ridges</span>(<span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
+<span id="cb32-9"><a href="#cb32-9"></a>                                <span class="at">scale =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 year"</span>, <span class="at">date_labels =</span> <span class="st">"%Y"</span>) <span class="sc">+</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Ratings by Park"</span>,</span>
+<span id="cb32-12"><a href="#cb32-12"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb32-13"><a href="#cb32-13"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb32-14"><a href="#cb32-14"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -732,10 +1084,10 @@
 <p>Brackets allow us to isolate a single cell.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>df<span class="sc">$</span>Review_Text[<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>df<span class="sc">$</span>Review_Text[<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "A great place to stay when you go to Disneyland if you want to save a little time and money.  Clean Comfortable rooms, great staff, and a nice hot breakfast.  Shuttle is right next door.  I'd go back there again!"</code></pre>
+<pre><code>[1] "I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)"</code></pre>
 </div>
 </div>
 </div>
@@ -744,14 +1096,14 @@
 <h2>Convert it to a <code>tibble</code></h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">line =</span> <span class="dv">1</span>, <span class="at">text =</span> df<span class="sc">$</span>Review_Text[<span class="dv">11</span>])</span>
-<span id="cb17-2"><a href="#cb17-2"></a>sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">line =</span> <span class="dv">1</span>, <span class="at">text =</span> df<span class="sc">$</span>Review_Text[<span class="dv">11</span>])</span>
+<span id="cb35-2"><a href="#cb35-2"></a>sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
    line text                                                                    
   &lt;dbl&gt; &lt;chr&gt;                                                                   
-1     1 A great place to stay when you go to Disneyland if you want to save a l…</code></pre>
+1     1 I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were ver…</code></pre>
 </div>
 </div>
 </div>
@@ -767,24 +1119,24 @@
 <p><br></p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>sample <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">unnest_tokens</span>(word, text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>sample <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">unnest_tokens</span>(word, text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 40 × 2
-    line word      
-   &lt;dbl&gt; &lt;chr&gt;     
- 1     1 a         
- 2     1 great     
- 3     1 place     
- 4     1 to        
- 5     1 stay      
- 6     1 when      
- 7     1 you       
- 8     1 go        
- 9     1 to        
-10     1 disneyland
-# ℹ 30 more rows</code></pre>
+<pre><code># A tibble: 51 × 2
+    line word     
+   &lt;dbl&gt; &lt;chr&gt;    
+ 1     1 i        
+ 2     1 went     
+ 3     1 there    
+ 4     1 with     
+ 5     1 2        
+ 6     1 daughters
+ 7     1 1        
+ 8     1 y.o      
+ 9     1 and      
+10     1 4        
+# ℹ 41 more rows</code></pre>
 </div>
 </div>
 </div>
@@ -805,57 +1157,57 @@
 <section id="number-each-review" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Number each review</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Number each review for each park</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>reviews <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">mutate</span>(<span class="at">linenumber =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">select</span>(Park, linenumber, <span class="at">text =</span> Review_Text) <span class="sc">|&gt;</span> </span>
-<span id="cb21-7"><a href="#cb21-7"></a>  <span class="fu">arrange</span>(Park, linenumber)</span>
-<span id="cb21-8"><a href="#cb21-8"></a></span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="fu">head</span>(reviews)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Number each review for each park</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>reviews <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>  <span class="fu">mutate</span>(<span class="at">linenumber =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb39-5"><a href="#cb39-5"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb39-6"><a href="#cb39-6"></a>  <span class="fu">select</span>(Park, linenumber, <span class="at">text =</span> Review_Text) <span class="sc">|&gt;</span> </span>
+<span id="cb39-7"><a href="#cb39-7"></a>  <span class="fu">arrange</span>(Park, linenumber)</span>
+<span id="cb39-8"><a href="#cb39-8"></a></span>
+<span id="cb39-9"><a href="#cb39-9"></a><span class="fu">head</span>(reviews)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   Park       linenumber text                                                    
   &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                                                   
-1 California          1 This place is AMAZING for adults and children of all ag…
-2 California          2 There are over 21,000 reviews so far, I'm sure everythi…
-3 California          3 Look, what's not to like about DISNEYLAND? I have been …
-4 California          4 A great place to stay when you go to Disneyland if you …
-5 California          5 This was the second time visiting Disneyland (the first…
-6 California          6 A real life experience !!Whether you are an adult or te…</code></pre>
+1 California          1 I  ve previously been to 3 Disney Resorts. So I had my …
+2 California          2 I loved everything! :)  It's the Happiest Place on Eart…
+3 California          3 I went there with 2 daughters   1 y.o. and 4 y.o. Both …
+4 California          4 The two parks are within easy walking distance of each …
+5 California          5 It's always a blast going back to Disney. It's where ad…
+6 California          6 Nobody loves queuing so arriving early in Fantasyland a…</code></pre>
 </div>
 </div>
 </section>
 <section id="unnest-tokens" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Unnest Tokens</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Unnest tokens</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>tidy_reviews <span class="ot">&lt;-</span> reviews <span class="sc">|&gt;</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
-<span id="cb23-4"><a href="#cb23-4"></a></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="fu">head</span>(tidy_reviews)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Unnest tokens</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>tidy_reviews <span class="ot">&lt;-</span> reviews <span class="sc">|&gt;</span> </span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
+<span id="cb41-4"><a href="#cb41-4"></a></span>
+<span id="cb41-5"><a href="#cb41-5"></a><span class="fu">head</span>(tidy_reviews)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
-  Park       linenumber word   
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;  
-1 California          1 this   
-2 California          1 place  
-3 California          1 is     
-4 California          1 amazing
-5 California          1 for    
-6 California          1 adults </code></pre>
+  Park       linenumber word      
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;     
+1 California          1 i         
+2 California          1 ve        
+3 California          1 previously
+4 California          1 been      
+5 California          1 to        
+6 California          1 3         </code></pre>
 </div>
 </div>
 </section>
 <section id="stop-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Stop Words</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">head</span>(stop_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">head</span>(stop_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -888,45 +1240,45 @@
 <section id="remove-stop-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Remove stop words</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Unnest tokens and remove stop words</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>tidy_reviews <span class="ot">&lt;-</span> tidy_reviews <span class="sc">|&gt;</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">anti_join</span>(stop_words)</span>
-<span id="cb27-4"><a href="#cb27-4"></a></span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="fu">head</span>(tidy_reviews)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Unnest tokens and remove stop words</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>tidy_reviews <span class="ot">&lt;-</span> tidy_reviews <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">anti_join</span>(stop_words)</span>
+<span id="cb45-4"><a href="#cb45-4"></a></span>
+<span id="cb45-5"><a href="#cb45-5"></a><span class="fu">head</span>(tidy_reviews)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
-  Park       linenumber word    
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;   
-1 California          1 amazing 
-2 California          1 adults  
-3 California          1 children
-4 California          1 ages    
-5 California          1 line    
-6 California          1 ups     </code></pre>
+  Park       linenumber word        
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;       
+1 California          1 ve          
+2 California          1 previously  
+3 California          1 3           
+4 California          1 disney      
+5 California          1 resorts     
+6 California          1 expectations</code></pre>
 </div>
 </div>
 </section>
 <section id="create-word-counts" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Create Word Counts</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Perform word count</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>tidy_reviews <span class="sc">|&gt;</span> </span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Perform word count</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>tidy_reviews <span class="sc">|&gt;</span> </span>
+<span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb47-4"><a href="#cb47-4"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   word           n
   &lt;chr&gt;      &lt;int&gt;
-1 park        1024
-2 disney       823
-3 rides        804
-4 disneyland   740
-5 time         693
-6 day          628</code></pre>
+1 park         989
+2 disney       844
+3 rides        808
+4 disneyland   681
+5 time         633
+6 day          608</code></pre>
 </div>
 </div>
 </section></section>
@@ -938,13 +1290,13 @@
 <section id="create-a-word-cloud" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Create a word cloud</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>tidy_reviews <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>tidy_reviews <span class="sc">|&gt;</span> </span>
+<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span> </span>
+<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </div>
 </div>
 
@@ -964,16 +1316,16 @@
 <section id="word-cloud-without-custom-stop-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Word Cloud without Custom Stop Words</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>wc_removals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"disney"</span>, <span class="st">"disneyland"</span>, <span class="st">"rides"</span>, <span class="st">"park"</span>)</span>
-<span id="cb32-2"><a href="#cb32-2"></a></span>
-<span id="cb32-3"><a href="#cb32-3"></a>tidy_reviews <span class="sc">|&gt;</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> wc_removals) <span class="sc">|&gt;</span> <span class="co"># note ! and %in%</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span></span>
-<span id="cb32-6"><a href="#cb32-6"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>wc_removals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"disney"</span>, <span class="st">"disneyland"</span>, <span class="st">"rides"</span>, <span class="st">"park"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2"></a></span>
+<span id="cb50-3"><a href="#cb50-3"></a>tidy_reviews <span class="sc">|&gt;</span></span>
+<span id="cb50-4"><a href="#cb50-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> wc_removals) <span class="sc">|&gt;</span> <span class="co"># note ! and %in%</span></span>
+<span id="cb50-5"><a href="#cb50-5"></a>  <span class="fu">count</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb50-6"><a href="#cb50-6"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </div>
 </div>
 </section></section>
@@ -989,105 +1341,105 @@
 <section id="set-up-bigrams" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Set up bigrams</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Unnest into bigrams</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>tidy_bigrams <span class="ot">&lt;-</span> reviews <span class="sc">|&gt;</span> </span>
-<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">unnest_tokens</span>(bigram, text, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bigram))</span>
-<span id="cb33-5"><a href="#cb33-5"></a></span>
-<span id="cb33-6"><a href="#cb33-6"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Unnest into bigrams</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a>tidy_bigrams <span class="ot">&lt;-</span> reviews <span class="sc">|&gt;</span> </span>
+<span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">unnest_tokens</span>(bigram, text, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb51-4"><a href="#cb51-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bigram))</span>
+<span id="cb51-5"><a href="#cb51-5"></a></span>
+<span id="cb51-6"><a href="#cb51-6"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
-  Park       linenumber bigram     
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      
-1 California          1 this place 
-2 California          1 place is   
-3 California          1 is amazing 
-4 California          1 amazing for
-5 California          1 for adults 
-6 California          1 adults and </code></pre>
+  Park       linenumber bigram         
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;          
+1 California          1 i ve           
+2 California          1 ve previously  
+3 California          1 previously been
+4 California          1 been to        
+5 California          1 to 3           
+6 California          1 3 disney       </code></pre>
 </div>
 </div>
 </section>
 <section id="separate-words" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Separate words</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Separate words</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a>tidy_bigrams <span class="ot">&lt;-</span> tidy_bigrams <span class="sc">|&gt;</span></span>
-<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">separate</span>(bigram, <span class="fu">c</span>(<span class="st">"word1"</span>, <span class="st">"word2"</span>), <span class="at">sep =</span> <span class="st">" "</span>)</span>
-<span id="cb35-4"><a href="#cb35-4"></a></span>
-<span id="cb35-5"><a href="#cb35-5"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># Separate words</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a>tidy_bigrams <span class="ot">&lt;-</span> tidy_bigrams <span class="sc">|&gt;</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a>  <span class="fu">separate</span>(bigram, <span class="fu">c</span>(<span class="st">"word1"</span>, <span class="st">"word2"</span>), <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb53-4"><a href="#cb53-4"></a></span>
+<span id="cb53-5"><a href="#cb53-5"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
-  Park       linenumber word1   word2  
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  
-1 California          1 this    place  
-2 California          1 place   is     
-3 California          1 is      amazing
-4 California          1 amazing for    
-5 California          1 for     adults 
-6 California          1 adults  and    </code></pre>
+  Park       linenumber word1      word2     
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     
+1 California          1 i          ve        
+2 California          1 ve         previously
+3 California          1 previously been      
+4 California          1 been       to        
+5 California          1 to         3         
+6 California          1 3          disney    </code></pre>
 </div>
 </div>
 </section>
 <section id="remove-stop-words-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Remove stop words</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Remove stop words</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a>tidy_bigrams <span class="ot">&lt;-</span> tidy_bigrams <span class="sc">|&gt;</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word1 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word) <span class="sc">|&gt;</span></span>
-<span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word2 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word)</span>
-<span id="cb37-5"><a href="#cb37-5"></a></span>
-<span id="cb37-6"><a href="#cb37-6"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># Remove stop words</span></span>
+<span id="cb55-2"><a href="#cb55-2"></a>tidy_bigrams <span class="ot">&lt;-</span> tidy_bigrams <span class="sc">|&gt;</span></span>
+<span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word1 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word) <span class="sc">|&gt;</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word2 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word)</span>
+<span id="cb55-5"><a href="#cb55-5"></a></span>
+<span id="cb55-6"><a href="#cb55-6"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
-  Park       linenumber word1  word2  
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  
-1 California          1 line   ups    
-2 California          1 30     minutes
-3 California          1 street parade 
-4 California          1 1      2      
-5 California          1 1      free   
-6 California          1 free   day    </code></pre>
+  Park       linenumber word1        word2     
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;     
+1 California          1 ve           previously
+2 California          1 3            disney    
+3 California          1 disney       resorts   
+4 California          1 expectations sky       
+5 California          1 original     park      
+6 California          1 magical      feeling   </code></pre>
 </div>
 </div>
 </section>
 <section id="reunite-terms" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Reunite terms</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Reunite terms</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>tidy_bigrams <span class="ot">&lt;-</span> tidy_bigrams <span class="sc">|&gt;</span></span>
-<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">unite</span>(bigram, word1, word2, <span class="at">sep =</span> <span class="st">" "</span>)</span>
-<span id="cb39-4"><a href="#cb39-4"></a></span>
-<span id="cb39-5"><a href="#cb39-5"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Reunite terms</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>tidy_bigrams <span class="ot">&lt;-</span> tidy_bigrams <span class="sc">|&gt;</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a>  <span class="fu">unite</span>(bigram, word1, word2, <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb57-4"><a href="#cb57-4"></a></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="fu">head</span>(tidy_bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
-  Park       linenumber bigram       
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;        
-1 California          1 line ups     
-2 California          1 30 minutes   
-3 California          1 street parade
-4 California          1 1 2          
-5 California          1 1 free       
-6 California          1 free day     </code></pre>
+  Park       linenumber bigram          
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;           
+1 California          1 ve previously   
+2 California          1 3 disney        
+3 California          1 disney resorts  
+4 California          1 expectations sky
+5 California          1 original park   
+6 California          1 magical feeling </code></pre>
 </div>
 </div>
 </section>
 <section id="look-at-top-bigrams-by-park" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Look at top bigrams by park</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>tidy_bigrams <span class="sc">|&gt;</span> </span>
-<span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span> </span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">count</span>(bigram) <span class="sc">|&gt;</span> </span>
-<span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
-<span id="cb41-5"><a href="#cb41-5"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>tidy_bigrams <span class="sc">|&gt;</span> </span>
+<span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">group_by</span>(Park) <span class="sc">|&gt;</span> </span>
+<span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">count</span>(bigram) <span class="sc">|&gt;</span> </span>
+<span id="cb59-4"><a href="#cb59-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
+<span id="cb59-5"><a href="#cb59-5"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1095,12 +1447,12 @@
 # Groups:   Park [3]
   Park       bigram                   n
   &lt;chr&gt;      &lt;chr&gt;                &lt;int&gt;
-1 California fast pass               92
-2 Hong Kong  hong kong               75
-3 Paris      disneyland paris        69
-4 Paris      fast pass               49
-5 California space mountain          41
-6 California california adventure    40</code></pre>
+1 Paris      disneyland paris        66
+2 Hong Kong  hong kong               58
+3 California fast pass               54
+4 California disney world            51
+5 Paris      fast pass               43
+6 California california adventure    37</code></pre>
 </div>
 </div>
 </section></section>
@@ -1112,111 +1464,111 @@
 <section id="total-words-per-review" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Total Words per Review</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>review_words <span class="ot">&lt;-</span> tidy_reviews <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">count</span>(Park, word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb43-3"><a href="#cb43-3"></a></span>
-<span id="cb43-4"><a href="#cb43-4"></a>total_words <span class="ot">&lt;-</span> review_words <span class="sc">%&gt;%</span> </span>
-<span id="cb43-5"><a href="#cb43-5"></a>  <span class="fu">group_by</span>(Park) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-6"><a href="#cb43-6"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span>
-<span id="cb43-7"><a href="#cb43-7"></a></span>
-<span id="cb43-8"><a href="#cb43-8"></a>review_words <span class="ot">&lt;-</span> <span class="fu">left_join</span>(review_words, total_words)</span>
-<span id="cb43-9"><a href="#cb43-9"></a></span>
-<span id="cb43-10"><a href="#cb43-10"></a><span class="fu">head</span>(review_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>review_words <span class="ot">&lt;-</span> tidy_reviews <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>  <span class="fu">count</span>(Park, word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-3"><a href="#cb61-3"></a></span>
+<span id="cb61-4"><a href="#cb61-4"></a>total_words <span class="ot">&lt;-</span> review_words <span class="sc">%&gt;%</span> </span>
+<span id="cb61-5"><a href="#cb61-5"></a>  <span class="fu">group_by</span>(Park) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-6"><a href="#cb61-6"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span>
+<span id="cb61-7"><a href="#cb61-7"></a></span>
+<span id="cb61-8"><a href="#cb61-8"></a>review_words <span class="ot">&lt;-</span> <span class="fu">left_join</span>(review_words, total_words)</span>
+<span id="cb61-9"><a href="#cb61-9"></a></span>
+<span id="cb61-10"><a href="#cb61-10"></a><span class="fu">head</span>(review_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   Park       word           n total
   &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt; &lt;int&gt;
-1 Paris      park         470 18717
-2 California park         405 17897
-3 Paris      disney       368 18717
-4 California disneyland   365 17897
-5 Paris      rides        347 18717
-6 California time         346 17897</code></pre>
+1 Paris      park         439 18678
+2 California park         368 17086
+3 California disneyland   342 17086
+4 Paris      disney       332 18678
+5 Paris      rides        332 18678
+6 California disney       322 17086</code></pre>
 </div>
 </div>
 </section>
 <section id="review-length-by-park" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Review length by park</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">ggplot</span>(review_words, <span class="fu">aes</span>(n<span class="sc">/</span>total, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">xlim</span>(<span class="cn">NA</span>, <span class="fl">0.001</span>) <span class="sc">+</span></span>
-<span id="cb45-4"><a href="#cb45-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Park, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
-<span id="cb45-5"><a href="#cb45-5"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">ggplot</span>(review_words, <span class="fu">aes</span>(n<span class="sc">/</span>total, <span class="at">fill =</span> Park)) <span class="sc">+</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">xlim</span>(<span class="cn">NA</span>, <span class="fl">0.001</span>) <span class="sc">+</span></span>
+<span id="cb63-4"><a href="#cb63-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Park, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb63-5"><a href="#cb63-5"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
 </div>
 </div>
 </section>
 <section id="tf-idf" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>TF-IDF</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>freq_by_rank <span class="ot">&lt;-</span> review_words <span class="sc">%&gt;%</span> </span>
-<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">group_by</span>(Park) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-3"><a href="#cb46-3"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>(), </span>
-<span id="cb46-4"><a href="#cb46-4"></a>         <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span> <span class="ot">=</span> n<span class="sc">/</span>total) <span class="sc">%&gt;%</span></span>
-<span id="cb46-5"><a href="#cb46-5"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb46-6"><a href="#cb46-6"></a></span>
-<span id="cb46-7"><a href="#cb46-7"></a><span class="fu">head</span>(freq_by_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>freq_by_rank <span class="ot">&lt;-</span> review_words <span class="sc">%&gt;%</span> </span>
+<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">group_by</span>(Park) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>(), </span>
+<span id="cb64-4"><a href="#cb64-4"></a>         <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span> <span class="ot">=</span> n<span class="sc">/</span>total) <span class="sc">%&gt;%</span></span>
+<span id="cb64-5"><a href="#cb64-5"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb64-6"><a href="#cb64-6"></a></span>
+<span id="cb64-7"><a href="#cb64-7"></a><span class="fu">head</span>(freq_by_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   Park       word           n total  rank `term frequency`
   &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;
-1 Paris      park         470 18717     1           0.0251
-2 California park         405 17897     1           0.0226
-3 Paris      disney       368 18717     2           0.0197
-4 California disneyland   365 17897     2           0.0204
-5 Paris      rides        347 18717     3           0.0185
-6 California time         346 17897     3           0.0193</code></pre>
+1 Paris      park         439 18678     1           0.0235
+2 California park         368 17086     1           0.0215
+3 California disneyland   342 17086     2           0.0200
+4 Paris      disney       332 18678     2           0.0178
+5 Paris      rides        332 18678     3           0.0178
+6 California disney       322 17086     3           0.0188</code></pre>
 </div>
 </div>
 </section>
 <section id="plot-tf-idf" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Plot TF-IDF</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>freq_by_rank <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span>, <span class="at">color =</span> Park)) <span class="sc">+</span> </span>
-<span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb48-4"><a href="#cb48-4"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb48-5"><a href="#cb48-5"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb48-6"><a href="#cb48-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>freq_by_rank <span class="sc">%&gt;%</span> </span>
+<span id="cb66-2"><a href="#cb66-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span>, <span class="at">color =</span> Park)) <span class="sc">+</span> </span>
+<span id="cb66-3"><a href="#cb66-3"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb66-4"><a href="#cb66-4"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb66-5"><a href="#cb66-5"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb66-6"><a href="#cb66-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
 <section id="plot-tf-idf-output" class="slide level2 output-location-slide"><h2>Plot TF-IDF</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
-<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+<p><img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </div>
 </div></section><section id="bigram-tf-idf" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Bigram TF-IDF</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>tidy_bigrams <span class="sc">|&gt;</span> </span>
-<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">count</span>(Park, bigram) <span class="sc">|&gt;</span> </span>
-<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">bind_tf_idf</span>(bigram, Park, n) <span class="sc">|&gt;</span> </span>
-<span id="cb49-4"><a href="#cb49-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>tidy_bigrams <span class="sc">|&gt;</span> </span>
+<span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">count</span>(Park, bigram) <span class="sc">|&gt;</span> </span>
+<span id="cb67-3"><a href="#cb67-3"></a>  <span class="fu">bind_tf_idf</span>(bigram, Park, n) <span class="sc">|&gt;</span> </span>
+<span id="cb67-4"><a href="#cb67-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10,624 × 6
-   Park      bigram              n      tf   idf  tf_idf
-   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
- 1 Hong Kong lion king          24 0.00847  1.10 0.00930
- 2 Hong Kong kong disneyland    19 0.00670  1.10 0.00737
- 3 Hong Kong hk disneyland      17 0.00600  1.10 0.00659
- 4 Hong Kong mystic manor       15 0.00529  1.10 0.00581
- 5 Hong Kong ocean park         12 0.00423  1.10 0.00465
- 6 Hong Kong story land         12 0.00423  1.10 0.00465
- 7 Hong Kong grizzly gulch      11 0.00388  1.10 0.00426
- 8 Hong Kong hollywood hotel     8 0.00282  1.10 0.00310
- 9 Hong Kong kong disney         8 0.00282  1.10 0.00310
-10 Hong Kong river cruise        8 0.00282  1.10 0.00310
-# ℹ 10,614 more rows</code></pre>
+<pre><code># A tibble: 10,520 × 6
+   Park       bigram                   n      tf   idf  tf_idf
+   &lt;chr&gt;      &lt;chr&gt;                &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Hong Kong  kong disneyland         19 0.00625 1.10  0.00687
+ 2 California splash mountain         22 0.00430 1.10  0.00473
+ 3 Paris      disneyland paris        66 0.0116  0.405 0.00470
+ 4 Paris      disney studios          22 0.00386 1.10  0.00424
+ 5 Hong Kong  mystic manor            11 0.00362 1.10  0.00398
+ 6 Hong Kong  ocean park              11 0.00362 1.10  0.00398
+ 7 Hong Kong  grizzly gulch            9 0.00296 1.10  0.00325
+ 8 California california adventure    37 0.00724 0.405 0.00293
+ 9 Hong Kong  golden mickeys           8 0.00263 1.10  0.00289
+10 Hong Kong  story land               8 0.00263 1.10  0.00289
+# ℹ 10,510 more rows</code></pre>
 </div>
 </div>
 </section></section>
@@ -1245,12 +1597,12 @@
 <pre><code># A tibble: 6 × 2
   word        n
   &lt;chr&gt;   &lt;int&gt;
-1 food      330
-2 fun       223
-3 parade    205
-4 love      121
-5 enjoy     102
-6 magical    89</code></pre>
+1 food      321
+2 fun       231
+3 parade    187
+4 love      139
+5 magical   134
+6 enjoy     114</code></pre>
 </div>
 </div>
 </section>
@@ -1261,19 +1613,19 @@
 <pre><code># A tibble: 6 × 5
   Park       index negative positive sentiment
   &lt;chr&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;     &lt;int&gt;
-1 California     0      157      370       213
-2 California     1      169      310       141
-3 California     2      121      279       158
-4 California     3      153      262       109
-5 California     4      161      314       153
-6 California     5       89      208       119</code></pre>
+1 California     0      128      301       173
+2 California     1      186      369       183
+3 California     2      127      310       183
+4 California     3      128      282       154
+5 California     4      152      326       174
+6 California     5       91      176        85</code></pre>
 </div>
 </div>
 </section>
 <section id="sentiment-analysis-3" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Sentiment Analysis</h2>
 
-<img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"></section>
+<img data-src="04-r-text-mining_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
 <section id="topic-modeling" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Topic Modeling</h2>
 
