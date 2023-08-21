@@ -509,20 +509,24 @@ idf(t)=1+log\frac{C}{1+df(t)}
 tfidf=tf(idf)
 \]</span></p>
 </section>
-<section id="similarity" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>_____ Similarity</h2>
+<section id="word-and-document-similarity" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Word and document similarity</h2>
 <ul>
-<li><p><strong>Word Similarity</strong>: similarity between individual words or tokens</p></li>
-<li><p><strong>Document Similarity</strong>: similarity between short phrases or documents</p></li>
-<li><p><strong>Jaccard Similarity</strong>: similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary<br>
-<br>
-$$</p>
-<p>J(A, B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cap B|}</p>
-<p>$$<br>
-</p></li>
-<li><p><strong>Cosine Similarity</strong>: similarity between words <img data-src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0a4c9a778656537624a3303e646559a429868863.png"></p></li>
-<li><p><strong>Latent Semantic Analysis (LSA)</strong>: an algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e.&nbsp;king:male, queen:female, doctor:male, nurse:female)</p></li>
+<li><strong>Word Similarity</strong>: similarity between individual words or tokens</li>
+<li><strong>Document Similarity</strong>: similarity between short phrases or documents</li>
 </ul>
+</section>
+<section id="jaccard-similarity" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Jaccard Similarity</h2>
+<p>Calculates the similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary <span class="math display">\[J(A, B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cap B|}\]</span></p>
+</section>
+<section id="cosine-similarity" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2><strong>Cosine Similarity</strong></h2>
+<p>Calculates the similarity between words <span class="math display">\[\cos (\theta)=\frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}=\frac{\sum_{i=1}^n A_i B_i}{\sqrt{\sum_{i=1}^n A_i^2 \cdot \sum_{i=1}^n B_i^2}}\]</span></p>
+</section>
+<section id="latent-semantic-analysis-lsa" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2><strong>Latent Semantic Analysis (LSA)</strong>:</h2>
+<p>An algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e.&nbsp;king:male, queen:female, doctor:male, nurse:female)</p>
 </section>
 <section id="levels-of-analysis" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Levels of Analysis</h2>
@@ -714,9 +718,9 @@ $$</p>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

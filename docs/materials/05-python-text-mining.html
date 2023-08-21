@@ -455,7 +455,7 @@
 <h2>Examine the data</h2>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -561,7 +561,7 @@ memory usage: 47.0+ KB</code></pre>
 <h2>Examine the data</h2>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(1000, 6)</code></pre>
 </div>
 </div>
@@ -570,7 +570,7 @@ memory usage: 47.0+ KB</code></pre>
 <h2>Examine a Review</h2>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.loc[:,<span class="st">'Review_Text'</span>].values[<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>"I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)"</code></pre>
 </div>
 </div>
@@ -587,7 +587,7 @@ memory usage: 47.0+ KB</code></pre>
 <span id="cb11-2"><a href="#cb11-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">' '</span>.join(x.lower() <span class="cf">for</span> x <span class="kw">in</span> x.split()))</span>
 <span id="cb11-3"><a href="#cb11-3"></a></span>
 <span id="cb11-4"><a href="#cb11-4"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>0    i ve previously been to 3 disney resorts. so i...
 1    the hong kong disneyland is quite small, there...
 2    my wife, my 15 year old son, and i went to dis...
@@ -610,7 +610,7 @@ Name: Review_Text, dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>stop <span class="op">=</span> stopwords.words(<span class="st">'english'</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">" "</span>.join(x <span class="cf">for</span> x <span class="kw">in</span> x.split() <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> stop))</span>
 <span id="cb14-3"><a href="#cb14-3"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0    previously 3 disney resorts. expectations sky ...
 1    hong kong disneyland quite small, many people ...
 2    wife, 15 year old son, went disneyland park ju...
@@ -626,7 +626,7 @@ Name: Review_Text, dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>lemmatizer <span class="op">=</span> WordNetLemmatizer()</span>
 <span id="cb16-2"><a href="#cb16-2"></a>df[<span class="st">'Review_Text'</span>] <span class="op">=</span> df[<span class="st">'Review_Text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="st">" "</span>.join(lemmatizer.lemmatize(word) <span class="cf">for</span> word <span class="kw">in</span> x.split()))</span>
 <span id="cb16-3"><a href="#cb16-3"></a>df[<span class="st">'Review_Text'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0    previously 3 disney resorts. expectation sky h...
 1    hong kong disneyland quite small, many people ...
 2    wife, 15 year old son, went disneyland park ju...
@@ -850,9 +850,9 @@ Name: Review_Text, dtype: object</code></pre>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

@@ -3,9 +3,13 @@ title: "\0"
 format: 
   revealjs:
     css: ["theme/theme.css"]
+    scss: ["theme/custom.scss"]
     theme: simple
     preview-links: auto
     code-line-numbers: true
+    code-annotations: hover
+    width: 1280
+    height: 720
     filters: 
       - filter.lua
     footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
@@ -16,18 +20,21 @@ format:
 editor: visual
 ---
 
-# Getting Started
+# Getting Started {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
 ## Setup
 
 `r fontawesome::fa("laptop-code", "black")` Open `04-intro-to-r/01-ggplot2.R` in RStudio if you'd like to follow along.
 
-::: {callout-tip}
+::: {.callout-tip}
 Before we get started, it's a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)
 :::
 
+## Setup
+
 ```{r}
 #| echo: true
+#| eval: false
 #| warning: false
 #| message: false
 
@@ -42,6 +49,14 @@ library(tidyverse)
 library(tidytext)
 library(wordcloud)
 library(here)
+```
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(tidytext)
+library(wordcloud)
+library(here)
 library(flipbookr)
 ```
 
@@ -49,7 +64,6 @@ library(flipbookr)
 
 ```{r}
 #| echo: true
-#| output-location: column
 
 # Load data
 load(here::here("materials", "workshop_data.RData"))
@@ -62,7 +76,7 @@ df <- df |>
   rename("Park" = Branch)
 ```
 
-# Visualize the Data
+# Visualize the Data {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
 ## Why Visualize?
 
@@ -75,47 +89,55 @@ df <- df |>
 
 ```{r}
 #| label: basic-histogram
-#| echo: true
+#| echo: false
+#| eval: false
 #| output-location: column
 #| code-line-numbers: true
 
-df |> 
-  ggplot(aes(x = Rating)) +
+ggplot(df, aes(x = Rating)) +
   geom_bar() +
-  geom_bar(fill = "steelblue", color = "black") +
-  geom_bar(fill = "steelblue", color = "black") +
-  labs(title = "Distribution of Ratings",
-       x = "Rating",
-       y = "Count") +
+  geom_bar(
+    fill = "steelblue",
+    color = "black"
+  ) +
+  labs(
+    title = "Distribution of Ratings",
+    x = "Rating",
+    y = "Count"
+  ) +
   theme_minimal()
 ```
 
-`r flipbookr:::chunq_reveal("basic-histogram", title = "Create a Basic Histogram", lcolw = "40", rcolw = "60", smallcode = TRUE)`
+`r flipbookr:::chunq_reveal("basic-histogram", title = "Create a basic histogram", lcolw = "40", rcolw = "60", smallcode = TRUE)`
 
 ## Histogram by park
 
 ```{r}
 #| label: park-histogram
-#| echo: true
+#| echo: false
+#| eval: false
 #| output-location: column
 #| code-line-numbers: true
 
-df |> 
-  ggplot(aes(Rating, fill = Park)) +
+ggplot(df, aes(Rating,
+  fill = Park
+)) +
   geom_bar() +
   geom_bar(color = "black") +
-  labs(title = "Distribution of Ratings by Park",
-       x = "Rating",
-       y = "Count",
-       fill = "Park") +
-  scale_fill_brewer(palette = 3) + 
-  theme_minimal() +
+  labs(
+    title = "Distribution of Ratings by Park",
+    x = "Rating",
+    y = "Count",
+    fill = "Park"
+  ) +
+  scale_fill_brewer(palette = 3) +
+  theme_gray() +
   theme(legend.position = "bottom")
 ```
 
-`r flipbookr:::chunq_reveal("park-histogram", title = "Create a Histogram by Park", lcolw = "40", rcolw = "60", smallcode = TRUE)`
+`r flipbookr:::chunq_reveal("park-histogram", title = "Histogram by park", lcolw = "40", rcolw = "60", smallcode = TRUE)`
 
-## Line plot
+## Reviews by year
 
 What if we wanted to look at the park ratings over time? What would we need to do?
 
@@ -123,9 +145,11 @@ What if we wanted to look at the park ratings over time? What would we need to d
 -   Group by `Park`
 -   Count ratings per year
 
+## Reviews by year
+
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 ratings_by_year <- df |> 
   mutate(Year = year(Year_Month),
@@ -137,59 +161,49 @@ ratings_by_year <- df |>
 ratings_by_year
 ```
 
-## Line plot
+## Reviews by year
 
 ```{r}
 #| label: reviews-by-year
-#| echo: true
-#| output-location: column
+#| echo: false
+#| eval: false
+#| output-location: column-fragment
 #| code-line-numbers: true
 
-ratings_by_year |> 
-  ggplot(aes(Year, Ratings, color = Park)) +
+ggplot(
+  ratings_by_year,
+  aes(Year,
+    Ratings,
+    color = Park
+  )
+) +
   geom_line() +
-  labs(title = "Ratings by Park per Year",
-       x = "Year",
-       y = "Ratings") +
-    scale_x_continuous(breaks = c(2010,
-                                  2011,
-                                  2012,
-                                  2013,
-                                  2014,
-                                  2015,
-                                  2016,
-                                  2017,
-                                  2018,
-                                  2019,
-                                  2020)) +
-  ggthemes::theme_hc()
+  labs(
+    title = "Ratings by Park per Year",
+    x = "Year",
+    y = "Ratings"
+  ) +
+  scale_x_continuous(
+    breaks = c(
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    )
+  ) +
+  ggthemes::theme_economist()
 ```
 
-`r flipbookr:::chunq_reveal("reviews-by-year", title = "Park Reviews by Year", lcolw = "40", rcolw = "60", smallcode = TRUE)`
+`r flipbookr:::chunq_reveal("reviews-by-year", title = "Reviews by year", lcolw = "40", rcolw = "60", smallcode = TRUE)`
 
-## Ridge plot
-
-```{r}
-#| echo: true
-#| output-location: column
-
-df |> 
-  filter(Rating < 4) |> 
-  mutate(Year_Month = ym(Year_Month),
-         Year = year(Year_Month)) |> 
-  group_by(Park, Year_Month) |> 
-  # summarise(avg_rating = mean(Rating, na.rm = TRUE)) |> 
-  ggplot(aes(x = Year_Month, y = Park)) +
-  ggridges::geom_density_ridges(rel_min_height = 0.01,
-                                scale = 1.5) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  labs(title = "Distribution of Ratings by Park",
-       x = "",
-       y = "") +
-  theme_minimal()
-```
-
-# Sample the data
+# Sample the data {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
 ## Look at one review
 
@@ -208,7 +222,10 @@ df$Review_Text[11]
 #| echo: true
 #| output-location: column
 
-sample <- tibble(line = 1, text = df$Review_Text[11])
+sample <- tibble(
+  line = 1,
+  text = df$Review_Text[11]
+)
 sample
 ```
 
@@ -218,7 +235,7 @@ sample
 
 ## `unnest_tokens`
 
-> "This place is HUGE! Definately need more than one day..."
+> "I went there with 2 daughters 1 y.o and 4..."
 
 <br>
 
@@ -226,7 +243,7 @@ sample
 #| echo: true
 #| output-location: column
 
-sample |> 
+sample |>
   unnest_tokens(word, text)
 ```
 
@@ -236,21 +253,26 @@ sample |>
 -   takes care of converting to lowercase
 -   removes punctuation
 
-# Process the data
+# Process the data {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
 ## Number each review
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
-# Number each review for each park
 reviews <- df |>
   group_by(Park) |>
-  mutate(linenumber = row_number()) |> 
-  ungroup() |> 
-  select(Park, linenumber, text = Review_Text) |> 
-  arrange(Park, linenumber)
+  mutate(linenumber = row_number()) |>
+  ungroup() |>
+  select(Park,
+    linenumber,
+    text = Review_Text
+  ) |>
+  arrange(
+    Park,
+    linenumber
+  )
 
 head(reviews)
 ```
@@ -304,7 +326,7 @@ head(tidy_reviews)
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Perform word count
 tidy_reviews |> 
@@ -312,7 +334,7 @@ tidy_reviews |>
   head()
 ```
 
-# Word Clouds
+# Word Clouds {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
 ## Create a word cloud
 
@@ -320,11 +342,16 @@ tidy_reviews |>
 #| echo: true
 #| warning: false
 #| message: false
-#| output-location: fragment
+#| output-location: slide
 
-tidy_reviews |> 
-  count(word) |> 
-  with(wordcloud(word, n, max.words = 40))
+set.seed(1234)
+
+tidy_reviews |>
+  count(word) |>
+  with(wordcloud(word, 
+                 n, 
+                 max.words = 40,
+                 colors=brewer.pal(8, "Dark2")))
 ```
 
 ::: aside
@@ -349,17 +376,22 @@ What jumps out to you? How might we improve it?
 #| echo: true
 #| warning: false
 #| message: false
-#| output-location: fragment
+#| output-location: slide
 
 wc_removals <- c("day", "disney", "disneyland", "rides", "park")
 
 tidy_reviews |>
-  filter(!word %in% wc_removals) |> # note ! and %in%
+  filter(!word %in% wc_removals) |>        # <1>
   count(word) |>
-  with(wordcloud(word, n, max.words = 50))
+  with(wordcloud(word, 
+                 n, 
+                 max.words = 50,
+                 colors=brewer.pal(8, "Dark2")))
 ```
 
-# N-Grams
+1. The `%in%` syntax allows you to look for a match inside a vector or column.
+
+# N-Grams {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
 -   A continuous sequence of `n` words
 -   Can be used 'as is', or run through a stemmer to get morphemes
@@ -369,11 +401,14 @@ tidy_reviews |>
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Unnest into bigrams
 tidy_bigrams <- reviews |> 
-  unnest_tokens(bigram, text, token = "ngrams", n = 2) |> 
+  unnest_tokens(bigram, 
+                text, 
+                token = "ngrams", 
+                n = 2) |> 
   filter(!is.na(bigram))
 
 head(tidy_bigrams)
@@ -387,7 +422,10 @@ head(tidy_bigrams)
 
 # Separate words
 tidy_bigrams <- tidy_bigrams |>
-  separate(bigram, c("word1", "word2"), sep = " ")
+  separate(bigram, 
+           c("word1", 
+             "word2"), 
+           sep = " ")
 
 head(tidy_bigrams)
 ```
@@ -432,7 +470,7 @@ tidy_bigrams |>
   head()
 ```
 
-# Word & Document Frequencies
+# Word Frequencies {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
 ## Total Words per Review
 
@@ -458,11 +496,15 @@ head(review_words)
 #| echo: true
 #| message: false
 #| warning: false
-#| output-location: fragment
-ggplot(review_words, aes(n/total, fill = Park)) +
+#| output-location: slide
+ggplot(review_words, 
+       aes(n/total, 
+           fill = Park)) +
   geom_histogram(show.legend = FALSE) +
   xlim(NA, 0.001) +
-  facet_wrap(~Park, ncol = 1, scales = "free_y") +
+  facet_wrap(~ Park, 
+             ncol = 1, 
+             scales = "free_y") +
   theme_minimal()
 ```
 
@@ -505,11 +547,14 @@ tidy_bigrams |>
   arrange(desc(tf_idf))
 ```
 
-# Sentiment Analysis
+# Sentiment analysis {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+
+## Sentiment analysis
 
 An introduction using the 'joy' sentiment.
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 # Get 'joy' sentiment
@@ -520,9 +565,10 @@ nrc_joy <- nrc_joy |>
 head(nrc_joy)
 ```
 
-## Sentiment Analysis {.smaller}
+## Sentiment Analysis
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 # Most common 'joy' words in the reviews
@@ -532,9 +578,10 @@ tidy_reviews |>
   head()
 ```
 
-## Sentiment Analysis {.smaller}
+## Sentiment Analysis
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 tidy_reviews_sentiment <- tidy_reviews |>
@@ -546,9 +593,10 @@ tidy_reviews_sentiment <- tidy_reviews |>
 head(tidy_reviews_sentiment)
 ```
 
-## Sentiment Analysis {.smaller}
+## Sentiment Analysis
 
 ```{r}
+#| echo: true
 #| output-location: fragment
 
 ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +
@@ -557,5 +605,3 @@ ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +
   labs(title = "Sentiment Analysis by Park") +
   theme_minimal()
 ```
-
-## Topic Modeling

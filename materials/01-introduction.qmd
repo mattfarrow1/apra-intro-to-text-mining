@@ -5,6 +5,8 @@ format:
     css: ["theme/theme.css"]
     theme: simple
     preview-links: auto
+    width: 1280
+    height: 720
     filters: 
       - filter.lua
     footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
@@ -167,7 +169,7 @@ Calculates the similarity and diversity of a sample data set by looking at how m
 
 Calculates the similarity between words $$\cos (\theta)=\frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}=\frac{\sum_{i=1}^n A_i B_i}{\sqrt{\sum_{i=1}^n A_i^2 \cdot \sum_{i=1}^n B_i^2}}$$
 
-## **Latent Semantic Analysis (LSA)**: 
+## **Latent Semantic Analysis (LSA)**:
 
 An algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e. king:male, queen:female, doctor:male, nurse:female)
 

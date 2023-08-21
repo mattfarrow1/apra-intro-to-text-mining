@@ -214,7 +214,7 @@
     "href": "materials/04-r-text-mining.html#number-each-review",
     "title": "",
     "section": "Number each review",
-    "text": "Number each review\n\n# Number each review for each park\nreviews &lt;- df |&gt;\n  group_by(Park) |&gt;\n  mutate(linenumber = row_number()) |&gt; \n  ungroup() |&gt; \n  select(Park, linenumber, text = Review_Text) |&gt; \n  arrange(Park, linenumber)\n\nhead(reviews)\n\n\n\n# A tibble: 6 × 3\n  Park       linenumber text                                                    \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                                                   \n1 California          1 I  ve previously been to 3 Disney Resorts. So I had my …\n2 California          2 I loved everything! :)  It's the Happiest Place on Eart…\n3 California          3 I went there with 2 daughters   1 y.o. and 4 y.o. Both …\n4 California          4 The two parks are within easy walking distance of each …\n5 California          5 It's always a blast going back to Disney. It's where ad…\n6 California          6 Nobody loves queuing so arriving early in Fantasyland a…"
+    "text": "Number each review\n\n\nreviews &lt;- df |&gt;\n  group_by(Park) |&gt;\n  mutate(linenumber = row_number()) |&gt;\n  ungroup() |&gt;\n  select(Park,\n    linenumber,\n    text = Review_Text\n  ) |&gt;\n  arrange(\n    Park,\n    linenumber\n  )\n\nhead(reviews)\n\n\n# A tibble: 6 × 3\n  Park       linenumber text                                                    \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                                                   \n1 California          1 I  ve previously been to 3 Disney Resorts. So I had my …\n2 California          2 I loved everything! :)  It's the Happiest Place on Eart…\n3 California          3 I went there with 2 daughters   1 y.o. and 4 y.o. Both …\n4 California          4 The two parks are within easy walking distance of each …\n5 California          5 It's always a blast going back to Disney. It's where ad…\n6 California          6 Nobody loves queuing so arriving early in Fantasyland a…"
   },
   {
     "objectID": "materials/04-r-text-mining.html#unnest-tokens-remove-stop-words",
@@ -276,22 +276,22 @@
     "objectID": "materials/04-r-text-mining.html#sentiment-analysis-1",
     "href": "materials/04-r-text-mining.html#sentiment-analysis-1",
     "title": "",
-    "section": "Sentiment Analysis",
-    "text": "Sentiment Analysis\n\n\n# A tibble: 6 × 2\n  word        n\n  &lt;chr&gt;   &lt;int&gt;\n1 food      321\n2 fun       231\n3 parade    187\n4 love      139\n5 magical   134\n6 enjoy     114"
+    "section": "Sentiment analysis",
+    "text": "Sentiment analysis\nAn introduction using the ‘joy’ sentiment.\n\n# Get 'joy' sentiment\nnrc_joy &lt;- tidytext::get_sentiments(\"nrc\")\nnrc_joy &lt;- nrc_joy |&gt; \n  filter(sentiment == \"joy\")\n\nhead(nrc_joy)\n\n\n\n# A tibble: 6 × 2\n  word          sentiment\n  &lt;chr&gt;         &lt;chr&gt;    \n1 absolution    joy      \n2 abundance     joy      \n3 abundant      joy      \n4 accolade      joy      \n5 accompaniment joy      \n6 accomplish    joy"
   },
   {
     "objectID": "materials/04-r-text-mining.html#sentiment-analysis-2",
     "href": "materials/04-r-text-mining.html#sentiment-analysis-2",
     "title": "",
     "section": "Sentiment Analysis",
-    "text": "Sentiment Analysis\n\n\n# A tibble: 6 × 5\n  Park       index negative positive sentiment\n  &lt;chr&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;     &lt;int&gt;\n1 California     0      128      301       173\n2 California     1      186      369       183\n3 California     2      127      310       183\n4 California     3      128      282       154\n5 California     4      152      326       174\n6 California     5       91      176        85"
+    "text": "Sentiment Analysis\n\n# Most common 'joy' words in the reviews\ntidy_reviews |&gt;\n  inner_join(nrc_joy) |&gt;\n  count(word, sort = TRUE) |&gt; \n  head()\n\n\n\n# A tibble: 6 × 2\n  word        n\n  &lt;chr&gt;   &lt;int&gt;\n1 food      321\n2 fun       231\n3 parade    187\n4 love      139\n5 magical   134\n6 enjoy     114"
   },
   {
     "objectID": "materials/04-r-text-mining.html#sentiment-analysis-3",
     "href": "materials/04-r-text-mining.html#sentiment-analysis-3",
     "title": "",
     "section": "Sentiment Analysis",
-    "text": "Sentiment Analysis"
+    "text": "Sentiment Analysis\n\ntidy_reviews_sentiment &lt;- tidy_reviews |&gt;\n  inner_join(get_sentiments(\"bing\")) |&gt;\n  count(Park, index = linenumber %/% 80, sentiment) |&gt;\n  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |&gt;\n  mutate(sentiment = positive - negative)\n\nhead(tidy_reviews_sentiment)\n\n\n\n# A tibble: 6 × 5\n  Park       index negative positive sentiment\n  &lt;chr&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;     &lt;int&gt;\n1 California     0      128      301       173\n2 California     1      186      369       183\n3 California     2      127      310       183\n4 California     3      128      282       154\n5 California     4      152      326       174\n6 California     5       91      176        85"
   },
   {
     "objectID": "materials/04-r-text-mining.html#topic-modeling",
@@ -354,7 +354,7 @@
     "href": "materials/02-excel.html#chatgpt-for-formula-help",
     "title": "",
     "section": "ChatGPT for Formula Help",
-    "text": "ChatGPT for Formula Help\n\n\n\n\n\n\nWarning\n\n\nAssume that everything you put into ChatGPT (or other LLMs) is public. Do not enter confidential or proprietary information into it.\n\n\n\nTell ChatGPT what is is you need assistance with:"
+    "text": "ChatGPT for Formula Help"
   },
   {
     "objectID": "materials/02-excel.html#formula-keyword-search",
@@ -893,7 +893,7 @@
     "href": "materials/04-r-text-mining.html#convert-it-to-a-tibble",
     "title": "",
     "section": "Convert it to a tibble",
-    "text": "Convert it to a tibble\n\n\nsample &lt;- tibble(line = 1, text = df$Review_Text[11])\nsample\n\n\n# A tibble: 1 × 2\n   line text                                                                    \n  &lt;dbl&gt; &lt;chr&gt;                                                                   \n1     1 I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were ver…\n\n\n\n\n\nWhat is a tibble?"
+    "text": "Convert it to a tibble\n\n\nsample &lt;- tibble(\n  line = 1,\n  text = df$Review_Text[11]\n)\nsample\n\n\n# A tibble: 1 × 2\n   line text                                                                    \n  &lt;dbl&gt; &lt;chr&gt;                                                                   \n1     1 I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were ver…\n\n\n\n\n\nWhat is a tibble?"
   },
   {
     "objectID": "materials/04-r-text-mining.html#unnest-tokens",
@@ -942,7 +942,7 @@
     "href": "materials/02-excel.html#why-choose-excel",
     "title": "",
     "section": "Why Choose Excel?",
-    "text": "Why Choose Excel?\n\n\nPros\n\nUniversally available\nNot going anywhere\nLow barrier to entry\nScales in complexity\n\n\nCons\n\nCan be difficult to reproduce\nPotentially destructive\nDoesn’t scale well\nLimited options for text mining"
+    "text": "Why Choose Excel?\n\n\nPros\n\nUniversally available\nNot going anywhere\nLow barrier to entry\nScales in complexity\n\n\nCons\n\nCan be difficult to reproduce\nPotentially destructive\nDoesn’t scale well\nComplex formulas can be difficult"
   },
   {
     "objectID": "materials/02-excel.html#word-counts",
@@ -1439,7 +1439,7 @@
     "href": "materials/04-r-text-mining.html#histogram-by-park",
     "title": "",
     "section": "Histogram by park",
-    "text": "Histogram by park\n\n\ndf |&gt; \n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar() +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_fill_brewer(palette = 3) + \n  theme_minimal() +\n  theme(legend.position = \"bottom\")"
+    "text": "Histogram by park"
   },
   {
     "objectID": "materials/04-r-text-mining.html#move-legend",
@@ -1502,7 +1502,7 @@
     "href": "materials/04-r-text-mining.html#unnest_tokens",
     "title": "",
     "section": "unnest_tokens",
-    "text": "unnest_tokens\n\n“This place is HUGE! Definately need more than one day…”\n\n\n\n\nsample |&gt; \n  unnest_tokens(word, text)\n\n\n# A tibble: 51 × 2\n    line word     \n   &lt;dbl&gt; &lt;chr&gt;    \n 1     1 i        \n 2     1 went     \n 3     1 there    \n 4     1 with     \n 5     1 2        \n 6     1 daughters\n 7     1 1        \n 8     1 y.o      \n 9     1 and      \n10     1 4        \n# ℹ 41 more rows"
+    "text": "unnest_tokens\n\n“I went there with 2 daughters 1 y.o and 4…”\n\n\n\n\nsample |&gt;\n  unnest_tokens(word, text)\n\n\n# A tibble: 51 × 2\n    line word     \n   &lt;dbl&gt; &lt;chr&gt;    \n 1     1 i        \n 2     1 went     \n 3     1 there    \n 4     1 with     \n 5     1 2        \n 6     1 daughters\n 7     1 1        \n 8     1 y.o      \n 9     1 and      \n10     1 4        \n# ℹ 41 more rows"
   },
   {
     "objectID": "materials/04-r-text-mining.html#remove-stop-words",
@@ -1691,28 +1691,28 @@
     "href": "materials/04-r-text-mining.html#load-the-data",
     "title": "",
     "section": "Load the data",
-    "text": "Load the data\n\n\n# Load data\nload(here::here(\"materials\", \"workshop_data.RData\"))\n\ndf &lt;- df |&gt;\n  mutate(Branch = case_match(Branch,\n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt;\n  rename(\"Park\" = Branch)"
+    "text": "Load the data\n\n# Load data\nload(here::here(\"materials\", \"workshop_data.RData\"))\n\ndf &lt;- df |&gt;\n  mutate(Branch = case_match(Branch,\n                             \"Disneyland_California\" ~ \"California\",\n                             \"Disneyland_HongKong\" ~ \"Hong Kong\",\n                             \"Disneyland_Paris\" ~ \"Paris\")) |&gt;\n  rename(\"Park\" = Branch)"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-word-counts",
     "href": "materials/04-r-text-mining.html#create-word-counts",
     "title": "",
     "section": "Create Word Counts",
-    "text": "Create Word Counts\n\n# Perform word count\ntidy_reviews |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n\n\n# A tibble: 6 × 2\n  word           n\n  &lt;chr&gt;      &lt;int&gt;\n1 park         989\n2 disney       844\n3 rides        808\n4 disneyland   681\n5 time         633\n6 day          608"
+    "text": "Create Word Counts\n\n\n# Perform word count\ntidy_reviews |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n\n# A tibble: 6 × 2\n  word           n\n  &lt;chr&gt;      &lt;int&gt;\n1 park         989\n2 disney       844\n3 rides        808\n4 disneyland   681\n5 time         633\n6 day          608"
   },
   {
     "objectID": "materials/04-r-text-mining.html#set-up-bigrams",
     "href": "materials/04-r-text-mining.html#set-up-bigrams",
     "title": "",
     "section": "Set up bigrams",
-    "text": "Set up bigrams\n\n# Unnest into bigrams\ntidy_bigrams &lt;- reviews |&gt; \n  unnest_tokens(bigram, text, token = \"ngrams\", n = 2) |&gt; \n  filter(!is.na(bigram))\n\nhead(tidy_bigrams)\n\n\n\n# A tibble: 6 × 3\n  Park       linenumber bigram         \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;          \n1 California          1 i ve           \n2 California          1 ve previously  \n3 California          1 previously been\n4 California          1 been to        \n5 California          1 to 3           \n6 California          1 3 disney"
+    "text": "Set up bigrams\n\n\n# Unnest into bigrams\ntidy_bigrams &lt;- reviews |&gt; \n  unnest_tokens(bigram, \n                text, \n                token = \"ngrams\", \n                n = 2) |&gt; \n  filter(!is.na(bigram))\n\nhead(tidy_bigrams)\n\n\n# A tibble: 6 × 3\n  Park       linenumber bigram         \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;          \n1 California          1 i ve           \n2 California          1 ve previously  \n3 California          1 previously been\n4 California          1 been to        \n5 California          1 to 3           \n6 California          1 3 disney"
   },
   {
     "objectID": "materials/04-r-text-mining.html#separate-words",
     "href": "materials/04-r-text-mining.html#separate-words",
     "title": "",
     "section": "Separate words",
-    "text": "Separate words\n\n# Separate words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  separate(bigram, c(\"word1\", \"word2\"), sep = \" \")\n\nhead(tidy_bigrams)\n\n\n\n# A tibble: 6 × 4\n  Park       linenumber word1      word2     \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     \n1 California          1 i          ve        \n2 California          1 ve         previously\n3 California          1 previously been      \n4 California          1 been       to        \n5 California          1 to         3         \n6 California          1 3          disney"
+    "text": "Separate words\n\n# Separate words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  separate(bigram, \n           c(\"word1\", \n             \"word2\"), \n           sep = \" \")\n\nhead(tidy_bigrams)\n\n\n\n# A tibble: 6 × 4\n  Park       linenumber word1      word2     \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     \n1 California          1 i          ve        \n2 California          1 ve         previously\n3 California          1 previously been      \n4 California          1 been       to        \n5 California          1 to         3         \n6 California          1 3          disney"
   },
   {
     "objectID": "materials/04-r-text-mining.html#remove-stop-words-1",
@@ -1747,7 +1747,7 @@
     "href": "materials/04-r-text-mining.html#review-length-by-park",
     "title": "",
     "section": "Review length by park",
-    "text": "Review length by park\n\nggplot(review_words, aes(n/total, fill = Park)) +\n  geom_histogram(show.legend = FALSE) +\n  xlim(NA, 0.001) +\n  facet_wrap(~Park, ncol = 1, scales = \"free_y\") +\n  theme_minimal()"
+    "text": "Review length by park\n\nggplot(review_words, \n       aes(n/total, \n           fill = Park)) +\n  geom_histogram(show.legend = FALSE) +\n  xlim(NA, 0.001) +\n  facet_wrap(~ Park, \n             ncol = 1, \n             scales = \"free_y\") +\n  theme_minimal()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#tf-idf",
@@ -1957,7 +1957,7 @@
     "href": "materials/04-r-text-mining.html#create-a-word-cloud",
     "title": "",
     "section": "Create a word cloud",
-    "text": "Create a word cloud\n\ntidy_reviews |&gt; \n  count(word) |&gt; \n  with(wordcloud(word, n, max.words = 40))\n\n\n\n\n\n\n\n\nWhat jumps out to you? How might we improve it?"
+    "text": "Create a word cloud\n\nset.seed(1234)\n\ntidy_reviews |&gt;\n  count(word) |&gt;\n  with(wordcloud(word, \n                 n, \n                 max.words = 40,\n                 colors=brewer.pal(8, \"Dark2\")))\n\n\n\n\nWhat jumps out to you? How might we improve it?"
   },
   {
     "objectID": "materials/04-r-text-mining.html#re-create-the-word-cloud",
@@ -1978,7 +1978,7 @@
     "href": "materials/04-r-text-mining.html#word-cloud-without-custom-stop-words",
     "title": "",
     "section": "Word Cloud without Custom Stop Words",
-    "text": "Word Cloud without Custom Stop Words\n\nwc_removals &lt;- c(\"day\", \"disney\", \"disneyland\", \"rides\", \"park\")\n\ntidy_reviews |&gt;\n  filter(!word %in% wc_removals) |&gt; # note ! and %in%\n  count(word) |&gt;\n  with(wordcloud(word, n, max.words = 50))"
+    "text": "Word Cloud without Custom Stop Words\n\nwc_removals &lt;- c(\"day\", \"disney\", \"disneyland\", \"rides\", \"park\")\n\ntidy_reviews |&gt;\n1  filter(!word %in% wc_removals) |&gt;\n  count(word) |&gt;\n  with(wordcloud(word, \n                 n, \n                 max.words = 50,\n                 colors=brewer.pal(8, \"Dark2\")))\n\n\n1\n\nThe %in% syntax allows you to look for a match inside a vector or column."
   },
   {
     "objectID": "materials/04-r-text-mining.html#remove-stop-words-2",
@@ -2153,63 +2153,63 @@
     "href": "materials/04-r-text-mining.html#setup",
     "title": "",
     "section": "Setup",
-    "text": "Setup\n Open 04-intro-to-r/01-ggplot2.R in RStudio if you’d like to follow along.\n\nBefore we get started, it’s a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)\n\n\n# Install packages\n# install.packages(\"tidyverse\")\n# install.packages(\"tidytext\")\n# install.packages(\"wordcloud\")\n# install.packages(\"here\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\nlibrary(here)\nlibrary(flipbookr)"
+    "text": "Setup\n Open 04-intro-to-r/01-ggplot2.R in RStudio if you’d like to follow along.\n\n\n\n\n\n\nTip\n\n\nBefore we get started, it’s a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram",
     "title": "",
     "section": "Create a basic histogram",
-    "text": "Create a basic histogram\n\n\ndf |&gt; \n  ggplot(aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
+    "text": "Create a basic histogram"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram-1",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram-1",
     "title": "",
-    "section": "Create a Basic Histogram",
-    "text": "Create a Basic Histogram\n\n\n\ndf\n\n\n\n\n# A tibble: 1,000 × 6\n   Review_ID Rating Year_Month Reviewer_Location Review_Text               Park \n       &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt;\n 1 305683957      5 2015-08-01 Portugal          I  ve previously been to… Cali…\n 2 666364898      3 2018-10-01 United States     The Hong Kong Disneyland… Hong…\n 3 293082325      3 2015-06-01 United States     My wife, my 15 year old … Paris\n 4 334650140      1 2015-11-01 United Kingdom    Our family had the unfor… Paris\n 5 393553042      3 2016-07-01 United States     HK Disney is very small … Hong…\n 6 175685909      5 2013-08-01 United Kingdom    Nothing but fun fun fun!… Paris\n 7 150353289      5 2013-01-01 India             Should not miss the Disn… Hong…\n 8 224797068      5 2014-08-01 United Kingdom    everything   i am disney… Paris\n 9 310708679      5 2015-04-01 United Kingdom    Wow! What a great experi… Paris\n10 126717664      5 2012-03-01 United States     I loved everything! :)  … Cali…\n# ℹ 990 more rows"
+    "section": "Create a basic histogram",
+    "text": "Create a basic histogram\n\n\n\nggplot(df, aes(x = Rating))"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram-2",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram-2",
     "title": "",
-    "section": "Create a Basic Histogram",
-    "text": "Create a Basic Histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating))"
+    "section": "Create a basic histogram",
+    "text": "Create a basic histogram\n\n\n\nggplot(df, aes(x = Rating)) +\n  geom_bar()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram-3",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram-3",
     "title": "",
-    "section": "Create a Basic Histogram",
-    "text": "Create a Basic Histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating)) +\n  geom_bar()"
+    "section": "Create a basic histogram",
+    "text": "Create a basic histogram\n\n\n\nggplot(df, aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(\n    fill = \"steelblue\",\n    color = \"black\"\n  )"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram-4",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram-4",
     "title": "",
-    "section": "Create a Basic Histogram",
-    "text": "Create a Basic Histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(fill = \"steelblue\", color = \"black\")"
+    "section": "Create a basic histogram",
+    "text": "Create a basic histogram\n\n\n\nggplot(df, aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(\n    fill = \"steelblue\",\n    color = \"black\"\n  ) +\n  labs(\n    title = \"Distribution of Ratings\",\n    x = \"Rating\",\n    y = \"Count\"\n  )"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram-5",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram-5",
     "title": "",
-    "section": "Create a Basic Histogram",
-    "text": "Create a Basic Histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  geom_bar(fill = \"steelblue\", color = \"black\")"
+    "section": "Create a basic histogram",
+    "text": "Create a basic histogram\n\n\n\nggplot(df, aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(\n    fill = \"steelblue\",\n    color = \"black\"\n  ) +\n  labs(\n    title = \"Distribution of Ratings\",\n    x = \"Rating\",\n    y = \"Count\"\n  ) +\n  theme_minimal()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram-6",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram-6",
     "title": "",
-    "section": "Create a Basic Histogram",
-    "text": "Create a Basic Histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\")"
+    "section": "Create a basic histogram",
+    "text": "Create a basic histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram-7",
     "href": "materials/04-r-text-mining.html#create-a-basic-histogram-7",
     "title": "",
-    "section": "Create a Basic Histogram",
-    "text": "Create a Basic Histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
+    "section": "Create a basic histogram",
+    "text": "Create a basic histogram\n\n\n\ndf |&gt;\n  ggplot(aes(x = Rating)) +\n  geom_bar() +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  geom_bar(fill = \"steelblue\", color = \"black\") +\n  labs(title = \"Distribution of Ratings\",\n       x = \"Rating\",\n       y = \"Count\") +\n  theme_minimal()"
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-histogram-by-park",
@@ -2322,5 +2322,194 @@
     "title": "Resources",
     "section": "Cheat Sheets",
     "text": "Cheat Sheets\nPosit Primers\nPosit Cheat Sheets"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-1",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-1",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\nggplot(df, aes(Rating,\n  fill = Park\n))"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-2",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-2",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\nggplot(df, aes(Rating,\n  fill = Park\n)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-3",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-3",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\nggplot(df, aes(Rating,\n  fill = Park\n)) +\n  geom_bar() +\n  geom_bar(color = \"black\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-4",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-4",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\nggplot(df, aes(Rating,\n  fill = Park\n)) +\n  geom_bar() +\n  geom_bar(color = \"black\") +\n  labs(\n    title = \"Distribution of Ratings by Park\",\n    x = \"Rating\",\n    y = \"Count\",\n    fill = \"Park\"\n  )"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-5",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-5",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\nggplot(df, aes(Rating,\n  fill = Park\n)) +\n  geom_bar() +\n  geom_bar(color = \"black\") +\n  labs(\n    title = \"Distribution of Ratings by Park\",\n    x = \"Rating\",\n    y = \"Count\",\n    fill = \"Park\"\n  ) +\n  scale_fill_brewer(palette = 3)"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-6",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-6",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\nggplot(df, aes(Rating,\n  fill = Park\n)) +\n  geom_bar() +\n  geom_bar(color = \"black\") +\n  labs(\n    title = \"Distribution of Ratings by Park\",\n    x = \"Rating\",\n    y = \"Count\",\n    fill = \"Park\"\n  ) +\n  scale_fill_brewer(palette = 3) +\n  theme_gray()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-7",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-7",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\nggplot(df, aes(Rating,\n  fill = Park\n)) +\n  geom_bar() +\n  geom_bar(color = \"black\") +\n  labs(\n    title = \"Distribution of Ratings by Park\",\n    x = \"Rating\",\n    y = \"Count\",\n    fill = \"Park\"\n  ) +\n  scale_fill_brewer(palette = 3) +\n  theme_gray() +\n  theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#histogram-by-park-8",
+    "href": "materials/04-r-text-mining.html#histogram-by-park-8",
+    "title": "",
+    "section": "Histogram by park",
+    "text": "Histogram by park\n\n\n\ndf |&gt;\n  ggplot(aes(Rating, fill = Park)) +\n  geom_bar() +\n  geom_bar(color = \"black\") +\n  labs(title = \"Distribution of Ratings by Park\",\n       x = \"Rating\",\n       y = \"Count\",\n       fill = \"Park\") +\n  scale_fill_brewer(palette = 3) +\n  theme_minimal() +\n  theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year",
+    "href": "materials/04-r-text-mining.html#reviews-by-year",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\nWhat if we wanted to look at the park ratings over time? What would we need to do?\n\nMake sure Year_Month is a date\nGroup by Park\nCount ratings per year"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-1",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-1",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\n\n\nratings_by_year &lt;- df |&gt; \n  mutate(Year = year(Year_Month),\n         Month = month(Year_Month)) |&gt; \n  group_by(Park) |&gt; \n  count(Year) |&gt; \n  rename(Ratings = n)\n\nratings_by_year\n\n\n# A tibble: 29 × 3\n# Groups:   Park [3]\n   Park        Year Ratings\n   &lt;chr&gt;      &lt;dbl&gt;   &lt;int&gt;\n 1 California  2011      24\n 2 California  2012      59\n 3 California  2013      51\n 4 California  2014      63\n 5 California  2015      83\n 6 California  2016      68\n 7 California  2017      45\n 8 California  2018      36\n 9 California  2019      12\n10 Hong Kong   2010       1\n# ℹ 19 more rows"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-2",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-2",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-3",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-3",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\n\n\n\nggplot(\n  ratings_by_year,\n  aes(Year,\n    Ratings,\n    color = Park\n  )\n)"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-4",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-4",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\n\n\n\nggplot(\n  ratings_by_year,\n  aes(Year,\n    Ratings,\n    color = Park\n  )\n) +\n  geom_line()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-5",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-5",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\n\n\n\nggplot(\n  ratings_by_year,\n  aes(Year,\n    Ratings,\n    color = Park\n  )\n) +\n  geom_line() +\n  labs(\n    title = \"Ratings by Park per Year\",\n    x = \"Year\",\n    y = \"Ratings\"\n  )"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-6",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-6",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\n\n\n\nggplot(\n  ratings_by_year,\n  aes(Year,\n    Ratings,\n    color = Park\n  )\n) +\n  geom_line() +\n  labs(\n    title = \"Ratings by Park per Year\",\n    x = \"Year\",\n    y = \"Ratings\"\n  ) +\n  scale_x_continuous(\n    breaks = c(\n      2010,\n      2011,\n      2012,\n      2013,\n      2014,\n      2015,\n      2016,\n      2017,\n      2018,\n      2019,\n      2020\n    )\n  )"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-7",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-7",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\n\n\n\nggplot(\n  ratings_by_year,\n  aes(Year,\n    Ratings,\n    color = Park\n  )\n) +\n  geom_line() +\n  labs(\n    title = \"Ratings by Park per Year\",\n    x = \"Year\",\n    y = \"Ratings\"\n  ) +\n  scale_x_continuous(\n    breaks = c(\n      2010,\n      2011,\n      2012,\n      2013,\n      2014,\n      2015,\n      2016,\n      2017,\n      2018,\n      2019,\n      2020\n    )\n  ) +\n  ggthemes::theme_economist()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-by-year-8",
+    "href": "materials/04-r-text-mining.html#reviews-by-year-8",
+    "title": "",
+    "section": "Reviews by year",
+    "text": "Reviews by year\n\n\n\nratings_by_year |&gt;\n  ggplot(aes(Year, Ratings, color = Park)) +\n  geom_line() +\n  labs(title = \"Ratings by Park per Year\",\n       x = \"Year\",\n       y = \"Ratings\") +\n    scale_x_continuous(breaks = c(2010,\n                                  2011,\n                                  2012,\n                                  2013,\n                                  2014,\n                                  2015,\n                                  2016,\n                                  2017,\n                                  2018,\n                                  2019,\n                                  2020)) +\n  ggthemes::theme_hc()"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#setup-1",
+    "href": "materials/04-r-text-mining.html#setup-1",
+    "title": "",
+    "section": "Setup",
+    "text": "Setup\n\n# Install packages\n# install.packages(\"tidyverse\")\n# install.packages(\"tidytext\")\n# install.packages(\"wordcloud\")\n# install.packages(\"here\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\nlibrary(here)"
+  },
+  {
+    "objectID": "materials/01-introduction.html#word-and-document-similarity",
+    "href": "materials/01-introduction.html#word-and-document-similarity",
+    "title": "",
+    "section": "Word and document similarity",
+    "text": "Word and document similarity\n\nWord Similarity: similarity between individual words or tokens\nDocument Similarity: similarity between short phrases or documents"
+  },
+  {
+    "objectID": "materials/01-introduction.html#jaccard-similarity",
+    "href": "materials/01-introduction.html#jaccard-similarity",
+    "title": "",
+    "section": "Jaccard Similarity",
+    "text": "Jaccard Similarity\nCalculates the similarity and diversity of a sample data set by looking at how many terms the two documents share, compared to the total vocabulary \\[J(A, B)=\\frac{|A \\cap B|}{|A \\cup B|}=\\frac{|A \\cap B|}{|A|+|B|-|A \\cap B|}\\]"
+  },
+  {
+    "objectID": "materials/01-introduction.html#cosine-similarity",
+    "href": "materials/01-introduction.html#cosine-similarity",
+    "title": "",
+    "section": "Cosine Similarity",
+    "text": "Cosine Similarity\nCalculates the similarity between words \\[\\cos (\\theta)=\\frac{\\mathbf{A} \\cdot \\mathbf{B}}{\\|\\mathbf{A}\\|\\|\\mathbf{B}\\|}=\\frac{\\sum_{i=1}^n A_i B_i}{\\sqrt{\\sum_{i=1}^n A_i^2 \\cdot \\sum_{i=1}^n B_i^2}}\\]"
+  },
+  {
+    "objectID": "materials/01-introduction.html#latent-semantic-analysis-lsa",
+    "href": "materials/01-introduction.html#latent-semantic-analysis-lsa",
+    "title": "",
+    "section": "Latent Semantic Analysis (LSA):",
+    "text": "Latent Semantic Analysis (LSA):\nAn algorithm that reduces the dimensionality of the vector space in order to understand which words are most associated (i.e. king:male, queen:female, doctor:male, nurse:female)"
+  },
+  {
+    "objectID": "materials/02-excel.html#chatgpt-for-code-formula-help",
+    "href": "materials/02-excel.html#chatgpt-for-code-formula-help",
+    "title": "",
+    "section": "ChatGPT for Code & Formula Help",
+    "text": "ChatGPT for Code & Formula Help\n\n\n\n\n\n\nWarning\n\n\nAssume that everything you put into ChatGPT (or other LLMs) is public. Do not enter confidential or proprietary information into it.\n\n\n\nTell ChatGPT what is is you need assistance with:"
+  },
+  {
+    "objectID": "materials/02-excel.html#lets-try",
+    "href": "materials/02-excel.html#lets-try",
+    "title": "",
+    "section": "Let’s Try!",
+    "text": "Let’s Try!\n Open 02-excel/excel-examples.xlsx if you’d like to follow along.\n\n\nIntroduction to Text Mining"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#create-a-word-cloud-output",
+    "href": "materials/04-r-text-mining.html#create-a-word-cloud-output",
+    "title": "",
+    "section": "Create a word cloud",
+    "text": "Create a word cloud"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#review-length-by-park-output",
+    "href": "materials/04-r-text-mining.html#review-length-by-park-output",
+    "title": "",
+    "section": "Review length by park",
+    "text": "Review length by park"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#sentiment-analysis-4",
+    "href": "materials/04-r-text-mining.html#sentiment-analysis-4",
+    "title": "",
+    "section": "Sentiment Analysis",
+    "text": "Sentiment Analysis\n\nggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +\n  geom_col(show.legend = FALSE) +\n  facet_wrap(~ Park, ncol = 1, scales = \"free_x\") +\n  labs(title = \"Sentiment Analysis by Park\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nIntroduction to Text Mining"
   }
 ]

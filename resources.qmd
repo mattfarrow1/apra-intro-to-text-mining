@@ -22,6 +22,8 @@ title: "Resources"
 
 ## Workshops
 
+[Text Mining with Tidy Data Principles](https://juliasilge.github.io/tidytext-tutorial) by Julia Silge
+
 [R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/) by Julie Lowndes and Allison Horst
 
 ![](https://rstudio-conf-2020.github.io/r-for-excel/img/r-for-excel-monsters.jpg){height="300"}

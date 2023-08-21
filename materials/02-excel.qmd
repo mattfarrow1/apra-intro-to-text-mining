@@ -5,6 +5,8 @@ format:
     css: ["theme/theme.css"]
     theme: simple
     preview-links: auto
+    width: 1280
+    height: 720
     code-line-numbers: true
     filters: 
       - filter.lua
