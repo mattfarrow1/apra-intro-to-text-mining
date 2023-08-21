@@ -20,7 +20,7 @@ jupyter: python3
 
 # Python
 
-## Libraries
+## General libraries
 
 ```{python}
 #| echo: true
@@ -40,7 +40,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
-## Text Mining
+## Text mining libraries
 
 ```{python}
 #| echo: true
@@ -48,13 +48,23 @@ import seaborn as sns
 #| message: false
 
 import nltk
+import string
 
+nltk.download("omw-1.4")
+nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
 from nltk.corpus import stopwords
+from nltk.util import ngrams
 from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+from nltk.tokenize import WordPunctTokenizer
 from wordcloud import WordCloud
+from wordcloud import STOPWORDS
+from textblob import TextBlob
+from textblob import Word
+
 ```
 
 # Setup
@@ -68,12 +78,12 @@ from wordcloud import WordCloud
 df=pd.read_csv("workshop_data.csv", encoding='latin-1')
 ```
 
-## Examine the data
+## Examine the data {.smaller}
 
 ```{python}
 #| echo: true
 
-df.head()
+df.head(n = 2)
 ```
 
 ## Examine the data
@@ -84,14 +94,7 @@ df.head()
 df.info()
 ```
 
-## Examine the data
-
-```{python}
-#| echo: true
-df.shape
-```
-
-## Examine a Review
+## Examine a review
 
 ```{python}
 #| echo: true
@@ -99,7 +102,18 @@ df.shape
 df.loc[:,'Review_Text'].values[10]
 ```
 
-# Text Mining Prep
+# Preprocessing
+
+## Convert dates
+
+```{python}
+#| echo: true
+
+df.Year_Month=df.Year_Month.apply(pd.to_datetime, errors ='coerce')
+
+df['Month']=df.Year_Month.dt.month
+df['Year']=df.Year_Month.dt.year
+```
 
 ## Convert to lowercase
 
@@ -107,18 +121,20 @@ df.loc[:,'Review_Text'].values[10]
 #| echo: true
 
 # Convert to lowercase
-df['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))
-
-df['Review_Text'].head()
+df['Clean_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))
 ```
 
-## Remove Punctuation
+## Remove punctuation
 
 ```{python}
 #| echo: true
 
-# Remove punctuation
-df['Review_Text'] = df['Review_Text'].str.replace('[^\w\s]', '')
+def remove_punctuations(text):
+  for char in string.punctuation:
+    text = text.replace(char, '')
+  return text
+
+df['Clean_Text'] = df['Clean_Text'].apply(remove_punctuations)
 ```
 
 ## Remove Stop Words
@@ -126,46 +142,196 @@ df['Review_Text'] = df['Review_Text'].str.replace('[^\w\s]', '')
 ```{python}
 #| echo: true
 
+# Import list of stop words
 stop = stopwords.words('english')
-df['Review_Text'] = df['Review_Text'].apply(lambda x : " ".join(x for x in x.split() if x not in stop))
-df['Review_Text'].head()
+
+# Create custom list of stop words
+wc_removals = ['day', 'disney', 'disneyland', 'rides', 'park']
+
+# Combine stop word lists
+stop_extended = stop + wc_removals
+
+df['Clean_Text'] = df['Clean_Text'].apply(lambda x : ' '.join(x for x in x.split() if x not in stop_extended))
+
+df['Clean_Text'].head()
 ```
 
-## Lemmatizing
+## Lemmatization
 
 ```{python}
 #| echo: true
+df['Clean_Text'] = df['Clean_Text'].apply(lambda x: ' '.join([Word(x).lemmatize()]))
 
-lemmatizer = WordNetLemmatizer()
-df['Review_Text'] = df['Review_Text'].apply(lambda x : " ".join(lemmatizer.lemmatize(word) for word in x.split()))
-df['Review_Text'].head()
+df['Clean_Text'].head()
 ```
 
-## Most Common Words
+## Tokenization
+
+```{python}
+#| echo: true
+df['Tokens'] = df['Clean_Text'].apply(lambda x: TextBlob(x).words)
+
+df['Tokens'].head()
+```
+
+## Frequency
+
+```{python}
+#| echo: true
+df['Frequency'] = df['Clean_Text'].apply(lambda x: len(str(x).split(' '))) 
+
+df['Frequency'].head()
+```
+
+# Visualization
+
+## Convert words to single text
+
+```{python}
+#| echo: true
+all_review_text = ' '.join(i for i in df.Review_Text)
+all_clean_text = ' '.join(i for i in df.Clean_Text)
+```
+
+## Word cloud (all words)
 
 ```{python}
 #| echo: true
 #| output-location: slide
 
-most_common = Counter(' '.join(df['Review_Text']).split()).most_common(50)
+wordcloud = WordCloud(
+    colormap="Set2",
+    collocations=False).generate(all_review_text)
+
+plt.figure(figsize=[11,11])
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.title("Disney Park Reviews")
+plt.show()
+```
+
+## Word cloud (less stop words)
+
+```{python}
+#| echo: true
+#| output-location: slide
+
+wordcloud = WordCloud(
+    colormap="Set2",
+    collocations=False).generate(all_clean_text)
+
+plt.figure(figsize=[11,11])
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.title("Disney Park Reviews")
+plt.show()
+```
+
+## Reviews by park
+
+```{python}
+#| echo: true
+sns.set(rc = {'figure.figsize':(15, 5)})
+sns.countplot(x=df["Branch"])
+```
+
+## Ratings by year
+
+```{python}
+#| echo: true
+sns.lineplot(data=df, x="Year", y="Rating", hue="Branch").set(title="Ratings per Year");
+```
+
+
+## Most common words (less stop words)
+
+```{python}
+#| echo: true
+#| output-location: slide
+
+most_common = Counter(' '.join(df['Clean_Text']).split()).most_common(20)
+
 most_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])
-plt.figure(figsize = (18,6))
+
 sns.barplot(data = most_common_df, x = 'Words', y = 'Freq')
-plt.title('Most Common words')
+plt.title('20 Most Common Words')
 plt.xticks(rotation = 60)
 plt.show()
 ```
 
-## Word Cloud
+## N-Grams
+
+```{python}
+#| echo: false
+
+def documentNgrams(documents, size):
+    ngrams_all = []
+    for document in documents:
+        tokens = document.split()
+        if len(tokens) <= size:
+            continue
+        else:
+            output = list(ngrams(tokens, size))
+        for ngram in output:
+            ngrams_all.append(" ".join(ngram))
+    cnt_ngram = Counter()
+    for word in ngrams_all:
+        cnt_ngram[word] += 1
+    df = pd.DataFrame.from_dict(cnt_ngram, orient='index').reset_index()
+    df = df.rename(columns={'index':'words', 0:'count'})
+    df = df.sort_values(by='count', ascending=False)
+    df = df.head(15)
+    df = df.sort_values(by='count')
+    return(df)
+```
+
+```{python}
+#| echo: false
+def plotNgrams(documents):
+    unigrams = documentNgrams(documents, 1)
+    bigrams = documentNgrams(documents, 2)
+    
+    # Set plot figure size
+    fig = plt.figure(figsize = (20, 6))
+    plt.subplots_adjust(wspace=.5)
+
+    ax = fig.add_subplot(131)
+    ax.barh(np.arange(len(unigrams['words'])), unigrams['count'], align='center', alpha=.5)
+    ax.set_title('Unigrams')
+    plt.yticks(np.arange(len(unigrams['words'])), unigrams['words'])
+    plt.xlabel('Count')
+
+    ax2 = fig.add_subplot(132)
+    ax2.barh(np.arange(len(bigrams['words'])), bigrams['count'], align='center', alpha=.5)
+    ax2.set_title('Bigrams')
+    plt.yticks(np.arange(len(bigrams['words'])), bigrams['words'])
+    plt.xlabel('Count')
+
+    plt.show()
+```
 
 ```{python}
 #| echo: true
-#| output-location: slide
 
-word_index = Counter(" ".join(df['Review_Text']).split())
-w_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)
-plt.figure(figsize = (18, 6))
-plt.imshow(w_cloud)
-plt.axis('off')
-plt.show()
+plotNgrams(df['Clean_Text'])
+```
+
+## Bigrams
+
+```{python}
+#| echo: true
+
+bigrams = ngrams(word_tokenize(df['Clean_Text'].sum()), 2)
+bigrams_freq = Counter(bigrams)
+bigrams_freq.most_common(10)
+```
+
+## Trigrams
+
+```{python}
+#| echo: true
+
+trigrams = ngrams(word_tokenize(df['Clean_Text'].sum()), 3)
+trigrams_freq = Counter(trigrams)
+trigrams_freq.most_common(10)
 ```

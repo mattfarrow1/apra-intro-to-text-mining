@@ -1039,8 +1039,8 @@
     "objectID": "materials/05-python-text-mining.html#examine-a-review",
     "href": "materials/05-python-text-mining.html#examine-a-review",
     "title": "",
-    "section": "Examine a Review",
-    "text": "Examine a Review\n\ndf.loc[:,'Review_Text'].values[10]\n\n\"I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)\""
+    "section": "Examine a review",
+    "text": "Examine a review\n\ndf.loc[:,'Review_Text'].values[10]\n\n\"I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)\""
   },
   {
     "objectID": "materials/05-python-text-mining.html#prep-data",
@@ -1054,28 +1054,28 @@
     "href": "materials/05-python-text-mining.html#remove-stop-words",
     "title": "",
     "section": "Remove Stop Words",
-    "text": "Remove Stop Words\n\nstop = stopwords.words('english')\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(x for x in x.split() if x not in stop))\ndf['Review_Text'].head()\n\n0    previously 3 disney resorts. expectations sky ...\n1    hong kong disneyland quite small, many people ...\n2    wife, 15 year old son, went disneyland park ju...\n3    family unfortunate experience paris weekend 13...\n4    hk disney small lines big attractions long. en...\nName: Review_Text, dtype: object"
+    "text": "Remove Stop Words\n\n# Import list of stop words\nstop = stopwords.words('english')\n\n# Create custom list of stop words\nwc_removals = ['day', 'disney', 'disneyland', 'rides', 'park']\n\n# Combine stop word lists\nstop_extended = stop + wc_removals\n\ndf['Clean_Text'] = df['Clean_Text'].apply(lambda x : ' '.join(x for x in x.split() if x not in stop_extended))\n\ndf['Clean_Text'].head()\n\n0    previously 3 resorts expectations sky high ori...\n1    hong kong quite small many people waiting line...\n2    wife 15 year old son went june 30 2015 hot sun...\n3    family unfortunate experience paris weekend 13...\n4    hk small lines big attractions long enjoy took...\nName: Clean_Text, dtype: object"
   },
   {
     "objectID": "materials/05-python-text-mining.html#lemmatizing",
     "href": "materials/05-python-text-mining.html#lemmatizing",
     "title": "",
     "section": "Lemmatizing",
-    "text": "Lemmatizing\n\nlemmatizer = WordNetLemmatizer()\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(lemmatizer.lemmatize(word) for word in x.split()))\ndf['Review_Text'].head()\n\n0    previously 3 disney resorts. expectation sky h...\n1    hong kong disneyland quite small, many people ...\n2    wife, 15 year old son, went disneyland park ju...\n3    family unfortunate experience paris weekend 13...\n4    hk disney small line big attraction long. enjo...\nName: Review_Text, dtype: object"
+    "text": "Lemmatizing\n\nlemmatizer = WordNetLemmatizer()\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : \" \".join(lemmatizer.lemmatize(word) for word in x.split()))\n\ndf.head(n = 2)\n\n\n\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n0\n305683957\n5\n2015-08-01\nPortugal\npreviously 3 disney resorts. expectation sky h...\nDisneyland_California\n\n\n1\n666364898\n3\n2018-10-01\nUnited States\nhong kong disneyland quite small, many people ...\nDisneyland_HongKong"
   },
   {
     "objectID": "materials/05-python-text-mining.html#most-common-words",
     "href": "materials/05-python-text-mining.html#most-common-words",
     "title": "",
     "section": "Most Common Words",
-    "text": "Most Common Words\n\nmost_common = Counter(' '.join(df['Review_Text']).split()).most_common(50)\nmost_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])\nplt.figure(figsize = (18,6))\nsns.barplot(data = most_common_df, x = 'Words', y = 'Freq')\nplt.title('Most Common words')\nplt.xticks(rotation = 60)\nplt.show()"
+    "text": "Most Common Words\n\nmost_common = Counter(' '.join(df['Clean_Text']).split()).most_common(20)\n\nmost_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])\n\nsns.barplot(data = most_common_df, x = 'Words', y = 'Freq')\nplt.title('20 Most Common Words')\nplt.xticks(rotation = 60)\nplt.show()"
   },
   {
     "objectID": "materials/05-python-text-mining.html#word-cloud",
     "href": "materials/05-python-text-mining.html#word-cloud",
     "title": "",
     "section": "Word Cloud",
-    "text": "Word Cloud\n\nword_index = Counter(\" \".join(df['Review_Text']).split())\nw_cloud = WordCloud(max_words = 1500, width = 800, height = 600).generate_from_frequencies(word_index, None)\nplt.figure(figsize = (18, 6))\nplt.imshow(w_cloud)\nplt.axis('off')\nplt.show()\n\n\n\n\nIntroduction to Text Mining"
+    "text": "Word Cloud\n\nwordcloud = WordCloud(\n    # background_color=\"#6B5B95\",\n    colormap=\"Set2\",\n    collocations=False).generate(all_review_text)\n\nplt.figure(figsize=[11,11])\nplt.imshow(wordcloud, interpolation=\"bilinear\")\nplt.axis(\"off\")\nplt.title(\"Disney Park Reviews\")\nplt.show()"
   },
   {
     "objectID": "materials/06-learning-more.html#give-yourself-grace",
@@ -1824,14 +1824,14 @@
     "href": "materials/05-python-text-mining.html#convert-to-lowercase",
     "title": "",
     "section": "Convert to lowercase",
-    "text": "Convert to lowercase\n\n# Convert to lowercase\ndf['Review_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))\n\ndf['Review_Text'].head()\n\n0    i ve previously been to 3 disney resorts. so i...\n1    the hong kong disneyland is quite small, there...\n2    my wife, my 15 year old son, and i went to dis...\n3    our family had the unfortunate experience of b...\n4    hk disney is very small and lines for the big ...\nName: Review_Text, dtype: object"
+    "text": "Convert to lowercase\n\n# Convert to lowercase\ndf['Clean_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))"
   },
   {
     "objectID": "materials/05-python-text-mining.html#remove-punctuation",
     "href": "materials/05-python-text-mining.html#remove-punctuation",
     "title": "",
-    "section": "Remove Punctuation",
-    "text": "Remove Punctuation\n\n# Remove punctuation\ndf['Review_Text'] = df['Review_Text'].str.replace('[^\\w\\s]', '')"
+    "section": "Remove punctuation",
+    "text": "Remove punctuation\n\ndef remove_punctuations(text):\n  for char in string.punctuation:\n    text = text.replace(char, '')\n  return text\n\ndf['Clean_Text'] = df['Clean_Text'].apply(remove_punctuations)"
   },
   {
     "objectID": "materials/03-intro-to-r.html#open-the-file",
@@ -2055,7 +2055,7 @@
     "href": "materials/05-python-text-mining.html#examine-the-data",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\ndf.head()\n\n\n\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n0\n305683957\n5\n2015-08-01\nPortugal\nI ve previously been to 3 Disney Resorts. So ...\nDisneyland_California\n\n\n1\n666364898\n3\n2018-10-01\nUnited States\nThe Hong Kong Disneyland is quite small, there...\nDisneyland_HongKong\n\n\n2\n293082325\n3\n2015-06-01\nUnited States\nMy wife, my 15 year old son, and I went to Dis...\nDisneyland_Paris\n\n\n3\n334650140\n1\n2015-11-01\nUnited Kingdom\nOur family had the unfortunate experience of b...\nDisneyland_Paris\n\n\n4\n393553042\n3\n2016-07-01\nUnited States\nHK Disney is very small and lines for the big ...\nDisneyland_HongKong"
+    "text": "Examine the data\n\ndf.head(n = 2)\n\n\n\n\n\n\n\n\nReview_ID\nRating\nYear_Month\nReviewer_Location\nReview_Text\nBranch\n\n\n\n\n0\n305683957\n5\n2015-08-01\nPortugal\nI ve previously been to 3 Disney Resorts. So ...\nDisneyland_California\n\n\n1\n666364898\n3\n2018-10-01\nUnited States\nThe Hong Kong Disneyland is quite small, there...\nDisneyland_HongKong"
   },
   {
     "objectID": "materials/05-python-text-mining.html#examine-the-data-1",
@@ -2546,5 +2546,138 @@
     "title": "",
     "section": "Summarize the data",
     "text": "Summarize the data\n\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(avg_flipper_length = \n              mean(flipper_length_mm, \n                   na.rm = TRUE))\n\n\n# A tibble: 3 × 2\n  species   avg_flipper_length\n  &lt;fct&gt;                  &lt;dbl&gt;\n1 Adelie                  190.\n2 Chinstrap               196.\n3 Gentoo                  217."
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#general-libraries",
+    "href": "materials/05-python-text-mining.html#general-libraries",
+    "title": "",
+    "section": "General libraries",
+    "text": "General libraries\n\n# General purpose\nfrom collections import Counter\nimport numpy as np\nimport os\nimport warnings\nwarnings.filterwarnings(action = 'ignore')\n\n# Data wrangling\nimport pandas as pd  # similar to tidyverse\n\n# visualization\nimport matplotlib.pyplot as plt\nimport seaborn as sns"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#text-mining-libraries",
+    "href": "materials/05-python-text-mining.html#text-mining-libraries",
+    "title": "",
+    "section": "Text mining libraries",
+    "text": "Text mining libraries\n\nimport nltk\nimport string\n\nnltk.download(\"omw-1.4\")\nnltk.download('punkt')\nnltk.download('stopwords')\nnltk.download('wordnet')\n\nfrom nltk.corpus import stopwords\nfrom nltk.util import ngrams\nfrom nltk.stem import WordNetLemmatizer\nfrom nltk.tokenize import word_tokenize\nfrom nltk.tokenize import WordPunctTokenizer\nfrom wordcloud import WordCloud\nfrom wordcloud import STOPWORDS\nfrom textblob import TextBlob\nfrom textblob import Word"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#normalize-reviews",
+    "href": "materials/05-python-text-mining.html#normalize-reviews",
+    "title": "",
+    "section": "Normalize reviews",
+    "text": "Normalize reviews\n\n# Convert to lowercase\ndf['Clean_Text'] = df['Review_Text'].apply(lambda x : ' '.join(x.lower() for x in x.split()))\n\n# Remove numbers\ndf['Clean_Text'] = df['Clean_Text'].str.replace('\\d','')\n\n# Remove punctuation\ndf['Clean_Text'] = df['Clean_Text'].str.replace('[^\\w\\s]', '')"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#lemmatization",
+    "href": "materials/05-python-text-mining.html#lemmatization",
+    "title": "",
+    "section": "Lemmatization",
+    "text": "Lemmatization\n\ndf['Clean_Text'] = df['Clean_Text'].apply(lambda x: ' '.join([Word(x).lemmatize()]))\n\ndf['Clean_Text'].head()\n\n0    previously 3 resorts expectations sky high ori...\n1    hong kong quite small many people waiting line...\n2    wife 15 year old son went june 30 2015 hot sun...\n3    family unfortunate experience paris weekend 13...\n4    hk small lines big attractions long enjoy took...\nName: Clean_Text, dtype: object"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#tokenization",
+    "href": "materials/05-python-text-mining.html#tokenization",
+    "title": "",
+    "section": "Tokenization",
+    "text": "Tokenization\n\ndf['Tokens'] = df['Clean_Text'].apply(lambda x: TextBlob(x).words)\n\ndf['Tokens'].head()\n\n0    [previously, 3, resorts, expectations, sky, hi...\n1    [hong, kong, quite, small, many, people, waiti...\n2    [wife, 15, year, old, son, went, june, 30, 201...\n3    [family, unfortunate, experience, paris, weeke...\n4    [hk, small, lines, big, attractions, long, enj...\nName: Tokens, dtype: object"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#frequency",
+    "href": "materials/05-python-text-mining.html#frequency",
+    "title": "",
+    "section": "Frequency",
+    "text": "Frequency\n\ndf['Frequency'] = df['Clean_Text'].apply(lambda x: len(str(x).split(' '))) \n\ndf['Frequency'].head()\n\n0    44\n1    19\n2    72\n3    56\n4    17\nName: Frequency, dtype: int64"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#convert-words-to-single-text",
+    "href": "materials/05-python-text-mining.html#convert-words-to-single-text",
+    "title": "",
+    "section": "Convert words to single text",
+    "text": "Convert words to single text\n\nall_review_text = ' '.join(i for i in df.Review_Text)\nall_clean_text = ' '.join(i for i in df.Clean_Text)"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#n-grams",
+    "href": "materials/05-python-text-mining.html#n-grams",
+    "title": "",
+    "section": "N-Grams",
+    "text": "N-Grams\n\nplotNgrams(df['Clean_Text'])"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#convert-dates",
+    "href": "materials/05-python-text-mining.html#convert-dates",
+    "title": "",
+    "section": "Convert dates",
+    "text": "Convert dates\n\ndf.Year_Month=df.Year_Month.apply(pd.to_datetime, errors ='coerce')\n\ndf['Month']=df.Year_Month.dt.month\ndf['Year']=df.Year_Month.dt.year"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#reviews-by-park",
+    "href": "materials/05-python-text-mining.html#reviews-by-park",
+    "title": "",
+    "section": "Reviews by park",
+    "text": "Reviews by park\n\nsns.set(rc = {'figure.figsize':(15, 5)})\nsns.countplot(x=df[\"Branch\"])\n\n&lt;Axes: xlabel='Branch', ylabel='count'&gt;"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#ratings-by-year",
+    "href": "materials/05-python-text-mining.html#ratings-by-year",
+    "title": "",
+    "section": "Ratings by year",
+    "text": "Ratings by year\n\nsns.lineplot(data=df, x=\"Year\", y=\"Rating\", hue=\"Branch\").set(title=\"Ratings per Year\");"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#word-cloud-all-words",
+    "href": "materials/05-python-text-mining.html#word-cloud-all-words",
+    "title": "",
+    "section": "Word cloud (all words)",
+    "text": "Word cloud (all words)\n\nwordcloud = WordCloud(\n    colormap=\"Set2\",\n    collocations=False).generate(all_review_text)\n\nplt.figure(figsize=[11,11])\nplt.imshow(wordcloud, interpolation=\"bilinear\")\nplt.axis(\"off\")\nplt.title(\"Disney Park Reviews\")\nplt.show()"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#word-cloud-all-words-output",
+    "href": "materials/05-python-text-mining.html#word-cloud-all-words-output",
+    "title": "",
+    "section": "Word cloud (all words)",
+    "text": "Word cloud (all words)"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#word-cloud-less-stop-words",
+    "href": "materials/05-python-text-mining.html#word-cloud-less-stop-words",
+    "title": "",
+    "section": "Word cloud (less stop words)",
+    "text": "Word cloud (less stop words)\n\nwordcloud = WordCloud(\n    colormap=\"Set2\",\n    collocations=False).generate(all_clean_text)\n\nplt.figure(figsize=[11,11])\nplt.imshow(wordcloud, interpolation=\"bilinear\")\nplt.axis(\"off\")\nplt.title(\"Disney Park Reviews\")\nplt.show()"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#word-cloud-less-stop-words-output",
+    "href": "materials/05-python-text-mining.html#word-cloud-less-stop-words-output",
+    "title": "",
+    "section": "Word cloud (less stop words)",
+    "text": "Word cloud (less stop words)"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#most-common-words-less-stop-words",
+    "href": "materials/05-python-text-mining.html#most-common-words-less-stop-words",
+    "title": "",
+    "section": "Most common words (less stop words)",
+    "text": "Most common words (less stop words)\n\nmost_common = Counter(' '.join(df['Clean_Text']).split()).most_common(20)\n\nmost_common_df = pd.DataFrame(most_common, columns = ['Words', 'Freq'])\n\nsns.barplot(data = most_common_df, x = 'Words', y = 'Freq')\nplt.title('20 Most Common Words')\nplt.xticks(rotation = 60)\nplt.show()"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#most-common-words-less-stop-words-output",
+    "href": "materials/05-python-text-mining.html#most-common-words-less-stop-words-output",
+    "title": "",
+    "section": "Most common words (less stop words)",
+    "text": "Most common words (less stop words)"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#bigrams",
+    "href": "materials/05-python-text-mining.html#bigrams",
+    "title": "",
+    "section": "Bigrams",
+    "text": "Bigrams\n\nbigrams = ngrams(word_tokenize(df['Clean_Text'].sum()), 2)\nbigrams_freq = Counter(bigrams)\nbigrams_freq.most_common(10)\n\n[(('fast', 'pass'), 101),\n (('year', 'old'), 81),\n (('space', 'mountain'), 62),\n (('hong', 'kong'), 54),\n (('main', 'street'), 50),\n (('small', 'world'), 49),\n (('go', 'back'), 47),\n (('fast', 'passes'), 46),\n (('make', 'sure'), 46),\n (('cast', 'members'), 44)]"
+  },
+  {
+    "objectID": "materials/05-python-text-mining.html#trigrams",
+    "href": "materials/05-python-text-mining.html#trigrams",
+    "title": "",
+    "section": "Trigrams",
+    "text": "Trigrams\n\ntrigrams = ngrams(word_tokenize(df['Clean_Text'].sum()), 3)\ntrigrams_freq = Counter(trigrams)\ntrigrams_freq.most_common(10)\n\n[(('happiest', 'place', 'earth'), 25),\n (('big', 'thunder', 'mountain'), 19),\n (('use', 'fast', 'pass'), 14),\n (('fast', 'pass', 'system'), 13),\n (('cant', 'wait', 'go'), 10),\n (('get', 'fast', 'pass'), 10),\n (('make', 'sure', 'get'), 10),\n (('year', 'old', 'daughter'), 10),\n (('2', 'year', 'old'), 9),\n (('8', 'year', 'old'), 9)]\n\n\n\n\nIntroduction to Text Mining"
   }
 ]
