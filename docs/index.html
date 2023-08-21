@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -246,7 +212,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pre-work" id="toc-pre-work" class="nav-link" data-scroll-target="#pre-work">Pre-Work</a>
   <ul class="collapse">
   <li><a href="#using-posit-cloud" id="toc-using-posit-cloud" class="nav-link" data-scroll-target="#using-posit-cloud">Using Posit Cloud</a></li>
-  <li><a href="#using-a-local-installation" id="toc-using-a-local-installation" class="nav-link" data-scroll-target="#using-a-local-installation">Using a Local Installation</a></li>
   </ul></li>
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
   <ul class="collapse">
@@ -291,81 +256,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Pre-Work</h1>
 <section id="using-posit-cloud" class="level2">
 <h2 class="anchored" data-anchor-id="using-posit-cloud">Using Posit Cloud</h2>
-<p>The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. If you plan to go this route, there is nothing else you need to do in preparation, simply scan the QR code or visit <a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/content/6215314</a>.</p>
+<p>The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. All you need to is go to <a href="posit.cloud">posit.cloud</a> and sign up for a free account. This page will be updated on Monday, August 28 prior to the workshop with the direct link to the workshop space.</p>
 <div id="qrcode" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"width":128,"text":"https://posit.cloud/content/6215314","colorDark":"#000000","colorLight":"#ffffff","height":128});
+var qrcode = new QRCode("qrcode", {"width":128,"height":128,"colorDark":"#000000","colorLight":"#ffffff","text":"https://posit.cloud/"});
 </script>
     
-</section>
-<section id="using-a-local-installation" class="level2">
-<h2 class="anchored" data-anchor-id="using-a-local-installation">Using a Local Installation</h2>
-<p>If you are a workshop attendee and have any trouble with installation locally, please reach out to me directly!</p>
-<ul>
-<li>Install latest version of RStudio, <a href="https://posit.co/products/open-source/rstudio/"><code>2023.06.0+421)</code> or later</a></li>
-<li>Ideally upgrade/use to R 4.3.1 (I’m using the magittr pipe <code>%&gt;%</code>)</li>
-<li>Install these R packages:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_list <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>, <span class="st">"tidytext"</span>, <span class="st">"wordcloud"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are a workshop attendee who would like to use their own RStudio installation, please clone <a href="https://github.com/mattfarrow1/text-mining-workshop.git" class="uri">https://github.com/mattfarrow1/text-mining-workshop.git</a> via RStudio on Monday morning (August 28).</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How to clone a Github repo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>Navigate to <a href="https://github.com/mattfarrow1/text-mining-workshop" class="uri">https://github.com/mattfarrow1/text-mining-workshop</a></p></li>
-<li><p>Click on the green “Code” button and copy the url under the HTTPS tab <a href="https://github.com/mattfarrow1/text-mining-workshop.git" class="uri">https://github.com/mattfarrow1/text-mining-workshop.git</a></p></li>
-<li><p>In RStudio, use File &gt; New Project &gt; Version Control &gt; From Git &gt; and then paste the URL into the source repo box and then click enter!</p></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-(Optional!) Pre-Work for Python
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This will be a R/RStudio-centric course based on the attendees, but we will briefly cover using Python for text mining. This code can be run in Posit Cloud, but if you are interested in installing it on your machine, here are some helpful links:</p>
-<ul>
-<li>Install Python, following instructions at <a href="https://solutions.rstudio.com/python/minimum-viable-python/installing-python/">Minimum Viable Python</a></li>
-<li>Install <a href="https://quarto.org/docs/computations/python.html#installation">Jupyter</a></li>
-<li>Install VSCode, <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">Quarto VSCode extension</a>, <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python VSCode extension</a>, <a href="https://open-vsx.org/extension/ms-toolsai/jupyter">Jupyter VSCode extension</a></li>
-</ul>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="overview" class="level1">
@@ -375,8 +271,8 @@ How to clone a Github repo
 <h2 class="anchored" data-anchor-id="competencies">Competencies</h2>
 <table class="table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
+<col style="width: 25%">
+<col style="width: 75%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -398,8 +294,8 @@ How to clone a Github repo
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <table class="table">
 <colgroup>
-<col style="width: 37%">
-<col style="width: 62%">
+<col style="width: 38%">
+<col style="width: 61%">
 </colgroup>
 <tbody>
 <tr class="odd">
