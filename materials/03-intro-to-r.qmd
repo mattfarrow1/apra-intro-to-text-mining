@@ -8,6 +8,7 @@ format:
     width: 1280
     height: 720
     code-line-numbers: true
+    code-annotations: hover
     filters: 
       - filter.lua
     footer: "[Introduction to Text Mining](https://mattfarrow1.github.io/apra-intro-to-text-mining/)"
@@ -147,14 +148,6 @@ Beware of dependencies.
 -   Packages all work together
 -   Covers most frequent use cases
 -   Can "pipe" instructions together
-
-## Piping
-
--   **%\>%** is the traditional method that came from the \`magrittr\` package
--   **\|\>** the "native" pipe that was introduced to R in version 4.1
--   Both work by 'piping' information from the left hand side (LHS) to the right hand side (RHS)
-
-![](images/pipe.png){fig-align="center" height="150"}
 
 ## Community
 
@@ -336,11 +329,13 @@ filter(penguins, sex == "male", island == "Biscoe")
 
 ## Piping functions
 
--   `CTRL or Command` + `Shift` + `M`
+-   **%\>%** is the traditional method that came from the \`magrittr\` package
+-   **\|\>** the "native" pipe that was introduced to R in version 4.1
+-   Both work by 'piping' information from the left hand side (LHS) to the right hand side (RHS)
 
--   Can create complex operations by chaining functions together
+![](images/pipe.png){fig-align="center" height="150"}
 
--   Options for testing - highlight only intended section or comment out (`#)` lines
+## Piping functions
 
 ```{r}
 #| echo: true
@@ -376,7 +371,22 @@ penguins |>
 
 # Flipper length is NOT missing/blank
 penguins |> 
-  filter(!is.na(flipper_length_mm))
+  filter(!is.na(flipper_length_mm))    # <1>
+```
+
+1.  `!` means "not"
+
+## Making new variables
+
+Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long".
+
+```{r}
+#| echo: false
+#| output-location: slide
+penguins |>
+  ggplot(aes(flipper_length_mm)) +
+  geom_boxplot(color = "black") +
+  theme_minimal()
 ```
 
 ## Making new variables
@@ -384,12 +394,30 @@ penguins |>
 Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long".
 
 ```{r}
-#| echo: true
+#| echo: false
 #| output-location: slide
-penguins |> 
+penguins |>
   ggplot(aes(flipper_length_mm)) +
-  geom_boxplot() +
-  theme_minimal()
+  geom_boxplot(color = "black") +
+  theme_minimal() +
+  geom_rect(aes(xmin = -Inf, 
+                xmax = 190, 
+                ymin = -Inf, 
+                ymax = Inf), 
+                fill = "pink", 
+                alpha = 0.01) +
+  geom_rect(aes(xmin = 190, 
+                xmax = 213, 
+                ymin = -Inf, 
+                ymax = Inf), 
+                fill = "steelblue", 
+                alpha = 0.01) +
+  geom_rect(aes(xmin = 213, 
+                xmax = Inf, 
+                ymin = -Inf, 
+                ymax = Inf), 
+                fill = "pink", 
+                alpha = 0.01)
 ```
 
 ## Making new variables
@@ -406,36 +434,51 @@ We'll use the following as our cutoffs:
 
 ```{r}
 #| echo: true
-#| output-location: fragment
-penguins |>
+#| output-location: column-fragment
+flippers <- penguins |>
   mutate(flipper_length = case_when(
     flipper_length_mm < 190 ~ "short",
     flipper_length_mm >= 190 &
       flipper_length_mm < 213 ~ "average",
     flipper_length_mm > 213 ~ "long"
-  )) |>
-  select(flipper_length_mm, flipper_length) |>
+  ))
+
+flippers |>
+  select(flipper_length_mm, 
+         flipper_length) |>
   head()
 ```
 
-## Summarize data
+## Summarize the data
 
 ```{r}
 #| echo: true
-#| output-location: fragment
-penguins |> 
-  group_by(species) |> 
-  summarise(avg_flipper_length = mean(flipper_length_mm))
+#| output-location: column-fragment
+flippers |> 
+  count(flipper_length)
 ```
 
-## Summarize data
+## Summarize the data
 
-``` {.r code-line-numbers="4"}
+```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 penguins |> 
   group_by(species) |> 
-  summarise(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
+  summarise(avg_flipper_length = 
+              mean(flipper_length_mm))
+```
+
+## Summarize the data
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+penguins |> 
+  group_by(species) |> 
+  summarise(avg_flipper_length = 
+              mean(flipper_length_mm, 
+                   na.rm = TRUE))
 ```
 
 # Examining Disney Reviews
@@ -508,7 +551,7 @@ head(df)
 tail(df)
 ```
 
-## Where are reviewers from?
+## Where are reviewers from? {.scrollable}
 
 ```{r}
 #| echo: true
@@ -520,6 +563,8 @@ unique(df$Reviewer_Location)
 
 The `unique` function lists only the different values in a string or column. It is particularly useful when looking at a limited list of options *(action types, fundraiser names, etc.)*
 
+<br>
+
 ```{r}
 #| echo: true
 #| output-location: fragment
@@ -529,6 +574,8 @@ unique(df$Branch)
 ## Clean up Park Names
 
 Here we use two `dplyr` functions: `mutate` and `rename` to remove *Disneyland\_* from the start of our values and choose a different column name.
+
+<br>
 
 ```{r}
 #| echo: true
@@ -551,5 +598,9 @@ unique(df$Park)
 #| output-location: fragment
 glimpse(df)
 ```
+
+# Questions so far?
+
+![Source: giphy](https://media2.giphy.com/media/L2qukNXGjccyuAYd3W/giphy.gif?cid=ecf05e47b5me5j9txejed47lh58uyia6bt7cn33tijv3im0p&ep=v1_gifs_search&rid=giphy.gif&ct=g){fig-alt="Confused Schitts Creek GIF By CBC" fig-align="center"}
 
 # Break Time! 🎉

@@ -59,6 +59,7 @@ library(tidytext)
 library(wordcloud)
 library(here)
 library(flipbookr)
+library(gt)
 ```
 
 ## Load the data
@@ -159,7 +160,7 @@ ratings_by_year <- df |>
   count(Year) |> 
   rename(Ratings = n)
 
-ratings_by_year
+gt(ratings_by_year)
 ```
 
 ## Reviews by year
@@ -212,7 +213,7 @@ Brackets allow us to isolate a single cell.
 
 ```{r}
 #| echo: true
-#| output-location: column
+#| output-location: column-fragment
 
 df$Review_Text[11]
 ```
@@ -221,13 +222,13 @@ df$Review_Text[11]
 
 ```{r}
 #| echo: true
-#| output-location: column
+#| output-location: column-fragment
 
 sample <- tibble(
   line = 1,
   text = df$Review_Text[11]
 )
-sample
+gt(sample)
 ```
 
 ::: aside
@@ -242,10 +243,12 @@ sample
 
 ```{r}
 #| echo: true
-#| output-location: column
+#| output-location: column-fragment
 
 sample |>
-  unnest_tokens(word, text)
+  unnest_tokens(word, text) |> 
+  head(n = 10) |> 
+  gt()
 ```
 
 ## Advantages of `unnest_tokens`
@@ -275,36 +278,36 @@ reviews <- df |>
     linenumber
   )
 
-head(reviews)
+gt::gt(head(reviews, n = 3))
 ```
 
 ## Unnest Tokens
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Unnest tokens
 tidy_reviews <- reviews |> 
   unnest_tokens(word, text)
 
-head(tidy_reviews)
+gt(head(tidy_reviews))
 ```
 
 ## Stop Words
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
-head(stop_words)
+gt(head(stop_words))
 ```
 
 ## `anti_join`
 
 > An anti_join return all rows from the left table where there are not matching values in the right table, keeping just columns from the left table.
 
-![](https://psyteachr.github.io/glossary/images/joins/anti_join.png){fig-align="center" height="500"}
+![](https://psyteachr.github.io/glossary/images/joins/anti_join.png){fig-align="center" height="350"}
 
 ::: aside
 [Source](https://psyteachr.github.io/ads-v1/joins.html#anti_join)
@@ -314,13 +317,13 @@ head(stop_words)
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Unnest tokens and remove stop words
 tidy_reviews <- tidy_reviews |>
   anti_join(stop_words)
 
-head(tidy_reviews)
+gt(head(tidy_reviews))
 ```
 
 ## Create Word Counts
@@ -332,7 +335,8 @@ head(tidy_reviews)
 # Perform word count
 tidy_reviews |> 
   count(word, sort = TRUE) |> 
-  head()
+  head() |> 
+  gt()
 ```
 
 # Word Clouds {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
@@ -412,14 +416,14 @@ tidy_bigrams <- reviews |>
                 n = 2) |> 
   filter(!is.na(bigram))
 
-head(tidy_bigrams)
+gt(head(tidy_bigrams))
 ```
 
 ## Separate words
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Separate words
 tidy_bigrams <- tidy_bigrams |>
@@ -428,47 +432,48 @@ tidy_bigrams <- tidy_bigrams |>
              "word2"), 
            sep = " ")
 
-head(tidy_bigrams)
+gt(head(tidy_bigrams))
 ```
 
 ## Remove stop words
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Remove stop words
 tidy_bigrams <- tidy_bigrams |>
   filter(!word1 %in% stop_words$word) |>
   filter(!word2 %in% stop_words$word)
 
-head(tidy_bigrams)
+gt(head(tidy_bigrams))
 ```
 
 ## Reunite terms
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Reunite terms
 tidy_bigrams <- tidy_bigrams |>
   unite(bigram, word1, word2, sep = " ")
 
-head(tidy_bigrams)
+gt(head(tidy_bigrams))
 ```
 
 ## Look at top bigrams by park
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 tidy_bigrams |> 
   group_by(Park) |> 
   count(bigram) |> 
   arrange(desc(n)) |> 
-  head()
+  head() |> 
+  gt()
 ```
 
 # Word Frequencies {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
@@ -477,7 +482,7 @@ tidy_bigrams |>
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 review_words <- tidy_reviews %>%
   count(Park, word, sort = TRUE)
@@ -488,7 +493,7 @@ total_words <- review_words %>%
 
 review_words <- left_join(review_words, total_words)
 
-head(review_words)
+gt(head(review_words))
 ```
 
 ## Review length by park
@@ -498,6 +503,7 @@ head(review_words)
 #| message: false
 #| warning: false
 #| output-location: slide
+
 ggplot(review_words, 
        aes(n/total, 
            fill = Park)) +
@@ -513,24 +519,29 @@ ggplot(review_words,
 
 ```{r}
 #| echo: true
-#| output-location: fragment
-freq_by_rank <- review_words %>% 
-  group_by(Park) %>% 
+#| output-location: column-fragment
+freq_by_rank <- review_words |> 
+  group_by(Park) |> 
   mutate(rank = row_number(), 
-         `term frequency` = n/total) %>%
+         `term frequency` = n/total) |> 
   ungroup()
 
-head(freq_by_rank)
+gt(head(freq_by_rank))
 ```
 
 ## Plot TF-IDF
 
 ```{r}
 #| echo: true
-#| output-location: slide
-freq_by_rank %>% 
-  ggplot(aes(rank, `term frequency`, color = Park)) + 
-  geom_line(size = 1.1, alpha = 0.8, show.legend = FALSE) + 
+#| output-location: column-fragment
+
+freq_by_rank |> 
+  ggplot(aes(rank, 
+             `term frequency`, 
+             color = Park)) + 
+  geom_line(size = 1.1, 
+            alpha = 0.8, 
+            show.legend = FALSE) + 
   scale_x_log10() +
   scale_y_log10() +
   theme_minimal()
@@ -540,12 +551,13 @@ freq_by_rank %>%
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 tidy_bigrams |> 
   count(Park, bigram) |> 
   bind_tf_idf(bigram, Park, n) |> 
-  arrange(desc(tf_idf))
+  arrange(desc(tf_idf)) |> 
+  gt()
 ```
 
 # Sentiment analysis {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
@@ -556,49 +568,54 @@ An introduction using the 'joy' sentiment.
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Get 'joy' sentiment
 nrc_joy <- tidytext::get_sentiments("nrc")
 nrc_joy <- nrc_joy |> 
   filter(sentiment == "joy")
 
-head(nrc_joy)
+gt(head(nrc_joy))
 ```
 
 ## Sentiment Analysis
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 # Most common 'joy' words in the reviews
 tidy_reviews |>
   inner_join(nrc_joy) |>
   count(word, sort = TRUE) |> 
-  head()
+  head() |> 
+  gt()
 ```
 
 ## Sentiment Analysis
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 tidy_reviews_sentiment <- tidy_reviews |>
   inner_join(get_sentiments("bing")) |>
-  count(Park, index = linenumber %/% 80, sentiment) |>
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |>
+  count(Park, 
+        index = linenumber %/% 80, 
+        sentiment) |>
+  pivot_wider(names_from = sentiment, 
+              values_from = n, 
+              values_fill = 0) |>
   mutate(sentiment = positive - negative)
 
-head(tidy_reviews_sentiment)
+gt(head(tidy_reviews_sentiment))
 ```
 
 ## Sentiment Analysis
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +
   geom_col(show.legend = FALSE) +

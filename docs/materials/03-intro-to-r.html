@@ -489,7 +489,7 @@
 <p><a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/</a></p>
 <div id="qrcode" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"colorDark":"#000000","text":"https://posit.cloud/","colorLight":"#ffffff","height":128,"width":128});
+var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","width":128,"colorDark":"#000000","height":128,"text":"https://posit.cloud/"});
 </script>
     
 </section></section>
@@ -607,19 +607,6 @@ var qrcode = new QRCode("qrcode", {"colorDark":"#000000","text":"https://posit.c
 <li>Covers most frequent use cases</li>
 <li>Can “pipe” instructions together</li>
 </ul>
-</section>
-<section id="piping" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Piping</h2>
-<ul>
-<li><strong>%&gt;%</strong> is the traditional method that came from the `magrittr` package</li>
-<li><strong>|&gt;</strong> the “native” pipe that was introduced to R in version 4.1</li>
-<li>Both work by ‘piping’ information from the left hand side (LHS) to the right hand side (RHS)</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/pipe.png" height="150"></p>
-</figure>
-</div>
 </section>
 <section id="community" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Community</h2>
@@ -915,10 +902,18 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <section id="piping-functions" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Piping functions</h2>
 <ul>
-<li><p><code>CTRL or Command</code> + <code>Shift</code> + <code>M</code></p></li>
-<li><p>Can create complex operations by chaining functions together</p></li>
-<li><p>Options for testing - highlight only intended section or comment out (<code>#)</code> lines</p></li>
+<li><strong>%&gt;%</strong> is the traditional method that came from the `magrittr` package</li>
+<li><strong>|&gt;</strong> the “native” pipe that was introduced to R in version 4.1</li>
+<li>Both work by ‘piping’ information from the left hand side (LHS) to the right hand side (RHS)</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pipe.png" height="150"></p>
+</figure>
+</div>
+</section>
+<section id="piping-functions-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Piping functions</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>penguins <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"female"</span>) <span class="sc">|&gt;</span> </span>
@@ -958,30 +953,31 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <ul>
 <li>By missing values</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Flipper length is missing/blank</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(flipper_length_mm))</span>
-<span id="cb22-4"><a href="#cb22-4"></a></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="co"># Flipper length is NOT missing/blank</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a><span class="co"># Flipper length is missing/blank</span></span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(flipper_length_mm))</span>
+<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4"></a></span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a><span class="co"># Flipper length is NOT missing/blank</span></span>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>penguins <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-7" class="code-annotation-target"><a href="#annotated-cell-14-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(flipper_length_mm))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-annotation="1" data-code-cell="annotated-cell-14" data-code-lines="7"><code>!</code> means “not”</span>
+</dd>
+</dl>
 </section>
 <section id="making-new-variables" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
 <p>Now let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(flipper_length_mm)) <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
-</section>
-<section id="making-new-variables-output" class="slide level2 output-location-slide"><h2>Making new variables</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<p><img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
-</div>
-</div></section><section id="making-new-variables-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="making-new-variables-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Making new variables</h2>
+<p>Now let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.</p>
+
+<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<section id="making-new-variables-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
 <p>We’ll use the following as our cutoffs:</p>
 <table>
@@ -1007,20 +1003,23 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </tbody>
 </table>
 </section>
-<section id="making-new-variables-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="making-new-variables-3" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">mutate</span>(<span class="at">flipper_length =</span> <span class="fu">case_when</span>(</span>
-<span id="cb24-3"><a href="#cb24-3"></a>    flipper_length_mm <span class="sc">&lt;</span> <span class="dv">190</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
-<span id="cb24-4"><a href="#cb24-4"></a>    flipper_length_mm <span class="sc">&gt;=</span> <span class="dv">190</span> <span class="sc">&amp;</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>      flipper_length_mm <span class="sc">&lt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"average"</span>,</span>
-<span id="cb24-6"><a href="#cb24-6"></a>    flipper_length_mm <span class="sc">&gt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"long"</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a>  )) <span class="sc">|&gt;</span></span>
-<span id="cb24-8"><a href="#cb24-8"></a>  <span class="fu">select</span>(flipper_length_mm, flipper_length) <span class="sc">|&gt;</span></span>
-<span id="cb24-9"><a href="#cb24-9"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>flippers <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">mutate</span>(<span class="at">flipper_length =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-3"><a href="#cb22-3"></a>    flipper_length_mm <span class="sc">&lt;</span> <span class="dv">190</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4"></a>    flipper_length_mm <span class="sc">&gt;=</span> <span class="dv">190</span> <span class="sc">&amp;</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>      flipper_length_mm <span class="sc">&lt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"average"</span>,</span>
+<span id="cb22-6"><a href="#cb22-6"></a>    flipper_length_mm <span class="sc">&gt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"long"</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>  ))</span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a>flippers <span class="sc">|&gt;</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">select</span>(flipper_length_mm, </span>
+<span id="cb22-11"><a href="#cb22-11"></a>         flipper_length) <span class="sc">|&gt;</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   flipper_length_mm flipper_length
@@ -1033,15 +1032,36 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 6               190 average       </code></pre>
 </div>
 </div>
+</div>
 </section>
-<section id="summarize-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Summarize data</h2>
-<div class="cell">
+<section id="summarize-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Summarize the data</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>flippers <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">count</span>(flipper_length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  flipper_length     n
+  &lt;chr&gt;          &lt;int&gt;
+1 average          174
+2 long              85
+3 short             77
+4 &lt;NA&gt;               8</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="summarize-the-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Summarize the data</h2>
+<div class="cell columns column-output-location">
+<div class="column">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>penguins <span class="sc">|&gt;</span> </span>
 <span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> </span>
+<span id="cb26-4"><a href="#cb26-4"></a>              <span class="fu">mean</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species   avg_flipper_length
@@ -1051,14 +1071,28 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 3 Gentoo                   NA </code></pre>
 </div>
 </div>
+</div>
 </section>
-<section id="summarize-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Summarize data</h2>
-<div class="sourceCode" id="cb28" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> <span class="fu">mean</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="summarize-the-data-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Summarize the data</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> </span>
+<span id="cb28-4"><a href="#cb28-4"></a>              <span class="fu">mean</span>(flipper_length_mm, </span>
+<span id="cb28-5"><a href="#cb28-5"></a>                   <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  species   avg_flipper_length
+  &lt;fct&gt;                  &lt;dbl&gt;
+1 Adelie                  190.
+2 Chinstrap               196.
+3 Gentoo                  217.</code></pre>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="examining-disney-reviews" class="title-slide slide level1 center">
@@ -1079,12 +1113,12 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2>Read the data</h2>
 <p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>03-intro-to-r/02-our-data.R</code> in RStudio if you’d like to follow along.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-3"><a href="#cb29-3"></a></span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># Read in the data</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="co"># df &lt;- read_csv("DisneylandReviews.csv")</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="fu">load</span>(<span class="st">"workshop_data.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># Read in the data</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="co"># df &lt;- read_csv("DisneylandReviews.csv")</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="fu">load</span>(<span class="st">"workshop_data.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -1094,7 +1128,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2><code>str</code></h2>
 <p>Look at the structure of the data using base R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1122,7 +1156,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2><code>glimpse</code></h2>
 <p><code>glimpse</code> is a function from <code>dplyr</code> that allows for a different way to view your data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1141,7 +1175,7 @@ $ Branch            &lt;chr&gt; "Disneyland_California", "Disneyland_HongKong", 
 <h2><code>head</code></h2>
 <p><code>head</code> returns the first <em>n</em>-rows (defaults to 6).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1161,7 +1195,7 @@ $ Branch            &lt;chr&gt; "Disneyland_California", "Disneyland_HongKong", 
 <h2><code>tail</code></h2>
 <p><code>tail</code> returns the last <em>n</em>-rows (defaults to 6).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">tail</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">tail</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1177,10 +1211,10 @@ $ Branch            &lt;chr&gt; "Disneyland_California", "Disneyland_HongKong", 
 </div>
 </div>
 </section>
-<section id="where-are-reviewers-from" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="where-are-reviewers-from" class="slide level2 scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Where are reviewers from?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Reviewer_Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Reviewer_Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1209,8 +1243,9 @@ $ Branch            &lt;chr&gt; "Disneyland_California", "Disneyland_HongKong", 
 <section id="which-parks-have-been-reviewed" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Which parks have been reviewed?</h2>
 <p>The <code>unique</code> function lists only the different values in a string or column. It is particularly useful when looking at a limited list of options <em>(action types, fundraiser names, etc.)</em></p>
+<p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Branch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Branch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1221,15 +1256,16 @@ $ Branch            &lt;chr&gt; "Disneyland_California", "Disneyland_HongKong", 
 <section id="clean-up-park-names" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Clean up Park Names</h2>
 <p>Here we use two <code>dplyr</code> functions: <code>mutate</code> and <code>rename</code> to remove <em>Disneyland_</em> from the start of our values and choose a different column name.</p>
+<p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">mutate</span>(<span class="at">Branch =</span> <span class="fu">case_match</span>(Branch,</span>
-<span id="cb42-3"><a href="#cb42-3"></a>                             <span class="st">"Disneyland_California"</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
-<span id="cb42-4"><a href="#cb42-4"></a>                             <span class="st">"Disneyland_HongKong"</span> <span class="sc">~</span> <span class="st">"Hong Kong"</span>,</span>
-<span id="cb42-5"><a href="#cb42-5"></a>                             <span class="st">"Disneyland_Paris"</span> <span class="sc">~</span> <span class="st">"Paris"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb42-6"><a href="#cb42-6"></a>  <span class="fu">rename</span>(<span class="st">"Park"</span> <span class="ot">=</span> Branch)</span>
-<span id="cb42-7"><a href="#cb42-7"></a></span>
-<span id="cb42-8"><a href="#cb42-8"></a><span class="fu">unique</span>(df<span class="sc">$</span>Park)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">mutate</span>(<span class="at">Branch =</span> <span class="fu">case_match</span>(Branch,</span>
+<span id="cb43-3"><a href="#cb43-3"></a>                             <span class="st">"Disneyland_California"</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
+<span id="cb43-4"><a href="#cb43-4"></a>                             <span class="st">"Disneyland_HongKong"</span> <span class="sc">~</span> <span class="st">"Hong Kong"</span>,</span>
+<span id="cb43-5"><a href="#cb43-5"></a>                             <span class="st">"Disneyland_Paris"</span> <span class="sc">~</span> <span class="st">"Paris"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a>  <span class="fu">rename</span>(<span class="st">"Park"</span> <span class="ot">=</span> Branch)</span>
+<span id="cb43-7"><a href="#cb43-7"></a></span>
+<span id="cb43-8"><a href="#cb43-8"></a><span class="fu">unique</span>(df<span class="sc">$</span>Park)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1240,7 +1276,7 @@ $ Branch            &lt;chr&gt; "Disneyland_California", "Disneyland_HongKong", 
 <section id="look-at-our-starting-data-set" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Look at our starting data set</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1255,6 +1291,11 @@ $ Park              &lt;chr&gt; "California", "Hong Kong", "Paris", "Paris", "Ho
 </div>
 </div>
 </section></section>
+<section id="questions-so-far" class="title-slide slide level1 center">
+<h1>Questions so far?</h1>
+
+<img data-src="https://media2.giphy.com/media/L2qukNXGjccyuAYd3W/giphy.gif?cid=ecf05e47b5me5j9txejed47lh58uyia6bt7cn33tijv3im0p&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g" alt="Confused Schitts Creek GIF By CBC" class="r-stretch quarto-figure-center"><p class="caption">Source: giphy</p></section>
+
 <section id="break-time" class="title-slide slide level1 center">
 <h1>Break Time! 🎉</h1>
 
@@ -1620,6 +1661,157 @@ $ Park              &lt;chr&gt; "California", "Hong Kong", "Paris", "Paris", "Ho
           return note.innerHTML;
         });
       }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = ( cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' +  annotation + '"';
+            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+            return selector;
+          }
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            })
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
+                //compute the position of the single el (top and bottom and make a div)
+                const el = window.document.getElementById(lineIds[0]);
+                top = el.offsetTop;
+                height = el.offsetHeight;
+                parent = el.parentElement.parentElement;
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
+              }
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it 
+                let div = window.document.getElementById("code-annotation-line-highlight");
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = 'absolute';
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                  gutterDiv.style.position = 'absolute';
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector('.code-annotation-gutter');
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
+              }
+              selectedAnnoteEl = annoteEl;
+            }
+          };
+          const unselectCodeLines = () => {
+            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+          // Handle positioning of the toggle
+          window.addEventListener(
+          "resize",
+          throttle(() => {
+            elRect = undefined;
+            if (selectedAnnoteEl) {
+              selectCodeLines(selectedAnnoteEl);
+            }
+          }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+          for (let i=0; i<annoteTargets.length; i++) {
+            const annoteTarget = annoteTargets[i];
+            const targetCell = annoteTarget.getAttribute("data-target-cell");
+            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+            const contentFn = () => {
+              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              if (content) {
+                const tipContent = content.cloneNode(true);
+                tipContent.classList.add("code-annotation-tip-content");
+                return tipContent.outerHTML;
+              }
+            }
+            const config = {
+              allowHTML: true,
+              content: contentFn,
+              onShow: (instance) => {
+                selectCodeLines(instance.reference);
+                instance.reference.classList.add('code-annotation-active');
+                window.tippy.hideAll();
+              },
+              onHide: (instance) => {
+                unselectCodeLines();
+                instance.reference.classList.remove('code-annotation-active');
+              },
+              maxWidth: 300,
+              delay: [50, 0],
+              duration: [200, 0],
+              offset: [5, 10],
+              arrow: true,
+              appendTo: function(el) {
+                return el.parentElement.parentElement.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: 'light-border',
+              placement: 'right',
+              popperOptions: {
+                modifiers: [
+                {
+                  name: 'flip',
+                  options: {
+                    flipVariations: false, // true by default
+                    allowedAutoPlacements: ['right'],
+                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end'],
+                  },
+                },
+                {
+                  name: 'preventOverflow',
+                  options: {
+                    mainAxis: false,
+                    altAxis: false
+                  }
+                }
+                ]        
+              }      
+            };
+            window.tippy(annoteTarget, config); 
+          }
       const findCites = (el) => {
         const parentEl = el.parentElement;
         if (parentEl) {
