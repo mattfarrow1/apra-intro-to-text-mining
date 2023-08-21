@@ -15,6 +15,7 @@ format:
       data-background-image: "/materials/slide templates/Slide1.png"
       data-background-size: contain
       data-background-opacity: "1"
+      smaller: true
 editor: visual
 ---
 
@@ -132,7 +133,7 @@ Beware of dependencies.
 
 ![](images/rstudio-help){fig-align="center" height="500"}
 
-# The `tidyverse` {.smaller}
+# The `tidyverse`
 
 ![](images/tidyverse-logo.png){fig-align="center" height="200"}
 
@@ -155,7 +156,7 @@ Beware of dependencies.
 
 ![](images/pipe.png){fig-align="center" height="150"}
 
-## Community {.smaller}
+## Community
 
 ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/e4a11b1f-f235-461f-ab73-ce6128c59e49_rw_1920.png?h=a34a4173c717bfbc600a8682d419288e){fig-align="center" height="500"}
 
@@ -163,7 +164,7 @@ Beware of dependencies.
 "[Artwork by \@allison_horst.](https://allisonhorst.com)"
 :::
 
-## `tidyverse` packages {.smaller}
+## `tidyverse` packages
 
 ![](images/tidyverse.png){fig-align="center" height="400"}
 
@@ -171,7 +172,7 @@ Beware of dependencies.
 Source: [RStudio Education](https://education.rstudio.com)
 :::
 
-## `dplyr` functions {.smaller}
+## `dplyr` functions
 
 -   `mutate()` create variables (columns)
 -   `select()` subset variables
@@ -189,15 +190,15 @@ Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 
 ## Reading data into R
 
-![](images/rstudio-import-1.png){fig-align="center" height="350"}
+![](images/rstudio-import-1.png){fig-align="center" height="500"}
 
 ## Reading data into R
 
-![](images/rstudio-import-2.png){fig-align="center" height="350"}
+![](images/rstudio-import-2.png){fig-align="center" height="500"}
 
 ## Reading data into R
 
-![](images/rstudio-import-3.png){fig-align="center" height="350"}
+![](images/rstudio-import-3.png){fig-align="center" height="500"}
 
 # Intro to `dplyr`
 
@@ -219,7 +220,7 @@ To run the code for this workshop, simply click on the row with your code, or se
 If you ever want to clear out your results and start fresh, go to *Session ➔ Restart R*
 :::
 
-## Examine the data {.smaller}
+## Examine the data
 
 ::: callout-note
 `r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Setup**
@@ -261,7 +262,7 @@ Sometimes it is nice to remind yourself of the names of your columns, or to be a
 colnames(penguins)
 ```
 
-## Examining the data with `dplyr` {.smaller}
+## Examining the data with `dplyr`
 
 `dplyr` also offers a function to view the data that is a little easier to use in the console.
 
@@ -295,7 +296,7 @@ To specify a column in the data, simply insert a `$` after the name of the data 
 unique(penguins$species)
 ```
 
-## How many are `male`? {.smaller}
+## How many are `male`?
 
 ::: callout-note
 `r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Intro to dplyr**
@@ -321,7 +322,7 @@ Why don't we have any results?
 
 </div>
 
-## How many are `male` on `Biscoe` island? {.smaller .hscroll .scrollable}
+## How many are `male` on `Biscoe` island? {.hscroll .scrollable}
 
 -   R is case sensitive
 
@@ -333,7 +334,7 @@ Why don't we have any results?
 filter(penguins, sex == "male", island == "Biscoe")
 ```
 
-## Piping functions {.smaller}
+## Piping functions
 
 -   `CTRL or Command` + `Shift` + `M`
 
@@ -378,7 +379,7 @@ penguins |>
   filter(!is.na(flipper_length_mm))
 ```
 
-## Making new variables {.smaller}
+## Making new variables
 
 Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long".
 

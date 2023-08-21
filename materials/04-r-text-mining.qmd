@@ -17,6 +17,7 @@ format:
       data-background-image: "/materials/slide templates/Slide1.png"
       data-background-size: contain
       data-background-opacity: "1"
+      smaller: true
 editor: visual
 ---
 
