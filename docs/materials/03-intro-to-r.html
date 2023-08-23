@@ -489,7 +489,7 @@
 <p><a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/</a></p>
 <div id="qrcode" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","width":128,"colorDark":"#000000","height":128,"text":"https://posit.cloud/"});
+var qrcode = new QRCode("qrcode", {"text":"https://posit.cloud/","colorLight":"#ffffff","colorDark":"#000000","width":128,"height":128});
 </script>
     
 </section></section>
@@ -716,8 +716,7 @@ var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","width":128,"colorDark
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="examine-the-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
@@ -736,12 +735,9 @@ var qrcode = new QRCode("qrcode", {"colorLight":"#ffffff","width":128,"colorDark
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="fu">head</span>(palmerpenguins<span class="sc">::</span>penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">head</span>(palmerpenguins<span class="sc">::</span>penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -798,15 +794,33 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <li><p><code>view</code> will open the data in a new tab, similar to Excel</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">str</span>(penguins)</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">view</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">str</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+ $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+ $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+ $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="other-ways-to-view-the-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Other ways to view the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">view</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="what-species-are-in-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>What <code>species</code> are in the data?</h2>
 <p>To specify a column in the data, simply insert a <code>$</code> after the name of the data (i.e.&nbsp;<code>data$column</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">unique</span>(penguins<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">unique</span>(penguins<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -815,7 +829,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 </div>
 </section>
-<section id="how-many-are-male" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="how-many-are-male" class="slide level2 scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>How many are <code>male</code>?</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -831,7 +845,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -856,7 +870,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <section id="how-many-are-male-on-biscoe-island" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>How many are <code>male</code> on <code>Biscoe</code> island?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>, island <span class="sc">==</span> <span class="st">"biscoe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>, island <span class="sc">==</span> <span class="st">"biscoe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -866,9 +880,6 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 #   year &lt;int&gt;</code></pre>
 </div>
 </div>
-<div>
-<p>Why don’t we have any results?</p>
-</div>
 </section>
 <section id="how-many-are-male-on-biscoe-island-1" class="slide level2 hscroll scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>How many are <code>male</code> on <code>Biscoe</code> island?</h2>
@@ -877,7 +888,15 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <li><p>When in doubt, check spelling and punctuation</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>, island <span class="sc">==</span> <span class="st">"Biscoe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>, island <span class="sc">==</span> <span class="st">"Biscoe"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-12">In this case, we didn’t originally capitalize the “B” in Biscoe.</span>
+</dd>
+</dl>
+</div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -915,10 +934,10 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <section id="piping-functions-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Piping functions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"female"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">arrange</span>(flipper_length_mm) <span class="sc">|&gt;</span> </span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"female"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">arrange</span>(flipper_length_mm) <span class="sc">|&gt;</span> </span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -940,43 +959,42 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <ul>
 <li>Using Boolean operators</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Greater than</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>)</span>
-<span id="cb21-4"><a href="#cb21-4"></a></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="co"># Greater than or equal to</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb21-7"><a href="#cb21-7"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;=</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Greater than</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="co"># Greater than or equal to</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;=</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="other-ways-to-filter-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Other ways to filter</h2>
 <ul>
 <li>By missing values</li>
 </ul>
-<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a><span class="co"># Flipper length is missing/blank</span></span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(flipper_length_mm))</span>
-<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4"></a></span>
-<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a><span class="co"># Flipper length is NOT missing/blank</span></span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>penguins <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-7" class="code-annotation-target"><a href="#annotated-cell-14-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(flipper_length_mm))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1"></a><span class="co"># Flipper length is missing/blank</span></span>
+<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(flipper_length_mm))</span>
+<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4"></a></span>
+<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5"></a><span class="co"># Flipper length is NOT missing/blank</span></span>
+<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6"></a>penguins <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(flipper_length_mm))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-14" data-code-lines="7"><code>!</code> means “not”</span>
+<span data-code-lines="7" data-code-annotation="1" data-code-cell="annotated-cell-15"><code>!</code> means “not”</span>
 </dd>
 </dl>
 </section>
 <section id="making-new-variables" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
-<p>Now let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.</p>
 
-<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="making-new-variables-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
 <p>Now let’s make a new variable based on flipper length that groups them into buckets of “short”, “average”, and “long”.</p>
 
-<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<img data-src="03-intro-to-r_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="making-new-variables-2" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Making new variables</h2>
 <p>We’ll use the following as our cutoffs:</p>
@@ -1007,18 +1025,18 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2>Making new variables</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>flippers <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">mutate</span>(<span class="at">flipper_length =</span> <span class="fu">case_when</span>(</span>
-<span id="cb22-3"><a href="#cb22-3"></a>    flipper_length_mm <span class="sc">&lt;</span> <span class="dv">190</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
-<span id="cb22-4"><a href="#cb22-4"></a>    flipper_length_mm <span class="sc">&gt;=</span> <span class="dv">190</span> <span class="sc">&amp;</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>      flipper_length_mm <span class="sc">&lt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"average"</span>,</span>
-<span id="cb22-6"><a href="#cb22-6"></a>    flipper_length_mm <span class="sc">&gt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"long"</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>  ))</span>
-<span id="cb22-8"><a href="#cb22-8"></a></span>
-<span id="cb22-9"><a href="#cb22-9"></a>flippers <span class="sc">|&gt;</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">select</span>(flipper_length_mm, </span>
-<span id="cb22-11"><a href="#cb22-11"></a>         flipper_length) <span class="sc">|&gt;</span></span>
-<span id="cb22-12"><a href="#cb22-12"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>flippers <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">mutate</span>(<span class="at">flipper_length =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-3"><a href="#cb23-3"></a>    flipper_length_mm <span class="sc">&lt;</span> <span class="dv">190</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4"></a>    flipper_length_mm <span class="sc">&gt;=</span> <span class="dv">190</span> <span class="sc">&amp;</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>      flipper_length_mm <span class="sc">&lt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"average"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    flipper_length_mm <span class="sc">&gt;</span> <span class="dv">213</span> <span class="sc">~</span> <span class="st">"long"</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>  ))</span>
+<span id="cb23-8"><a href="#cb23-8"></a></span>
+<span id="cb23-9"><a href="#cb23-9"></a>flippers <span class="sc">|&gt;</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a>  <span class="fu">select</span>(flipper_length_mm, </span>
+<span id="cb23-11"><a href="#cb23-11"></a>         flipper_length) <span class="sc">|&gt;</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -1038,8 +1056,8 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2>Summarize the data</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>flippers <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">count</span>(flipper_length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>flippers <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">count</span>(flipper_length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
@@ -1057,10 +1075,10 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2>Summarize the data</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> </span>
-<span id="cb26-4"><a href="#cb26-4"></a>              <span class="fu">mean</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> </span>
+<span id="cb27-4"><a href="#cb27-4"></a>              <span class="fu">mean</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
@@ -1077,12 +1095,20 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <h2>Summarize the data</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> </span>
-<span id="cb28-4"><a href="#cb28-4"></a>              <span class="fu">mean</span>(flipper_length_mm, </span>
-<span id="cb28-5"><a href="#cb28-5"></a>                   <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_flipper_length =</span> </span>
+<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4"></a>              <span class="fu">mean</span>(flipper_length_mm, </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-5" class="code-annotation-target"><a href="#annotated-cell-19-5"></a>                   <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="5" data-code-annotation="1" data-code-cell="annotated-cell-19">By default, <code>summarise</code> includes all records, regardless of whether they have a value or not. We need to explicitly tell R to exclude them.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species   avg_flipper_length
@@ -1123,7 +1149,10 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <div class="cell fragment">
 
 </div>
-</section>
+
+<aside><div>
+<p><code>The code to load the CSV is included for reference, but will not be used in this workshop.</code></p>
+</div></aside></section>
 <section id="str" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2><code>str</code></h2>
 <p>Look at the structure of the data using base R.</p>

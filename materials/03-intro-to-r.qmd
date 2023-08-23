@@ -226,6 +226,10 @@ If you ever want to clear out your results and start fresh, go to *Session ➔ R
 
 library(tidyverse)
 library(palmerpenguins)
+```
+
+```{r}
+#| echo: false
 library(kableExtra)
 ```
 
@@ -237,10 +241,7 @@ library(kableExtra)
 
 ```{r}
 #| echo: true
-# Load libraries
 #| output-location: fragment
-library(tidyverse)
-library(palmerpenguins)
 
 head(palmerpenguins::penguins)
 ```
@@ -273,9 +274,17 @@ glimpse(penguins)
 
 ```{r}
 #| echo: true
-#| eval: false
+#| output-location: fragment
 
 str(penguins)
+```
+
+## Other ways to view the data
+
+```{r}
+#| echo: true
+#| eval: false
+
 view(penguins)
 ```
 
@@ -289,7 +298,7 @@ To specify a column in the data, simply insert a `$` after the name of the data 
 unique(penguins$species)
 ```
 
-## How many are `male`?
+## How many are `male`? {.scrollable}
 
 ::: callout-note
 `r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Intro to dplyr**
@@ -309,12 +318,6 @@ filter(penguins, sex == "male")
 filter(penguins, sex == "male", island == "biscoe")
 ```
 
-<div>
-
-Why don't we have any results?
-
-</div>
-
 ## How many are `male` on `Biscoe` island? {.hscroll .scrollable}
 
 -   R is case sensitive
@@ -324,8 +327,10 @@ Why don't we have any results?
 ```{r}
 #| echo: true
 #| output-location: fragment
-filter(penguins, sex == "male", island == "Biscoe")
+filter(penguins, sex == "male", island == "Biscoe")  # <1> 
 ```
+
+1.  In this case, we didn't originally capitalize the "B" in Biscoe.
 
 ## Piping functions
 
@@ -378,14 +383,15 @@ penguins |>
 
 ## Making new variables
 
-Now let's make a new variable based on flipper length that groups them into buckets of "short", "average", and "long".
-
 ```{r}
 #| echo: false
 #| output-location: slide
 penguins |>
   ggplot(aes(flipper_length_mm)) +
   geom_boxplot(color = "black") +
+  labs(title = "Flipper Length (mm)",
+       x = "",
+       y = "") +
   theme_minimal()
 ```
 
@@ -478,8 +484,10 @@ penguins |>
   group_by(species) |> 
   summarise(avg_flipper_length = 
               mean(flipper_length_mm, 
-                   na.rm = TRUE))
+                   na.rm = TRUE))  # <1>
 ```
+
+1.  By default, `summarise` includes all records, regardless of whether they have a value or not. We need to explicitly tell R to exclude them.
 
 # Examining Disney Reviews
 
@@ -510,6 +518,10 @@ library(tidyverse)
 # df <- read_csv("DisneylandReviews.csv")
 load("workshop_data.RData")
 ```
+
+::: aside
+`The code to load the CSV is included for reference, but will not be used in this workshop.`
+:::
 
 ## `str`
 
