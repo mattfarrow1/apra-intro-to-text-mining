@@ -27,7 +27,7 @@ editor: visual
 
 `r fontawesome::fa("laptop-code", "black")` Open `04-intro-to-r/01-ggplot2.R` in RStudio if you'd like to follow along.
 
-::: {.callout-tip}
+::: callout-tip
 Before we get started, it's a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)
 :::
 
@@ -133,7 +133,7 @@ ggplot(df, aes(Rating,
     fill = "Park"
   ) +
   scale_fill_brewer(palette = 3) +
-  theme_gray() +
+  theme_bw() +
   theme(legend.position = "bottom")
 ```
 
@@ -160,8 +160,29 @@ ratings_by_year <- df |>
   count(Year) |> 
   rename(Ratings = n)
 
-gt(ratings_by_year)
+ratings_by_year
 ```
+
+## Reviews by year (an aside)
+
+```{r}
+#| label: pivot-wider
+#| echo: false
+#| eval: false
+#| output-location: column-fragment
+
+df |> 
+  mutate(Year = year(Year_Month),
+         Month = month(Year_Month)) |> 
+  group_by(Park) |> 
+  count(Year) |> 
+  rename(Ratings = n) |> 
+  pivot_wider(names_from = Park,
+              values_from = Ratings) |> 
+  arrange(desc(Year))
+```
+
+`r flipbookr:::chunq_reveal("pivot-wider", title = "Reviews by year (an aside)", lcolw = "40", rcolw = "60", smallcode = TRUE)`
 
 ## Reviews by year
 
@@ -247,8 +268,7 @@ gt(sample)
 
 sample |>
   unnest_tokens(word, text) |> 
-  head(n = 10) |> 
-  gt()
+  head(n = 10)
 ```
 
 ## Advantages of `unnest_tokens`
@@ -394,9 +414,11 @@ tidy_reviews |>
                  colors=brewer.pal(8, "Dark2")))
 ```
 
-1. The `%in%` syntax allows you to look for a match inside a vector or column.
+1.  The `%in%` syntax allows you to look for a match inside a vector or column.
 
 # N-Grams {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+
+## What are n-grams?
 
 -   A continuous sequence of `n` words
 -   Can be used 'as is', or run through a stemmer to get morphemes
@@ -529,24 +551,6 @@ freq_by_rank <- review_words |>
 gt(head(freq_by_rank))
 ```
 
-## Plot TF-IDF
-
-```{r}
-#| echo: true
-#| output-location: column-fragment
-
-freq_by_rank |> 
-  ggplot(aes(rank, 
-             `term frequency`, 
-             color = Park)) + 
-  geom_line(size = 1.1, 
-            alpha = 0.8, 
-            show.legend = FALSE) + 
-  scale_x_log10() +
-  scale_y_log10() +
-  theme_minimal()
-```
-
 ## Bigram TF-IDF
 
 ```{r}
@@ -557,69 +561,116 @@ tidy_bigrams |>
   count(Park, bigram) |> 
   bind_tf_idf(bigram, Park, n) |> 
   arrange(desc(tf_idf)) |> 
+  head() |> 
   gt()
 ```
 
 # Sentiment analysis {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
 
-## Sentiment analysis
+## Libraries
 
-An introduction using the 'joy' sentiment.
+-   AFINN
+-   bing
+-   loughran
+-   nrc
+-   SentiWordNet
+-   WordNet
+
+## AFINN
 
 ```{r}
 #| echo: true
-#| output-location: column-fragment
-
-# Get 'joy' sentiment
-nrc_joy <- tidytext::get_sentiments("nrc")
-nrc_joy <- nrc_joy |> 
-  filter(sentiment == "joy")
-
-gt(head(nrc_joy))
+#| output-location: fragment
+get_sentiments(lexicon = "afinn") |> 
+  sample_n(10)
 ```
 
-## Sentiment Analysis
+## AFINN example
 
 ```{r}
-#| echo: true
+#| label: afinn-example
+#| echo: false
+#| eval: false
 #| output-location: column-fragment
+#| code-line-numbers: true
 
-# Most common 'joy' words in the reviews
 tidy_reviews |>
-  inner_join(nrc_joy) |>
-  count(word, sort = TRUE) |> 
-  head() |> 
-  gt()
+  group_by(Park, linenumber) |>
+  inner_join(get_sentiments("afinn")) |>
+  summarise(value = sum(value)) |> 
+  ungroup() |> 
+  ggplot(aes(linenumber, value, fill = Park)) +
+  geom_bar(alpha = 0.5, stat = "identity", show.legend = FALSE) +
+  facet_wrap(~Park, ncol = 1, scales = "free_x")
 ```
 
-## Sentiment Analysis
+`r flipbookr:::chunq_reveal("afinn-example", title = "AFINN example", lcolw = "40", rcolw = "60", smallcode = TRUE)`
+
+## bing
 
 ```{r}
 #| echo: true
-#| output-location: column-fragment
+#| output-location: fragment
 
-tidy_reviews_sentiment <- tidy_reviews |>
+get_sentiments(lexicon = "bing") |> 
+  sample_n(10)
+```
+
+## bing example
+
+```{r}
+#| label: bing-example
+#| echo: false
+#| eval: false
+#| output-location: column-fragment
+#| code-line-numbers: true
+
+tidy_reviews |>
+  group_by(Park) |>
   inner_join(get_sentiments("bing")) |>
-  count(Park, 
-        index = linenumber %/% 80, 
-        sentiment) |>
-  pivot_wider(names_from = sentiment, 
-              values_from = n, 
-              values_fill = 0) |>
-  mutate(sentiment = positive - negative)
-
-gt(head(tidy_reviews_sentiment))
+  count(Park, index = linenumber, sentiment) |>
+  ungroup() |>
+  pivot_wider(
+    names_from = sentiment,
+    values_from = n,
+    values_fill = 0
+  ) |>
+  mutate(sentiment = positive - negative) |>
+  ggplot(aes(index, sentiment, fill = Park)) +
+  geom_bar(alpha = 0.5, stat = "identity", show.legend = FALSE) +
+  facet_wrap(~Park, ncol = 1, scales = "free_x")
 ```
 
-## Sentiment Analysis
+`r flipbookr:::chunq_reveal("bing-example", title = "bing example", lcolw = "40", rcolw = "60", smallcode = TRUE)`
+
+## nrc
 
 ```{r}
 #| echo: true
-#| output-location: column-fragment
+#| output-location: fragment
 
-ggplot(tidy_reviews_sentiment, aes(index, sentiment, fill = Park)) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~ Park, ncol = 1, scales = "free_x") +
-  labs(title = "Sentiment Analysis by Park") +
-  theme_minimal()
+get_sentiments(lexicon = "nrc") |> 
+  sample_n(10)
 ```
+
+## nrc example
+
+```{r}
+#| label: nrc-example
+#| echo: false
+#| eval: false
+#| output-location: column-fragment
+#| code-line-numbers: true
+
+tidy_reviews |>
+  right_join(get_sentiments("nrc"), 
+             relationship = "many-to-many") |>
+  filter(!is.na(sentiment)) |> 
+  count(sentiment, sort = TRUE)
+```
+
+`r flipbookr:::chunq_reveal("nrc-example", title = "nrc example", lcolw = "40", rcolw = "60", smallcode = TRUE)` \`\`\`
+
+## Questions?
+
+![Source: giphy](https://i.giphy.com/media/ePsV4lBfsrPmo/giphy.webp){fig-align="center"}
