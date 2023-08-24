@@ -179,3 +179,15 @@ An algorithm that reduces the dimensionality of the vector space in order to und
 -   **Syntactic Analysis**: concerned with processing the grammar of written words.
 -   **Semantic Analysis**: builds on lexical and syntactic analyses in order to understand the meanings of words.
 -   **Discourse Analysis**: Understanding inferences in language is the domain of discourse analysis.
+
+## Text Mining with R
+
+Much of what we cover today follows the structure of *Text Mining with R*, a wonderful resource by Julia Silge & David Robinson.
+
+![](https://www.tidytextmining.com/images/cover.png){fig-align="center" width="267"}
+
+## Questions?
+
+![Source: giphy](https://media0.giphy.com/media/MczBJsrJEobOfXSK1l/giphy.gif?cid=ecf05e476z5djryznjsgecwwt4nxocslnz5as108i45yjzri&ep=v1_gifs_search&rid=giphy.gif&ct=g){fig-align="center" width="360"}
+
+# On to R!
