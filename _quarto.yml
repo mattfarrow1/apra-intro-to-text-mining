@@ -34,8 +34,6 @@ website:
             text: "Learning More"
       - href: schedule.qmd
         text: "Schedule"
-      - href: workshop-materials.qmd
-        text: "Workshop"
       - href: resources.qmd
         text: "Resources"
     right: 
