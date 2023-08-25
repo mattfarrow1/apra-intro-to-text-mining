@@ -489,7 +489,7 @@
 <p><a href="https://posit.cloud/content/6215314" class="uri">https://posit.cloud/</a></p>
 <div id="qrcode" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"text":"https://posit.cloud/","colorLight":"#ffffff","colorDark":"#000000","width":128,"height":128});
+var qrcode = new QRCode("qrcode", {"width":128,"height":128,"text":"https://posit.cloud/","colorDark":"#000000","colorLight":"#ffffff"});
 </script>
     
 </section></section>
@@ -682,7 +682,7 @@ var qrcode = new QRCode("qrcode", {"text":"https://posit.cloud/","colorLight":"#
 </section>
 <section id="open-the-file" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Open the file</h2>
-<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>03-intro-to-r/01-intro.R</code> in RStudio</p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>intro.R</code> in RStudio</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://allisonhorst.github.io/palmerpenguins/logo.png" height="350"></p>
@@ -698,42 +698,26 @@ var qrcode = new QRCode("qrcode", {"text":"https://posit.cloud/","colorLight":"#
 
 <aside><div>
 <p>If you ever want to clear out your results and start fresh, go to <em>Session ➔ Restart R</em></p>
-</div></aside></section>
-<section id="examine-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
-<h2>Examine the data</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z"></path></svg> &nbsp;&nbsp;Code begins in the section labeled <strong>Setup</strong></p>
-</div>
-</div>
-</div>
+</div></aside></section></section>
+<section>
+<section id="code-section" class="title-slide slide level1 center" data-background-image="../materials/slide templates/Slide5.png" data-background-size="contain">
+<h1>Code Section</h1>
+<p>➜ <code>Setup</code></p>
+</section>
+<section id="setup" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Setup</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section></section>
+<section>
+<section id="code-section-1" class="title-slide slide level1 center" data-background-image="../materials/slide templates/Slide5.png" data-background-size="contain">
+<h1>Code Section</h1>
+<p>➜ <code>Examine the Data</code></p>
 </section>
-<section id="examine-the-data-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="examine-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Examine the data</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z"></path></svg> &nbsp;&nbsp;Code begins in the section labeled <strong>Examine the Data</strong></p>
-</div>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">head</span>(palmerpenguins<span class="sc">::</span>penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -828,22 +812,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 </div>
+</section></section>
+<section>
+<section id="code-section-2" class="title-slide slide level1 center" data-background-image="../materials/slide templates/Slide5.png" data-background-size="contain">
+<h1>Code Section</h1>
+<p>➜ <code>Intro to dplyr</code></p>
 </section>
 <section id="how-many-are-male" class="slide level2 scrollable" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>How many are <code>male</code>?</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z"></path></svg> &nbsp;&nbsp;Code begins in the section labeled <strong>Intro to dplyr</strong></p>
-</div>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">filter</span>(penguins, sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -893,7 +869,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-12">In this case, we didn’t originally capitalize the “B” in Biscoe.</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-12" data-code-annotation="1">In this case, we didn’t originally capitalize the “B” in Biscoe.</span>
 </dd>
 </dl>
 </div>
@@ -961,7 +937,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </ul>
 <div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Greater than</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&lt;</span> <span class="dv">40</span>)</span>
 <span id="cb22-4"><a href="#cb22-4"></a></span>
 <span id="cb22-5"><a href="#cb22-5"></a><span class="co"># Greater than or equal to</span></span>
 <span id="cb22-6"><a href="#cb22-6"></a>penguins <span class="sc">|&gt;</span> </span>
@@ -982,7 +958,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="7" data-code-annotation="1" data-code-cell="annotated-cell-15"><code>!</code> means “not”</span>
+<span data-code-lines="7" data-code-cell="annotated-cell-15" data-code-annotation="1"><code>!</code> means “not”</span>
 </dd>
 </dl>
 </section>
@@ -1105,7 +1081,7 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="5" data-code-annotation="1" data-code-cell="annotated-cell-19">By default, <code>summarise</code> includes all records, regardless of whether they have a value or not. We need to explicitly tell R to exclude them.</span>
+<span data-code-lines="5" data-code-cell="annotated-cell-19" data-code-annotation="1">By default, <code>summarise</code> includes all records, regardless of whether they have a value or not. We need to explicitly tell R to exclude them.</span>
 </dd>
 </dl>
 </div>
@@ -1134,7 +1110,12 @@ Levels: Adelie Chinstrap Gentoo</code></pre>
 </figure>
 </div>
 <p>Source: <a href="https://www.kaggle.com/datasets/arushchillar/disneyland-reviews">Kaggle</a></p>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Downsampled to 1,000 for this workshop</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Downsampled to 1,000 for this workshop</p></li></ol></aside></section></section>
+<section>
+<section id="code-section-3" class="title-slide slide level1 center" data-background-image="../materials/slide templates/Slide5.png" data-background-size="contain">
+<h1>Code Section</h1>
+<p>➜ <code>Our Data</code></p>
+</section>
 <section id="read-the-data" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Read the data</h2>
 <p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Open <code>03-intro-to-r/02-our-data.R</code> in RStudio if you’d like to follow along.</p>

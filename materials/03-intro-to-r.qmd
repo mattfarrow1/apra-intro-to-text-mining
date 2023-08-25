@@ -197,7 +197,7 @@ Source: [dplyr base R](https://dplyr.tidyverse.org/articles/base.html)
 
 ## Open the file
 
-`r fontawesome::fa("laptop-code", "black")` Open `03-intro-to-r/01-intro.R` in RStudio
+`r fontawesome::fa("laptop-code", "blue")` Open `intro.R` in RStudio
 
 ![](https://allisonhorst.github.io/palmerpenguins/logo.png){fig-align="center" height="350"}
 
@@ -213,11 +213,11 @@ To run the code for this workshop, simply click on the row with your code, or se
 If you ever want to clear out your results and start fresh, go to *Session ➔ Restart R*
 :::
 
-## Examine the data
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
 
-::: callout-note
-`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Setup**
-:::
+➜ `Setup`
+
+## Setup
 
 ```{r}
 #| echo: true
@@ -233,11 +233,11 @@ library(palmerpenguins)
 library(kableExtra)
 ```
 
-## Examine the data
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
 
-::: callout-note
-`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Examine the Data**
-:::
+➜ `Examine the Data`
+
+## Examine the data
 
 ```{r}
 #| echo: true
@@ -298,11 +298,11 @@ To specify a column in the data, simply insert a `$` after the name of the data 
 unique(penguins$species)
 ```
 
-## How many are `male`? {.scrollable}
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
 
-::: callout-note
-`r fontawesome::fa("location-pin", "red")`   Code begins in the section labeled **Intro to dplyr**
-:::
+➜ `Intro to dplyr`
+
+## How many are `male`? {.scrollable}
 
 ```{r}
 #| echo: true
@@ -358,7 +358,7 @@ penguins |>
 ``` r
 # Greater than
 penguins |> 
-  filter(bill_length_mm > 40)
+  filter(bill_length_mm < 40)
 
 # Greater than or equal to
 penguins |> 
@@ -500,6 +500,10 @@ penguins |>
 ![](images/disney-logo.png){fig-align="center" height="200"}
 
 Source: [Kaggle](https://www.kaggle.com/datasets/arushchillar/disneyland-reviews)
+
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `Our Data`
 
 ## Read the data
 

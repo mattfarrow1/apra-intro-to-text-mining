@@ -25,13 +25,17 @@ editor: visual
 
 ## Setup
 
-`r fontawesome::fa("laptop-code", "black")` Open `04-intro-to-r/01-ggplot2.R` in RStudio if you'd like to follow along.
+`r fontawesome::fa("laptop-code", "black")` Open `text-mining.R` in RStudio to follow along.
+
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `Setup`
+
+## Setup
 
 ::: callout-tip
 Before we get started, it's a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)
 :::
-
-## Setup
 
 ```{r}
 #| echo: true
@@ -59,7 +63,6 @@ library(tidytext)
 library(wordcloud)
 library(here)
 library(flipbookr)
-library(gt)
 ```
 
 ## Load the data
@@ -78,7 +81,9 @@ df <- df |>
   rename("Park" = Branch)
 ```
 
-# Visualize the Data {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `Visualize the Data`
 
 ## Why Visualize?
 
@@ -226,7 +231,9 @@ ggplot(
 
 `r flipbookr:::chunq_reveal("reviews-by-year", title = "Reviews by year", lcolw = "40", rcolw = "60", smallcode = TRUE)`
 
-# Sample the data {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `Sample the Data`
 
 ## Look at one review
 
@@ -249,7 +256,8 @@ sample <- tibble(
   line = 1,
   text = df$Review_Text[11]
 )
-gt(sample)
+
+sample
 ```
 
 ::: aside
@@ -277,7 +285,9 @@ sample |>
 -   takes care of converting to lowercase
 -   removes punctuation
 
-# Process the data {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `Process the Data`
 
 ## Number each review
 
@@ -298,7 +308,7 @@ reviews <- df |>
     linenumber
   )
 
-gt::gt(head(reviews, n = 3))
+head(reviews, n = 3)
 ```
 
 ## Unnest Tokens
@@ -311,7 +321,7 @@ gt::gt(head(reviews, n = 3))
 tidy_reviews <- reviews |> 
   unnest_tokens(word, text)
 
-gt(head(tidy_reviews))
+head(tidy_reviews)
 ```
 
 ## Stop Words
@@ -320,7 +330,7 @@ gt(head(tidy_reviews))
 #| echo: true
 #| output-location: column-fragment
 
-gt(head(stop_words))
+head(stop_words)
 ```
 
 ## `anti_join`
@@ -343,7 +353,7 @@ gt(head(stop_words))
 tidy_reviews <- tidy_reviews |>
   anti_join(stop_words)
 
-gt(head(tidy_reviews))
+head(tidy_reviews)
 ```
 
 ## Create Word Counts
@@ -355,11 +365,12 @@ gt(head(tidy_reviews))
 # Perform word count
 tidy_reviews |> 
   count(word, sort = TRUE) |> 
-  head() |> 
-  gt()
+  head()
 ```
 
-# Word Clouds {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `Word Clouds`
 
 ## Create a word cloud
 
@@ -368,8 +379,6 @@ tidy_reviews |>
 #| warning: false
 #| message: false
 #| output-location: slide
-
-set.seed(1234)
 
 tidy_reviews |>
   count(word) |>
@@ -416,7 +425,9 @@ tidy_reviews |>
 
 1.  The `%in%` syntax allows you to look for a match inside a vector or column.
 
-# N-Grams {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `N-Grams`
 
 ## What are n-grams?
 
@@ -438,7 +449,7 @@ tidy_bigrams <- reviews |>
                 n = 2) |> 
   filter(!is.na(bigram))
 
-gt(head(tidy_bigrams))
+head(tidy_bigrams)
 ```
 
 ## Separate words
@@ -454,7 +465,7 @@ tidy_bigrams <- tidy_bigrams |>
              "word2"), 
            sep = " ")
 
-gt(head(tidy_bigrams))
+head(tidy_bigrams)
 ```
 
 ## Remove stop words
@@ -468,7 +479,17 @@ tidy_bigrams <- tidy_bigrams |>
   filter(!word1 %in% stop_words$word) |>
   filter(!word2 %in% stop_words$word)
 
-gt(head(tidy_bigrams))
+head(tidy_bigrams)
+```
+
+## Most frequent terms
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+
+tidy_bigrams |> 
+  count(word1, word2, sort = TRUE)
 ```
 
 ## Reunite terms
@@ -481,7 +502,7 @@ gt(head(tidy_bigrams))
 tidy_bigrams <- tidy_bigrams |>
   unite(bigram, word1, word2, sep = " ")
 
-gt(head(tidy_bigrams))
+head(tidy_bigrams)
 ```
 
 ## Look at top bigrams by park
@@ -494,80 +515,112 @@ tidy_bigrams |>
   group_by(Park) |> 
   count(bigram) |> 
   arrange(desc(n)) |> 
-  head() |> 
-  gt()
+  head()
 ```
 
-# Word Frequencies {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
 
-## Total Words per Review
+➜ `Word Frequencies`
+
+## Most common words by park
 
 ```{r}
 #| echo: true
 #| output-location: column-fragment
 
-review_words <- tidy_reviews %>%
+review_words <- reviews |> 
+  unnest_tokens(word, text) |> 
   count(Park, word, sort = TRUE)
 
-total_words <- review_words %>% 
-  group_by(Park) %>% 
-  summarize(total = sum(n))
-
-review_words <- left_join(review_words, total_words)
-
-gt(head(review_words))
+head(review_words)
 ```
 
-## Review length by park
-
-```{r}
-#| echo: true
-#| message: false
-#| warning: false
-#| output-location: slide
-
-ggplot(review_words, 
-       aes(n/total, 
-           fill = Park)) +
-  geom_histogram(show.legend = FALSE) +
-  xlim(NA, 0.001) +
-  facet_wrap(~ Park, 
-             ncol = 1, 
-             scales = "free_y") +
-  theme_minimal()
-```
-
-## TF-IDF
+## Total words per park
 
 ```{r}
 #| echo: true
 #| output-location: column-fragment
+
+total_words <- review_words |> 
+  group_by(Park) |> 
+  summarize(Total = sum(n))
+
+total_words
+```
+
+## Join the data together
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+
+review_words <- left_join(review_words, 
+                          total_words)
+
+head(review_words)
+```
+
+## Calculate term frequency
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+
 freq_by_rank <- review_words |> 
   group_by(Park) |> 
-  mutate(rank = row_number(), 
-         `term frequency` = n/total) |> 
+  mutate(rank = row_number(),
+         freq = n/Total) |> 
   ungroup()
 
-gt(head(freq_by_rank))
+kableExtra::kable(head(freq_by_rank))
 ```
 
-## Bigram TF-IDF
+## Calculate tf-idf
 
 ```{r}
 #| echo: true
 #| output-location: column-fragment
 
-tidy_bigrams |> 
-  count(Park, bigram) |> 
-  bind_tf_idf(bigram, Park, n) |> 
-  arrange(desc(tf_idf)) |> 
-  head() |> 
-  gt()
+review_tf_idf <- review_words |> 
+  bind_tf_idf(word, Park, n)
+
+kableExtra::kable(head(review_tf_idf))
 ```
 
-# Sentiment analysis {background-image="/materials/slide templates/Slide3.png" background-size="contain"}
+## Reviews with high tf-idf
 
-## Libraries
+```{r}
+#| echo: true
+#| output-location: column-fragment
+
+review_tf_idf |> 
+  select(-Total) |> 
+  arrange(desc(tf_idf)) |> 
+  head() |> 
+  kableExtra::kable()
+```
+
+## Visualize high tf-idf words
+
+```{r}
+#| echo: true
+#| output-location: slide
+
+review_tf_idf |> 
+  group_by(Park) |> 
+  slice_max(tf_idf, n = 10) |> 
+  ungroup() |> 
+  ggplot(aes(tf_idf, fct_reorder(word, tf_idf), fill = Park)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~Park, ncol = 1, scales = "free") +
+  labs(x = "tf-idf", y = NULL)
+```
+
+# Code Section {background-image="/materials/slide templates/Slide5.png" background-size="contain"}
+
+➜ `Sentiment Analysis`
+
+## Lexicons
 
 -   AFINN
 -   bing
@@ -580,7 +633,7 @@ tidy_bigrams |>
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 get_sentiments(lexicon = "afinn") |> 
   sample_n(10)
 ```
@@ -610,7 +663,7 @@ tidy_reviews |>
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 get_sentiments(lexicon = "bing") |> 
   sample_n(10)
@@ -647,7 +700,7 @@ tidy_reviews |>
 
 ```{r}
 #| echo: true
-#| output-location: fragment
+#| output-location: column-fragment
 
 get_sentiments(lexicon = "nrc") |> 
   sample_n(10)
@@ -669,7 +722,7 @@ tidy_reviews |>
   count(sentiment, sort = TRUE)
 ```
 
-`r flipbookr:::chunq_reveal("nrc-example", title = "nrc example", lcolw = "40", rcolw = "60", smallcode = TRUE)` \`\`\`
+`r flipbookr:::chunq_reveal("nrc-example", title = "nrc example", lcolw = "40", rcolw = "60", smallcode = TRUE)`
 
 ## Questions?
 

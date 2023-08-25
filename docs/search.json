@@ -214,7 +214,7 @@
     "href": "materials/04-r-text-mining.html#number-each-review",
     "title": "",
     "section": "Number each review",
-    "text": "Number each review\n\n\nreviews &lt;- df |&gt;\n  group_by(Park) |&gt;\n  mutate(linenumber = row_number()) |&gt;\n  ungroup() |&gt;\n  select(Park,\n    linenumber,\n    text = Review_Text\n  ) |&gt;\n  arrange(\n    Park,\n    linenumber\n  )\n\ngt::gt(head(reviews, n = 3))\n\n\n\n\n\n\n  \n    \n    \n      Park\n      linenumber\n      text\n    \n  \n  \n    California\n1\nI  ve previously been to 3 Disney Resorts. So I had my expectations sky high for the original park. And they were more than fulfilled. Even so it is a smaller park than many of its counterparts it had that magical feeling almost like you can ran into Walt itself when strolling trough main street. Reserve a day to get to know this park and some of its  can not miss  attractions like haunted mansion, pirates of the Caribbean, peter pans flight, space mountain, splash mountain and finish day with the astonishing paint the night parade.\n    California\n2\nI loved everything! :)  It's the Happiest Place on Earth, you know?\n    California\n3\nI went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)"
+    "text": "Number each review\n\n\nreviews &lt;- df |&gt;\n  group_by(Park) |&gt;\n  mutate(linenumber = row_number()) |&gt;\n  ungroup() |&gt;\n  select(Park,\n    linenumber,\n    text = Review_Text\n  ) |&gt;\n  arrange(\n    Park,\n    linenumber\n  )\n\nhead(reviews, n = 3)\n\n\n# A tibble: 3 × 3\n  Park       linenumber text                                                    \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                                                   \n1 California          1 I  ve previously been to 3 Disney Resorts. So I had my …\n2 California          2 I loved everything! :)  It's the Happiest Place on Eart…\n3 California          3 I went there with 2 daughters   1 y.o. and 4 y.o. Both …"
   },
   {
     "objectID": "materials/04-r-text-mining.html#unnest-tokens-remove-stop-words",
@@ -697,7 +697,7 @@
     "href": "materials/03-intro-to-r.html#examine-the-data",
     "title": "",
     "section": "Examine the data",
-    "text": "Examine the data\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Setup\n\n\n\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
+    "text": "Examine the data\n\nhead(palmerpenguins::penguins)\n\n\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#examine-the-data-1",
@@ -725,7 +725,7 @@
     "href": "materials/03-intro-to-r.html#how-many-are-male",
     "title": "",
     "section": "How many are male?",
-    "text": "How many are male?\n\n\n\n\n\n\nNote\n\n\n   Code begins in the section labeled Intro to dplyr\n\n\n\n\nfilter(penguins, sex == \"male\")\n\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "How many are male?\n\nfilter(penguins, sex == \"male\")\n\n\n\n# A tibble: 168 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.3          20.6               190        3650\n 3 Adelie  Torgersen           39.2          19.6               195        4675\n 4 Adelie  Torgersen           38.6          21.2               191        3800\n 5 Adelie  Torgersen           34.6          21.1               198        4400\n 6 Adelie  Torgersen           42.5          20.7               197        4500\n 7 Adelie  Torgersen           46            21.5               194        4200\n 8 Adelie  Biscoe              37.7          18.7               180        3600\n 9 Adelie  Biscoe              38.2          18.1               185        3950\n10 Adelie  Biscoe              38.8          17.2               180        3800\n# ℹ 158 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "materials/03-intro-to-r.html#how-many-are-male-on-biscoe-island",
@@ -893,14 +893,14 @@
     "href": "materials/04-r-text-mining.html#convert-it-to-a-tibble",
     "title": "",
     "section": "Convert it to a tibble",
-    "text": "Convert it to a tibble\n\n\nsample &lt;- tibble(\n  line = 1,\n  text = df$Review_Text[11]\n)\ngt(sample)\n\n\n\n\n\n\n  \n    \n    \n      line\n      text\n    \n  \n  \n    1\nI went there with 2 daughters   1 y.o. and 4 y.o. Both of them were very excited. Little one liked most of the rides (the only one she didn't like was  It's a little world . It was too long for her. Older one was super happy to see the real princesses :)\n  \n  \n  \n\n\n\n\n\n\n\nWhat is a tibble?"
+    "text": "Convert it to a tibble\n\n\nsample &lt;- tibble(\n  line = 1,\n  text = df$Review_Text[11]\n)\n\nsample\n\n\n# A tibble: 1 × 2\n   line text                                                                    \n  &lt;dbl&gt; &lt;chr&gt;                                                                   \n1     1 I went there with 2 daughters   1 y.o. and 4 y.o. Both of them were ver…\n\n\n\n\n\nWhat is a tibble?"
   },
   {
     "objectID": "materials/04-r-text-mining.html#unnest-tokens",
     "href": "materials/04-r-text-mining.html#unnest-tokens",
     "title": "",
     "section": "Unnest Tokens",
-    "text": "Unnest Tokens\n\n\n# Unnest tokens\ntidy_reviews &lt;- reviews |&gt; \n  unnest_tokens(word, text)\n\ngt(head(tidy_reviews))\n\n\n\n\n\n\n  \n    \n    \n      Park\n      linenumber\n      word\n    \n  \n  \n    California\n1\ni\n    California\n1\nve\n    California\n1\npreviously\n    California\n1\nbeen\n    California\n1\nto\n    California\n1\n3"
+    "text": "Unnest Tokens\n\n\n# Unnest tokens\ntidy_reviews &lt;- reviews |&gt; \n  unnest_tokens(word, text)\n\nhead(tidy_reviews)\n\n\n# A tibble: 6 × 3\n  Park       linenumber word      \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;     \n1 California          1 i         \n2 California          1 ve        \n3 California          1 previously\n4 California          1 been      \n5 California          1 to        \n6 California          1 3"
   },
   {
     "objectID": "materials/04-r-text-mining.html#word-count",
@@ -1201,7 +1201,7 @@
     "href": "materials/04-r-text-mining.html#stop-words",
     "title": "",
     "section": "Stop Words",
-    "text": "Stop Words\n\n\ngt(head(stop_words))\n\n\n\n\n\n\n  \n    \n    \n      word\n      lexicon\n    \n  \n  \n    a\nSMART\n    a's\nSMART\n    able\nSMART\n    about\nSMART\n    above\nSMART\n    according\nSMART"
+    "text": "Stop Words\n\n\nhead(stop_words)\n\n\n# A tibble: 6 × 2\n  word      lexicon\n  &lt;chr&gt;     &lt;chr&gt;  \n1 a         SMART  \n2 a's       SMART  \n3 able      SMART  \n4 about     SMART  \n5 above     SMART  \n6 according SMART"
   },
   {
     "objectID": "materials/04-r-text-mining.html#anti_join",
@@ -1229,7 +1229,7 @@
     "href": "materials/03-intro-to-r.html#other-ways-to-filter",
     "title": "",
     "section": "Other ways to filter",
-    "text": "Other ways to filter\n\nUsing Boolean operators\n\n# Greater than\npenguins |&gt; \n  filter(bill_length_mm &gt; 40)\n\n# Greater than or equal to\npenguins |&gt; \n  filter(bill_length_mm &gt;= 40)"
+    "text": "Other ways to filter\n\nUsing Boolean operators\n\n# Greater than\npenguins |&gt; \n  filter(bill_length_mm &lt; 40)\n\n# Greater than or equal to\npenguins |&gt; \n  filter(bill_length_mm &gt;= 40)"
   },
   {
     "objectID": "materials/03-intro-to-r.html#other-ways-to-filter-1",
@@ -1509,7 +1509,7 @@
     "href": "materials/04-r-text-mining.html#remove-stop-words",
     "title": "",
     "section": "Remove stop words",
-    "text": "Remove stop words\n\n\n# Unnest tokens and remove stop words\ntidy_reviews &lt;- tidy_reviews |&gt;\n  anti_join(stop_words)\n\ngt(head(tidy_reviews))\n\n\n\n\n\n\n  \n    \n    \n      Park\n      linenumber\n      word\n    \n  \n  \n    California\n1\nve\n    California\n1\npreviously\n    California\n1\n3\n    California\n1\ndisney\n    California\n1\nresorts\n    California\n1\nexpectations"
+    "text": "Remove stop words\n\n\n# Unnest tokens and remove stop words\ntidy_reviews &lt;- tidy_reviews |&gt;\n  anti_join(stop_words)\n\nhead(tidy_reviews)\n\n\n# A tibble: 6 × 3\n  Park       linenumber word        \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;       \n1 California          1 ve          \n2 California          1 previously  \n3 California          1 3           \n4 California          1 disney      \n5 California          1 resorts     \n6 California          1 expectations"
   },
   {
     "objectID": "materials/04-r-text-mining.html#word-clouds-output",
@@ -1698,35 +1698,35 @@
     "href": "materials/04-r-text-mining.html#create-word-counts",
     "title": "",
     "section": "Create Word Counts",
-    "text": "Create Word Counts\n\n\n# Perform word count\ntidy_reviews |&gt; \n  count(word, sort = TRUE) |&gt; \n  head() |&gt; \n  gt()\n\n\n\n\n\n\n  \n    \n    \n      word\n      n\n    \n  \n  \n    park\n989\n    disney\n844\n    rides\n808\n    disneyland\n681\n    time\n633\n    day\n608"
+    "text": "Create Word Counts\n\n\n# Perform word count\ntidy_reviews |&gt; \n  count(word, sort = TRUE) |&gt; \n  head()\n\n\n# A tibble: 6 × 2\n  word           n\n  &lt;chr&gt;      &lt;int&gt;\n1 park         989\n2 disney       844\n3 rides        808\n4 disneyland   681\n5 time         633\n6 day          608"
   },
   {
     "objectID": "materials/04-r-text-mining.html#set-up-bigrams",
     "href": "materials/04-r-text-mining.html#set-up-bigrams",
     "title": "",
     "section": "Set up bigrams",
-    "text": "Set up bigrams\n\n\n# Unnest into bigrams\ntidy_bigrams &lt;- reviews |&gt; \n  unnest_tokens(bigram, \n                text, \n                token = \"ngrams\", \n                n = 2) |&gt; \n  filter(!is.na(bigram))\n\ngt(head(tidy_bigrams))\n\n\n\n\n\n\n  \n    \n    \n      Park\n      linenumber\n      bigram\n    \n  \n  \n    California\n1\ni ve\n    California\n1\nve previously\n    California\n1\npreviously been\n    California\n1\nbeen to\n    California\n1\nto 3\n    California\n1\n3 disney"
+    "text": "Set up bigrams\n\n\n# Unnest into bigrams\ntidy_bigrams &lt;- reviews |&gt; \n  unnest_tokens(bigram, \n                text, \n                token = \"ngrams\", \n                n = 2) |&gt; \n  filter(!is.na(bigram))\n\nhead(tidy_bigrams)\n\n\n# A tibble: 6 × 3\n  Park       linenumber bigram         \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;          \n1 California          1 i ve           \n2 California          1 ve previously  \n3 California          1 previously been\n4 California          1 been to        \n5 California          1 to 3           \n6 California          1 3 disney"
   },
   {
     "objectID": "materials/04-r-text-mining.html#separate-words",
     "href": "materials/04-r-text-mining.html#separate-words",
     "title": "",
     "section": "Separate words",
-    "text": "Separate words\n\n\n# Separate words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  separate(bigram, \n           c(\"word1\", \n             \"word2\"), \n           sep = \" \")\n\ngt(head(tidy_bigrams))\n\n\n\n\n\n\n  \n    \n    \n      Park\n      linenumber\n      word1\n      word2\n    \n  \n  \n    California\n1\ni\nve\n    California\n1\nve\npreviously\n    California\n1\npreviously\nbeen\n    California\n1\nbeen\nto\n    California\n1\nto\n3\n    California\n1\n3\ndisney"
+    "text": "Separate words\n\n\n# Separate words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  separate(bigram, \n           c(\"word1\", \n             \"word2\"), \n           sep = \" \")\n\nhead(tidy_bigrams)\n\n\n# A tibble: 6 × 4\n  Park       linenumber word1      word2     \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     \n1 California          1 i          ve        \n2 California          1 ve         previously\n3 California          1 previously been      \n4 California          1 been       to        \n5 California          1 to         3         \n6 California          1 3          disney"
   },
   {
     "objectID": "materials/04-r-text-mining.html#remove-stop-words-1",
     "href": "materials/04-r-text-mining.html#remove-stop-words-1",
     "title": "",
     "section": "Remove stop words",
-    "text": "Remove stop words\n\n\n# Remove stop words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  filter(!word1 %in% stop_words$word) |&gt;\n  filter(!word2 %in% stop_words$word)\n\ngt(head(tidy_bigrams))\n\n\n\n\n\n\n  \n    \n    \n      Park\n      linenumber\n      word1\n      word2\n    \n  \n  \n    California\n1\nve\npreviously\n    California\n1\n3\ndisney\n    California\n1\ndisney\nresorts\n    California\n1\nexpectations\nsky\n    California\n1\noriginal\npark\n    California\n1\nmagical\nfeeling"
+    "text": "Remove stop words\n\n\n# Remove stop words\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  filter(!word1 %in% stop_words$word) |&gt;\n  filter(!word2 %in% stop_words$word)\n\nhead(tidy_bigrams)\n\n\n# A tibble: 6 × 4\n  Park       linenumber word1        word2     \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;     \n1 California          1 ve           previously\n2 California          1 3            disney    \n3 California          1 disney       resorts   \n4 California          1 expectations sky       \n5 California          1 original     park      \n6 California          1 magical      feeling"
   },
   {
     "objectID": "materials/04-r-text-mining.html#reunite-terms",
     "href": "materials/04-r-text-mining.html#reunite-terms",
     "title": "",
     "section": "Reunite terms",
-    "text": "Reunite terms\n\n\n# Reunite terms\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  unite(bigram, word1, word2, sep = \" \")\n\ngt(head(tidy_bigrams))\n\n\n\n\n\n\n  \n    \n    \n      Park\n      linenumber\n      bigram\n    \n  \n  \n    California\n1\nve previously\n    California\n1\n3 disney\n    California\n1\ndisney resorts\n    California\n1\nexpectations sky\n    California\n1\noriginal park\n    California\n1\nmagical feeling"
+    "text": "Reunite terms\n\n\n# Reunite terms\ntidy_bigrams &lt;- tidy_bigrams |&gt;\n  unite(bigram, word1, word2, sep = \" \")\n\nhead(tidy_bigrams)\n\n\n# A tibble: 6 × 3\n  Park       linenumber bigram          \n  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;           \n1 California          1 ve previously   \n2 California          1 3 disney        \n3 California          1 disney resorts  \n4 California          1 expectations sky\n5 California          1 original park   \n6 California          1 magical feeling"
   },
   {
     "objectID": "materials/04-r-text-mining.html#look-at-bigrams-by-park",
@@ -1838,7 +1838,7 @@
     "href": "materials/03-intro-to-r.html#open-the-file",
     "title": "",
     "section": "Open the file",
-    "text": "Open the file\n Open 03-intro-to-r/01-intro.R in RStudio\n\n\n\n\n\n\n\nSource: Allison Horst"
+    "text": "Open the file\n Open intro.R in RStudio\n\n\n\n\n\n\n\nSource: Allison Horst"
   },
   {
     "objectID": "materials/03-intro-to-r.html#running-the-code",
@@ -1957,7 +1957,7 @@
     "href": "materials/04-r-text-mining.html#create-a-word-cloud",
     "title": "",
     "section": "Create a word cloud",
-    "text": "Create a word cloud\n\nset.seed(1234)\n\ntidy_reviews |&gt;\n  count(word) |&gt;\n  with(wordcloud(word, \n                 n, \n                 max.words = 40,\n                 colors=brewer.pal(8, \"Dark2\")))\n\n\n\n\nWhat jumps out to you? How might we improve it?"
+    "text": "Create a word cloud\n\ntidy_reviews |&gt;\n  count(word) |&gt;\n  with(wordcloud(word, \n                 n, \n                 max.words = 40,\n                 colors=brewer.pal(8, \"Dark2\")))\n\n\n\n\nWhat jumps out to you? How might we improve it?"
   },
   {
     "objectID": "materials/04-r-text-mining.html#re-create-the-word-cloud",
@@ -1999,7 +1999,7 @@
     "href": "materials/04-r-text-mining.html#look-at-top-bigrams-by-park",
     "title": "",
     "section": "Look at top bigrams by park",
-    "text": "Look at top bigrams by park\n\n\ntidy_bigrams |&gt; \n  group_by(Park) |&gt; \n  count(bigram) |&gt; \n  arrange(desc(n)) |&gt; \n  head() |&gt; \n  gt()\n\n\n\n\n\n\n  \n    \n    \n      bigram\n      n\n    \n  \n  \n    \n      Paris\n    \n    disneyland paris\n66\n    fast pass\n43\n    \n      Hong Kong\n    \n    hong kong\n58\n    \n      California\n    \n    fast pass\n54\n    disney world\n51\n    california adventure\n37"
+    "text": "Look at top bigrams by park\n\n\ntidy_bigrams |&gt; \n  group_by(Park) |&gt; \n  count(bigram) |&gt; \n  arrange(desc(n)) |&gt; \n  head()\n\n\n# A tibble: 6 × 3\n# Groups:   Park [3]\n  Park       bigram                   n\n  &lt;chr&gt;      &lt;chr&gt;                &lt;int&gt;\n1 Paris      disneyland paris        66\n2 Hong Kong  hong kong               58\n3 California fast pass               54\n4 California disney world            51\n5 Paris      fast pass               43\n6 California california adventure    37"
   },
   {
     "objectID": "materials/04-r-text-mining.html#plot-tf-idf-output",
@@ -2153,7 +2153,7 @@
     "href": "materials/04-r-text-mining.html#setup",
     "title": "",
     "section": "Setup",
-    "text": "Setup\n Open 04-intro-to-r/01-ggplot2.R in RStudio if you’d like to follow along.\n\n\n\n\n\n\nTip\n\n\nBefore we get started, it’s a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)"
+    "text": "Setup\n Open text-mining.R in RStudio to follow along."
   },
   {
     "objectID": "materials/04-r-text-mining.html#create-a-basic-histogram",
@@ -2447,7 +2447,7 @@
     "href": "materials/04-r-text-mining.html#setup-1",
     "title": "",
     "section": "Setup",
-    "text": "Setup\n\n# Install packages\n# install.packages(\"tidyverse\")\n# install.packages(\"tidytext\")\n# install.packages(\"wordcloud\")\n# install.packages(\"here\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\nlibrary(here)"
+    "text": "Setup\n\n\n\n\n\n\nTip\n\n\nBefore we get started, it’s a good idea to Restart R. That way nothing we did before carries through this section. (Session ➔ Restart R)\n\n\n\n\n# Install packages\n# install.packages(\"tidyverse\")\n# install.packages(\"tidytext\")\n# install.packages(\"wordcloud\")\n# install.packages(\"here\")\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(wordcloud)\nlibrary(here)"
   },
   {
     "objectID": "materials/01-introduction.html#word-and-document-similarity",
@@ -2811,7 +2811,7 @@
     "href": "materials/04-r-text-mining.html#afinn",
     "title": "",
     "section": "AFINN",
-    "text": "AFINN\n\nget_sentiments(lexicon = \"afinn\") |&gt; \n  sample_n(10)\n\n\n\n# A tibble: 10 × 2\n   word        value\n   &lt;chr&gt;       &lt;dbl&gt;\n 1 debonair        2\n 2 captivated      3\n 3 apologizing    -1\n 4 betrayed       -3\n 5 agonises       -3\n 6 cock           -5\n 7 eerie          -2\n 8 moan           -2\n 9 starves        -2\n10 daredevil       2"
+    "text": "AFINN\n\n\nget_sentiments(lexicon = \"afinn\") |&gt; \n  sample_n(10)\n\n\n# A tibble: 10 × 2\n   word           value\n   &lt;chr&gt;          &lt;dbl&gt;\n 1 exclude           -1\n 2 beautifully        3\n 3 whore             -4\n 4 son-of-a-bitch    -5\n 5 gift               2\n 6 promote            1\n 7 inferior          -2\n 8 euphoric           4\n 9 animosity         -2\n10 struggling        -2"
   },
   {
     "objectID": "materials/04-r-text-mining.html#afinn-example",
@@ -2881,7 +2881,7 @@
     "href": "materials/04-r-text-mining.html#bing",
     "title": "",
     "section": "bing",
-    "text": "bing\n\nget_sentiments(lexicon = \"bing\") |&gt; \n  sample_n(10)\n\n\n\n# A tibble: 10 × 2\n   word          sentiment\n   &lt;chr&gt;         &lt;chr&gt;    \n 1 unbearablely  negative \n 2 favorable     positive \n 3 celebrated    positive \n 4 apathetically negative \n 5 gnawing       negative \n 6 affluent      positive \n 7 anomalous     negative \n 8 emergency     negative \n 9 misleadingly  negative \n10 swelled       negative"
+    "text": "bing\n\n\nget_sentiments(lexicon = \"bing\") |&gt; \n  sample_n(10)\n\n\n# A tibble: 10 × 2\n   word         sentiment\n   &lt;chr&gt;        &lt;chr&gt;    \n 1 fulfillment  positive \n 2 disillusions negative \n 3 bump         negative \n 4 freezing     negative \n 5 supurb       positive \n 6 chaff        negative \n 7 savagery     negative \n 8 intricate    positive \n 9 drains       negative \n10 prosperous   positive"
   },
   {
     "objectID": "materials/04-r-text-mining.html#bing-example",
@@ -2965,7 +2965,7 @@
     "href": "materials/04-r-text-mining.html#nrc",
     "title": "",
     "section": "nrc",
-    "text": "nrc\n\nget_sentiments(lexicon = \"nrc\") |&gt; \n  sample_n(10)\n\n\n\n# A tibble: 10 × 2\n   word        sentiment\n   &lt;chr&gt;       &lt;chr&gt;    \n 1 prophet     trust    \n 2 banish      disgust  \n 3 abuse       disgust  \n 4 heavenly    joy      \n 5 objection   negative \n 6 inexpensive positive \n 7 skillful    trust    \n 8 inadequate  negative \n 9 brother     positive \n10 ferment     negative"
+    "text": "nrc\n\n\nget_sentiments(lexicon = \"nrc\") |&gt; \n  sample_n(10)\n\n\n# A tibble: 10 × 2\n   word          sentiment   \n   &lt;chr&gt;         &lt;chr&gt;       \n 1 deserve       anticipation\n 2 goodly        positive    \n 3 penal         fear        \n 4 litigate      negative    \n 5 bridal        joy         \n 6 reinforcement positive    \n 7 mislead       anger       \n 8 art           surprise    \n 9 disreputable  anger       \n10 abduction     fear"
   },
   {
     "objectID": "materials/04-r-text-mining.html#nrc-example",
@@ -3000,7 +3000,7 @@
     "href": "materials/04-r-text-mining.html#nrc-example-4",
     "title": "",
     "section": "nrc example",
-    "text": "nrc example\n:::: {.columns .smallcode } :::: {.column width=‘40%’} ::: {.cell}\ntidy_reviews |&gt;\n  right_join(get_sentiments(\"nrc\"),\n             relationship = \"many-to-many\") |&gt;\n  filter(!is.na(sentiment)) |&gt;\n  count(sentiment, sort = TRUE)\n::: ::::\n\n\n\n# A tibble: 10 × 2\n   sentiment        n\n   &lt;chr&gt;        &lt;int&gt;\n 1 positive      7681\n 2 negative      5222\n 3 anticipation  4310\n 4 joy           3677\n 5 trust         3563\n 6 fear          2591\n 7 sadness       2036\n 8 surprise      1921\n 9 anger         1917\n10 disgust       1512\n\n\n\n::::: ```"
+    "text": "nrc example\n\n\n\ntidy_reviews |&gt;\n  right_join(get_sentiments(\"nrc\"),\n             relationship = \"many-to-many\") |&gt;\n  filter(!is.na(sentiment)) |&gt;\n  count(sentiment, sort = TRUE)\n\n\n\n\n# A tibble: 10 × 2\n   sentiment        n\n   &lt;chr&gt;        &lt;int&gt;\n 1 positive      7681\n 2 negative      5222\n 3 anticipation  4310\n 4 joy           3677\n 5 trust         3563\n 6 fear          2591\n 7 sadness       2036\n 8 surprise      1921\n 9 anger         1917\n10 disgust       1512"
   },
   {
     "objectID": "materials/04-r-text-mining.html#questions",
@@ -3022,5 +3022,82 @@
     "title": "",
     "section": "Questions?",
     "text": "Questions?\n\nSource: giphy"
+  },
+  {
+    "objectID": "materials/03-intro-to-r.html#setup",
+    "href": "materials/03-intro-to-r.html#setup",
+    "title": "",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#lexicons",
+    "href": "materials/04-r-text-mining.html#lexicons",
+    "title": "",
+    "section": "Lexicons",
+    "text": "Lexicons\n\nAFINN\nbing\nloughran\nnrc\nSentiWordNet\nWordNet"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#most-frequent-terms",
+    "href": "materials/04-r-text-mining.html#most-frequent-terms",
+    "title": "",
+    "section": "Most frequent terms",
+    "text": "Most frequent terms\n\n\ntidy_bigrams |&gt; \n  count(word1, word2, sort = TRUE)\n\n\n# A tibble: 9,691 × 3\n   word1      word2        n\n   &lt;chr&gt;      &lt;chr&gt;    &lt;int&gt;\n 1 fast       pass       102\n 2 disneyland paris       69\n 3 disney     world       65\n 4 space      mountain    65\n 5 hong       kong        64\n 6 main       street      52\n 7 theme      park        52\n 8 fast       passes      48\n 9 indiana    jones       44\n10 thunder    mountain    42\n# ℹ 9,681 more rows"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#most-common-words-by-park",
+    "href": "materials/04-r-text-mining.html#most-common-words-by-park",
+    "title": "",
+    "section": "Most common words by park",
+    "text": "Most common words by park\n\n\nreview_words &lt;- reviews |&gt; \n  unnest_tokens(word, text) |&gt; \n  count(Park, word, sort = TRUE)\n\nhead(review_words)\n\n\n# A tibble: 6 × 3\n  Park       word      n\n  &lt;chr&gt;      &lt;chr&gt; &lt;int&gt;\n1 Paris      the    3025\n2 California the    2603\n3 Paris      and    1654\n4 California and    1616\n5 Paris      to     1508\n6 California to     1475"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#total-words-per-park",
+    "href": "materials/04-r-text-mining.html#total-words-per-park",
+    "title": "",
+    "section": "Total words per park",
+    "text": "Total words per park\n\n\ntotal_words &lt;- review_words |&gt; \n  group_by(Park) |&gt; \n  summarize(Total = sum(n))\n\ntotal_words\n\n\n# A tibble: 3 × 2\n  Park       Total\n  &lt;chr&gt;      &lt;int&gt;\n1 California 48119\n2 Hong Kong  24963\n3 Paris      51650"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#join-the-data-together",
+    "href": "materials/04-r-text-mining.html#join-the-data-together",
+    "title": "",
+    "section": "Join the data together",
+    "text": "Join the data together\n\n\nreview_words &lt;- left_join(review_words, \n                          total_words)\n\nhead(review_words)\n\n\n# A tibble: 6 × 4\n  Park       word      n Total\n  &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt;\n1 Paris      the    3025 51650\n2 California the    2603 48119\n3 Paris      and    1654 51650\n4 California and    1616 48119\n5 Paris      to     1508 51650\n6 California to     1475 48119"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#calculate-term-frequency",
+    "href": "materials/04-r-text-mining.html#calculate-term-frequency",
+    "title": "",
+    "section": "Calculate term frequency",
+    "text": "Calculate term frequency\n\n\nfreq_by_rank &lt;- review_words |&gt; \n  group_by(Park) |&gt; \n  mutate(rank = row_number(),\n         freq = n/Total) |&gt; \n  ungroup()\n\nkableExtra::kable(head(freq_by_rank))\n\n\n\n\n\nPark\nword\nn\nTotal\nrank\nfreq\n\n\n\n\nParis\nthe\n3025\n51650\n1\n0.0585673\n\n\nCalifornia\nthe\n2603\n48119\n1\n0.0540951\n\n\nParis\nand\n1654\n51650\n2\n0.0320232\n\n\nCalifornia\nand\n1616\n48119\n2\n0.0335834\n\n\nParis\nto\n1508\n51650\n3\n0.0291965\n\n\nCalifornia\nto\n1475\n48119\n3\n0.0306532"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#calculate-tf-idf",
+    "href": "materials/04-r-text-mining.html#calculate-tf-idf",
+    "title": "",
+    "section": "Calculate tf-idf",
+    "text": "Calculate tf-idf\n\n\nreview_tf_idf &lt;- review_words |&gt; \n  bind_tf_idf(word, Park, n)\n\nkableExtra::kable(head(review_tf_idf))\n\n\n\n\n\nPark\nword\nn\nTotal\ntf\nidf\ntf_idf\n\n\n\n\nParis\nthe\n3025\n51650\n0.0585673\n0\n0\n\n\nCalifornia\nthe\n2603\n48119\n0.0540951\n0\n0\n\n\nParis\nand\n1654\n51650\n0.0320232\n0\n0\n\n\nCalifornia\nand\n1616\n48119\n0.0335834\n0\n0\n\n\nParis\nto\n1508\n51650\n0.0291965\n0\n0\n\n\nCalifornia\nto\n1475\n48119\n0.0306532\n0\n0"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#reviews-with-high-tf-idf",
+    "href": "materials/04-r-text-mining.html#reviews-with-high-tf-idf",
+    "title": "",
+    "section": "Reviews with high tf-idf",
+    "text": "Reviews with high tf-idf\n\n\nreview_tf_idf |&gt; \n  select(-Total) |&gt; \n  arrange(desc(tf_idf)) |&gt; \n  head() |&gt; \n  kableExtra::kable()\n\n\n\n\n\nPark\nword\nn\ntf\nidf\ntf_idf\n\n\n\n\nHong Kong\nhk\n48\n0.0019228\n0.4054651\n0.0007796\n\n\nHong Kong\nmtr\n17\n0.0006810\n1.0986123\n0.0007482\n\n\nCalifornia\nfantasmic\n27\n0.0005611\n1.0986123\n0.0006164\n\n\nHong Kong\nhkd\n14\n0.0005608\n1.0986123\n0.0006161\n\n\nCalifornia\nsplash\n26\n0.0005403\n1.0986123\n0.0005936\n\n\nHong Kong\nmystic\n13\n0.0005208\n1.0986123\n0.0005721"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#visualize-high-tf-idf-words",
+    "href": "materials/04-r-text-mining.html#visualize-high-tf-idf-words",
+    "title": "",
+    "section": "Visualize high tf-idf words",
+    "text": "Visualize high tf-idf words\n\nreview_tf_idf |&gt; \n  group_by(Park) |&gt; \n  slice_max(tf_idf, n = 10) |&gt; \n  ungroup() |&gt; \n  ggplot(aes(tf_idf, fct_reorder(word, tf_idf), fill = Park)) +\n  geom_col(show.legend = FALSE) +\n  facet_wrap(~Park, ncol = 1, scales = \"free\") +\n  labs(x = \"tf-idf\", y = NULL)"
+  },
+  {
+    "objectID": "materials/04-r-text-mining.html#visualize-high-tf-idf-words-output",
+    "href": "materials/04-r-text-mining.html#visualize-high-tf-idf-words-output",
+    "title": "",
+    "section": "Visualize high tf-idf words",
+    "text": "Visualize high tf-idf words"
   }
 ]
