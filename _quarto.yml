@@ -36,9 +36,9 @@ website:
         text: "Schedule"
       - href: workshop-materials.qmd
         text: "Workshop"
-    right: 
       - href: resources.qmd
         text: "Resources"
+    right: 
       - icon: github
         href: https://github.com/mattfarrow1/apra-intro-to-text-mining
   sidebar: 
