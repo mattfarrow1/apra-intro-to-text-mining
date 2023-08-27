@@ -190,4 +190,4 @@ Much of what we cover today follows the structure of *Text Mining with R*, a won
 
 ![Source: giphy](https://media0.giphy.com/media/MczBJsrJEobOfXSK1l/giphy.gif?cid=ecf05e476z5djryznjsgecwwt4nxocslnz5as108i45yjzri&ep=v1_gifs_search&rid=giphy.gif&ct=g){fig-align="center" width="360"}
 
-# On to R!
+# On to Excel!
