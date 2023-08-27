@@ -50,6 +50,14 @@ editor: visual
 :::
 :::
 
+## Word Counts
+
+-   Can offer insights into how much someone has written
+
+-   Are people completing their contact reports?
+
+-   What is the average number of words people are writing?
+
 ## Word Counts {.smaller}
 
 `=LEN(TRIM(A1))-LEN(SUBSTITUTE(A1," ",""))+1`
@@ -62,6 +70,12 @@ editor: visual
 -   `=LEN(A1)-LEN(SUBSTITUTE(A1,” “,“”))+1` add 1 to the result as the number of spaces is one less than the total number of words
 
 ## VLOOKUP {.smaller}
+
+-   Not necessarily for text mining, but a popular formula that causes people trouble
+
+-   Powerful, but can be slow when working with lots of data
+
+## VLOOKUP
 
 `=VLOOKUP(A1, '[WorkbookName.xlsx]SheetName'!A1:B10,2,FALSE)`
 
@@ -87,6 +101,14 @@ editor: visual
 | **\$**A**\$**2 | Neither the row nor the column change |
 
 ## Keyword Searches {.smaller}
+
+-   How can we find matches in our free text from a predefined list?
+
+-   Named ranges in Excel
+
+-   Care with list creation (e.g. "trust")
+
+## Keyword Searches
 
 `=IF(SUMPRODUCT(--ISNUMBER(SEARCH(keyword,A2)))>0,"Yes","No")`
 

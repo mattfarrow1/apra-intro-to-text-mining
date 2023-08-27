@@ -372,7 +372,15 @@
 </div>
 </div>
 </section>
-<section id="word-counts" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<section id="word-counts" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Word Counts</h2>
+<ul>
+<li><p>Can offer insights into how much someone has written</p></li>
+<li><p>Are people completing their contact reports?</p></li>
+<li><p>What is the average number of words people are writing?</p></li>
+</ul>
+</section>
+<section id="word-counts-1" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Word Counts</h2>
 <p><code>=LEN(TRIM(A1))-LEN(SUBSTITUTE(A1," ",""))+1</code></p>
 <ul>
@@ -385,6 +393,13 @@
 </ul>
 </section>
 <section id="vlookup" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>VLOOKUP</h2>
+<ul>
+<li><p>Not necessarily for text mining, but a popular formula that causes people trouble</p></li>
+<li><p>Powerful, but can be slow when working with lots of data</p></li>
+</ul>
+</section>
+<section id="vlookup-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>VLOOKUP</h2>
 <p><code>=VLOOKUP(A1, '[WorkbookName.xlsx]SheetName'!A1:B10,2,FALSE)</code></p>
 <ul>
@@ -428,6 +443,14 @@
 </table>
 </section>
 <section id="keyword-searches" class="slide level2 smaller" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
+<h2>Keyword Searches</h2>
+<ul>
+<li><p>How can we find matches in our free text from a predefined list?</p></li>
+<li><p>Named ranges in Excel</p></li>
+<li><p>Care with list creation (e.g.&nbsp;“trust”)</p></li>
+</ul>
+</section>
+<section id="keyword-searches-1" class="slide level2" data-background-image="../materials/slide templates/Slide7.png" data-background-size="contain">
 <h2>Keyword Searches</h2>
 <p><code>=IF(SUMPRODUCT(--ISNUMBER(SEARCH(keyword,A2)))&gt;0,"Yes","No")</code></p>
 <ul>

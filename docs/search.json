@@ -949,14 +949,14 @@
     "href": "materials/02-excel.html#word-counts",
     "title": "",
     "section": "Word Counts",
-    "text": "Word Counts\n=LEN(TRIM(A1))-LEN(SUBSTITUTE(A1,\" \",\"\"))+1\n\nLEN(A1) counts the total number of characters in A1\nTRIM removes any leading, trailing, and extra spaces (except single spaces between words)\nSUBSTITUTE(A1,” “,””) removes all spaces from the text\nLEN(SUBSTITUTE(A1,” “,“”) – counts the total number of characters in the text that have no spaces\nLEN(A1)-LEN(SUBSTITUTE(A1,” “,“”)) subtracts the text length without spaces from the text length with spaces\n=LEN(A1)-LEN(SUBSTITUTE(A1,” “,“”))+1 add 1 to the result as the number of spaces is one less than the total number of words"
+    "text": "Word Counts\n\nCan offer insights into how much someone has written\nAre people completing their contact reports?\nWhat is the average number of words people are writing?"
   },
   {
     "objectID": "materials/02-excel.html#vlookup",
     "href": "materials/02-excel.html#vlookup",
     "title": "",
     "section": "VLOOKUP",
-    "text": "VLOOKUP\n=VLOOKUP(A1, '[WorkbookName.xlsx]SheetName'!A1:B10,2,FALSE)\n\nA1 the value you are looking up\n'[WorkbookName.xlsx]SheetName'!A1:B10 the range where you are looking for a match\n2 the column the match is found in\nFALSE indicates whether you want to match exactly (FALSE) or approximately (TRUE)"
+    "text": "VLOOKUP\n\nNot necessarily for text mining, but a popular formula that causes people trouble\nPowerful, but can be slow when working with lots of data"
   },
   {
     "objectID": "materials/02-excel.html#absoluterelative-references",
@@ -970,7 +970,7 @@
     "href": "materials/02-excel.html#keyword-searches",
     "title": "",
     "section": "Keyword Searches",
-    "text": "Keyword Searches\n=IF(SUMPRODUCT(--ISNUMBER(SEARCH(keyword,A2)))&gt;0,\"Yes\",\"No\")\n\nkeyword is a named range of the words you are searching for\nA2 is the cell in the column you’re searching in\nSEARCH(keyword,A2) returns the start number of the found string as a number\nISNUMBER(SEARCH(keyword,A2)) converts items to either TRUE or FALSE\n--ISNUMBER(SEARCH(keyword,A2)) coerces the TRUE and FALSE values to 1 and 0\nSUMPRODUCT sums the 1’s and 0’s\nIF(SUMPRODUCT...)&gt;0,\"Yes\",\"No\") if the result of SUMPRODUCT is greater than 1, then the formula returns “Yes” (or any other result you want)"
+    "text": "Keyword Searches\n\nHow can we find matches in our free text from a predefined list?\nNamed ranges in Excel\nCare with list creation (e.g. “trust”)"
   },
   {
     "objectID": "materials/04-r-text-mining.html#why-visualize",
@@ -3099,5 +3099,26 @@
     "title": "",
     "section": "Visualize high tf-idf words",
     "text": "Visualize high tf-idf words"
+  },
+  {
+    "objectID": "materials/02-excel.html#word-counts-1",
+    "href": "materials/02-excel.html#word-counts-1",
+    "title": "",
+    "section": "Word Counts",
+    "text": "Word Counts\n=LEN(TRIM(A1))-LEN(SUBSTITUTE(A1,\" \",\"\"))+1\n\nLEN(A1) counts the total number of characters in A1\nTRIM removes any leading, trailing, and extra spaces (except single spaces between words)\nSUBSTITUTE(A1,” “,””) removes all spaces from the text\nLEN(SUBSTITUTE(A1,” “,“”) – counts the total number of characters in the text that have no spaces\nLEN(A1)-LEN(SUBSTITUTE(A1,” “,“”)) subtracts the text length without spaces from the text length with spaces\n=LEN(A1)-LEN(SUBSTITUTE(A1,” “,“”))+1 add 1 to the result as the number of spaces is one less than the total number of words"
+  },
+  {
+    "objectID": "materials/02-excel.html#vlookup-1",
+    "href": "materials/02-excel.html#vlookup-1",
+    "title": "",
+    "section": "VLOOKUP",
+    "text": "VLOOKUP\n=VLOOKUP(A1, '[WorkbookName.xlsx]SheetName'!A1:B10,2,FALSE)\n\nA1 the value you are looking up\n'[WorkbookName.xlsx]SheetName'!A1:B10 the range where you are looking for a match\n2 the column the match is found in\nFALSE indicates whether you want to match exactly (FALSE) or approximately (TRUE)"
+  },
+  {
+    "objectID": "materials/02-excel.html#keyword-searches-1",
+    "href": "materials/02-excel.html#keyword-searches-1",
+    "title": "",
+    "section": "Keyword Searches",
+    "text": "Keyword Searches\n=IF(SUMPRODUCT(--ISNUMBER(SEARCH(keyword,A2)))&gt;0,\"Yes\",\"No\")\n\nkeyword is a named range of the words you are searching for\nA2 is the cell in the column you’re searching in\nSEARCH(keyword,A2) returns the start number of the found string as a number\nISNUMBER(SEARCH(keyword,A2)) converts items to either TRUE or FALSE\n--ISNUMBER(SEARCH(keyword,A2)) coerces the TRUE and FALSE values to 1 and 0\nSUMPRODUCT sums the 1’s and 0’s\nIF(SUMPRODUCT...)&gt;0,\"Yes\",\"No\") if the result of SUMPRODUCT is greater than 1, then the formula returns “Yes” (or any other result you want)"
   }
 ]
