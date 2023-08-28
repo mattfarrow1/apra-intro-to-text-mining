@@ -19,7 +19,7 @@ by Matt Farrow
 
 ## Using Posit Cloud
 
-The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. All you need to is go to [posit.cloud](posit.cloud) and sign up for a free account. This page will be updated on Monday, August 28 prior to the workshop with the direct link to the workshop space.
+The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. All you need to is go to [posit.cloud](https://posit.cloud) and sign up for a free account. This page will be updated on Monday, August 28 prior to the workshop with the direct link to the workshop space.
 
 {{< qrcode https://posit.cloud/ >}}
 
@@ -40,7 +40,7 @@ Free text, or unstructured data, is found throughout our CRMs in places like con
 ## Competencies
 
 |               |                                                                       |
-|--------------------|----------------------------------------------------|
+|---------------|-----------------------------------------------------------------------|
 | **Primary**   | DS: Competency 3: Data Manipulation Skills                            |
 | **Auxiliary** | DS: Competency 5: Visualization/Reporting Techniques and Competencies |
 | **Tertiary**  | DS: Competency 4: Statistical Techniques and Competencies             |
@@ -48,7 +48,7 @@ Free text, or unstructured data, is found throughout our CRMs in places like con
 ## Learning Objectives
 
 |                          |                                                                                                                                                                |
-|----------------------------|--------------------------------------------|
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Learning Objective 1** | Attendees will create word counts and keyword searches in Excel.                                                                                               |
 | **Learning Objective 2** | Attendees will also utilize R (possibly Python too) to work on advanced text mining including stop words, topic modeling, word clouds, and sentiment analysis. |
 
@@ -57,6 +57,8 @@ Free text, or unstructured data, is found throughout our CRMs in places like con
 ## Instructor
 
 Matt Farrow is the Director of Prospect Development and Strategy at Children's Health. He previously worked as the Assistant Director of Prospect Management at Southern Methodist University, where he earned an M.S. degree in Data Science. Matt is passionate about helping people extract insights and wisdom from their data. He may also have a small problem with his love of LEGO.
+
+Email: [matt.farrow\@childrens.com](mailto:matt.farrow@childrens.com)
 
 ------------------------------------------------------------------------
 

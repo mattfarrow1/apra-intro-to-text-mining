@@ -37,6 +37,8 @@ website:
       - href: resources.qmd
         text: "Resources"
     right: 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/matt-farrow/
       - icon: github
         href: https://github.com/mattfarrow1/apra-intro-to-text-mining
   sidebar: 

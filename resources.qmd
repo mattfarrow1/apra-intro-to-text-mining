@@ -30,6 +30,6 @@ title: "Resources"
 
 ## Cheat Sheets
 
-[Posit Primers](posit.cloud/learn/primers)
+[Posit Primers](https://posit.cloud/learn/primers)
 
-[Posit Cheat Sheets](posit.cloud/learn/cheat-sheets)
+[Posit Cheat Sheets](https://posit.cloud/learn/cheat-sheets)
