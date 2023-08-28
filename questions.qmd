@@ -1,0 +1,33 @@
+---
+title: "Workshop Questions"
+editor: visual
+---
+
+Here are questions that came up during the workshop that I promised to follow up on.
+
+### How to best handle similar words like "queue", "lines", "line"?
+
+I'm not sure about how it would affect "queue" vs. "line", but lemmatisation would help somewhat. It's firmly in the NLP world and beyond the scope of the workshop, but here is an explantation from The University of Sydney.
+
+> Lemmatisation involves the computer analysing words to give you the dictionary root form of that word. This analysis requires the lemmatiser to understand the context in which the word is used, so before you can lemmatise your text, you will need to pre-process it with [parts of speech tagging](https://libguides.library.usyd.edu.au/c.php?g=928514&p=6726268#s-lg-box-wrapper-25185066). There are several different lemmatisers that you could choose to use, however, all of them will require you to undertake some programming.
+>
+> **Example:**\
+> \'am\', \'are\', \'is\', \'was\', \'were\' would all be lemmatised to \'be\'\
+> 'rose\' (noun) would be lemmatised to \'rose\'\
+> 'rose\' (verb) would be lemmatised to \'rise\'
+>
+> **Potential pitfalls:** As in stemming, precision and nuances can be lost during lemmatisation. For example, \'operating\' can have quite different meanings from the verb form through to compound noun forms, such as \'operating theatre\' or \'operating system\'. If the lemmatiser that you use reduces all of these to \'operate\', then you can end up grouping things together that are actually separate concepts or things. Lemmatisation is also a slower process than stemming, as more analysis is involved.
+
+[Source: University of Sydney](https://libguides.library.usyd.edu.au/text_data_mining/cleaning)
+
+### Is there a way to remove names from a data set? e.g. fundraisers, donors, etc.
+
+The most low-tech solution would probably be to download the names of staff and individual assigned prospects. You could then filter those names out of your contact reports. The challenge with that approach is that names of unassigned folks could slip through.
+
+I also mentioned that you can probably find an R package to do almost anything you need! I came across the `textclean` package ([GitHub](https://github.com/trinker/textclean)) which has a `replace_names` function.
+
+> The `replace_names` function quickly removes/replaces common first and last names. This can be made more targeted by feeding a vector of names extracted via a named entity extractor.
+
+[Source: textclean](https://github.com/trinker/textclean#names)
+
+I can't speak to the accuracy or effectiveness of this package, but it might be worth looking at.

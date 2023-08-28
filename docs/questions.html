@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Extracting Value from Free Text - Apra PD 2023 Workshop</title>
+<title>Extracting Value from Free Text - Workshop Questions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,7 +39,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/qrcodejs-v1.0.0/qrcode.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,7 +61,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta name="twitter:title" content="Extracting Value from Free Text - Apra PD 2023 Workshop">
+<meta name="twitter:title" content="Extracting Value from Free Text - Workshop Questions">
 <meta name="twitter:description" content="Apra PD 2023 workshop on text mining">
 <meta name="twitter:image" content="materials/slide templates/Slide1.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -86,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -129,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./questions.html" rel="" target="">
+    <a class="nav-link active" href="./questions.html" rel="" target="" aria-current="page">
  <span class="menu-text">Questions</span></a>
   </li>  
 </ul>
@@ -155,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Apra PD 2023 Workshop</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop Questions</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -213,19 +212,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-introduction-to-text-mining" id="toc-an-introduction-to-text-mining" class="nav-link active" data-scroll-target="#an-introduction-to-text-mining">An Introduction to Text Mining</a></li>
-  <li><a href="#pre-work" id="toc-pre-work" class="nav-link" data-scroll-target="#pre-work">Pre-Work</a>
-  <ul class="collapse">
-  <li><a href="#using-posit-cloud" id="toc-using-posit-cloud" class="nav-link" data-scroll-target="#using-posit-cloud">Using Posit Cloud</a></li>
-  <li><a href="#workshop-link" id="toc-workshop-link" class="nav-link" data-scroll-target="#workshop-link">Workshop Link</a></li>
-  <li><a href="#github-links" id="toc-github-links" class="nav-link" data-scroll-target="#github-links">GitHub Links</a></li>
-  </ul></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
-  <ul class="collapse">
-  <li><a href="#competencies" id="toc-competencies" class="nav-link" data-scroll-target="#competencies">Competencies</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
-  </ul></li>
+  <li><a href="#how-to-best-handle-similar-words-like-queue-lines-line" id="toc-how-to-best-handle-similar-words-like-queue-lines-line" class="nav-link active" data-scroll-target="#how-to-best-handle-similar-words-like-queue-lines-line">How to best handle similar words like “queue”, “lines”, “line”?</a></li>
+  <li><a href="#is-there-a-way-to-remove-names-from-a-data-set-e.g.-fundraisers-donors-etc." id="toc-is-there-a-way-to-remove-names-from-a-data-set-e.g.-fundraisers-donors-etc." class="nav-link" data-scroll-target="#is-there-a-way-to-remove-names-from-a-data-set-e.g.-fundraisers-donors-etc.">Is there a way to remove names from a data set? e.g.&nbsp;fundraisers, donors, etc.</a></li>
   </ul>
 </nav>
     </div>
@@ -234,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Apra PD 2023 Workshop</h1>
+<h1 class="title">Workshop Questions</h1>
 </div>
 
 
@@ -249,94 +237,31 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="an-introduction-to-text-mining" class="level2">
-<h2 class="anchored" data-anchor-id="an-introduction-to-text-mining">An Introduction to Text Mining</h2>
-<p>by Matt Farrow</p>
-<hr>
-<p>🗓️August 28, 2023<br>
-⏰ 1:00 - 4:00 pm<br>
-🏨 JW Marriott Indianapolis: White River AB<br>
-</p>
-<hr>
-</section>
-<section id="pre-work" class="level1">
-<h1>Pre-Work</h1>
-<section id="using-posit-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="using-posit-cloud">Using Posit Cloud</h2>
-<p>The materials for this workshop are available in a cloud environment that can be run with no downloads or setup. All you need to is go to <a href="https://posit.cloud">posit.cloud</a> and sign up for a free account. This page will be updated on Monday, August 28 prior to the workshop with the direct link to the workshop space.</p>
-<div id="qrcode" class="qrcode"></div>
-<script type="text/javascript">
-var qrcode = new QRCode("qrcode", {"colorDark":"#000000","colorLight":"#ffffff","text":"https://posit.cloud/","width":128,"height":128});
-</script>
-    
-</section>
-<section id="workshop-link" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-link">Workshop Link</h2>
-<p>Workshop attendees may click <a href="https://posit.cloud/spaces/402448/join?access_code=fwlAcK_yXIxTkegUsEBSHHINTmR8PtC2tQX8oIly" title="Text Mining Workshop Link">this link</a> to join today’s Posit Cloud work space. <strong>Computing resources have been allocated only for workshop attendees.</strong></p>
-</section>
-<section id="github-links" class="level2">
-<h2 class="anchored" data-anchor-id="github-links">GitHub Links</h2>
-<p>This website has been built from a GitHub repository located at <a href="https://github.com/mattfarrow1/apra-intro-to-text-mining" class="uri">https://github.com/mattfarrow1/apra-intro-to-text-mining</a>. It contains everything used in the workshop including slides, data, scripts, and resources.</p>
-<p>There is a second repository located at <a href="https://github.com/mattfarrow1/text-mining-workshop" class="uri">https://github.com/mattfarrow1/text-mining-workshop</a> that contains only the data and scripts for the workshop. This is the repository that the Posit Cloud work space connects to.</p>
-</section>
-</section>
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>Free text, or unstructured data, is found throughout our CRMs in places like contact reports, notes, research profiles, emails, and more. In this workshop, we’ll look at ways to get started with text mining in order to begin answering questions, surfacing insights, understanding sentiment, and bringing more value to your work. The workshop will be split into sections on Excel, R, and Python and will allow attendees the opportunity to work through examples and takeaway ideas for implementing these concepts at their own organizations.</p>
-<section id="competencies" class="level2">
-<h2 class="anchored" data-anchor-id="competencies">Competencies</h2>
-<table class="table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 82%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Primary</strong></td>
-<td>DS: Competency 3: Data Manipulation Skills</td>
-</tr>
-<tr class="even">
-<td><strong>Auxiliary</strong></td>
-<td>DS: Competency 5: Visualization/Reporting Techniques and Competencies</td>
-</tr>
-<tr class="odd">
-<td><strong>Tertiary</strong></td>
-<td>DS: Competency 4: Statistical Techniques and Competencies</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<table class="table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 86%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Learning Objective 1</strong></td>
-<td>Attendees will create word counts and keyword searches in Excel.</td>
-</tr>
-<tr class="even">
-<td><strong>Learning Objective 2</strong></td>
-<td>Attendees will also utilize R (possibly Python too) to work on advanced text mining including stop words, topic modeling, word clouds, and sentiment analysis.</td>
-</tr>
-</tbody>
-</table>
+<p>Here are questions that came up during the workshop that I promised to follow up on.</p>
+<section id="how-to-best-handle-similar-words-like-queue-lines-line" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-best-handle-similar-words-like-queue-lines-line">How to best handle similar words like “queue”, “lines”, “line”?</h3>
+<p>I’m not sure about how it would affect “queue” vs.&nbsp;“line”, but lemmatisation would help somewhat. It’s firmly in the NLP world and beyond the scope of the workshop, but here is an explantation from The University of Sydney.</p>
 <blockquote class="blockquote">
-<p>These materials are developed for a trainer-led workshop at Apra PD 2023, but should be useful for self-guided learning as well.</p>
+<p>Lemmatisation involves the computer analysing words to give you the dictionary root form of that word. This analysis requires the lemmatiser to understand the context in which the word is used, so before you can lemmatise your text, you will need to pre-process it with&nbsp;<a href="https://libguides.library.usyd.edu.au/c.php?g=928514&amp;p=6726268#s-lg-box-wrapper-25185066">parts of speech tagging</a>. There are several different lemmatisers that you could choose to use, however, all of them will require you to undertake some programming.</p>
+<p><strong>Example:</strong><br>
+'am', 'are', 'is', 'was', 'were' would all be lemmatised to 'be'<br>
+’rose' (noun) would be lemmatised to 'rose'<br>
+’rose' (verb) would be lemmatised to 'rise'</p>
+<p><strong>Potential pitfalls:</strong>&nbsp;As in stemming, precision and nuances can be lost during lemmatisation. For example, 'operating' can have quite different meanings from the verb form through to compound noun forms, such as 'operating theatre' or 'operating system'. If the lemmatiser that you use reduces all of these to 'operate', then you can end up grouping things together that are actually separate concepts or things. Lemmatisation is also a slower process than stemming, as more analysis is involved.</p>
 </blockquote>
+<p><a href="https://libguides.library.usyd.edu.au/text_data_mining/cleaning">Source: University of Sydney</a></p>
 </section>
-<section id="instructor" class="level2">
-<h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
-<p>Matt Farrow is the Director of Prospect Development and Strategy at Children’s Health. He previously worked as the Assistant Director of Prospect Management at Southern Methodist University, where he earned an M.S. degree in Data Science. Matt is passionate about helping people extract insights and wisdom from their data. He may also have a small problem with his love of LEGO.</p>
-<p>Email: <a href="mailto:matt.farrow@childrens.com">matt.farrow@childrens.com</a></p>
-<hr>
-<p><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="img-fluid"> This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<section id="is-there-a-way-to-remove-names-from-a-data-set-e.g.-fundraisers-donors-etc." class="level3">
+<h3 class="anchored" data-anchor-id="is-there-a-way-to-remove-names-from-a-data-set-e.g.-fundraisers-donors-etc.">Is there a way to remove names from a data set? e.g.&nbsp;fundraisers, donors, etc.</h3>
+<p>The most low-tech solution would probably be to download the names of staff and individual assigned prospects. You could then filter those names out of your contact reports. The challenge with that approach is that names of unassigned folks could slip through.</p>
+<p>I also mentioned that you can probably find an R package to do almost anything you need! I came across the <code>textclean</code> package (<a href="https://github.com/trinker/textclean">GitHub</a>) which has a <code>replace_names</code> function.</p>
+<blockquote class="blockquote">
+<p>The&nbsp;<code>replace_names</code>&nbsp;function quickly removes/replaces common first and last names. This can be made more targeted by feeding a vector of names extracted via a named entity extractor.</p>
+</blockquote>
+<p><a href="https://github.com/trinker/textclean#names">Source: textclean</a></p>
+<p>I can’t speak to the accuracy or effectiveness of this package, but it might be worth looking at.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
