@@ -242,7 +242,6 @@ sns.countplot(x=df["Branch"])
 sns.lineplot(data=df, x="Year", y="Rating", hue="Branch").set(title="Ratings per Year");
 ```
 
-
 ## Most common words (less stop words)
 
 ```{python}

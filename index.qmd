@@ -23,6 +23,10 @@ The materials for this workshop are available in a cloud environment that can be
 
 {{< qrcode https://posit.cloud/ >}}
 
+## Workshop Link
+
+Workshop attendees may click [this link](https://posit.cloud/spaces/402448/join?access_code=fwlAcK_yXIxTkegUsEBSHHINTmR8PtC2tQX8oIly "Text Mining Workshop Link") to join today's Posit Cloud workspace. **Computing resources have been allocated only for workshop attendees.**
+
 # Overview
 
 Free text, or unstructured data, is found throughout our CRMs in places like contact reports, notes, research profiles, emails, and more. In this workshop, we'll look at ways to get started with text mining in order to begin answering questions, surfacing insights, understanding sentiment, and bringing more value to your work. The workshop will be split into sections on Excel, R, and Python and will allow attendees the opportunity to work through examples and takeaway ideas for implementing these concepts at their own organizations.
@@ -30,7 +34,7 @@ Free text, or unstructured data, is found throughout our CRMs in places like con
 ## Competencies
 
 |               |                                                                       |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | **Primary**   | DS: Competency 3: Data Manipulation Skills                            |
 | **Auxiliary** | DS: Competency 5: Visualization/Reporting Techniques and Competencies |
 | **Tertiary**  | DS: Competency 4: Statistical Techniques and Competencies             |
@@ -38,7 +42,7 @@ Free text, or unstructured data, is found throughout our CRMs in places like con
 ## Learning Objectives
 
 |                          |                                                                                                                                                                |
-|---------------------------|--------------------------------------------|
+|----------------------------|--------------------------------------------|
 | **Learning Objective 1** | Attendees will create word counts and keyword searches in Excel.                                                                                               |
 | **Learning Objective 2** | Attendees will also utilize R (possibly Python too) to work on advanced text mining including stop words, topic modeling, word clouds, and sentiment analysis. |
 
