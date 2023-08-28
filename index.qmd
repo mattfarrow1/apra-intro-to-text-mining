@@ -25,7 +25,13 @@ The materials for this workshop are available in a cloud environment that can be
 
 ## Workshop Link
 
-Workshop attendees may click [this link](https://posit.cloud/spaces/402448/join?access_code=fwlAcK_yXIxTkegUsEBSHHINTmR8PtC2tQX8oIly "Text Mining Workshop Link") to join today's Posit Cloud workspace. **Computing resources have been allocated only for workshop attendees.**
+Workshop attendees may click [this link](https://posit.cloud/spaces/402448/join?access_code=fwlAcK_yXIxTkegUsEBSHHINTmR8PtC2tQX8oIly "Text Mining Workshop Link") to join today's Posit Cloud work space. **Computing resources have been allocated only for workshop attendees.**
+
+## GitHub Links
+
+This website has been built from a GitHub repository located at <https://github.com/mattfarrow1/apra-intro-to-text-mining>. It contains everything used in the workshop including slides, data, scripts, and resources.
+
+There is a second repository located at <https://github.com/mattfarrow1/text-mining-workshop> that contains only the data and scripts for the workshop. This is the repository that the Posit Cloud work space connects to.
 
 # Overview
 
@@ -34,7 +40,7 @@ Free text, or unstructured data, is found throughout our CRMs in places like con
 ## Competencies
 
 |               |                                                                       |
-|-------------------|-----------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | **Primary**   | DS: Competency 3: Data Manipulation Skills                            |
 | **Auxiliary** | DS: Competency 5: Visualization/Reporting Techniques and Competencies |
 | **Tertiary**  | DS: Competency 4: Statistical Techniques and Competencies             |
